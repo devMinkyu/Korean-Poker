@@ -21,7 +21,7 @@ module.exports = function(app, passport) {
       console.log("---------Session---------");
       console.log(req.user);
       console.log("-------------------------");
-      res.redirect('/');
+      res.redirect('/game');
     }
   );
   /*

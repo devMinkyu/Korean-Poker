@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var _ = require('underscore');
 
 var async = require('async');
 var fs = require('fs');
 var rmdir = require('rmdir');
 var multipart = require('multiparty');
+
 // middle ware 회원 확인
+
+
 function needAuth(req, res, next) {
   if (req.isAuthenticated()) {
     next();
@@ -43,10 +47,10 @@ function uploadFile(file, dirPath, res){
   });
 }
 */
-router.get('/', function(req, res, next) {
-  var uniqueRandom = require('unique-random-array');
-
-
+router.get('/', needAuth, function(req, res, next) {
+  var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+  console.log(cards);
+  res.render('game', {cards : cards});
 });
 
 router.get('/:id', function(req, res, next) {

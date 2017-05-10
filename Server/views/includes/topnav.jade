@@ -1,23 +1,17 @@
-//- .navbar.navbar-inverse.navbar-fixed-top
-//-   .container
-//-     .navbar-header
-//-       button.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
-//-         span.sr-only Toggle navigation
-//-         span.icon.icon-bar
-//-         span.icon.icon-bar
-//-         span.icon.icon-bar
-//-     .collapse.navbar-collapse
-//-       ul.nav.navbar-nav.navbar-left
-//-         
-//-         li
-//-           a.smoothScroll(href='#header') 메인
-//-         li
-//-           a.smoothScroll(href='#banner') 목적
-//-         li
-//-           a.smoothScroll(href='#first') 기능
-//-         li
-//-           a.smoothScroll(href='#second') 개발 환경
-//-         li
-//-           a.smoothScroll(href='#third') 시연 영상
-//-         li
-//-           a.smoothScroll(href='#four') 스크린샷
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon.icon-bar
+        span.icon.icon-bar
+        span.icon.icon-bar
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-left
+        if(!currentUser)
+          li
+            a.smoothScroll(href='/auth/facebook') 로그인
+        else
+          li
+            a.smoothScroll(href='/user/logout') 로그아웃
+        
