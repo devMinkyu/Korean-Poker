@@ -1,0 +1,10 @@
+extends layout
+block content
+  if(!currentUser)
+    a.btn.btn-info.btn-lg.btn-block(href='/auth/facebook')
+      i.fa.fa-facebook.fa-lg
+        | &nbsp; &nbsp;Facebook 로그인
+  else
+    a.btn.btn-info.btn-lg.btn-block(href='/user/logout')
+      i.fa.fa-facebook.fa-lg
+        | &nbsp; &nbsp;Facebook 로그아웃

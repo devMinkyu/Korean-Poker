@@ -1,0 +1,13 @@
+{
+  "name": "KoreanPoker",
+  "description": "",
+  "main": "",
+  "authors": [
+    "yutae <93yutaechoi@gmail.com>"
+  ],
+  "license": "No License",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
