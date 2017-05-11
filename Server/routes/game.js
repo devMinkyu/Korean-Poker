@@ -64,13 +64,38 @@ function uploadFile(file, dirPath, res){
 // router.post('/', needAuth, function(req, res, next) {
 //
 // });
-var rooms = [];
-router.get('/list', function(req,res, next){
-  res.render('exam/exampleList', {rooms : rooms});
-});
+global.rooms = [];
+
 router.get('/', function(req,res, next){
   res.render('exam/examMake');
 });
+router.post('/make', function(req,res, next){
+  if(searchRoomIndex(rooms, req.body.roomName) == -1){
+    rooms.push({
+      'roomName' : req.body.roomName, // 방 제목
+      'roomMoney' : 0, // 방의 판돈
+      'connUsers' : [], // 방에 들어온 사람들
+      'gamingUsers' : [], // 게임의 참여자들
+      'current_user' : '', // 현재턴의 사람
+      'state' : 'ready'
+    });
+    res.render('exam/examGame', {roomname: req.body.roomName});
+  }else{
+    req.flash('danger', '똑같은 방이름이 있습니다.');
+    return res.redirect('back');
+  }
+});
+router.get('/connection', function(req,res, next){
+  res.render('exam/examGame');
+});
 
+function searchRoomIndex(room, name){
+  for(var i = 0; i < room.length; i++){
+    if(room[i].roomName == name){
+      return i;
+    }
+  }
+  return -1;
+}
 
 module.exports = router;

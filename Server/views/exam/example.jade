@@ -1,17 +1,16 @@
 extends ../layout
 block content
-  
-  .centerButton
-      a.btn.btn-info.btn-lg.btn-block(href='/game')
-        i.fa.fa-facebook.fa-lg
-          | 방만들기
-      a.btn.btn-info.btn-lg.btn-block(href='/game/list')
-        i.fa.fa-facebook.fa-lg
-          | 방목록      
-
-  style.
-    .centerButton {
-      position: absolute;
-      top: 45%;
-      left: 45%;
-    }
+    .container
+      h1.page-header Room List
+      br
+      .row
+        each room in rooms
+          .col-sm-6.col-md-3
+            .thumbnail
+              .caption
+                h2.Thumbnail= room.roomName
+                p
+                  span 게임 상태 (#{room.state})
+                p 
+                  a.btn.btn-primary(href="/game/connection" role="button") 방 들어가기
+      a.btn.btn-primary(href='/game') 방 만들기

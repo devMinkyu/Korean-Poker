@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header(id = 'roomname' )= roomname
+
+    script.
+        var socket = io.connect();
+        socket.emit('roomConnection', $('#roomname').val());
+        
+        $('#roomMake').click('submit', function(e){
+          socket.emit('roomMakeSend', $('#roomName').val());
+        });
+        
+        socket.on('change name', function(name){
+          $('#name').val(name);
+        });
+        

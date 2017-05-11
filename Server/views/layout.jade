@@ -18,12 +18,6 @@ html(lang='ko')
     script(src='/javascripts/jquery.poptrox.min.js')
     
     script(src="/socket.io/socket.io.js")
-    script. 
-     var socket = io('http://localhost:3000'); 
-     socket.on('news', function (data) { 
-       console.log(data); 
-       socket.emit('my other event', {my: 'data'});
-     });
 
     //- script(src='/javascripts/skel.min.js')
     //- script(src='/javascripts/util.js')
@@ -34,5 +28,11 @@ html(lang='ko')
   body
     block top-nav
       include ./includes/topnav
+    if flashMessages
+      each texts, type in flashMessages
+        .container
+          .alert(class='alert-#{type}')
+            each msg in texts
+              p= msg   
     block content
       
