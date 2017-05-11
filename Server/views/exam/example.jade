@@ -1,0 +1,17 @@
+extends ../layout
+block content
+  
+  .centerButton
+      a.btn.btn-info.btn-lg.btn-block(href='/game')
+        i.fa.fa-facebook.fa-lg
+          | 방만들기
+      a.btn.btn-info.btn-lg.btn-block(href='/game/list')
+        i.fa.fa-facebook.fa-lg
+          | 방목록      
+
+  style.
+    .centerButton {
+      position: absolute;
+      top: 45%;
+      left: 45%;
+    }

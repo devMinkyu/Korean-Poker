@@ -15,6 +15,8 @@ var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
 
 var app = express();
+app.io = require('socket.io')();
+
 
 // app.use(favicon(__dirname + '/public/images/logos/favicon.ico'));
 // view engine setup
@@ -25,6 +27,26 @@ app.locals.moment = require('moment');
 // mongodb connect
 mongoose.connect('mongodb://localhost:27017/koreanpoker');
 mongoose.connection.on('error', console.log);
+
+var count = 1;
+app.io.on('connection', function(socket){
+  console.log('user conneected: ', socket.id);
+  var name = "user" + count++;
+  app.io.to(socket.id).emit('change name',name);
+
+  app.io.on('roomMakeSend', function(data){
+    console.log(data);
+    rooms.push({
+      'roomName' : data.roomName, // 방 제목
+      'roomMoney' : 0, // 방의 판돈
+      'connUsers' : [], // 방에 들어온 사람들
+      'gamingUsers' : [], // 게임의 참여자들
+      'current_user' : '', // 현재턴의 사람
+      'state' : 'ready'
+    });
+  });
+});
+
 
 // uncomment after placing your favicon in /public
 app.use(logger('dev'));

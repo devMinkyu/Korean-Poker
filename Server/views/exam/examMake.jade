@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 방만들기
+    .form-group
+      label(for='roomName')  방 이름
+      input.form-control(type='roomName', id='roomName', name='roomName')
+      
+    button.btn.btn-info.btn-lg.btn-block(id = "roomMake")
+        i.fa.fa-facebook.fa-lg
+        | 방만들기
+      
+        script.
+            var socket = io.connect();
+            $('#roomMake').Click('submit', function(e){
+              socket.emit('roomMakeSend', $('#roomName').val();
+            });
+            
+            socket.on('change name', function(name){
+              $('#name').val(name);
+            });
+            

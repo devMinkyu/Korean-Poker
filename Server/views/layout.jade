@@ -16,6 +16,15 @@ html(lang='ko')
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/jquery.scrolly.min.js')
     script(src='/javascripts/jquery.poptrox.min.js')
+    
+    script(src="/socket.io/socket.io.js")
+    script. 
+     var socket = io('http://localhost:3000'); 
+     socket.on('news', function (data) { 
+       console.log(data); 
+       socket.emit('my other event', {my: 'data'});
+     });
+
     //- script(src='/javascripts/skel.min.js')
     //- script(src='/javascripts/util.js')
     //- script(src='/javascripts/main.js')  

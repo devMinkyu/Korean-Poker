@@ -3,6 +3,9 @@ var router = express.Router();
 var User = require('../models/User');
 var _ = require('underscore');
 
+// var http = require('http').Server(express());
+// var io = require('socket.io')(http);
+
 var async = require('async');
 var fs = require('fs');
 var rmdir = require('rmdir');
@@ -33,6 +36,7 @@ function ensureExists(path, mask, cb) {
         } else cb(null);
     });
 }
+
 /* image Upload
 function uploadFile(file, dirPath, res){
   fs.readFile(file.path, function(err, data){
@@ -47,18 +51,26 @@ function uploadFile(file, dirPath, res){
   });
 }
 */
-router.get('/', needAuth, function(req, res, next) {
-  var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
-  console.log(cards);
-  res.render('game', {cards : cards});
+// router.get('/', needAuth, function(req, res, next) {
+//   var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+//   console.log(cards);
+//   res.render('game', {cards : cards});
+// });
+//
+// router.get('/:id', function(req, res, next) {
+//   console.log(req.params.id);
+// });
+//
+// router.post('/', needAuth, function(req, res, next) {
+//
+// });
+var rooms = [];
+router.get('/list', function(req,res, next){
+  res.render('exam/exampleList', {rooms : rooms});
+});
+router.get('/', function(req,res, next){
+  res.render('exam/examMake');
 });
 
-router.get('/:id', function(req, res, next) {
-  console.log(req.params.id);
-});
-
-router.post('/', needAuth, function(req, res, next) {
-
-});
 
 module.exports = router;
