@@ -76,7 +76,7 @@ router.post('/make', function(req,res, next){
       'roomMoney' : 0, // 방의 판돈
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
-      'current_user' : '', // 현재턴의 사람
+      'currentUser' : '', // 현재턴의 사람
       'state' : 'ready'
     });
     res.render('exam/examGame', {roomname: req.body.roomName});
@@ -85,8 +85,14 @@ router.post('/make', function(req,res, next){
     return res.redirect('back');
   }
 });
-router.get('/connection', function(req,res, next){
-  res.render('exam/examGame');
+router.get('/:name', function(req,res, next){
+  var index = searchRoomIndex(rooms, req.params.name);
+  if(rooms[index].connUsers.length < 4){
+    res.render('exam/examGame',  {roomname: req.params.name});
+  }else{
+    req.flash('danger', '수용인원을 넘었습니다.');
+    return res.redirect('back');
+  }
 });
 
 function searchRoomIndex(room, name){

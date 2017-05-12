@@ -33,21 +33,34 @@ var count = 1;
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
   var name = "user" + count++;
+
   console.log('user : ', name);
   app.io.to(socket.id).emit('change name',name);
 
-  // socket.on('roomMakeSend', function(data){
-  //   console.log(data);
-  //   console.log(socket.id);
-  //   rooms.push({
-  //     'roomName' : data.roomName, // 방 제목
-  //     'roomMoney' : 0, // 방의 판돈
-  //     'connUsers' : [], // 방에 들어온 사람들
-  //     'gamingUsers' : [], // 게임의 참여자들
-  //     'current_user' : '', // 현재턴의 사람
-  //     'state' : 'ready'
-  //   });
-  // });
+  socket.on('room_connection', function(data){
+    socket.join(data);
+    socket.roomName = data;
+    socket.nickName = name;
+    var index = searchRoomIndex(rooms, data);
+    rooms[index].connUsers.push({
+      'userID' : name,
+      'ready' : 0
+    });
+
+    rooms[index].currentUser = rooms[index].connUsers[0].userID;
+    console.log(rooms);
+    console.log(rooms[index].connUsers);
+    console.log(socket.id);
+  });
+  // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
+  socket.on('message_send', function(name, text){
+    name = socket.nickName;
+    room = socket.roomName;
+    var msg = name + ':' + text;
+    console.log(socket.id);
+    console.log(socket.join);
+    app.io.sockets.in(room).emit('message_receive', msg);
+  });
 });
 
 
@@ -100,5 +113,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+function searchRoomIndex(room, name){
+  for(var i = 0; i < room.length; i++){
+    if(room[i].roomName == name){
+      return i;
+    }
+  }
+  return -1;
+}
 
 module.exports = app;

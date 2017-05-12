@@ -2,16 +2,30 @@ extends ../layout
 
 block content
   .container
-    h1.page-header(id = 'roomname' )= roomname
-
+    h1.page-header(id ='roomName')= roomname
+    
+    div
+      textarea#chatLog.chat_log(readonly='')
+    form#chat
+      input#name.name(type='text', readonly='')
+      input#message.message(type='text')
+      input.chat(type='submit', value='chat')
+      
     script.
         var socket = io.connect();
-        socket.emit('roomConnection', $('#roomname').val());
+        var element = document.getElementById("roomName")
+        socket.emit('room_connection', element.innerHTML);
         
-        $('#roomMake').click('submit', function(e){
-          socket.emit('roomMakeSend', $('#roomName').val());
+        $('#chat').on('submit', function(e){
+          socket.emit('message_send', $('#name').val(), $('#message').val());
+        $('#message').val("");
+          e.preventDefault();
         });
-        
+        socket.on('message_receive', function(msg){
+          $('#chatLog').append(msg+"\n");
+          $('#chatLog').scrollTop($('#chatLog').innerHeight())
+        })
+                
         socket.on('change name', function(name){
           $('#name').val(name);
         });
