@@ -29,60 +29,81 @@ app.locals.moment = require('moment');
 mongoose.connect('mongodb://localhost:27017/koreanpoker');
 mongoose.connection.on('error', console.log);
 
-
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
-  app.io.to(socket.id).emit('change name',name);
+  console.log("**********Room ID*************");
+  console.log(socket._id);
+  console.log("***************************");
+  // app.io.to(socket.id).emit('change name', name);
 
-  socket.on('room_connection', function(data){
-    socket.join(data);
-    socket.roomName = data;
-    socket.nickName = name;
-    var msg = name + '님이 :' + "입장하셨습니다.";
-    app.io.sockets.in(socket.roomName).emit('message_receive', msg);
+  socket.on('room_connection', function(_id, currentUserName){
+  // socket.on('room_connection', function(_id){    
+    socket.join(_id);
+    // socket.roomName = data;
+    // socket._id 는 room 배열의 인덱스
+    socket._id = _id;
+    socket.userName = currentUserName;
+
+    var message = socket.userName + " 님이 입장하셨습니다.";
+    // app.io.sockets.in(socket.roomName).emit('message_receive', msg);
+    app.io.sockets.in(socket._id).emit('message_receive', message);
+    
   });
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
-  socket.on('message_send', function(name, text){
-    name = socket.nickName;
-    room = socket.roomName;
-    var msg = name + ':' + text;
-    app.io.sockets.in(room).emit('message_receive', msg);
+  socket.on('message_send', function(text){
+    // name = socket.nickName;
+    // room = socket.roomName;
+    // var _id = socket._id;
+    
+    var message = socket.userName + ':' + text;
+    // app.io.sockets.in(room).emit('message_receive', msg);
+    app.io.sockets.in(socket._id).emit('message_receive', message);
+    
   });
   socket.on('ready_send', function(){
-    name = socket.nickName;
-    room = socket.roomName;
-    console.log(name);
-    var index = searchRoomIndex(rooms, room);
-    for(var i = 0; i < rooms[index].connUsers.length; i++){
-      if(rooms[index].connUsers[i].userID == name){
-        rooms[index].connUsers[i].ready = 'ready';
-        break;
-      }
-    }
+    // name = socket.nickName;
+    // room = socket.roomName;
+    // var index = searchRoomIndex(rooms, room);
+    // for(var i = 0; i < rooms[index].connUsers.length; i++){
+    //   if(rooms[index].connUsers[i].userID == name){
+    //     rooms[index].connUsers[i].ready = 'ready';
+    //     break;
+    //   }
+    // }
+
+    rooms[socket._id].connUsers[i].ready = 'ready';
     app.io.sockets.in(room).emit('ready_receive', 'ready');
   });
   socket.on('leave_send', function(){
     console.log(socket.id);
-    name = socket.nickName;
-    room = socket.roomName;
-    // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
-    socket.leave(room);
-    var index = searchRoomIndex(rooms, room);
-    for(var i = 0; i < rooms[index].connUsers.length; i++){
-      if(rooms[index].connUsers[i].userID == name){
-        rooms[index].connUsers.splice(i,1);
-        var msg = name + '님이 :' + "나가셨습니다.";
-        app.io.sockets.in(room).emit('message_receive', msg);
-        break;
+    // name = socket.nickName;
+    // room = socket.roomName;
+    // // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
+    // socket.leave(room);
+    // var index = searchRoomIndex(rooms, room);
+    // for(var i = 0; i < rooms[index].connUsers.length; i++){
+    //   if(rooms[index].connUsers[i].userID == name){
+    //     rooms[index].connUsers.splice(i,1);
+    //     var msg = name + '님이 :' + "나가셨습니다.";
+    //     app.io.sockets.in(room).emit('message_receive', msg);
+    //     break;
+    //   }
+    // }
+    // // 방의 인원이 한명도 없을때 방을 삭제
+    // if(rooms[index].connUsers.length === 0){
+    //   rooms.splice(index,1);
+    // }
+    if(rooms[socket._id].connUsers.length === 0){
+      rooms.splice(socket._id, 1);
+      roomsCount--;
+      if(roomsCount < 0){
+        roomsCount = 0;
       }
     }
-    // 방의 인원이 한명도 없을때 방을 삭제
-    if(rooms[index].connUsers.length === 0){
-      rooms.splice(index,1);
-    }
+    socket.leave(socket._id);
+    
   });
 });
-
 
 // uncomment after placing your favicon in /public
 app.use(flash());
