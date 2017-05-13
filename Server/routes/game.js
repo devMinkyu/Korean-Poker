@@ -74,7 +74,7 @@ router.get('/', function(req,res, next){
   res.render('exam/example');
 });
 // router.get('/create', needAuth, function(req,res, next){
-router.get('/create', function(req,res, next){  
+router.get('/create', function(req,res, next){
   res.render('exam/examMake');
 });
 
@@ -100,11 +100,11 @@ router.post('/', function(req, res, next){
     // rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
     // rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
     newRoom.currentTurnUser = newRoom.connUsers[0].userID;
-   
+
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
     res.render('exam/examGame', {room: newRoom});
-    
+
 
   // }else{
   //   req.flash('danger', '똑같은 방이름이 있습니다.');
@@ -123,7 +123,7 @@ router.get('/:id', function(req,res, next){
 
   // if(rooms[index].connUsers.length < 4){
   //   // addUser(index);
-  //   addUser(index, req.user._id, req.user.userName);    
+  //   addUser(index, req.user._id, req.user.userName);
   //   res.render('exam/examGame',  {roomname: req.params.name, users: rooms[index].connUsers});
   // } else {
   //   req.flash('danger', '수용인원을 넘었습니다.');
@@ -131,20 +131,19 @@ router.get('/:id', function(req,res, next){
   // }
   if(selectedRoom.connUsers.length < 4){
     // addUser(index);
-    // addUser(index, req.user._id, req.user.userName);    
+    // addUser(index, req.user._id, req.user.userName);
     // res.render('exam/examGame',  {roomname: selectedRoom.room, users: selectedRoom.connUsers});
 
 
-    // 원래 이렇게 해야함. 
+    // 원래 이렇게 해야함.
     // addUser(selectedRoom._id, req.user._id, req.user.userName);
     // selectedRoom.currentTurnUser = req.user._id;
 
     // 테스트용
-    var userTestID = "TEST"
+    var userTestID = "TEST" + count++;
     addUser(selectedRoom._id, userTestID, userTestID);
-    selectedRoom.currentTurnUser = userTestID;
 
-    res.render('exam/examGame', {room: selectedRoom});    
+    res.render('exam/examGame', {room: selectedRoom});
   } else {
     req.flash('danger', '수용인원을 넘었습니다.');
     return res.redirect('back');
@@ -161,10 +160,9 @@ function searchRoomIndex(room, name){
 }
 
 function addUser(roomIndex, userID, userName){
-  // name  = "user" + count++;
   rooms[roomIndex].connUsers.push({
     'userID' : userID,
-    'userName' : userName,    
+    'userName' : userName,
     'isReady' : false,
     'win' : 0,
     'lose' : 0

@@ -15,33 +15,47 @@ block content
       input#message.message(type='text',style="width: 70%;")
       input.chat(type='submit', value='chat', style="width: 10%;")
     br
-    .row
+    .row(id='userWindow')
       each user in room.connUsers
-        .col-sm-6.col-md-3
-          .thumbnail
-            .caption
-              h2.Thumbnail= user.userName
-              span 승: #{user.win}
-              span / 패: #{user.lose}
-              p
-                if(user.isReady == true)
-                  span(id='state') 준비 완료
-                else
-                  span(id='state') 대기 중
-              p 
-                button.btn.btn-primary(id="ready") ready
-                //a.btn.btn-default(href="#" role="button") start    
+          .col-sm-6.col-md-3
+            .thumbnail
+              .caption
+                h2(name='username')= user.userName
+                span(name='win') 승: #{user.win}
+                span(name='lose') / 패: #{user.lose}
+                p
+                  if(user.isReady == true)
+                    span(name='state') 준비 완료
+                  else
+                    span(name='state') 대기 중
+                p 
+                  button.btn.btn-primary(name="ready") ready
+                  //a.btn.btn-default(href="#" role="button") start 
+    
     script.
         var socket = io.connect();
         //- var element = document.getElementById("roomName");
         var element = document.getElementById("_id");
         var currentUserName = document.getElementById("userName").innerHTML;        
                 
-        socket.emit('room_connection', element.innerHTML-1, currentUserName);
+        socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
         //- socket.emit('room_connection', element.innerHTML-1);
-        
-        console.log("++++++++++++++++++++++");
-        console.log(currentUserName);    
+        socket.on('room_connection_receive', function(users){
+          $("#userWindow").append($('#rowTemplate').html());
+          var name = document.getElementsByName("username");
+          var win = document.getElementsByName("win");
+          var lose = document.getElementsByName("lose");
+          var state = document.getElementsByName("state");
+          for(var i = 0; i <= users.length; i++){
+            name[i].innerHTML = users[i].userName;
+            win[i].innerHTML = "승: " + users[i].win;
+            lose[i].innerHTML = "/ 패: " + users[i].lose;
+            if(users[i].isReady == true)
+              state[i].innerHTML = "준비 완료";
+            else
+              state[i].innerHTML = "대기 중";
+          }
+        });
         $('#chat').on('submit', function(e){
           //- socket.emit('message_send', $('#userName').val(), $('#message').val());
           //- socket.emit('message_send', currentUserName, $('#message').val());
@@ -55,22 +69,36 @@ block content
           $('#chatLog').append(msg+"\n");
           $('#chatLog').scrollTop($('#chatLog').innerHeight())
         })
-                
-        //- socket.on('change name', function(name){
-        //-   $('#userName').val(name);
-        //- });
         
-        $('#ready').click('submit', function(e){
+        $('button[name=ready]').click('submit', function(e){
           socket.emit('ready_send');
         });
-        socket.on('ready_receive', function(data){
-          element = document.getElementById("state");
-          element.innerHTML = data;
+        socket.on('ready_receive', function(users, index){
+          var state = document.getElementsByName("state");
+          if(users[index].isReady == true)
+            state[index].innerHTML = "준비 완료";
+          else
+            state[index].innerHTML = "대기 중";
         });
         
         window.onbeforeunload = function() {
           socket.emit('leave_send');
         	return "gg";
         }
-
         
+    script#rowTemplate(type='text/template').
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <div class="caption">
+            <h2 name='username'></h2>
+              <span name = 'win'></span>
+              <span name = 'lose'></span>
+              <p>
+                  <span name='state'></span> 
+              </p>
+              <p>
+                <button name="ready" class="btn btn-primary">ready</button>
+              </p>
+          </div>
+        </div>
+      </div>
