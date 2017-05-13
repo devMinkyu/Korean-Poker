@@ -1,62 +1,83 @@
 extends layout
+
+
 block content
+  .container-flued
+    .gamefield
+      .row
+        .col-xs-12
+          .col-xs-4.col-xs-offset-4
+            .row
+              .col-xs-4.col.col-xs-offset-4
+                .row
+                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
+                .row
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+      .row
+        .col-xs-4.col
+          .row
+              .col-xs-4.col.col-xs-offset-8
+                .row
+                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
+                .row
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')   
+        .col-xs-4.col
+          table
+            tr
+              img.cards(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:10%;height:28%;')
+              img.img-thumbnail.center-block(src="http://image.chosun.com/sitedata/image/201606/21/2016062101415_0.jpg" style='width:70%;height:70%;')
+        .col-xs-4.col
+          .row
+              .col-xs-4.col
+                .row
+                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
+                .row
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+      .row
+        .col-xs-4.col
+          .btn-group-lg(role='group', aria-label='...')
+            button.btn.btn-default(type='button') 다이
+            button.btn.btn-primary(type='button') 삥
+            button.btn.btn-success(type='button') 따당
+            button.btn.btn-info(type='button') 콜
+            button.btn.btn-warning(type='button') 쿼터
+            button.btn.btn-danger(type='button') 하프
+        .col-xs-4.col
+          .row
+              .col-xs-4.col.col-xs-offset-4
+                .row
+                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
+                .row
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;display:none;')
+              
+
+  script(type='text/javascript', src='/javascripts/drowcard.js')
+
+  style.
+    .gamefield {
+      width: 90%;
+      margin-top: 60px;
+      position: absolute;
+    }
+    .cards {
+      position: absolute;
+      left : 220px;
+      bottom : 132px;
+    }
+
+
+    
   //- script(type='text/javascript').
   //-   $(function(){
-  //-     $('.img-circle').animate({
+  //-     $('.img:first').fadeOut();({
   //-       left:200
   //-       });
   //-       });
-  
-  .container
-      .row
-        .col-xs-12
-          .col-xs-4.col-xs-offset-4.jumbotron
-            table
-              tr
-                td
-                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
-                td
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-        .row
-          .col-xs-4.col.jumbotron
-            table
-              tr
-                td
-                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
-                td
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')    
-          .col-xs-4.col
-            table
-              tr
-                img.img-thumbnail.center-block(src="http://image.chosun.com/sitedata/image/201606/21/2016062101415_0.jpg" style='width:70%;height:70%;')
-          .col-xs-4.col.jumbotron
-            table
-              tr
-                td
-                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:25%;')
-                td
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-        .row
-          .col-xs-4.col
-            .btn-group-lg(role='group', aria-label='...')
-              button.btn.btn-default(type='button') 다이
-              button.btn.btn-primary(type='button') 삥
-              button.btn.btn-success(type='button') 따당
-              button.btn.btn-info(type='button') 콜
-              button.btn.btn-warning(type='button') 쿼터
-              button.btn.btn-danger(type='button') 하프
-          .col-xs-4.col.jumbotron
-            table
-              tr
-                td
-                  img.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" style='width:50%;height:50%;')
-                td
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
-                  img.img(src="https://cdn.mirror.wiki/http://pointex.biz/initial/wp-content/uploads/2011/08/110827_01.jpg" style='width:30%;height:60%;')
