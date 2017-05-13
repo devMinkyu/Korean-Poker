@@ -1,19 +1,31 @@
 extends ../layout
-
 block content
   .container
     h1.page-header(id ='roomName')= roomname
     
     div
-      textarea#chatLog.chat_log(readonly='')
+      textarea#chatLog.chat_log(readonly='',  style="width: 95%; height: 200px;")
     form#chat
-      input#name.name(type='text', readonly='')
-      input#message.message(type='text')
-      input.chat(type='submit', value='chat')
-      
+      input#name.name(type='text', readonly='', style="width: 10%;")
+      input#message.message(type='text',style="width: 70%;")
+      input.chat(type='submit', value='chat', style="width: 10%;")
+    br
+    .row
+      each user in users
+        .col-sm-6.col-md-3
+          .thumbnail
+            .caption
+              h2.Thumbnail= user.userID
+              span 승: #{user.win}
+              span / 패: #{user.lose}
+              p
+                span(id='state')= user.ready
+              p 
+                button.btn.btn-primary(id="ready") ready
+                //a.btn.btn-default(href="#" role="button") start    
     script.
         var socket = io.connect();
-        var element = document.getElementById("roomName")
+        var element = document.getElementById("roomName");
         socket.emit('room_connection', element.innerHTML);
         
         $('#chat').on('submit', function(e){
@@ -29,4 +41,18 @@ block content
         socket.on('change name', function(name){
           $('#name').val(name);
         });
+        
+        $('#ready').click('submit', function(e){
+          socket.emit('ready_send');
+        });
+        socket.on('ready_receive', function(data){
+          element = document.getElementById("state");
+          element.innerHTML = data;
+        });
+        
+        window.onbeforeunload = function() {
+          socket.emit('leave_send');
+        	return "gg";
+        }
+
         

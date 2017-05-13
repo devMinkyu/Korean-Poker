@@ -65,7 +65,8 @@ function uploadFile(file, dirPath, res){
 //
 // });
 global.rooms = [];
-
+global.name = null;
+var count = 1;
 router.get('/', function(req,res, next){
   res.render('exam/examMake');
 });
@@ -73,13 +74,17 @@ router.post('/make', function(req,res, next){
   if(searchRoomIndex(rooms, req.body.roomName) == -1){
     rooms.push({
       'roomName' : req.body.roomName, // 방 제목
+      'roomMaster': req.user,
       'roomMoney' : 0, // 방의 판돈
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
-      'currentUser' : '', // 현재턴의 사람
+      'currentTurnUser' : '', // 현재턴의 사람
       'state' : 'ready'
     });
-    res.render('exam/examGame', {roomname: req.body.roomName});
+    var index = searchRoomIndex(rooms, req.body.roomName);
+    addUser(index);
+    rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
+    res.render('exam/examGame', {roomname: req.body.roomName, users: rooms[index].connUsers});
   }else{
     req.flash('danger', '똑같은 방이름이 있습니다.');
     return res.redirect('back');
@@ -88,7 +93,8 @@ router.post('/make', function(req,res, next){
 router.get('/:name', function(req,res, next){
   var index = searchRoomIndex(rooms, req.params.name);
   if(rooms[index].connUsers.length < 4){
-    res.render('exam/examGame',  {roomname: req.params.name});
+    addUser(index);
+    res.render('exam/examGame',  {roomname: req.params.name, users: rooms[index].connUsers});
   }else{
     req.flash('danger', '수용인원을 넘었습니다.');
     return res.redirect('back');
@@ -103,5 +109,13 @@ function searchRoomIndex(room, name){
   }
   return -1;
 }
-
+function addUser(index){
+  name  = "user" + count++;
+  rooms[index].connUsers.push({
+    'userID' : name,
+    'ready' : "Not ready",
+    'win' : 0,
+    'lose' : 0
+  });
+}
 module.exports = router;
