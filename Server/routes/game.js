@@ -89,7 +89,7 @@ router.post('/', function(req, res, next){
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
       'currentTurnUser' : '', // 현재턴의 사람
-      'state' : 'ready'
+      'state' : 'Waiting game'
     };
     rooms.push(newRoom);
     roomsCount++;
@@ -129,7 +129,7 @@ router.get('/:id', function(req,res, next){
   //   req.flash('danger', '수용인원을 넘었습니다.');
   //   return res.redirect('back');
   // }
-  if(selectedRoom.connUsers.length < 4){
+  if(selectedRoom.connUsers.length < 4 || selectedRoom.state == "Waiting game"){
     // addUser(index);
     // addUser(index, req.user._id, req.user.userName);
     // res.render('exam/examGame',  {roomname: selectedRoom.room, users: selectedRoom.connUsers});
@@ -145,7 +145,7 @@ router.get('/:id', function(req,res, next){
 
     res.render('exam/examGame', {room: selectedRoom});
   } else {
-    req.flash('danger', '수용인원을 넘었습니다.');
+    req.flash('danger', '방을 들어갈 수 없습니다.');
     return res.redirect('back');
   }
 });
@@ -158,12 +158,12 @@ function searchRoomIndex(room, name){
   }
   return -1;
 }
-
+// 원래는 레디 다  false로 시작해야한다.
 function addUser(roomIndex, userID, userName){
   rooms[roomIndex].connUsers.push({
     'userID' : userID,
     'userName' : userName,
-    'isReady' : false,
+    'isReady' :  true,
     'win' : 0,
     'lose' : 0
   });

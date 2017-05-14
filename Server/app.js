@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
 var flash = require('connect-flash');
+var _ = require('underscore');
 
 var app = express();
 app.io = require('socket.io')();
@@ -61,11 +62,13 @@ app.io.on('connection', function(socket){
     app.io.sockets.in(socket._id).emit('message_receive', message);
 
   });
+  var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
   socket.on('ready_send', function(){
     // name = socket.nickName;
     // room = socket.roomName;
     var index = searchRoomIndex(rooms, socket._id);
     var i = 0;
+    console.log(rooms[index].connUsers);
     for(;i < rooms[index].connUsers.length; i++){
       if(rooms[index].connUsers[i].userName == socket.userName){
         console.log(rooms[index].connUsers[i].userName);
@@ -73,10 +76,17 @@ app.io.on('connection', function(socket){
         break;
       }
     }
+    for(var j = 0;j < rooms[index].connUsers.length; j++){
+      if(!rooms[index].connUsers[j].isReady){
+        app.io.sockets.in(socket._id).emit('ready_receive', rooms[index].connUsers,i);
+        return;
+      }
+    }
+    rooms[index].state = "During a game";
+    app.io.sockets.in(socket._id).emit('start_game', cards);
     console.log(socket.userName);
-    //rooms[socket._id].connUsers[i].ready = 'ready';
-    app.io.sockets.in(socket._id).emit('ready_receive', rooms[index].connUsers,i);
   });
+  // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
     console.log(socket.id);
     // name = socket.nickName;
@@ -98,10 +108,10 @@ app.io.on('connection', function(socket){
     // }
     if(rooms[index].connUsers.length === 0){
       rooms.splice(index, 1);
-      roomsCount--;
-      if(roomsCount < 0){
-        roomsCount = 0;
-      }
+      // roomsCount--;
+      // if(roomsCount < 0){
+      //   roomsCount = 0;
+      // }
     }
 
   });

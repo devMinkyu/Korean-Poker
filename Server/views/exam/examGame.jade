@@ -29,6 +29,8 @@ block content
                   else
                     span(name='state') 대기 중
                 p 
+                  // 원래는 이렇게 자기한테만 보이게끔 해준다
+                  //if(currentUser.userName == user.userName)
                   button.btn.btn-primary(name="ready") ready
                   //a.btn.btn-default(href="#" role="button") start 
     
@@ -70,6 +72,7 @@ block content
           $('#chatLog').scrollTop($('#chatLog').innerHeight())
         })
         
+        // 모든 인원이들이 로그인 할 시에는 돌아간다.
         $('button[name=ready]').click('submit', function(e){
           socket.emit('ready_send');
         });
@@ -79,6 +82,10 @@ block content
             state[index].innerHTML = "준비 완료";
           else
             state[index].innerHTML = "대기 중";
+        });
+        
+        socket.on('start_game', function(cards){
+          alert(cards);
         });
         
         window.onbeforeunload = function() {
