@@ -129,7 +129,7 @@ router.get('/:id', function(req,res, next){
   //   req.flash('danger', '수용인원을 넘었습니다.');
   //   return res.redirect('back');
   // }
-  if(selectedRoom.connUsers.length < 4 || selectedRoom.state == "Waiting game"){
+  if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "Waiting game"){
     // addUser(index);
     // addUser(index, req.user._id, req.user.userName);
     // res.render('exam/examGame',  {roomname: selectedRoom.room, users: selectedRoom.connUsers});
@@ -163,9 +163,11 @@ function addUser(roomIndex, userID, userName){
   rooms[roomIndex].connUsers.push({
     'userID' : userID,
     'userName' : userName,
-    'isReady' :  true,
+    'isReady' :  false,
+    // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
-    'lose' : 0
+    'lose' : 0,
+    'money' : 1000000
   });
 }
 module.exports = router;

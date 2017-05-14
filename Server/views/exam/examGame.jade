@@ -11,7 +11,7 @@ block content
       if(currentUser)
         h5#userName(style="width: auto;")=currentUser.userName
       else
-        h5#userName(style="width: auto;") TEST
+        h5#userName(style="width: auto;")= room.connUsers[room.connUsers.length-1].userName
       input#message.message(type='text',style="width: 70%;")
       input.chat(type='submit', value='chat', style="width: 10%;")
     br
@@ -28,27 +28,39 @@ block content
                     span(name='state') 준비 완료
                   else
                     span(name='state') 대기 중
-                p 
-                  // 원래는 이렇게 자기한테만 보이게끔 해준다
-                  //if(currentUser.userName == user.userName)
-                  button.btn.btn-primary(name="ready") ready
-                  //a.btn.btn-default(href="#" role="button") start 
+    p#firstButton
+      button.btn.btn-primary(id="ready") Ready
+      button.btn.btn-default(id="exit") Exit    
+    p#secondButton
+      button.btn.btn-primary(id="call") Call 
+      button.btn.btn-default(id="half") Half 
+    p#thirdButton
+      button.btn.btn-primary(id="select") CardSelect
+    p#cardButton
+      button.btn.btn-primary(id="card1") 
+      button.btn.btn-primary(id="card2")   
+      button.btn.btn-primary(id="card3") 
+      button.btn.btn-default(id="die") Die  
+     
     
     script.
         var socket = io.connect();
-        //- var element = document.getElementById("roomName");
         var element = document.getElementById("_id");
         var currentUserName = document.getElementById("userName").innerHTML;        
-                
+        
+        $("#secondButton").hide();
+        $("#thirdButton").hide();
+        $("#cardButton").hide();
+        
+        // 연결        
         socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
-        //- socket.emit('room_connection', element.innerHTML-1);
         socket.on('room_connection_receive', function(users){
-          $("#userWindow").append($('#rowTemplate').html());
+          $("#userWindow").append($('#rowTemplate1').html());
           var name = document.getElementsByName("username");
           var win = document.getElementsByName("win");
           var lose = document.getElementsByName("lose");
           var state = document.getElementsByName("state");
-          for(var i = 0; i <= users.length; i++){
+          for(var i = 0; i < users.length; i++){
             name[i].innerHTML = users[i].userName;
             win[i].innerHTML = "승: " + users[i].win;
             lose[i].innerHTML = "/ 패: " + users[i].lose;
@@ -58,22 +70,20 @@ block content
               state[i].innerHTML = "대기 중";
           }
         });
+        
+        // 채팅
         $('#chat').on('submit', function(e){
-          //- socket.emit('message_send', $('#userName').val(), $('#message').val());
-          //- socket.emit('message_send', currentUserName, $('#message').val());
-          socket.emit('message_send', $('#message').val());
-          
-          
-        $('#message').val("");
+          socket.emit('message_send', $('#message').val());          
+          $('#message').val("");
           e.preventDefault();
         });
         socket.on('message_receive', function(msg){
           $('#chatLog').append(msg+"\n");
           $('#chatLog').scrollTop($('#chatLog').innerHeight())
-        })
+        });
         
-        // 모든 인원이들이 로그인 할 시에는 돌아간다.
-        $('button[name=ready]').click('submit', function(e){
+        // 준비 눌렀을 때
+        $('#ready').click('submit', function(e){
           socket.emit('ready_send');
         });
         socket.on('ready_receive', function(users, index){
@@ -84,8 +94,39 @@ block content
             state[index].innerHTML = "대기 중";
         });
         
-        socket.on('start_game', function(cards){
-          alert(cards);
+        //게임 시작후 카드 뿌려주기
+        socket.on('start_game', function(cards, users){
+          $("#cardButton").show();
+          $("#cardButton #card3").hide();
+          $("#firstButton").hide();
+          $('#userWindow').empty();
+          for(var i = 0; i < users.length; i++){
+            $("#userWindow").append($('#rowTemplate2').html());
+          }
+          var name = document.getElementsByName("username");
+          var money = document.getElementsByName("money");
+          var userCard = document.getElementsByName("usercards");
+          var currentUserName = document.getElementById("userName").innerHTML; 
+          for(var i = 0; i < users.length; i++){
+            name[i].innerHTML = users[i].userName; 
+            if(currentUserName == users[i].userName){
+              document.getElementById("card1").innerHTML = cards[2*i];
+              document.getElementById("card2").innerHTML = cards[2*i+1];
+            }              
+            money[i].innerHTML = "금액: " + users[i].money;
+          }
+        });
+        
+        $('#card1').click('submit', function(e){
+          console.log("gg");
+          socket.emit('one_open_card_send', document.getElementsByName("card1"));
+        });
+        $('#card2').click('submit', function(e){
+          socket.emit('one_open_card_send');
+        });
+        $('#die').click('submit', function(e){
+          console.log("gg");
+          socket.emit('give_up_send');
         });
         
         window.onbeforeunload = function() {
@@ -93,7 +134,7 @@ block content
         	return "gg";
         }
         
-    script#rowTemplate(type='text/template').
+    script#rowTemplate1(type='text/template').
       <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
           <div class="caption">
@@ -103,9 +144,19 @@ block content
               <p>
                   <span name='state'></span> 
               </p>
-              <p>
-                <button name="ready" class="btn btn-primary">ready</button>
-              </p>
           </div>
         </div>
       </div>
+      
+    script#rowTemplate2(type='text/template').
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h2 name='username'></h2>
+              <div name ='usercards'></div>
+                <p>
+                    <span name='money'></span> 
+                </p>
+            </div>
+          </div>
+        </div>

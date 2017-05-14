@@ -32,12 +32,9 @@ mongoose.connection.on('error', console.log);
 
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
-  // app.io.to(socket.id).emit('change name', name);
 
   socket.on('room_connection_send', function(_id, currentUserName){
-  // socket.on('room_connection', function(_id){
     socket.join(_id);
-    // socket.roomName = data;
     // socket._id 는 room 배열의 인덱스
     socket._id = _id;
     socket.userName = currentUserName;
@@ -47,25 +44,17 @@ app.io.on('connection', function(socket){
     console.log("***************************");
 
     var message = socket.userName + " 님이 입장하셨습니다.";
-    // app.io.sockets.in(socket.roomName).emit('message_receive', msg);
     app.io.sockets.in(socket._id).emit('message_receive', message);
     socket.broadcast.to(socket._id).emit('room_connection_receive', rooms[socket._id].connUsers);
   });
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
   socket.on('message_send', function(text){
-    // name = socket.nickName;
-    // room = socket.roomName;
-    // var _id = socket._id;
-
     var message = socket.userName + ':' + text;
-    // app.io.sockets.in(room).emit('message_receive', msg);
     app.io.sockets.in(socket._id).emit('message_receive', message);
 
   });
   var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
   socket.on('ready_send', function(){
-    // name = socket.nickName;
-    // room = socket.roomName;
     var index = searchRoomIndex(rooms, socket._id);
     var i = 0;
     console.log(rooms[index].connUsers);
@@ -83,9 +72,12 @@ app.io.on('connection', function(socket){
       }
     }
     rooms[index].state = "During a game";
-    app.io.sockets.in(socket._id).emit('start_game', cards);
+    var msg = "한장씩 카드를 공개 하세요. 아니시면 Die 하세요.";
+    app.io.sockets.in(socket._id).emit('message_receive', msg);
+    app.io.sockets.in(socket._id).emit('start_game', cards,rooms[index].connUsers);
     console.log(socket.userName);
   });
+
   // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
     console.log(socket.id);
@@ -102,10 +94,6 @@ app.io.on('connection', function(socket){
         break;
       }
     }
-    // // 방의 인원이 한명도 없을때 방을 삭제
-    // if(rooms[index].connUsers.length === 0){
-    //   rooms.splice(index,1);
-    // }
     if(rooms[index].connUsers.length === 0){
       rooms.splice(index, 1);
       // roomsCount--;
@@ -113,7 +101,12 @@ app.io.on('connection', function(socket){
       //   roomsCount = 0;
       // }
     }
+    socket.on('one_open_card_send', function (data) {
+      console.log(data);
+    });
+    socket.on('give_up_send', function(){
 
+    });
   });
 });
 
