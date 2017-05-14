@@ -3,6 +3,7 @@ block content
   .container
     .row
       h1.page-header(id ='roomName')= room.roomName
+      h3#roomMoney 판돈: #{room.roomMoney}원
       h5#_id #{room._id+1}
     div
       textarea#chatLog.chat_log(readonly='',  style="width: 95%; height: 200px;")
@@ -47,7 +48,9 @@ block content
         var socket = io.connect();
         var element = document.getElementById("_id");
         var currentUserName = document.getElementById("userName").innerHTML;        
-        
+        var halfNumber = 0;
+        var moneyMul = 1;
+        var money = 1000;
         $("#secondButton").hide();
         $("#thirdButton").hide();
         $("#cardButton").hide();
@@ -95,38 +98,105 @@ block content
         });
         
         //게임 시작후 카드 뿌려주기
-        socket.on('start_game', function(cards, users){
+        socket.on('start_game', function(cards, room){
           $("#cardButton").show();
           $("#cardButton #card3").hide();
           $("#firstButton").hide();
           $('#userWindow').empty();
-          for(var i = 0; i < users.length; i++){
+          for(var i = 0; i < room.connUsers.length; i++){
             $("#userWindow").append($('#rowTemplate2').html());
           }
           var name = document.getElementsByName("username");
           var money = document.getElementsByName("money");
-          var userCard = document.getElementsByName("usercards");
+          var turn = document.getElementsByName("turn");
           var currentUserName = document.getElementById("userName").innerHTML; 
-          for(var i = 0; i < users.length; i++){
-            name[i].innerHTML = users[i].userName; 
-            if(currentUserName == users[i].userName){
+          for(var i = 0; i < room.connUsers.length; i++){
+            name[i].innerHTML = room.connUsers[i].userName; 
+            if(currentUserName == room.connUsers[i].userName){
               document.getElementById("card1").innerHTML = cards[2*i];
               document.getElementById("card2").innerHTML = cards[2*i+1];
             }              
-            money[i].innerHTML = "금액: " + users[i].money;
+            money[i].innerHTML = "금액: " + room.connUsers[i].money;
+            if(room.currentTurnUser == room.connUsers[i].userName)
+              turn[i].innerHTML = "현재 턴";
+            else
+              turn[i].innerHTML = "대기 중";
           }
         });
         
         $('#card1').click('submit', function(e){
-          console.log("gg");
-          socket.emit('one_open_card_send', document.getElementsByName("card1"));
+          var card = document.getElementById("card1").innerHTML;
+          socket.emit('one_open_card_send', card, money);
         });
         $('#card2').click('submit', function(e){
-          socket.emit('one_open_card_send');
+          var card = document.getElementById("card2").innerHTML;
+          socket.emit('one_open_card_send', card, money);
         });
+        socket.on('one_open_card_receive', function(card, room, user){
+          document.getElementById("roomMoney").innerHTML = room.roomMoney;    
+          var openCard = document.getElementsByName("opencard");
+          var turn = document.getElementsByName("turn");
+          var money = document.getElementsByName("money");
+          
+          for(var i = 0; i < room.connUsers.length; i++){
+            if(user.userName == room.connUsers[i].userName){
+              openCard[i].innerHTML = card;
+              money[i].innerHTML = room.connUsers[i].money;
+            }              
+            if(room.connUsers[i].userName == room.currentTurnUser)
+              turn[i].innerHTML = "현재 턴";
+            else
+              turn[i].innerHTML = "대기 중";
+            }
+        });
+        socket.on('one_open_card_end_receive',function(room){
+          var die = document.getElementsByName("dieState");
+          var turn = document.getElementsByName("turn");
+          for(var i = 0; i < room.connUsers.length; i++){
+            if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+              $("#secondButton").show();
+              $("#cardButton").hide();
+            }
+            if(room.connUsers[i].userName == room.currentTurnUser)
+              turn[i].innerHTML = "현재 턴";
+            else
+              turn[i].innerHTML = "대기 중";
+          }
+        });
+        
         $('#die').click('submit', function(e){
-          console.log("gg");
-          socket.emit('give_up_send');
+          socket.emit('die_send', money);
+        });
+        socket.on('die_receive', function(room, user){
+          document.getElementById("roomMoney").innerHTML = room.roomMoney;   
+          var turn = document.getElementsByName("turn");
+          var money = document.getElementsByName("money");
+          var die = document.getElementsByName("dieState");
+          for(var i = 0; i < room.connUsers.length; i++){              
+            if(room.connUsers[i].userName == room.currentTurnUser)
+              turn[i].innerHTML = "현재 턴";
+            else
+              turn[i].innerHTML = "대기 중";
+            if(user.userName == room.connUsers[i].userName){
+              money[i].innerHTML = room.connUsers[i].money;
+              die[i].innerHTML = "Die"
+            }
+            if(currentUserName == room.connUsers[i].userName && die[i].innerHTML == "Die"){
+              $("#cardButton").hide();
+            } 
+          }
+        });
+        
+        $('#call').click('submit', function(e){
+          socket.emit('call_send', money);
+        });
+        $('#half').click('submit', function(e){
+          halfNumber++;
+          if(halfNumber > 4){            
+            halfNumber = 0;
+            moneyMul++;
+          }
+          socket.emit('half_send', money*moneyMul);
         });
         
         window.onbeforeunload = function() {
@@ -144,6 +214,9 @@ block content
               <p>
                   <span name='state'></span> 
               </p>
+              <p>
+                  <span name='turn'></span> 
+              </p>
           </div>
         </div>
       </div>
@@ -152,11 +225,15 @@ block content
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <div class="caption">
-              <h2 name='username'></h2>
-              <div name ='usercards'></div>
-                <p>
-                    <span name='money'></span> 
-                </p>
+              <h1 name='dieState'><h1>
+                <h2 name='username'></h2>
+                <div name ='opencard'></div>
+                  <p>
+                      <span name='money'></span> 
+                  </p>
+                  <p>
+                      <span name='turn'></span> 
+                  </p>
             </div>
           </div>
         </div>

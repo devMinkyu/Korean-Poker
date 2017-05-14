@@ -88,7 +88,7 @@ router.post('/', function(req, res, next){
       'roomMoney' : 0, // 방의 판돈
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
-      'currentTurnUser' : '', // 현재턴의 사람
+      'currentTurnUser': '',
       'state' : 'Waiting game'
     };
     rooms.push(newRoom);
@@ -98,8 +98,9 @@ router.post('/', function(req, res, next){
     // addUser(index, req.user._id, req.user.userName);
     addUser(newRoom._id, req.user._id, req.user.userName);
     // rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
-    // rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
-    newRoom.currentTurnUser = newRoom.connUsers[0].userID;
+    //rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
+    newRoom.currentTurnUser = newRoom.connUsers[0].userName;
+    //newRoom.connUsers[0].isTurn = true;
 
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
@@ -116,24 +117,7 @@ router.get('/:id', function(req,res, next){
   // var index = searchRoomIndex(rooms, req.params.id);
   var index = req.params.id;
   var selectedRoom = rooms[index];
-  // if (index == -1){
-  //   req.flash('danger', '방이 없습니다.');
-  //   return res.redirect('back');
-  // }
-
-  // if(rooms[index].connUsers.length < 4){
-  //   // addUser(index);
-  //   addUser(index, req.user._id, req.user.userName);
-  //   res.render('exam/examGame',  {roomname: req.params.name, users: rooms[index].connUsers});
-  // } else {
-  //   req.flash('danger', '수용인원을 넘었습니다.');
-  //   return res.redirect('back');
-  // }
   if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "Waiting game"){
-    // addUser(index);
-    // addUser(index, req.user._id, req.user.userName);
-    // res.render('exam/examGame',  {roomname: selectedRoom.room, users: selectedRoom.connUsers});
-
 
     // 원래 이렇게 해야함.
     // addUser(selectedRoom._id, req.user._id, req.user.userName);
@@ -164,6 +148,7 @@ function addUser(roomIndex, userID, userName){
     'userID' : userID,
     'userName' : userName,
     'isReady' :  false,
+    //'isTurn' : false, // 현재 자신의 턴인지
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
     'lose' : 0,
