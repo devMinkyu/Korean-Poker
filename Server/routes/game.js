@@ -71,21 +71,26 @@ var count = 1;
 // router.get('/', needAuth, function(req,res, next){
 router.get('/', function(req,res, next){
   // res.render('exam/examMake');
-  res.render('exam/example');
+  res.render('Game/GameRoomList');
 });
 // router.get('/create', needAuth, function(req,res, next){
 router.get('/create', function(req,res, next){
-  res.render('exam/examMake');
+  res.render('Game/GameRoomCreate');
 });
 
 // router.post('/', needAuth, function(req, res, next){
 router.post('/', function(req, res, next){
+  if(isNaN(Number(req.body.roomMoney))){
+    req.flash('danger', '판돈을 숫자로 입력해주세요.');
+    return res.redirect('back');
+  }
   // if(searchRoomIndex(rooms, req.body.roomName) == -1){
     var newRoom = {
       '_id' : roomsCount,
       'roomName' : req.body.roomName, // 방 제목
       'roomMaster': req.user,
-      'roomMoney' : 0, // 방의 판돈
+      'roomMoney' : Number(req.body.roomMoney), // 방의 판돈
+      'roomAllMoney' : 0, // 방의 배팅금
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
       'currentTurnUser': '',
@@ -104,7 +109,7 @@ router.post('/', function(req, res, next){
 
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
-    res.render('exam/examGame', {room: newRoom});
+    res.render('Game/GameRoom', {room: newRoom});
 
 
   // }else{
@@ -127,7 +132,7 @@ router.get('/:id', function(req,res, next){
     var userTestID = "TEST" + count++;
     addUser(selectedRoom._id, userTestID, userTestID);
 
-    res.render('exam/examGame', {room: selectedRoom});
+    res.render('Game/GameRoom', {room: selectedRoom});
   } else {
     req.flash('danger', '방을 들어갈 수 없습니다.');
     return res.redirect('back');
