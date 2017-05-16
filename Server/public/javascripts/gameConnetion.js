@@ -3,7 +3,7 @@ var element = document.getElementById("_id");
 var currentUserName = document.getElementById("userName").innerHTML;
 $("#secondButton").hide();
 $("#thirdButton").hide();
-$("#cardButton").hide();
+$("#cardImforamtion").hide();
 
 // 연결
 socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
@@ -49,8 +49,11 @@ socket.on('ready_receive', function(users, index){
 
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(cards, room){
-  $("#cardButton").show();
-  $("#cardButton #card3").hide();
+  $("#cardImforamtion").show();
+  $("#thirdButton").show();
+  $("#cardImforamtion #card3").hide();
+  $("#cardImforamtion #cardImforamtion3").hide();
+  $("#thirdButton #finallySelect").hide();
   $("#firstButton").hide();
   $('#userWindow').empty();
   for(var i = 0; i < room.connUsers.length; i++){
@@ -64,10 +67,9 @@ socket.on('start_game', function(cards, room){
     name[j].innerHTML = room.connUsers[j].userName;
     if(currentUserName == room.connUsers[j].userName){
       $('#card1').val(cards[2*j]);
-      //document.getElementById("card1").innerHTML = cards[2*j];
-      document.getElementById("card2").innerHTML = cards[2*j+1];
-      document.getElementById("cardImforamtion1").innerHTML = cards[2*j] + "/ ";
-      document.getElementById("cardImforamtion2").innerHTML = cards[2*j+1] + "/ ";
+      $('#card2').val(cards[2*j+1]);
+      document.getElementById("cardImforamtion1").innerHTML = cards[2*j] + " ";
+      document.getElementById("cardImforamtion2").innerHTML = cards[2*j+1] + " ";
     }
     money[j].innerHTML = "금액: " + room.connUsers[j].money;
     if(room.currentTurnUser == room.connUsers[j].userName)
@@ -76,20 +78,25 @@ socket.on('start_game', function(cards, room){
       turn[j].innerHTML = "대기 중";
   }
 });
-// 첫번쨰 카드 눌렀을때
-$('#card1').click('submit', function(e){
-  //var card = document.getElementById("card1").innerHTML;
-  var card = $('#card1').val();
+// 한장의 카드 눌렀을때
+$('#firstSelect').click('submit', function(e){
+  var card = document.getElementsByName("card");
+  var selectCard = null;
+  var checkCount = 0;
+  for(var i = 0; i < card.length; i++){
+    if(card[i].checked){
+      card[i].checked = false;
+      selectCard = card[i].value;
+      checkCount++;
+    }
+  }
+  if(checkCount > 1){
+    alert("한장만 선택하세요!!");
+    return;
+  }
   var roomMoney = (document.getElementById("roomMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  socket.emit('one_open_card_send', card, 1*roomMoneyNumber);
-});
-// 두번쨰 카드 눌렀을때
-$('#card2').click('submit', function(e){
-  var card = document.getElementById("card2").innerHTML;
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  socket.emit('one_open_card_send', card, 1*roomMoneyNumber);
+  socket.emit('one_open_card_send', selectCard, 1*roomMoneyNumber);
 });
 // 카드한장을 눌렀을 때 반응하는 소켓
 socket.on('one_open_card_receive', function(card, room, user){
@@ -116,7 +123,7 @@ socket.on('one_open_card_end_receive',function(room){
   for(var i = 0; i < room.connUsers.length; i++){
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
       $("#secondButton").show();
-      $("#cardButton").hide();
+      $("#thirdButton").hide();
     }
     if(room.connUsers[i].userName == room.currentTurnUser)
       turn[i].innerHTML = "현재 턴";
@@ -206,10 +213,12 @@ socket.on('lastCardDistribution_receive', function(room, cards){
   for(var i = 0; i < room.connUsers.length; i++){
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
       $("#secondButton").hide();
-      $("#cardButton").show();
-      $("#cardButton #card3").show();
-      $("#cardButton #die").hide();
       $("#thirdButton").show();
+      $("#thirdButton #die").hide();
+      $("#thirdButton #firstSelect").hide();
+      $("#thirdButton #finallySelect").show();
+      $("#cardImforamtion #card3").show();
+      $("#cardImforamtion #cardImforamtion3").show();
       document.getElementById("card3").innerHTML = cards[2*room.connUsers.length+i];
       document.getElementById("cardImforamtion3").innerHTML = cards[2*room.connUsers.length+i];
     }
@@ -219,9 +228,24 @@ socket.on('lastCardDistribution_receive', function(room, cards){
     else
       turn[i].innerHTML = "대기 중";
   }
-  console.log(cards);
 });
-
+$('#finallySelect').click('submit', function(e){
+  var card = document.getElementsByName("card");
+  var selectCard = [];
+  var checkCount = 0;
+  for(var i = 0; i < card.length; i++){
+    if(card[i].checked){
+      card[i].checked = false;
+      selectCard = card[i].value;
+      checkCount++;
+    }
+  }
+  if(checkCount > 2){
+    alert("두장만 선택하세요!!");
+    return;
+  }
+  socket.emit('one_open_card_send', selectCard);
+});
 // window.onbeforeunload = function() {
 //   socket.emit('leave_send');
 //   return "gg";
