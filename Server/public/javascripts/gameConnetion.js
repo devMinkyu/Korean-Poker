@@ -63,7 +63,8 @@ socket.on('start_game', function(cards, room){
   for(var j = 0; j < room.connUsers.length; j++){
     name[j].innerHTML = room.connUsers[j].userName;
     if(currentUserName == room.connUsers[j].userName){
-      document.getElementById("card1").innerHTML = cards[2*j];
+      $('#card1').val(cards[2*j]);
+      //document.getElementById("card1").innerHTML = cards[2*j];
       document.getElementById("card2").innerHTML = cards[2*j+1];
       document.getElementById("cardImforamtion1").innerHTML = cards[2*j] + "/ ";
       document.getElementById("cardImforamtion2").innerHTML = cards[2*j+1] + "/ ";
@@ -77,7 +78,8 @@ socket.on('start_game', function(cards, room){
 });
 // 첫번쨰 카드 눌렀을때
 $('#card1').click('submit', function(e){
-  var card = document.getElementById("card1").innerHTML;
+  //var card = document.getElementById("card1").innerHTML;
+  var card = $('#card1').val();
   var roomMoney = (document.getElementById("roomMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   socket.emit('one_open_card_send', card, 1*roomMoneyNumber);
@@ -87,7 +89,6 @@ $('#card2').click('submit', function(e){
   var card = document.getElementById("card2").innerHTML;
   var roomMoney = (document.getElementById("roomMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  console.log(roomMoneyNumber);
   socket.emit('one_open_card_send', card, 1*roomMoneyNumber);
 });
 // 카드한장을 눌렀을 때 반응하는 소켓
