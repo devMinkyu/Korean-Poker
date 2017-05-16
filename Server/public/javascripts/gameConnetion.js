@@ -219,7 +219,7 @@ socket.on('lastCardDistribution_receive', function(room, cards){
       $("#thirdButton #finallySelect").show();
       $("#cardImforamtion #card3").show();
       $("#cardImforamtion #cardImforamtion3").show();
-      document.getElementById("card3").innerHTML = cards[2*room.connUsers.length+i];
+      $('#card3').val(cards[2*room.connUsers.length+i]);
       document.getElementById("cardImforamtion3").innerHTML = cards[2*room.connUsers.length+i];
     }
     currentState[i].innerHTML = '';
@@ -236,7 +236,7 @@ $('#finallySelect').click('submit', function(e){
   for(var i = 0; i < card.length; i++){
     if(card[i].checked){
       card[i].checked = false;
-      selectCard = card[i].value;
+      selectCard.push(card[i].value);
       checkCount++;
     }
   }
@@ -244,7 +244,7 @@ $('#finallySelect').click('submit', function(e){
     alert("두장만 선택하세요!!");
     return;
   }
-  socket.emit('one_open_card_send', selectCard);
+  socket.emit('finallySelect_send', selectCard);
 });
 // window.onbeforeunload = function() {
 //   socket.emit('leave_send');
