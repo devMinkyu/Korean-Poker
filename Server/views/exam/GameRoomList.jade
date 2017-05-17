@@ -11,7 +11,8 @@ block content
                 h2.Thumbnail= room.roomName
                 h3.Thumbnail #{room.connUsers.length}/4
                 p
-                  span 게임 상태 (#{room.state})
+                  span 게임 상태: (#{room.state})
                 p 
                   a.btn.btn-primary(href="/game/#{room._id}" role="button") 방 들어가기
       a.btn.btn-primary(href='/game/create') 방 만들기
+      //include ../includes/chat

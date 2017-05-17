@@ -1,0 +1,17 @@
+extends ../layout
+block content
+    .container
+      h1.page-header Room List
+      br
+      .row
+        each room in rooms
+          .col-sm-6.col-md-3
+            .thumbnail
+              .caption
+                h2.Thumbnail= room.roomName
+                h3.Thumbnail #{room.connUsers.length}/4
+                p
+                  span 게임 상태: (#{room.state})
+                p 
+                  a.btn.btn-primary(href="/game/#{room._id}" role="button") 방 들어가기
+      a.btn.btn-primary(href='/game/create') 방 만들기
