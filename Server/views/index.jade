@@ -1,18 +1,23 @@
 extends layout
 block content
-  .centerButton
-    if(!currentUser)
-      a.btn.btn-info.btn-lg.btn-block(href='/auth/facebook')
-        i.fa.fa-facebook.fa-lg
-          | &nbsp; &nbsp;Facebook 로그인
-    else
-      a.btn.btn-info.btn-lg.btn-block(href='/user/logout')
-        i.fa.fa-facebook.fa-lg
-          | &nbsp; &nbsp;Facebook 로그아웃
-
-  style.
-    .centerButton {
-      position: absolute;
-      top: 45%;
-      left: 45%;
-    }
+  .overlay
+        h1.w3layouts.agileits Korean-Poker
+        .content-w3ls.agileits
+          img.user-wthree(src='/stylesheets/images/KoreanPokerMain.png', alt='')
+          .form-group1-agile.agile-info
+          p 20장 카드로 배팅하는 게임
+          a.face-link(href='#')
+            i.fa.fa-facebook(aria-hidden='true')
+            |  Facebook
+          a.kakao-link(href='#')
+            i.fa.fa-kakao(aria-hidden='true')
+            |  Kakao
+        .footer-w3ls.w3-agile
+          //- p.w3-agileits
+          //-   | © 2017 Proficient Login Form. All Rights Reserved | Design by 
+          //-   a(href='https://w3layouts.com/', target='_blank') w3layouts
+      video#video-background(autoplay='', loop='', poster='/video/koreanPoker.jpg', muted='')
+        source(src='/video/koreanPoker.mp4', type='video/mp4')
+      // js
+      script(src='js/modernizr.min.js').
+      // /js
