@@ -2,10 +2,12 @@ doctype html
 html(lang='ko')
   head
     title 온라인 섯다 게임
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, , maximum-scale=1')
     //if lte IE 8
+    script(type='application/x-javascript').
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     script(src='/javascripts/ie/html5shiv.js')
     //- link(rel='stylesheet', href='/stylesheets/main.css')
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
@@ -16,9 +18,6 @@ html(lang='ko')
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/jquery.scrolly.min.js')
     script(src='/javascripts/jquery.poptrox.min.js')
-    
-    script(src="/socket.io/socket.io.js")
-    
     //- script(src='/javascripts/skel.min.js')
     //- script(src='/javascripts/util.js')
     //- script(src='/javascripts/main.js')  
@@ -28,11 +27,5 @@ html(lang='ko')
   body
     block top-nav
       include ./includes/topnav
-    if flashMessages
-      each texts, type in flashMessages
-        .container
-          .alert(class='alert-#{type}')
-            each msg in texts
-              p= msg   
     block content
       
