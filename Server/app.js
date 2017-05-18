@@ -31,7 +31,6 @@ mongoose.connect('mongodb://localhost:27017/koreanpoker');
 mongoose.connection.on('error', console.log);
 
 var cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
-var userNumber = 0;
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
 
@@ -101,9 +100,9 @@ app.io.on('connection', function(socket){
     }
   });
   socket.on('one_open_card_send', function (card, money) {
-    userNumber++;
     var index = searchRoomIndex(rooms, socket._id);
     var connNumber = rooms[index].connUsers.length;
+    rooms[index].count += 1;
     // 턴 검사
     for(var i = 0; i < rooms[index].connUsers.length; i++){
       if(rooms[index].connUsers[i].userName == socket.userName){
@@ -118,11 +117,13 @@ app.io.on('connection', function(socket){
             'userID' : (rooms[index].connUsers[i].userID),
             'userName' : (rooms[index].connUsers[i].userName),
             'isCall' : false,
-            'halfRemainCount' : 5
+            'halfRemainCount' : 2,
+            'pedigreeResult' : ''
           });
           app.io.sockets.in(socket._id).emit('one_open_card_receive', card, rooms[index], rooms[index].connUsers[i]);
           // userNumber은 다시 생각해보기 중복되서 체크
-          if(connNumber == userNumber){
+          if(connNumber == rooms[index].count){
+            rooms[index].count = 0;
             var msg = "Call, Half중에 선택하세요.";
             rooms[index].currentTurnUser = rooms[index].gamingUsers[0].userName;
             app.io.sockets.in(socket._id).emit('message_receive', msg);
@@ -134,21 +135,21 @@ app.io.on('connection', function(socket){
     }
   });
   socket.on('die_send', function(money){
-      userNumber++;
       var index = searchRoomIndex(rooms, socket._id);
       var connNumber = rooms[index].connUsers.length;
+      rooms[index].count += 1;
       // 턴 검사
-      for(var i = 0; i < rooms[index].connUsers.length; i++){
+      for(var i = 0; i < connNumber; i++){
         if(rooms[index].connUsers[i].userName == socket.userName){
           if(rooms[index].connUsers[i].userName != rooms[index].currentTurnUser){
             app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
           }else{
             rooms[index].connUsers[i].money -= money;
             rooms[index].roomAllMoney += money;
-            console.log(rooms[index].roomAllMoney);
             rooms[index].currentTurnUser = rooms[index].connUsers[(i+1)%connNumber].userName;
             app.io.sockets.in(socket._id).emit('die_receive', rooms[index], rooms[index].connUsers[i]);
-            if(connNumber == userNumber){
+            if(connNumber == rooms[index].count){
+              rooms[index].count = 0;
               var msg = "Call, Half중에 선택하세요.";
               rooms[index].currentTurnUser = rooms[index].gamingUsers[0].userName;
               app.io.sockets.in(socket._id).emit('message_receive', msg);
@@ -162,7 +163,7 @@ app.io.on('connection', function(socket){
   socket.on('half_send', function(money){
     var index = searchRoomIndex(rooms, socket._id);
     var gamingNumber = rooms[index].gamingUsers.length;
-    for(var i = 0; i < rooms[index].gamingUsers.length; i++){
+    for(var i = 0; i < gamingNumber; i++){
       if(rooms[index].gamingUsers[i].userName == socket.userName){
         if(rooms[index].gamingUsers[i].userName != rooms[index].currentTurnUser){
           app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
@@ -184,7 +185,6 @@ app.io.on('connection', function(socket){
               break;
             }
           }
-          rooms[index].roomMoney = money;
           rooms[index].roomAllMoney += money;
           rooms[index].currentTurnUser = rooms[index].gamingUsers[(i+1)%gamingNumber].userName;
           app.io.sockets.in(socket._id).emit('half_receive', rooms[index], rooms[index].gamingUsers[i]);
@@ -226,8 +226,46 @@ app.io.on('connection', function(socket){
       }
     }
   });
+  // socket.on('timer_send', function(){
+  //   var index = searchRoomIndex(rooms, socket._id);
+  //
+  //   setInterval(function(){
+  //     rooms[index].timer -= 1;
+  //     app.io.sockets.in(socket._id).emit('timer_receive', rooms[index]);
+  //   }, 1000);
+  // });
   socket.on('finallySelect_send', function(cards){
     console.log(cardPriority(cards[0], cards[1]));
+    var index = searchRoomIndex(rooms, socket._id);
+    var gamingNumber = rooms[index].gamingUsers.length;
+    rooms[index].count += 1;
+    for(var i = 0; i < gamingNumber; i++){
+      if(rooms[index].gamingUsers[i].userName == socket.userName){
+        if(rooms[index].gamingUsers[i].userName != rooms[index].currentTurnUser){
+          app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
+        }else{
+          rooms[index].currentTurnUser = rooms[index].gamingUsers[(i+1)%gamingNumber].userName;
+          rooms[index].gamingUsers[i].pedigreeResult = cardPriority(cards[0], cards[1]);
+          app.io.sockets.in(socket._id).emit('finallySelect_receive', cards, rooms[index], rooms[index].gamingUsers[i]);
+          if(gamingNumber == rooms[index].count){
+            rooms[index].count = 0;
+            user = _.min(rooms[index].gamingUsers, "pedigreeResult");
+            for(var j = 0; j < rooms[index].connUsers.length; j++){
+              if(user.userName == rooms[index].connUsers[j].userName){
+                rooms[index].connUsers[j].money += rooms[index].roomAllMoney;
+                rooms[index].connUsers[j].win += 1;
+              }else{
+                rooms[index].connUsers[j].lose += 1;
+              }
+            }
+            var msg = user.userName + "님이 승리 하셨습니다.";
+            app.io.sockets.in(socket._id).emit('message_receive', msg);
+            app.io.sockets.in(socket._id).emit('gameEnd_receive', rooms[index], user);
+            initialize(index);
+          }
+        }
+      }
+    }
   });
 });
 
@@ -281,7 +319,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+function initialize(index) {
+  rooms[index].roomAllMoney = 0;
+  rooms[index].gamingUsers = [];
+  rooms[index].state = 'Waiting game';
+  rooms[index].currentTurnUser = rooms[index].connUsers[0].userName;;
 
+}
 function searchRoomIndex(room, id){
   for(var i = 0; i < room.length; i++){
     if(room[i]._id == id){
