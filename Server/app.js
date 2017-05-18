@@ -264,6 +264,7 @@ app.io.on('connection', function(socket){
             initialize(index);
           }
         }
+        return;
       }
     }
   });
@@ -323,7 +324,7 @@ function initialize(index) {
   rooms[index].roomAllMoney = 0;
   rooms[index].gamingUsers = [];
   rooms[index].state = 'Waiting game';
-  rooms[index].currentTurnUser = rooms[index].connUsers[0].userName;;
+  rooms[index].currentTurnUser = rooms[index].connUsers[0].userName;
 
 }
 function searchRoomIndex(room, id){
