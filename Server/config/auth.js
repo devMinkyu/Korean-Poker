@@ -42,6 +42,7 @@ module.exports = function(passport) {
             }
             user.facebook.id = profile.id;
             user.facebook.token = profile.token;
+            user.photoURL = profile.photos[0].value;
             user.save(function(err) {
               if (err) {
                 return done(err);
