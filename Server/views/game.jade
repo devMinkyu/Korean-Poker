@@ -1,0 +1,193 @@
+extends layout
+
+block content
+  .gamefield
+    .row(id='userWindow')
+      each user in room.connUsers
+        .col.xs.4
+          img.img-circle.profile.player1(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          img.img-circle.profile.player2(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          img.img-circle.profile.player3(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          img.img-circle.profile.player4(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          span.label.label-info.player1name(name='username')= user.userName
+          span.label.label-info.player1win(name='win') 승: #{user.win}
+          span.label.label-info.player1lose(name='lose') / 패: #{user.lose}
+          span.label.label-info.player1state
+            if(user.isReady == true)
+                    span(name='state') 준비 완료
+                  else
+                    span(name='state') 대기 중
+          span.label.label-info.player2 player2
+          span.label.label-info.player3 player3
+          span.label.label-info.player4 player4
+        .draw
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.cards(src="/images/Card-S.png")
+          img.moneypanel(src="/images/Moneyarea.png")
+      .row
+        .col.xs.4
+          img.mycards(src="/images/Card-S.png")
+          img.mycards(src="/images/Card-S.png")
+          img.mycards(src="/images/Card-S.png")
+        .col.xs.4
+            .btn-group-md.betting(role='group')
+              button.btn.btn-danger.button(type='button') 하프
+              button.btn.btn-warning.button(type='button') 쿼터
+              button.btn.btn-info.button(type='button') 콜
+              button.btn.btn-success.button(type='button') 따당
+              button.btn.btn-primary.button(type='button') 삥
+              button.btn.btn-default.button(type='button') 다이
+      
+    //- script.
+    //-   $(window).bind("orientationchange", function(){
+    //-     var orientation = window.orientation;
+    //-     var new_orientation = (orientation) ? 0 : 90 + orientation;
+    //-     $('body').css({
+    //-       "-webkit-transform": "rotate(" + new_orientation + "deg)"     
+    //-       });
+    //-   });
+
+    
+    
+
+
+
+
+    script(type='text/javascript', src='/javascripts/flipcard.js')
+    script(type='text/javascript', src='/javascripts/drowcard.js')
+    
+    
+
+  style.
+    .gamefield {
+      width: 100%;
+      margin-top: 4em;
+      height: 85%;
+      left: 0.026%;
+      top: -1.1%;
+      background: url('/images/BG.png');
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+    .cardarea{
+      position: absolute;
+      width:25%;
+      height:25%;
+    }
+    .player1 {
+      position: absolute;
+      top: 1%;
+      left: 89%;
+    }
+    span.label.label-info.player1name{
+      position: absolute;
+      top: 17%;
+      left: 92%;
+      font-size: 1em;
+    }
+    span.label.label-info.player1win{
+      position: absolute;
+      top: 20%;
+      left: 92%;
+      font-size: 1em;
+    }
+    span.label.label-info.player1lose{
+      position: absolute;
+      top: 22%;
+      left: 92%;
+      font-size: 1em;
+    }
+    span.label.label-info.player1state{
+      position: absolute;
+      top: 24%;
+      left: 92%;
+      font-size: 1em;
+    }
+    .player2 {
+      left: 89%;
+      top: 30%;
+      position: absolute;
+    }
+    span.label.label-info.player2{
+      position: absolute;
+      top: 46%;
+      left: 92%;
+      font-size: 1em;
+    }
+    .player3 {
+      position: absolute;
+      top: 30%;
+      right: 89%;
+    }
+    span.label.label-info.player3{
+      position: absolute;
+      top: 46%;
+      right: 92%;
+      font-size: 1em;
+    }
+    .player4 {
+      top: 1%;
+      position: absolute;
+      right: 89%;
+    }
+    span.label.label-info.player4{
+      position: absolute;
+      top: 17%;
+      right: 92%;
+      font-size: 1em;
+    }
+    .draw {
+      position: absolute;
+      height: 50%;
+      width: 50%;
+      top: 0%;
+      left: 20%;
+    }
+    .cards {
+      position: absolute;
+      left : 50%;
+      bottom : 40%;
+      height: 35%;
+      width: 10%;
+    }
+    .moneypanel {
+      position: absolute;
+      height: 100%;
+      width: 70%;
+      left : 25%;
+      bottom : 2%;
+      display: none;
+    }
+    .mycards {
+      position: absolute;
+      left : 37%;
+      top : 70%;
+      height: 30%;
+      width: 8%;
+      display: none;
+    }
+    .betting {
+      position: absolute;
+      left : 2%;
+      width: 30%;
+      bottom : 5%;
+    }
+    .button {
+      width: 50%;
+      height: 50%;
+      bottom : 0%;
+    }
+    .profile {
+      height: 15%;
+      width: 10%;
+    }
