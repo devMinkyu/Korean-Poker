@@ -263,6 +263,10 @@ socket.on('finallySelect_receive', function(cards, room, user){
       turn[i].innerHTML = "대기 중";
   }
 });
+
+socket.on('gameEnd_receive', function(room, user){
+  
+});
 // window.onbeforeunload = function() {
 //   socket.emit('leave_send');
 //   return "gg";

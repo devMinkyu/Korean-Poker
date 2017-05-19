@@ -15,13 +15,13 @@ block content
             .thumbnail
               .caption
                 h2(name='username')= user.userName
-                span(name='win') 승: #{user.win}
-                span(name='lose') / 패: #{user.lose}
+                h6(name='win') 승: #{user.win}
+                h6(name='lose') / 패: #{user.lose}
                 p
                   if(user.isReady == true)
-                    span(name='state') 준비 완료
+                    h6(name='state') 준비 완료
                   else
-                    span(name='state') 대기 중
+                    h6(name='state') 대기 중
     #buttons   
       p#cardImforamtion
         span(id="cardImforamtion1") 
@@ -47,13 +47,13 @@ block content
         <div class="thumbnail">
           <div class="caption">
             <h2 name='username'></h2>
-              <span name = 'win'></span>
-              <span name = 'lose'></span>
+              <h6 name = 'win'></h6>
+              <h6 name = 'lose'></h6>
               <p>
-                  <span name='state'></span> 
+                  <h6 name='state'></h6> 
               </p>
               <p>
-                  <span name='turn'></span> 
+                  <h6 name='turn'></h6> 
               </p>
           </div>
         </div>
@@ -65,15 +65,15 @@ block content
             <div class="caption">
               <h1 name='dieState'><h1>
                 <h2 name='username'></h2>
-                <div name ='opencard1'>카드</div>
-                <div name ='opencard2'>카드</div>
-                <div name ='opencard3'>카드</div>
-                <div name ='currentState'></div>
+                <h6 name ='opencard1'>카드</h6>
+                <h6 name ='opencard2'>카드</h6>
+                <h6 name ='opencard3'>카드</h6>
+                <h6 name ='currentState'></h6>
                   <p>
-                      <span name='money'></span> 
+                      <h6 name='money'></h6> 
                   </p>
                   <p>
-                      <span name='turn'></span> 
+                      <h6 name='turn'></h6> 
                   </p>
             </div>
           </div>
