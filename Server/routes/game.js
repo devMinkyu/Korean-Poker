@@ -88,13 +88,13 @@ router.post('/', function(req, res, next){
     var newRoom = {
       '_id' : roomsCount,
       'roomName' : req.body.roomName, // 방 제목
-      'roomMaster': req.user,
       'roomMoney' : Number(req.body.roomMoney), // 방의 판돈
       'roomAllMoney' : 0, // 방의 배팅금
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
       'currentTurnUser': '',
       'state' : 'Waiting game',
+      'cards' : [],
       'timer' : 15,
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
