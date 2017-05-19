@@ -8,6 +8,7 @@ block content
       h5#_id #{room._id+1}
       include ../includes/chat
     br
+    h1#viewTimer= room.timer
     .row(id='userWindow')
       each user in room.connUsers
           .col-sm-6.col-md-3
@@ -64,7 +65,9 @@ block content
             <div class="caption">
               <h1 name='dieState'><h1>
                 <h2 name='username'></h2>
-                <div name ='opencard'></div>
+                <div name ='opencard1'>카드</div>
+                <div name ='opencard2'>카드</div>
+                <div name ='opencard3'>카드</div>
                 <div name ='currentState'></div>
                   <p>
                       <span name='money'></span> 

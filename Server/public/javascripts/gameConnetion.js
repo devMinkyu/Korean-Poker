@@ -49,6 +49,7 @@ socket.on('ready_receive', function(users, index){
 
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(cards, room){
+  // socket.emit("timer_send"); 한번만 실행 되게끔 하자.
   $("#cardImforamtion").show();
   $("#thirdButton").show();
   $("#cardImforamtion #card3").hide();
@@ -101,7 +102,7 @@ $('#firstSelect').click('submit', function(e){
 // 카드한장을 눌렀을 때 반응하는 소켓
 socket.on('one_open_card_receive', function(card, room, user){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  var openCard = document.getElementsByName("opencard");
+  var openCard = document.getElementsByName("opencard1");
   var turn = document.getElementsByName("turn");
   var money = document.getElementsByName("money");
 
@@ -159,13 +160,13 @@ socket.on('die_receive', function(room, user){
 });
 // call을 눌렀을때(지금까지 주어진 판돈만큼만 걸고 끝내기를 선언)
 $('#call').click('submit', function(e){
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
+  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   socket.emit('call_send', 1*roomMoneyNumber);
 });
 // half을 눌렀을때(판돈의 2배만큼을 건다.)
 $('#half').click('submit', function(e){
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
+  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   var money = 2*roomMoneyNumber;
   socket.emit('half_send', money);
@@ -190,7 +191,6 @@ socket.on('call_receive', function(room, user){
 // 하프의 대해 반응 하는 소켓
 socket.on('half_receive', function(room, user){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  document.getElementById("roomMoney").innerHTML = room.roomMoney;
   var turn = document.getElementsByName("turn");
   var money = document.getElementsByName("money");
   var currentState = document.getElementsByName("currentState");
@@ -246,7 +246,27 @@ $('#finallySelect').click('submit', function(e){
   }
   socket.emit('finallySelect_send', selectCard);
 });
+socket.on('finallySelect_receive', function(cards, room, user){
+  document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
+  var openCard1 = document.getElementsByName("opencard1");
+  var openCard2 = document.getElementsByName("opencard2");
+  var turn = document.getElementsByName("turn");
+  var currentState = document.getElementsByName("currentState");
+  for(var i = 0; i < room.connUsers.length; i++){
+    if(user.userName == room.connUsers[i].userName){
+      openCard1[i].innerHTML = cards[0];
+      openCard2[i].innerHTML = cards[1];
+    }
+    if(room.connUsers[i].userName == room.currentTurnUser)
+      turn[i].innerHTML = "현재 턴";
+    else
+      turn[i].innerHTML = "대기 중";
+  }
+});
 // window.onbeforeunload = function() {
 //   socket.emit('leave_send');
 //   return "gg";
 // };
+socket.on('timer_receive', function(room){
+  document.getElementById("viewTimer").innerHTML = room.timer;
+});

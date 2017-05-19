@@ -94,7 +94,9 @@ router.post('/', function(req, res, next){
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
       'currentTurnUser': '',
-      'state' : 'Waiting game'
+      'state' : 'Waiting game',
+      'timer' : 15,
+      'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
     rooms.push(newRoom);
     roomsCount++;
@@ -153,11 +155,11 @@ function addUser(roomIndex, userID, userName){
     'userID' : userID,
     'userName' : userName,
     'isReady' :  false,
-    //'isTurn' : false, // 현재 자신의 턴인지
+    //'isGameParticipate' : false,
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
     'lose' : 0,
-    'money' : 1000000
+    'money' : 100000
   });
 }
 module.exports = router;

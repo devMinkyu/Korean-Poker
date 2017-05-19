@@ -7,7 +7,8 @@ var schema = new Schema({
   userName: {type: String, required: true, unique: true},
   userEmail: {type: mongoose.SchemaTypes.Email, required: true, unique: true, trim: true},
   contents : {type: String},
-  facebook: {id: String, token: String}
+  facebook: {id: String, token: String},
+  photoURL : {type: String}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
