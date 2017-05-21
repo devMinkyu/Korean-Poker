@@ -92,9 +92,10 @@ router.post('/', function(req, res, next){
       'roomAllMoney' : 0, // 방의 배팅금
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
+      'deadUsers' :[], // 게임의 죽은 유저
       'currentTurnUser': '',
       'state' : 'Waiting game',
-      'cards' : [],
+      'cards' : [0, 0],
       'timer' : 15,
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
@@ -159,7 +160,8 @@ function addUser(roomIndex, userID, userName){
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
     'lose' : 0,
-    'money' : 100000
+    'money' : 100000,
+    'cards' : []
   });
 }
 module.exports = router;

@@ -8,7 +8,7 @@ block content
       h5#_id #{room._id+1}
       include ../includes/chat
     br
-    h1#viewTimer= room.timer
+    h1#viewTimer= 15
     .row(id='userWindow')
       each user in room.connUsers
           .col-sm-6.col-md-3
@@ -30,6 +30,7 @@ block content
         input(type='checkbox',name="card", id="card2")
         span(id="cardImforamtion3") 
         input(type='checkbox',name="card", id="card3")
+        button.btn.btn-default(id="die") Die  
       p#firstButton
         button.btn.btn-primary(id="ready") Ready
         button.btn.btn-default(id="exit") Exit          
@@ -38,8 +39,7 @@ block content
         button.btn.btn-default(id="half") Half(따블) 
       p#thirdButton
         button.btn.btn-primary(id="firstSelect") OneCardSelect
-        button.btn.btn-primary(id="finallySelect") FinallySelect
-        button.btn.btn-default(id="die") Die   
+        button.btn.btn-primary(id="finallySelect") FinallySelect 
     
     script(src='/javascripts/gameConnetion.js').      
     script#rowTemplate1(type='text/template').

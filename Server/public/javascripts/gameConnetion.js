@@ -53,7 +53,7 @@ socket.on('ready_receive', function(users, index){
 
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(room){
-  // socket.emit("timer_send"); 한번만 실행 되게끔 하자.
+  socket.emit('timer_send');
   $("#cardImforamtion").show();
   $("#thirdButton").show();
   $("#cardImforamtion #card3").hide();
@@ -105,12 +105,10 @@ $('#firstSelect').click('submit', function(e){
     alert("한장만 선택하세요!!");
     return;
   }
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  socket.emit('one_open_card_send', selectCard, 1*roomMoneyNumber);
+  socket.emit('one_open_card_send', selectCard);
 });
 // 카드한장을 눌렀을 때 반응하는 소켓
-socket.on('one_open_card_receive', function(card, room, user){
+socket.on('one_open_card_receive', function(room, user){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
   var openCard = document.getElementsByName("opencard1");
   var turn = document.getElementsByName("turn");
@@ -118,7 +116,7 @@ socket.on('one_open_card_receive', function(card, room, user){
 
   for(var i = 0; i < room.connUsers.length; i++){
     if(user.userName == room.connUsers[i].userName){
-      openCard[i].innerHTML = card;
+      openCard[i].innerHTML = user.cards[0];
       money[i].innerHTML = room.connUsers[i].money;
     }
     if(room.connUsers[i].userName == room.currentTurnUser)
@@ -295,6 +293,6 @@ socket.on('resetGame_receive', function(cards, users){
 //   socket.emit('leave_send');
 //   return "gg";
 // };
-socket.on('timer_receive', function(room){
-  document.getElementById("viewTimer").innerHTML = room.timer;
+socket.on('timer_receive', function(timer){
+  document.getElementById("viewTimer").innerHTML = timer;
 });
