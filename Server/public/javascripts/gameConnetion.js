@@ -166,14 +166,14 @@ socket.on('die_receive', function(room, user){
     }
   }
 });
-// call을 눌렀을때(지금까지 주어진 판돈만큼만 걸고 끝내기를 선언)
-$('#call').click('submit', function(e){
+// call을 눌렀을때(지금까지 주어진 배팅금만큼만 걸고 끝내기를 선언)
+$('#call').click('submit', function gg(){
   var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   socket.emit('call_send', 1*roomMoneyNumber);
 });
-// half을 눌렀을때(판돈의 2배만큼을 건다.)
-$('#half').click('submit', function(e){
+// half을 눌렀을때(배팅금의 2배만큼을 건다.)
+$('#half').click('submit', function(){
   var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   var money = 2*roomMoneyNumber;

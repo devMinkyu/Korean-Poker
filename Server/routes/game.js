@@ -107,8 +107,7 @@ router.post('/', function(req, res, next){
     addUser(newRoom._id, req.user._id, req.user.userName);
     // rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
     //rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
-    newRoom.currentTurnUser = newRoom.connUsers[0].userName;
-    //newRoom.connUsers[0].isTurn = true;
+    //newRoom.currentTurnUser = newRoom.connUsers[0].userName;
 
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
