@@ -214,7 +214,7 @@ socket.on('half_receive', function(room, user){
   }
 });
 // 모두 콜을 눌렀을 때 한장씩 더 나눠주는 코드
-socket.on('lastCardDistribution_receive', function(room, cards){
+socket.on('lastCardDistribution_receive', function(room){
   var die = document.getElementsByName("dieState");
   var turn = document.getElementsByName("turn");
   var currentState = document.getElementsByName("currentState");
@@ -227,8 +227,8 @@ socket.on('lastCardDistribution_receive', function(room, cards){
       $("#thirdButton #finallySelect").show();
       $("#cardImforamtion #card3").show();
       $("#cardImforamtion #cardImforamtion3").show();
-      $('#card3').val(cards[2*room.connUsers.length+i]);
-      document.getElementById("cardImforamtion3").innerHTML = cards[2*room.connUsers.length+i];
+      $('#card3').val(room.cards[2*room.connUsers.length+i]);
+      document.getElementById("cardImforamtion3").innerHTML = room.cards[2*room.connUsers.length+i];
     }
     currentState[i].innerHTML = '';
     if(room.connUsers[i].userName == room.currentTurnUser)

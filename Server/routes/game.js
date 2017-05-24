@@ -95,7 +95,7 @@ router.post('/', function(req, res, next){
       'deadUsers' :[], // 게임의 죽은 유저
       'currentTurnUser': '',
       'state' : 'Waiting game',
-      'cards' : [0, 0],
+      'cards' : [],
       'timer' : 15,
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
