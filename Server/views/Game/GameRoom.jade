@@ -1,28 +1,10 @@
-extends layout
+extends ../layout
 
 block content
   .gamefield
     .row
       h5#_id #{room._id+1}
       include ../includes/chat
-<<<<<<< HEAD
-    br
-    h1#viewTimer= 15
-    .row(id='userWindow')
-      each user in room.connUsers
-          .col-sm-6.col-md-3
-            .thumbnail
-              .caption
-                h2(name='username')= user.userName
-                h6(name='win') 승: #{user.win}
-                h6(name='lose') / 패: #{user.lose}
-                p
-                  if(user.isReady == true)
-                    h6(name='state') 준비 완료
-                  else
-                    h6(name='state') 대기 중
-    #buttons   
-=======
     .row(id='userWindow')
       each user in room.connUsers
           .col-xs-6
@@ -55,7 +37,6 @@ block content
     #buttons
       img.myprofile(src=currentUser.photoURL)
       h1(id='roomName')= room.roomName
->>>>>>> feature/gameview
       p#cardImforamtion
         span(id="cardImforamtion1")
         input(type='checkbox',name="card", id="card1")
@@ -72,11 +53,6 @@ block content
         button.btn.btn-default(id="half") Half(따블)
       p#thirdButton
         button.btn.btn-primary(id="firstSelect") OneCardSelect
-<<<<<<< HEAD
-        button.btn.btn-primary(id="finallySelect") FinallySelect 
-    
-    script(src='/javascripts/gameConnetion.js').      
-=======
         button.btn.btn-primary(id="finallySelect") FinallySelect
         button.btn.btn-default(id="die") Die
     //- script(type='text/javascript', src='/javascripts/flipcard.js')
@@ -84,71 +60,6 @@ block content
     //- script(type='text/javascript', src='/javascripts/selectedcard.js')
 
     script(src='/javascripts/gameConnetion.js').    
->>>>>>> feature/gameview
-    script#rowTemplate1(type='text/template').
-      <div class="col-xs-6">
-        <div class="thumbnail">
-          <div class="caption">
-<<<<<<< HEAD
-            <h2 name='username'></h2>
-              <h6 name = 'win'></h6>
-              <h6 name = 'lose'></h6>
-=======
-            <img src="src=user.photoURL" class="profile" class="img-circle"/>
-            <h3 name='username'></h3>
-              <span name = 'win'></span>
-              <span name = 'lose'></span>
->>>>>>> feature/gameview
-              <p>
-                  <span name='state'></span> 
-                  <h6 name='state'></h6> 
-              </p>
-              <p>
-                  <span name='turn'></span> 
-                  <h6 name='turn'></h6> 
-              </p>
-          </div>
-        </div>
-      </div>
-
-    script#rowTemplate2(type='text/template').
-<<<<<<< HEAD
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <div class="caption">
-              <h1 name='dieState'><h1>
-                <h2 name='username'></h2>
-                <h6 name ='opencard1'></h6>
-                <h6 name ='opencard2'></h6>
-                <h6 name ='opencard3'></h6>
-                <h6 name ='currentState'></h6>
-                  <p>
-                      <h6 name='money'></h6> 
-                  </p>
-                  <p>
-                      <h6 name='turn'></h6> 
-                  </p>
-            </div>
-=======
-      <div class="col-xs-6">
-        <div class="thumbnail">
-          <div class="caption">
-            <h1 name='dieState'><h1>
-              <h3 name='username'></h3>
-              <div name ='opencard1'>카드</div>
-              <div name ='opencard2'>카드</div>
-              <div name ='opencard3'>카드</div>
-              <div name ='currentState'></div>
-                <p>
-                    <span name='money'></span> 
-                </p>
-                <p>
-                    <span name='turn'></span> 
-                </p>
->>>>>>> feature/gameview
-          </div>
-        </div>
-      </div>
 
 
   style.

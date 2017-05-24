@@ -4,10 +4,6 @@
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://fonts.googleapis.com/css?family=Poiret+One");
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
-/*
-	Overflow by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("css/style.css'");
 @import url("css/owl.carousel.css");
@@ -990,7 +986,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 100%;
   font: inherit;
   color: white;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  font-family: 'Noto Sans KR', sans-serif; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block; }
@@ -1075,7 +1072,6 @@ html, body {
 body {
   margin: 0;
   padding: 0;
-  background: url(../video/koreanPoker.jpg) #fff;
   background: url(../video/solidDarkGrey.png) #fff;
   background-attachment: fixed;
   background-size: cover;
@@ -1104,7 +1100,6 @@ body {
   height: 100%;
   z-index: 20;
   background-color: rgba(43, 23, 23, 0.5);
-  display: table; }
   display: table;
   padding: 50px; }
 
@@ -1115,7 +1110,6 @@ h1 {
   text-align: center;
   color: #fff;
   font-weight: normal;
-  letter-spacing: 4px; }
   letter-spacing: 4px;
   background-image: -webkit-linear-gradient(skyblue 50%, #fff 50%);
   /*그라디언트 배경을 스트라이프모양으로 모양잡음*/
@@ -1142,7 +1136,7 @@ h1 {
     background-position: 0 -30px; } }
 
 p {
-  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
+  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
