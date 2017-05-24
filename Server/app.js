@@ -42,7 +42,7 @@ app.io.on('connection', function(socket){
     console.log("**********Room ID*************");
     console.log(socket._id);
     console.log("***************************");
-
+    console.log(rooms[socket._id].connUsers);
     var message = socket.userName + " 님이 입장하셨습니다.";
     app.io.sockets.in(socket._id).emit('message_receive', message);
     app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[socket._id].connUsers);

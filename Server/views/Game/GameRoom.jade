@@ -7,17 +7,16 @@ block content
       include ../includes/chat
     .row(id='userWindow')
       each user in room.connUsers
-          .col-xs-6
-           #gameBox
-              h3(name='username')= user.userName
-              span(name='win') 승: #{user.win}
-              span(name='lose') / 패: #{user.lose}
-              p
-                if(user.isReady == true)
-                  span(name='state') 준비 완료
-                else
-                  span(name='state') 대기 중     
-            img.profile.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+        .col-xs-6
+          h3(name='username')= user.userName
+          span(name='win') 승: #{user.win}
+          span(name='lose') / 패: #{user.lose}
+          p
+            if(user.isReady == true)
+              span(name='state') 준비 완료
+            else
+              span(name='state') 대기 중     
+          img.profile.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
     .draw
       img.cards(src="/images/Card-S.png")
       img.cards(src="/images/Card-S.png")
@@ -35,7 +34,8 @@ block content
         img.mycards(src="/images/Card-S.png")
         img.mycards(src="/images/Card-S.png")
     #buttons
-      img.myprofile(src=currentUser.photoURL)
+      //img.myprofile(src=currentUser.photoURL)
+      img.myprofile(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
       h1(id='roomName')= room.roomName
       p#cardImforamtion
         span(id="cardImforamtion1")
@@ -61,14 +61,16 @@ block content
 
     script(src='/javascripts/gameConnetion.js').    
     script#rowTemplate1(type='text/template').
-      <h3 name='username' ></h3>
-      <span name='win'></span>
-      <span name='lose'></span>
-      <p>
-          <span name='state'></span>
-      </p>    
-      <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" class = "profile" class = "img-circle" />
-
+      <div class = "col-xs-6">
+        <h3 name='username' ></h3>
+        <span name='win'></span>
+        <span name='lose'></span>
+        <p>
+            <span name='state'></span>
+        </p> 
+        <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
+      </div>
+        
   style.
     .row{
       margin-right: 0px;
