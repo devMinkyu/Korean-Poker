@@ -62,32 +62,33 @@ socket.on('start_game', function(room){
   $("#firstButton").hide();
   $('#userWindow').empty();
   for(var i = 0; i < room.connUsers.length; i++){
-    $("#userWindow").append($('#rowTemplate2').html());
+    $("#userWindow").append($('#rowTemplate3').html());
+    $(".gamefield").append($('#rowTemplate2').html());
   }
-  var openCard1 = document.getElementsByName("opencard1");
-  var openCard2 = document.getElementsByName("opencard2");
-  var openCard3 = document.getElementsByName("opencard3");
-  var name = document.getElementsByName("username");
-  var money = document.getElementsByName("money");
-  var turn = document.getElementsByName("turn");
-  var currentUserName = document.getElementById("userName").innerHTML;
-  for(var j = 0; j < room.connUsers.length; j++){
-    name[j].innerHTML = room.connUsers[j].userName;
-    openCard1[j].innerHTML = "카드";
-    openCard2[j].innerHTML = "카드";
-    openCard3[j].innerHTML = "카드";
-    if(currentUserName == room.connUsers[j].userName){
-      $('#card1').val(room.cards[2*j]);
-      $('#card2').val(room.cards[2*j+1]);
-      document.getElementById("cardImforamtion1").innerHTML = room.cards[2*j] + " ";
-      document.getElementById("cardImforamtion2").innerHTML = room.cards[2*j+1] + " ";
-    }
-    money[j].innerHTML = "금액: " + room.connUsers[j].money;
-    if(room.currentTurnUser == room.connUsers[j].userName)
-      turn[j].innerHTML = "현재 턴";
-    else
-      turn[j].innerHTML = "대기 중";
-  }
+  // var openCard1 = document.getElementsByName("opencard1");
+  // var openCard2 = document.getElementsByName("opencard2");
+  // var openCard3 = document.getElementsByName("opencard3");
+  // var name = document.getElementsByName("username");
+  // var money = document.getElementsByName("money");
+  // var turn = document.getElementsByName("turn");
+  // var currentUserName = document.getElementById("userName").innerHTML;
+  // for(var j = 0; j < room.connUsers.length; j++){
+  //   name[j].innerHTML = room.connUsers[j].userName;
+  //   openCard1[j].innerHTML = "카드";
+  //   openCard2[j].innerHTML = "카드";
+  //   if(currentUserName == room.connUsers[j].userName){
+  //     $('#card1').val(room.cards[2*j]);
+  //     $('#card2').val(room.cards[2*j+1]);
+  //     document.getElementById("cardImforamtion1").innerHTML = room.cards[2*j] + " ";
+  //     document.getElementById("cardImforamtion2").innerHTML = room.cards[2*j+1] + " ";
+  //   }
+  //   money[j].innerHTML = "금액: " + room.connUsers[j].money;
+  //   if(room.currentTurnUser == room.connUsers[j].userName)
+  //     turn[j].innerHTML = "현재 턴";
+  //   else
+  //     turn[j].innerHTML = "대기 중";
+  // }
+  cardAnimation(room.connUsers.length);
 });
 // 한장의 카드 눌렀을때
 $('#firstSelect').click('submit', function(e){
@@ -296,3 +297,75 @@ socket.on('resetGame_receive', function(cards, users){
 socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });
+
+function cardAnimation(userNumber){
+    var direction = {left: "+=65%", bottom: "+=15%"}
+    var directionCount = 0 //주는 카드 방향 지정
+    var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
+    
+    var drawCards = $('.cards').each(function(index) {
+                        $(this).delay(300*index).animate(direction)
+                        if(directionCount == 0){
+                            if(moveLeftCount == 0 ){// 2번 플레이어
+                                direction = {left: "+=65%", bottom: "-=40%"}
+                                directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "+=55%", bottom: "-=40%"}
+                                directionCount++
+                            }
+                        }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
+                            if(moveLeftCount == 0 ){
+                                direction = {left: "-=55%", bottom: "-=40%"}
+                                directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "-=45%", bottom: "-=40%"}
+                                directionCount++
+                            }
+                        }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
+                            if(moveLeftCount == 0 ){
+                                direction = {left: "-=55%", bottom: "+=15%"}
+                                directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "-=45%", bottom: "+=15%"}
+                                directionCount++
+                            }
+                        }
+                        else{//1번 플레이어
+                            if(moveLeftCount == 0 ){
+                                direction = {left: "+=55%", bottom: "+=15%"}
+                                directionCount = 0
+                                moveLeftCount++
+                            }
+                        }
+    });
+
+    $.when(drawCards).then(function (){
+        $(".moneypanel").fadeIn();
+        $(".cards").transition({ 
+            perspective: '100px',
+            rotateY: '180deg'
+        });
+    });
+
+    $.when(drawCards).then(function (){
+         $(".mycards").fadeIn();
+          var myCardsDirection = 0
+          var myCardsDirectionCounter = 0;
+            var checkMyCards = $('.mycards').each(function(index) {
+                $(this).delay(1*index).animate(myCardsDirection);
+                if(myCardsDirectionCounter == 0 ){
+                    myCardsDirection = {left: "+=8%"}
+                    myCardsDirectionCounter++
+                }else if(myCardsDirectionCounter ==1){
+                    myCardsDirection = {left: "+=16%"}
+                }
+            });
+            $.when(checkMyCards).then(function (){
+                $(".mycards").transition({ 
+                    perspective: '100px',
+                    rotateY: '180deg'
+                });
+                $(".mycards").attr('src','/images/card/1-1.png');
+            });
+        });
+    }

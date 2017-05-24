@@ -4,6 +4,7 @@ block content
       h1.page-header Room List
       br
       .row
+      .main
         each room in rooms
           .w3_agile_main_grids
             .agile_main_grid
@@ -41,4 +42,5 @@ block content
                       li 
                         .w3layouts_icon
                           img.w3_img_responsive(src='/stylesheets/images/image1.png', alt=' ')
-      a.btn.btn-primary(href='/game/create') 방 만들기
+    form(action='/game/create', method='get')
+      input(type='submit', value='방만들기')

@@ -18,32 +18,33 @@ block content
               span(name='state') 대기 중     
           img.profile.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
     .draw
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
-      img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
+      //- img.cards(src="/images/Card-S.png")
       img.moneypanel(src="/images/Moneyarea.png")
       h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
       h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
     .row
-        img.mycards(src="/images/Card-S.png")
-        img.mycards(src="/images/Card-S.png")
+        
     #buttons
       //img.myprofile(src=currentUser.photoURL)
       img.myprofile(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
       h1(id='roomName')= room.roomName
       p#cardImforamtion
-        span(id="cardImforamtion1")
-        input(type='checkbox',name="card", id="card1")
-        span(id="cardImforamtion2")
-        input(type='checkbox',name="card", id="card2")
-        span(id="cardImforamtion3")
-        input(type='checkbox',name="card", id="card3")
+        img.mycards(src="/images/Card-S"+'#{id}'+".png")
+        img.mycards(src="/images/Card-S.png")
+        //- span(id="cardImforamtion1")
+        //- input(type='checkbox',name="card", id="card1")
+        //- span(id="cardImforamtion2")
+        //- input(type='checkbox',name="card", id="card2")
+        //- span(id="cardImforamtion3")
+        //- input(type='checkbox',name="card", id="card3")
         button.btn.btn-default(id="die") Die  
       p#firstButton
         button.btn(id="ready") ready
@@ -70,7 +71,16 @@ block content
         </p> 
         <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
       </div>
-        
+
+    script#rowTemplate2(type='text/template').
+      <div class = "draw">
+         <img class="cards" name='card1' src="/images/Card-S.png">
+         <img class="cards" name='card2' src="/images/Card-S.png">
+       </div> 
+    script#rowTemplate3(type='text/template').
+      <div class = "col-xs-6">
+        <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
+      </div> 
   style.
     .row{
       margin-right: 0px;
@@ -150,7 +160,7 @@ block content
       width: 300PX;
       height: 200px;
     }
-    .col-xs-6:nth-child(1) img {
+    .col-xs-6:nth-child(1) .profile {
       position: absolute;
       top: 10% ;
       left: 110%;
@@ -177,7 +187,7 @@ block content
       width: 300PX;
       height: 200px;
     }
-    .col-xs-6:nth-child(2) img {
+    .col-xs-6:nth-child(2) .profile {
       position: absolute;
       top: 10% ;
       left: 110%;
@@ -204,7 +214,7 @@ block content
       width: 300PX;
       height: 200px;
     }
-    .col-xs-6:nth-child(3) img {
+    .col-xs-6:nth-child(3) .profile {
       position: absolute;
       top: 10% ;
       right: 110%;
@@ -231,7 +241,7 @@ block content
       width: 300PX;
       height: 200px;
     }
-    .col-xs-6:nth-child(4) img {
+    .col-xs-6:nth-child(4) .profile {
       position: absolute;
       top: 10% ;
       right: 110%;
