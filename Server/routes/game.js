@@ -88,13 +88,16 @@ router.post('/', function(req, res, next){
     var newRoom = {
       '_id' : roomsCount,
       'roomName' : req.body.roomName, // 방 제목
-      'roomMaster': req.user,
       'roomMoney' : Number(req.body.roomMoney), // 방의 판돈
       'roomAllMoney' : 0, // 방의 배팅금
       'connUsers' : [], // 방에 들어온 사람들
       'gamingUsers' : [], // 게임의 참여자들
+      'deadUsers' :[], // 게임의 죽은 유저
       'currentTurnUser': '',
-      'state' : 'Waiting game'
+      'state' : 'Waiting game',
+      'cards' : [0, 0],
+      'timer' : 15,
+      'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
     rooms.push(newRoom);
     roomsCount++;
@@ -104,8 +107,7 @@ router.post('/', function(req, res, next){
     addUser(newRoom._id, req.user._id, req.user.userName);
     // rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
     //rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
-    newRoom.currentTurnUser = newRoom.connUsers[0].userName;
-    //newRoom.connUsers[0].isTurn = true;
+    //newRoom.currentTurnUser = newRoom.connUsers[0].userName;
 
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
@@ -153,11 +155,12 @@ function addUser(roomIndex, userID, userName){
     'userID' : userID,
     'userName' : userName,
     'isReady' :  false,
-    //'isTurn' : false, // 현재 자신의 턴인지
+    //'isGameParticipate' : false,
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
     'lose' : 0,
-    'money' : 1000000
+    'money' : 100000,
+    'cards' : []
   });
 }
 module.exports = router;

@@ -1,11 +1,11 @@
 .container
   div
-    textarea#chatLog.chat_log(readonly='',  style="width: 95%; height: 200px;")
+    textarea#chatLog.chat_log(readonly='',  style="width: 95%; height: 200px; color:black;")
   form#chat
     //- input#userName.name(type='text', readonly='', style="width: 10%;")=currentUser.userName
     if(currentUser)
-      h5#userName(style="width: auto;")=currentUser.userName
+      h5#userName(style="width: auto; color:black;")=currentUser.userName
     else
-      h5#userName(style="width: auto;")= room.connUsers[room.connUsers.length-1].userName
+      h5#userName(style="width: auto; color:black;")= room.connUsers[room.connUsers.length-1].userName
     input#message.message(type='text',style="width: 70%;")
     input.chat(type='submit', value='chat', style="width: 10%;")
