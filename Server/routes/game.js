@@ -104,7 +104,7 @@ router.post('/', function(req, res, next){
     // var index = searchRoomIndex(rooms, req.body.roomName);
 
     // addUser(index, req.user._id, req.user.userName);
-    addUser(newRoom._id, req.user._id, req.user.userName);
+    addUser(newRoom._id, req.user._id, req.user.userName, req.user.photoURL);
     // rooms[index].currentTurnUser = rooms[index].connUsers[0].userID;
     //rooms[roomsCount].currentTurnUser = rooms[roomsCount].connUsers[0].userID;
     //newRoom.currentTurnUser = newRoom.connUsers[0].userName;
@@ -112,7 +112,7 @@ router.post('/', function(req, res, next){
 
     // res.render('exam/examGame', {room: newRoom, users: newRoom.connUsers});
     res.render('Game/GameRoom', {room: newRoom});
-
+      
 
   // }else{
   //   req.flash('danger', '똑같은 방이름이 있습니다.');
@@ -150,11 +150,12 @@ function searchRoomIndex(room, name){
   return -1;
 }
 // 원래는 레디 다  false로 시작해야한다.
-function addUser(roomIndex, userID, userName){
+function addUser(roomIndex, userID, userName, photoURL){
   rooms[roomIndex].connUsers.push({
     'userID' : userID,
     'userName' : userName,
     'isReady' :  false,
+    'photoURL' : photoURL,
     //'isGameParticipate' : false,
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,

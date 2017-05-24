@@ -1,11 +1,21 @@
 .container
   div
+<<<<<<< HEAD
     textarea#chatLog.chat_log(readonly='',  style="width: 95%; height: 200px; color:black;")
+=======
+    textarea#chatLog.chat_log(readonly='',  style="width: 100%; height: 100px;")
+>>>>>>> feature/gameview
   form#chat
     //- input#userName.name(type='text', readonly='', style="width: 10%;")=currentUser.userName
     if(currentUser)
+      h5#userName(style="width: auto;")=currentUser.userName
       h5#userName(style="width: auto; color:black;")=currentUser.userName
     else
+<<<<<<< HEAD
       h5#userName(style="width: auto; color:black;")= room.connUsers[room.connUsers.length-1].userName
     input#message.message(type='text',style="width: 70%;")
     input.chat(type='submit', value='chat', style="width: 10%;")
+=======
+      h5#userName(style="width: auto;")= room.connUsers[room.connUsers.length-1].userName
+    input#message.message(type='text',style="width: 100%;")
+>>>>>>> feature/gameview

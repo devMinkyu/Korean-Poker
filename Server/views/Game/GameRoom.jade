@@ -1,12 +1,11 @@
-extends ../layout
+extends layout
+
 block content
-  .container
+  .gamefield
     .row
-      h1.page-header(id ='roomName')= room.roomName
-      h3#roomAllMoney=room.roomAllMoney
-      h5#roomMoney=room.roomMoney
       h5#_id #{room._id+1}
       include ../includes/chat
+<<<<<<< HEAD
     br
     h1#viewTimer= 15
     .row(id='userWindow')
@@ -23,43 +22,97 @@ block content
                   else
                     h6(name='state') 대기 중
     #buttons   
+=======
+    .row(id='userWindow')
+      each user in room.connUsers
+          .col-xs-6
+           .gameBox
+              h3(name='username')= user.userName
+              span(name='win') 승: #{user.win}
+              span(name='lose') / 패: #{user.lose}
+              p
+                if(user.isReady == true)
+                  span(name='state') 준비 완료
+                else
+                  span(name='state') 대기 중     
+            img.profile.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+    .draw
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.cards(src="/images/Card-S.png")
+      img.moneypanel(src="/images/Moneyarea.png")
+      h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
+      h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
+    .row
+        img.mycards(src="/images/Card-S.png")
+        img.mycards(src="/images/Card-S.png")
+    #buttons
+      img.myprofile(src=currentUser.photoURL)
+      h1(id='roomName')= room.roomName
+>>>>>>> feature/gameview
       p#cardImforamtion
-        span(id="cardImforamtion1") 
+        span(id="cardImforamtion1")
         input(type='checkbox',name="card", id="card1")
-        span(id="cardImforamtion2") 
+        span(id="cardImforamtion2")
         input(type='checkbox',name="card", id="card2")
-        span(id="cardImforamtion3") 
+        span(id="cardImforamtion3")
         input(type='checkbox',name="card", id="card3")
         button.btn.btn-default(id="die") Die  
       p#firstButton
-        button.btn.btn-primary(id="ready") Ready
-        button.btn.btn-default(id="exit") Exit          
+        button.btn(id="ready") ready
+        button.btn(id="exit") Exit          
       p#secondButton
-        button.btn.btn-primary(id="call") Call 
-        button.btn.btn-default(id="half") Half(따블) 
+        button.btn.btn-primary(id="call") Call
+        button.btn.btn-default(id="half") Half(따블)
       p#thirdButton
         button.btn.btn-primary(id="firstSelect") OneCardSelect
+<<<<<<< HEAD
         button.btn.btn-primary(id="finallySelect") FinallySelect 
     
     script(src='/javascripts/gameConnetion.js').      
+=======
+        button.btn.btn-primary(id="finallySelect") FinallySelect
+        button.btn.btn-default(id="die") Die
+    //- script(type='text/javascript', src='/javascripts/flipcard.js')
+    //- script(type='text/javascript', src='/javascripts/drawcard.js')
+    //- script(type='text/javascript', src='/javascripts/selectedcard.js')
+
+    script(src='/javascripts/gameConnetion.js').    
+>>>>>>> feature/gameview
     script#rowTemplate1(type='text/template').
-      <div class="col-sm-6 col-md-3">
+      <div class="col-xs-6">
         <div class="thumbnail">
           <div class="caption">
+<<<<<<< HEAD
             <h2 name='username'></h2>
               <h6 name = 'win'></h6>
               <h6 name = 'lose'></h6>
+=======
+            <img src="src=user.photoURL" class="profile" class="img-circle"/>
+            <h3 name='username'></h3>
+              <span name = 'win'></span>
+              <span name = 'lose'></span>
+>>>>>>> feature/gameview
               <p>
+                  <span name='state'></span> 
                   <h6 name='state'></h6> 
               </p>
               <p>
+                  <span name='turn'></span> 
                   <h6 name='turn'></h6> 
               </p>
           </div>
         </div>
       </div>
-      
+
     script#rowTemplate2(type='text/template').
+<<<<<<< HEAD
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <div class="caption">
@@ -76,5 +129,346 @@ block content
                       <h6 name='turn'></h6> 
                   </p>
             </div>
+=======
+      <div class="col-xs-6">
+        <div class="thumbnail">
+          <div class="caption">
+            <h1 name='dieState'><h1>
+              <h3 name='username'></h3>
+              <div name ='opencard1'>카드</div>
+              <div name ='opencard2'>카드</div>
+              <div name ='opencard3'>카드</div>
+              <div name ='currentState'></div>
+                <p>
+                    <span name='money'></span> 
+                </p>
+                <p>
+                    <span name='turn'></span> 
+                </p>
+>>>>>>> feature/gameview
           </div>
         </div>
+      </div>
+
+
+  style.
+    .row{
+      margin-right: 0px;
+      margin-left: 0px;
+      color: white;
+    }
+     #roomMoney{
+      left : 34%;
+      bottom : 30%;
+      position:absolute;
+      color: white;
+    }
+    #roomAllMoney{
+      left : 70%;
+      bottom : 42%;
+      position:absolute;
+      color: white;
+    }
+    #ready{
+      position:absolute;
+      left:35%;
+      top:5%;
+      width:15%;
+      height:30%;
+      background: url('/images/Button3.png');
+      background-repeat: no-repeat;
+    }
+    #exit{
+      position:absolute;
+      left:35%;
+      top:40%;
+      width:15%;
+      height:30%;
+      background: url('/images/Button3.png');
+      background-repeat: no-repeat;
+    }
+    #buttons h1{
+      position: absolute;
+      top : 60%;
+      left: 3%;
+      color: white;
+    }
+    .myprofile{
+      position:absolute;
+      left:3%;
+      top:10%;
+      width:30%;
+      height:60%;
+    }
+    .navbar{
+      display: none;
+    }
+    #buttons {
+      position: absolute;
+      width: 50%;
+      height: 200px;
+      bottom : 2%;
+      right: 50%;
+      background: url('/images/Butttonarea.png');
+      background-repeat: no-repeat;
+    }
+    .row .container {
+      color: black;
+      position: absolute;
+      bottom : 10%;
+      left: 70%;
+      width: 200px;
+    }
+    .col-xs-6:nth-child(1) {
+      background: url('/images/Profilearea.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 1%;
+      left: 68%;
+      padding-left:0px;
+      padding-right:0px;
+      width: 300PX;
+      height: 200px;
+    }
+    .col-xs-6:nth-child(1) img {
+      position: absolute;
+      top: 10% ;
+      left: 110%;
+      width: 11em;
+      height: 11em;
+    }
+    .col-xs-6:nth-child(1) span{
+      position: relative;
+      left: 2%;
+    }
+    .col-xs-6:nth-child(1) h3{
+      position: relative;
+      left: 2%;
+      width:95%;
+    }
+    .col-xs-6:nth-child(2) {
+      background: url('/images/Profilearea.png');
+      background-repeat: no-repeat;
+      left: 68%;
+      top: 30%;
+      position: absolute;
+      padding-left:0px;
+      padding-right:0px;
+      width: 300PX;
+      height: 200px;
+    }
+    .col-xs-6:nth-child(2) img {
+      position: absolute;
+      top: 10% ;
+      left: 110%;
+      width: 11em;
+      height: 11em;
+    }
+    .col-xs-6:nth-child(2) span{
+      position: relative;
+      left: 2%;
+    }
+    .col-xs-6:nth-child(2) h3{
+      position: relative;
+      left: 2%;
+      width:95%;
+    }
+    .col-xs-6:nth-child(3) {
+      background: url('/images/Profilearea.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 30%;
+      right: 68%;
+      padding-left:0px;
+      padding-right:0px;
+      width: 300PX;
+      height: 200px;
+    }
+    .col-xs-6:nth-child(3) img {
+      position: absolute;
+      top: 10% ;
+      right: 110%;
+      width: 11em;
+      height: 11em;
+    }
+    .col-xs-6:nth-child(3) span{
+      position: relative;
+      left: 2%;
+    }
+    .col-xs-6:nth-child(3) h3{
+      position: relative;
+      left: 2%;
+      width:95%;
+    }
+    .col-xs-6:nth-child(4) {
+      background: url('/images/Profilearea.png');
+      background-repeat: no-repeat;
+      top: 1%;
+      position: absolute;
+      right: 68%;
+      padding-left:0px;
+      padding-right:0px;
+      width: 300PX;
+      height: 200px;
+    }
+    .col-xs-6:nth-child(4) img {
+      position: absolute;
+      top: 10% ;
+      right: 110%;
+      width: 11em;
+      height: 11em;
+    }
+    .col-xs-6:nth-child(4) span{
+      position: relative;
+      left: 2%;
+    }
+    .col-xs-6:nth-child(4) h3{
+      position: relative;
+      left: 2%;
+      width:95%;
+    }
+    
+    .gamefield {
+      width: 100%;
+      height: 100%;
+      background: url('/images/BG.png');
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+    
+    .cardarea{
+      position: absolute;
+      width:25%;
+      height:25%;
+    }
+    
+    .image-selected{
+      position: absolute;
+      left : 37%;
+      top : 65%;
+      width: 8%;
+      display: none;
+    }
+    .draw {
+      position: absolute;
+      height: 50%;
+      width: 50%;
+      top: 0%;
+      left: 20%;
+    }
+    .cards {
+      position: absolute;
+      left : 50%;
+      bottom : 40%;
+      height: 35%;
+      width: 11%;
+    }
+    .moneypanel {
+      position: absolute;
+      height: 100%;
+      width: 60%;
+      left : 30.5%;
+      bottom : -10%;
+    }
+    .mycards {
+      position: absolute;
+      left : 37%;
+      top : 70%;
+      height: 25%;
+      width: 8%;
+      display: none;
+    }
+    @media all and (min-width: 360px) and (max-width: 640px){
+      #roomMoney{
+      left : 37%;
+      bottom : 40%;
+      position:absolute;
+      color: white;
+      font-size: 1em;
+      }
+      #roomAllMoney{
+        left : 70%;
+        bottom : 55%;
+        position:absolute;
+        color: white;
+        font-size: 1em;
+      }
+      .gamefield {
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+        width: 550px;
+        height: 360px;
+        top: 19%;
+        left: -26%;
+        background: url('/images/BG.png');
+        background-repeat: no-repeat;
+        position: absolute;
+      }
+      .image-selected{
+        position: absolute;
+        //- left : 37%;
+        //- top : 70%;
+        //- height: 30%;
+        //- width: 10%;
+        left : 37%;
+        top : 65%;
+        width: 8%;
+        display: none;
+      }
+      .mycards {
+        position: absolute;
+        left : 37%;
+        top : 70%;
+        height: 25%;
+        width: 8%;
+        display: none;
+      }
+      .col-xs-6 span{
+        font-size :0.1em;
+      }
+      .caption{
+        width: 70px;
+      }
+      .thumbnail{
+        padding-left: 25px;
+        margin-bottom: 0px;
+      }
+      .col-xs-6:nth-child(1) {
+        position: absolute;
+        top: 1%;
+        left: 80%;
+        width: 100px;
+        font-size: 1em;
+      }
+      .col-xs-6:nth-child(2) {
+        left: 80%;
+        top: 30%;
+        position: absolute;
+        width: 100px;
+      }
+      .col-xs-6:nth-child(3) {
+        position: absolute;
+        top: 30%;
+        right: 80%;
+        width: 100px;
+      }
+      .col-xs-6:nth-child(4) {
+        top: 1%;
+        position: absolute;
+        right: 80%;
+        width: 100px;
+      }
+      .row .container {
+        position: absolute;
+        bottom : 2.5%;
+        left: 84%;
+        width: 100px;
+        font-size: 0.2em;
+      }
+      .profile {
+        height: 50%;
+        width: 50%;
+      }
+    }
+    
