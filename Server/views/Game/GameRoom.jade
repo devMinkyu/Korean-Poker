@@ -8,7 +8,7 @@ block content
     .row(id='userWindow')
       each user in room.connUsers
           .col-xs-6
-           .gameBox
+           #gameBox
               h3(name='username')= user.userName
               span(name='win') 승: #{user.win}
               span(name='lose') / 패: #{user.lose}
@@ -60,7 +60,14 @@ block content
     //- script(type='text/javascript', src='/javascripts/selectedcard.js')
 
     script(src='/javascripts/gameConnetion.js').    
-
+    script#rowTemplate1(type='text/template').
+      <h3 name='username' ></h3>
+      <span name='win'></span>
+      <span name='lose'></span>
+      <p>
+          <span name='state'></span>
+      </p>    
+      <img src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E" class = "profile" class = "img-circle" />
 
   style.
     .row{

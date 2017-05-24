@@ -9,13 +9,13 @@ $("#cardImforamtion").hide();
 socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
 
 socket.on('room_connection_receive', function(users){
-  $('#userWindow').empty();
+  $('#gameBox').empty();
   var name = document.getElementsByName("username");
   var win = document.getElementsByName("win");
   var lose = document.getElementsByName("lose");
   var state = document.getElementsByName("state");
   for(var i = 0; i < users.length; i++){
-    $("#userWindow").append($('#rowTemplate1').html());
+    $("#gameBox").append($('#rowTemplate1').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
