@@ -69,75 +69,160 @@ block content
         <h3 name='username' ></h3>
         <img class="profile" class="img-circle" name= "userProfile"/>
         <h3 class='playerdie'></h3>
+        <h5 class='playerdie'>hi</h5>
+        <h5 class='playercall'>call</h5>
+        <h5 class='playerhalf'>call</h5>
+        <img class="turn" src="/images/turn.png"/>
+        <h4 class='moneyBar'></h4>
       </div> 
   style.
+    .moneyBar {
+      background: url('/images/nameBar.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:52%;
+      left:-1%;
+    }
+    .col-xs-6:nth-child(1) .turn{
+      position:absolute;
+      top: 5% ;
+      left: 122%;
+      width: 25%;
+      height: 25%;
+    }
+    .col-xs-6:nth-child(2) .turn{
+      position:absolute;
+      top: 5% ;
+      left: 122%;
+      width: 25%;
+      height: 25%;
+    }
+    .col-xs-6:nth-child(3) .turn{
+      position:absolute;
+      top: 5% ;
+      right: 122%;
+      width: 25%;
+      height: 25%;
+    }
+    .col-xs-6:nth-child(4) .turn{
+      position:absolute;
+      top: 5% ;
+      right: 122%;
+      width: 25%;
+      height: 25%;
+    }
     .col-xs-6:nth-child(1) .playerdie{
-        position:absolute;
-        top: 60% ;
-        left: 110%;
-      }
-      .col-xs-6:nth-child(2) .playerdie{
-        position:absolute;
-        top: 60% ;
-        left: 110%;
-      }
-      .col-xs-6:nth-child(3) .playerdie{
-        position:absolute;
-        top: 60% ;
-        right: 50%;
-      }
-      .col-xs-6:nth-child(4) .playerdie{
-        position:absolute;
-        top: 60% ;
-        right: 50%;
-      }
+      position:absolute;
+      top: 60% ;
+      left: 110%;
+    }
+    .col-xs-6:nth-child(2) .playerdie{
+      position:absolute;
+      top: 60% ;
+      left: 110%;
+    }
+    .col-xs-6:nth-child(3) .playerdie{
+      position:absolute;
+      top: 60% ;
+      right: 110%;
+    }
+    .col-xs-6:nth-child(4) .playerdie{
+      position:absolute;
+      top: 60% ;
+      right: 110%;
+    }
+    .col-xs-6:nth-child(1) .playercall{
+      position:absolute;
+      top: 60% ;
+      left: 120%;
+    }
+    .col-xs-6:nth-child(2) .playercall{
+      position:absolute;
+      top: 60% ;
+      left: 120%;
+    }
+    .col-xs-6:nth-child(3) .playercall{
+      position:absolute;
+      top: 60% ;
+      right: 120%;
+    }
+    .col-xs-6:nth-child(4) .playercall{
+      position:absolute;
+      top: 60% ;
+      right: 120%;
+    }
+    .col-xs-6:nth-child(1) .playerhalf{
+      position:absolute;
+      top: 60% ;
+      left: 130%;
+    }
+    .col-xs-6:nth-child(2) .playerhalf{
+      position:absolute;
+      top: 60% ;
+      left: 130%;
+    }
+    .col-xs-6:nth-child(3) .playerhalf{
+      position:absolute;
+      top: 60% ;
+      right: 130%;
+    }
+    .col-xs-6:nth-child(4) .playerhalf{
+      position:absolute;
+      top: 60% ;
+      right: 130%;
+    }
     #bettingBar{
-      top:100%;
+      top:200%;
       position:sticky;
     }
     #dadang{
       background: url('/images/button/dadang.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
+      background-size: 120% 120%;
+      width:12%;
       height:25%;
     }
     #call{
       background: url('/images/button/call.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
-      height:25%;
+      background-size: 120% 120%;
+      width:12%;
     }
     
     #half{
       background: url('/images/button/half.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
-      height:25%;
+      background-size: 120% 120%;
+      width:12%;
     }
     
     #bbing{
       background: url('/images/button/bbing.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
+      background-size: 120% 120%;
+      width:12%;
       height:25%;
     }
     #check{
       background: url('/images/button/check.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
-      height:25%;
+      background-size: 120% 120%;
+      width:12%;
     }
     #die{
       background: url('/images/button/die.png');
       background-repeat: no-repeat;
       background-position:center center;
-      width:10%;
-      height:25%;
+      background-size: 120% 120%;
+      width:12%;
     }
     .row{
       margin-right: 0px;
@@ -145,16 +230,18 @@ block content
       color: white;
     }
      #roomMoney{
-      left : 34%;
-      bottom : 30%;
-      position:absolute;
+      left : 35%;
+      bottom : -60%;
+      position:relative;
+      text-align: left;
       color: white;
     }
     #roomAllMoney{
-      left : 70%;
-      bottom : 42%;
-      position:absolute;
+      right : 13%;
+      bottom : -38%;
+      position:relative;
       color: white;
+      text-align: right;
     }
     #ready{
       position:absolute;
@@ -196,7 +283,7 @@ block content
       position: absolute;
       width: 25%;
       height: 25%;
-      bottom : 2%;
+      bottom : 7%;
       left: 1%;
       background: url('/images/Butttonarea.png');
       background-repeat: no-repeat;
@@ -221,8 +308,9 @@ block content
       padding-left:0px;
       padding-right:0px;
       width: 20%;
-      height: 30%;
+      height: 20%;
     }
+    
     .col-xs-6:nth-child(1) .profile {
       position: absolute;
       top: 10% ;
@@ -230,7 +318,7 @@ block content
       width: 50%;
       height: 50%;
     }
-    .col-xs-6:nth-child(1) span{
+    .col-xs-6:nth-child(1) #win{
       position: relative;
       left: 2%;
     }
@@ -243,14 +331,14 @@ block content
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
       background-position:center center;
-      background-size:contain;
+      background-size:cover;
       left: 68%;
       top: 30%;
       position: absolute;
       padding-left:0px;
       padding-right:0px;
       width: 20%;
-      height: 200px;
+      height: 20%;
     }
     .col-xs-6:nth-child(2) .profile {
       position: absolute;
@@ -259,7 +347,7 @@ block content
       width: 50%;
       height: 50%;
     }
-    .col-xs-6:nth-child(2) span{
+    .col-xs-6:nth-child(2) #win{
       position: relative;
       left: 2%;
     }
@@ -272,15 +360,16 @@ block content
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
       background-position:center center;
-      background-size:contain;
+      background-size:cover;
       position: absolute;
       top: 30%;
       right: 68%;
       padding-left:0px;
       padding-right:0px;
       width: 20%;
-      height: 200px;
+      height: 20%;
     }
+    
     .col-xs-6:nth-child(3) .profile {
       position: absolute;
       top: 10% ;
@@ -288,7 +377,7 @@ block content
       width: 50%;
       height: 50%;
     }
-    .col-xs-6:nth-child(3) span{
+    .col-xs-6:nth-child(3) #win{
       position: relative;
       left: 2%;
     }
@@ -301,15 +390,16 @@ block content
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
       background-position:center center;
-      background-size:contain;
+      background-size:cover;
       top: 1%;
       position: absolute;
       right: 68%;
       padding-left:0px;
       padding-right:0px;
       width: 20%;
-      height: 200px;
+      height: 20%;
     }
+    
     .col-xs-6:nth-child(4) .profile {
       position: absolute;
       top: 10% ;
@@ -317,7 +407,7 @@ block content
       width: 50%;
       height: 50%;
     }
-    .col-xs-6:nth-child(4) span{
+    .col-xs-6:nth-child(4) #win{
       position: relative;
       left: 2%;
     }
@@ -374,6 +464,15 @@ block content
       display:none;
     }
     @media all and (min-width: 360px) and (max-width: 640px){
+      h3{
+        font-size: 8px;
+      }
+      h5{
+        font-size: 7px;
+      }
+      h3{
+        font-size: 8px;
+      }
       .gamefield {
         -ms-transform: rotate(-90deg); /* IE 9 */
         -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
@@ -389,28 +488,28 @@ block content
         background-size:contain;
       }
       #buttons {
-      position: absolute;
-      width: 25%;
-      height: 25%;
-      bottom : 5%;
-      left: 1%;
-      background: url('/images/Butttonarea.png');
-      background-repeat: no-repeat;
-      background-size:auto;
+        position: absolute;
+        width: 25%;
+        height: 25%;
+        bottom : 5%;
+        left: 1%;
+        background: url('/images/Butttonarea.png');
+        background-repeat: no-repeat;
+        background-size:auto;
       }
       #roomMoney{
-      left : 37%;
-      bottom : 40%;
-      position:absolute;
-      color: white;
-      font-size: 1em;
+        left : 35%;
+        bottom :-60%;
+        position:relative;
+        text-align: left;
+        color: white;
       }
       #roomAllMoney{
-        left : 70%;
-        bottom : 55%;
-        position:absolute;
+        right : 13%;
+        bottom : -38%;
+        position:relative;
         color: white;
-        font-size: 1em;
+        text-align: right;
       }
       .image-selected{
         position: absolute;
@@ -431,25 +530,15 @@ block content
         width: 8%;
         display: none;
       }
-      .col-xs-6 span{
-        font-size :0.1em;
-      }
-      .caption{
-        width: 70px;
-      }
-      .thumbnail{
-        padding-left: 25px;
-        margin-bottom: 0px;
-      }
       .col-xs-6:nth-child(1) {
         position: absolute;
         top: 1%;
-        left: 80%;
+        left: 70%;
         width: 100px;
         font-size: 1em;
       }
       .col-xs-6:nth-child(2) {
-        left: 80%;
+        left: 70%;
         top: 30%;
         position: absolute;
         width: 100px;
@@ -457,13 +546,13 @@ block content
       .col-xs-6:nth-child(3) {
         position: absolute;
         top: 30%;
-        right: 80%;
+        right: 70%;
         width: 100px;
       }
       .col-xs-6:nth-child(4) {
         top: 1%;
         position: absolute;
-        right: 80%;
+        right: 70%;
         width: 100px;
       }
       .row .container {
