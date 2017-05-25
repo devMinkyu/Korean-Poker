@@ -53,13 +53,7 @@ socket.on('ready_receive', function(users, index){
 
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(room){
-  socket.emit('timer_send');
-  $("#cardImforamtion").show();
-  $("#thirdButton").show();
-  $("#cardImforamtion #card3").hide();
-  $("#cardImforamtion #cardImforamtion3").hide();
-  $("#thirdButton #finallySelect").hide();
-  $("#firstButton").hide();
+  //socket.emit('timer_send');
   $('#userWindow').empty();
   for(var i = 0; i < room.connUsers.length; i++){
     $("#userWindow").append($('#rowTemplate3').html());
@@ -326,7 +320,7 @@ function cardAnimation(userNumber){
                                 direction = {left: "-=55%", bottom: "+=15%"}
                                 directionCount++
                             }else if(moveLeftCount ==1){
-                                direction = {left: "-=45%", bottom: "+=15%"}
+                                direction = {left: "-=45%", bottom: "+=15%"}  
                                 directionCount++
                             }
                         }

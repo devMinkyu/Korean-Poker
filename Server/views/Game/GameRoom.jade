@@ -31,35 +31,29 @@ block content
       h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
       h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
     .row
-        
-    #buttons
-      //img.myprofile(src=currentUser.photoURL)
-      img.myprofile(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
-      h1(id='roomName')= room.roomName
-      p#cardImforamtion
-        img.mycards(src="/images/Card-S"+'#{id}'+".png")
-        img.mycards(src="/images/Card-S.png")
-        //- span(id="cardImforamtion1")
-        //- input(type='checkbox',name="card", id="card1")
-        //- span(id="cardImforamtion2")
-        //- input(type='checkbox',name="card", id="card2")
-        //- span(id="cardImforamtion3")
-        //- input(type='checkbox',name="card", id="card3")
-        button.btn.btn-default(id="die") Die  
-      p#firstButton
-        button.btn(id="ready") ready
-        button.btn(id="exit") Exit          
-      p#secondButton
-        button.btn.btn-primary(id="call") Call
-        button.btn.btn-default(id="half") Half(따블)
-      p#thirdButton
-        button.btn.btn-primary(id="firstSelect") OneCardSelect
-        button.btn.btn-primary(id="finallySelect") FinallySelect
-        button.btn.btn-default(id="die") Die
-    //- script(type='text/javascript', src='/javascripts/flipcard.js')
+      #buttons
+        //img.myprofile(src=currentUser.photoURL)
+        h1(id='roomName')= room.roomName
+        p#firstButton
+          img.myprofile(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          button.btn(id="ready")
+          button.btn(id="exit")
+    .row
+      .col.xs.4
+        img.mycards
+        img.mycards
+        img.mycards
+    .row(id='bettingBar')
+      button.col-md-2(id="dadang")
+      button.col-md-2(id="call")
+      button.col-md-2(id="half")
+      button.col-md-2(id="bbing")
+      button.col-md-2(id="check")
+      button.col-md-2(id="die")
     //- script(type='text/javascript', src='/javascripts/drawcard.js')
     //- script(type='text/javascript', src='/javascripts/selectedcard.js')
 
+    script(type='text/javascript', src='/javascripts/flipcard.js').
     script(src='/javascripts/gameConnetion.js').    
     script#rowTemplate1(type='text/template').
       <div class = "col-xs-6">
@@ -82,6 +76,54 @@ block content
         <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
       </div> 
   style.
+    #bettingBar{
+      top:100%;
+      position:sticky;
+    }
+    #dadang{
+      background: url('/images/button/dadang.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
+    #call{
+      background: url('/images/button/call.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
+    
+    #half{
+      background: url('/images/button/half.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
+    
+    #bbing{
+      background: url('/images/button/bbing.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
+    #check{
+      background: url('/images/button/check.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
+    #die{
+      background: url('/images/button/die.png');
+      background-repeat: no-repeat;
+      background-position:center center;
+      width:10%;
+      height:25%;
+    }
     .row{
       margin-right: 0px;
       margin-left: 0px;
@@ -101,21 +143,23 @@ block content
     }
     #ready{
       position:absolute;
-      left:35%;
-      top:5%;
-      width:15%;
+      left:60%;
+      top:9%;
+      width:30%;
       height:30%;
-      background: url('/images/Button3.png');
+      background: url('/images/button/ready.png');
       background-repeat: no-repeat;
+      background-position:center center;
     }
     #exit{
       position:absolute;
-      left:35%;
+      left:60%;
       top:40%;
-      width:15%;
+      width:30%;
       height:30%;
-      background: url('/images/Button3.png');
+      background: url('/images/button/exit.png');
       background-repeat: no-repeat;
+      background-position:center center;
     }
     #buttons h1{
       position: absolute;
@@ -133,39 +177,43 @@ block content
     .navbar{
       display: none;
     }
-    #buttons {
+    #firstButton {
       position: absolute;
-      width: 50%;
-      height: 200px;
+      width: 25%;
+      height: 25%;
       bottom : 2%;
-      right: 50%;
+      left: 1%;
       background: url('/images/Butttonarea.png');
       background-repeat: no-repeat;
+      background-size:auto;
     }
     .row .container {
-      color: black;
       position: absolute;
       bottom : 10%;
-      left: 70%;
+      right: 8%;
       width: 200px;
+      color: black;
     }
     .col-xs-6:nth-child(1) {
       background: url('/images/Profilearea.png');
+      background-position:center center;
       background-repeat: no-repeat;
+      background-size:cover;
       position: absolute;
       top: 1%;
       left: 68%;
+      padding-top:0px;
       padding-left:0px;
       padding-right:0px;
-      width: 300PX;
-      height: 200px;
+      width: 20%;
+      height: 30%;
     }
     .col-xs-6:nth-child(1) .profile {
       position: absolute;
       top: 10% ;
       left: 110%;
-      width: 11em;
-      height: 11em;
+      width: 50%;
+      height: 50%;
     }
     .col-xs-6:nth-child(1) span{
       position: relative;
@@ -179,20 +227,22 @@ block content
     .col-xs-6:nth-child(2) {
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
+      background-position:center center;
+      background-size:contain;
       left: 68%;
       top: 30%;
       position: absolute;
       padding-left:0px;
       padding-right:0px;
-      width: 300PX;
+      width: 20%;
       height: 200px;
     }
     .col-xs-6:nth-child(2) .profile {
       position: absolute;
       top: 10% ;
       left: 110%;
-      width: 11em;
-      height: 11em;
+      width: 50%;
+      height: 50%;
     }
     .col-xs-6:nth-child(2) span{
       position: relative;
@@ -206,20 +256,22 @@ block content
     .col-xs-6:nth-child(3) {
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
+      background-position:center center;
+      background-size:contain;
       position: absolute;
       top: 30%;
       right: 68%;
       padding-left:0px;
       padding-right:0px;
-      width: 300PX;
+      width: 20%;
       height: 200px;
     }
     .col-xs-6:nth-child(3) .profile {
       position: absolute;
       top: 10% ;
       right: 110%;
-      width: 11em;
-      height: 11em;
+      width: 50%;
+      height: 50%;
     }
     .col-xs-6:nth-child(3) span{
       position: relative;
@@ -233,20 +285,22 @@ block content
     .col-xs-6:nth-child(4) {
       background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
+      background-position:center center;
+      background-size:contain;
       top: 1%;
       position: absolute;
       right: 68%;
       padding-left:0px;
       padding-right:0px;
-      width: 300PX;
+      width: 20%;
       height: 200px;
     }
     .col-xs-6:nth-child(4) .profile {
       position: absolute;
       top: 10% ;
       right: 110%;
-      width: 11em;
-      height: 11em;
+      width: 50%;
+      height: 50%;
     }
     .col-xs-6:nth-child(4) span{
       position: relative;
@@ -306,9 +360,33 @@ block content
       top : 70%;
       height: 25%;
       width: 8%;
-      display: none;
+      display:none;
     }
     @media all and (min-width: 360px) and (max-width: 640px){
+      .gamefield {
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+        width: 640px;
+        height: 360px;
+        top: 140px;
+        left: -140px;
+        background: url('/images/BG.png');
+        background-repeat: no-repeat;
+        position: absolute;
+        background-position:center center;
+        background-size:contain;
+      }
+      #buttons {
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      bottom : 5%;
+      left: 1%;
+      background: url('/images/Butttonarea.png');
+      background-repeat: no-repeat;
+      background-size:auto;
+      }
       #roomMoney{
       left : 37%;
       bottom : 40%;
@@ -322,18 +400,6 @@ block content
         position:absolute;
         color: white;
         font-size: 1em;
-      }
-      .gamefield {
-        -ms-transform: rotate(-90deg); /* IE 9 */
-        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-        transform: rotate(-90deg);
-        width: 550px;
-        height: 360px;
-        top: 19%;
-        left: -26%;
-        background: url('/images/BG.png');
-        background-repeat: no-repeat;
-        position: absolute;
       }
       .image-selected{
         position: absolute;
