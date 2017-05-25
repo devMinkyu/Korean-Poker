@@ -1,9 +1,13 @@
 var socket = io.connect();
 var element = document.getElementById("_id");
 var currentUserName = document.getElementById("userName").innerHTML;
-$("#secondButton").hide();
-$("#thirdButton").hide();
-$("#cardImforamtion").hide();
+$("#dadang").attr('disabled',true);
+$("#call").attr('disabled',true);
+$("#half").attr('disabled',true);
+$("#bbing").attr('disabled',true);
+$("#check").attr('disabled',true);
+$("#die").attr('disabled',true);
+
 
 // 연결
 socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
@@ -55,7 +59,10 @@ socket.on('ready_receive', function(users, index){
 
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(room){
-  //socket.emit('timer_send');
+  $("#ready").attr('disabled',true);
+  $("#exit").attr('disabled',true);
+  $("#die").attr('disabled',false);
+  socket.emit('timer_send');
   $('#userWindow').empty();
   for(var i = 0; i < room.connUsers.length; i++){
     $("#userWindow").append($('#rowTemplate3').html());
@@ -76,7 +83,7 @@ socket.on('start_game', function(room){
       cardImforamtion2.src ="/images/card/" + card2 +".png";
     }
   }
-  cardAnimation(room.connUsers.length);
+  cardAnimation(room.connUsers.length, 0);
 });
 // 한장의 카드 눌렀을때
 $('#cardImforamtion1').click(function(){
@@ -86,6 +93,7 @@ $('#cardImforamtion1').click(function(){
         $('.mycards').removeClass("image-selected");
         $('#cardImforamtion1').addClass("image-selected");
     }
+    oneSelect();
 });
 $('#cardImforamtion2').click(function(){
     if($('.mycards.image-selected').index() == -1){ 
@@ -94,38 +102,54 @@ $('#cardImforamtion2').click(function(){
         $('.mycards').removeClass("image-selected");
         $('#cardImforamtion2').addClass("image-selected");
     }
+    oneSelect();
 });
-function firstSelect(){
+function oneSelect(){
   var cardImforamtion1 = document.getElementById("cardImforamtion1");
   var cardImforamtion2 = document.getElementById("cardImforamtion2");
-  //socket.emit('one_open_card_send', selectCard);
+  var selectCard;
+  var card1 = cardImforamtion1.src;
+  var card2 = cardImforamtion2.src;
+  if(cardImforamtion1.getAttribute("class").indexOf("image-selected") == -1){
+    selectCard = (card2.replace(/[^0-9]/g,"")).split("3000").join("");
+  } else if(cardImforamtion2.getAttribute("class").indexOf("image-selected") == -1){
+    selectCard = (card1.replace(/[^0-9]/g,"")).split("3000").join("");
+  }
+  socket.emit('one_open_card_send', 1*selectCard);
 }
-// 카드한장을 눌렀을 때 반응하는 소켓
+// 카드한장씩 공개
 socket.on('one_open_card_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  var openCard = document.getElementsByName("opencard1");
-  var turn = document.getElementsByName("turn");
-  var money = document.getElementsByName("money");
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
+  var openCard = document.getElementsByClassName("cards");
+  //var turn = document.getElementsByName("turn");
+  //var money = document.getElementsByName("money");
 
   for(var i = 0; i < room.connUsers.length; i++){
     if(user.userName == room.connUsers[i].userName){
-      openCard[i].innerHTML = user.cards[0];
-      money[i].innerHTML = room.connUsers[i].money;
+      openCard[i].src ="/images/card/" + user.cards[0] +".png";
+      //money[i].innerHTML = room.connUsers[i].money;
     }
-    if(room.connUsers[i].userName == room.currentTurnUser)
-      turn[i].innerHTML = "현재 턴";
-    else
-      turn[i].innerHTML = "대기 중";
-    }
+    // if(room.connUsers[i].userName == room.currentTurnUser)
+    //   turn[i].innerHTML = "현재 턴";
+    // else
+    //   turn[i].innerHTML = "대기 중";
+  }
+  $(".cards").transition({ 
+      perspective: '100px',
+      rotateY: '180deg'
+  });
 });
 // 한장씩 다 공개했을때 반응하는 소켄
 socket.on('one_open_card_end_receive',function(room){
-  var die = document.getElementsByName("dieState");
+  var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByName("turn");
   for(var i = 0; i < room.connUsers.length; i++){
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
-      $("#secondButton").show();
-      $("#thirdButton").hide();
+      $("#dadang").attr('disabled',false);
+      $("#call").attr('disabled',false);
+      $("#half").attr('disabled',false);
+      $("#bbing").attr('disabled',false);
+      $("#check").attr('disabled',false);
     }
     if(room.connUsers[i].userName == room.currentTurnUser)
       turn[i].innerHTML = "현재 턴";
@@ -142,20 +166,25 @@ $('#die').click('submit', function(e){
 // 죽는 다고 할 때 반응하는 소켓
 socket.on('die_receive', function(room, user){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  var turn = document.getElementsByName("turn");
-  var money = document.getElementsByName("money");
-  var die = document.getElementsByName("dieState");
+  //var turn = document.getElementsByName("turn");
+  //var money = document.getElementsByName("money");
+  var die = document.getElementsByClassName("playerdie");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userName == room.currentTurnUser)
-      turn[i].innerHTML = "현재 턴";
-    else
-      turn[i].innerHTML = "대기 중";
+    // if(room.connUsers[i].userName == room.currentTurnUser)
+    //   turn[i].innerHTML = "현재 턴";
+    // else
+    //   turn[i].innerHTML = "대기 중";
     if(user.userName == room.connUsers[i].userName){
-      money[i].innerHTML = room.connUsers[i].money;
+      //money[i].innerHTML = room.connUsers[i].money;
       die[i].innerHTML = "Die";
     }
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML == "Die"){
-      $("#buttons").hide();
+      $("#dadang").attr('disabled',true);
+      $("#call").attr('disabled',true);
+      $("#half").attr('disabled',true);
+      $("#bbing").attr('disabled',true);
+      $("#check").attr('disabled',true);
+      $("#die").attr('disabled',true);
     }
   }
 });
@@ -165,61 +194,61 @@ $('#call').click('submit', function gg(){
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   socket.emit('call_send', 1*roomMoneyNumber);
 });
-// half을 눌렀을때(배팅금의 2배만큼을 건다.)
+// half을 눌렀을때(배팅금의 반만큼을 건다.)
 $('#half').click('submit', function(){
   var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  var money = 2*roomMoneyNumber;
+  var money = 0.5*roomMoneyNumber;
   socket.emit('half_send', money);
 });
-// 콜의 대해 반응 하는 소켓
-socket.on('call_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  var turn = document.getElementsByName("turn");
-  var money = document.getElementsByName("money");
-  var currentState = document.getElementsByName("currentState");
-  for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userName == room.currentTurnUser)
-      turn[i].innerHTML = "현재 턴";
-    else
-      turn[i].innerHTML = "대기 중";
-    if(user.userName == room.connUsers[i].userName){
-      money[i].innerHTML = room.connUsers[i].money;
-      currentState[i].innerHTML = "Call";
-    }
-  }
+// dadang을 눌렀을때(배팅금의 2배만큼을 건다.)
+$('#dadang').click('submit', function(){
+  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
+  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
+  var money = 2*roomMoneyNumber;
+  socket.emit('dadang_send', money);
 });
-// 하프의 대해 반응 하는 소켓
-socket.on('half_receive', function(room, user){
+// bbing을 눌렀을때(판돈만큼을 건다.)
+$('#bbing').click('submit', function(){
+  var roomMoney = (document.getElementById("roomMoney").innerHTML);
+  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
+  var money = 1*roomMoneyNumber;
+  socket.emit('bbing_send', money);
+});
+// bbing을 눌렀을때 돈을 안걸고 그냥 턴을 넘긴다. 그리고 그냥 끝내기를 선언
+$('#check').click('submit', function(){
+  socket.emit('check_send');
+});
+// 배팅의 대해 반응 하는 소켓
+socket.on('betting_receive', function(room, user, state){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
-  var turn = document.getElementsByName("turn");
-  var money = document.getElementsByName("money");
-  var currentState = document.getElementsByName("currentState");
+  //var turn = document.getElementsByName("turn");
+  //var money = document.getElementsByName("money");
+  //var currentState = document.getElementsByName("currentState");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userName == room.currentTurnUser)
-      turn[i].innerHTML = "현재 턴";
-    else
-      turn[i].innerHTML = "대기 중";
-    if(user.userName == room.connUsers[i].userName){
-      money[i].innerHTML = room.connUsers[i].money;
-      currentState[i].innerHTML = "Half";
-    }
+    // if(room.connUsers[i].userName == room.currentTurnUser)
+    //   turn[i].innerHTML = "현재 턴";
+    // else
+    //   turn[i].innerHTML = "대기 중";
+    // if(user.userName == room.connUsers[i].userName){
+    //   money[i].innerHTML = room.connUsers[i].money;
+    //   currentState[i].innerHTML = state;
+    // }
   }
 });
 // 모두 콜을 눌렀을 때 한장씩 더 나눠주는 코드
 socket.on('lastCardDistribution_receive', function(room){
-  var die = document.getElementsByName("dieState");
+  var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByName("turn");
   var currentState = document.getElementsByName("currentState");
   for(var i = 0; i < room.connUsers.length; i++){
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
-      $("#secondButton").hide();
-      $("#thirdButton").show();
-      $("#thirdButton #die").hide();
-      $("#thirdButton #firstSelect").hide();
-      $("#thirdButton #finallySelect").show();
-      $("#cardImforamtion #card3").show();
-      $("#cardImforamtion #cardImforamtion3").show();
+      $("#dadang").attr('disabled',true);
+      $("#call").attr('disabled',true);
+      $("#half").attr('disabled',true);
+      $("#bbing").attr('disabled',true);
+      $("#check").attr('disabled',true);
+      $("#die").attr('disabled',true);
       $('#card3').val(room.cards[2*room.connUsers.length+i]);
       document.getElementById("cardImforamtion3").innerHTML = room.cards[2*room.connUsers.length+i];
     }
@@ -279,9 +308,6 @@ socket.on('gameContinueCheck_receive', function(room, user){
   socket.emit('gameContinueCheck_send', continueCheck);
 });
 
-socket.on('resetGame_receive', function(cards, users){
-
-});
 // window.onbeforeunload = function() {
 //   socket.emit('leave_send');
 //   return "gg";
@@ -290,10 +316,10 @@ socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });
 
-function cardAnimation(userNumber){
+function cardAnimation(userNumber, moveLeftCount){
     var direction = {left: "+=65%", bottom: "+=15%"}
     var directionCount = 0 //주는 카드 방향 지정
-    var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
+    var moveLeftCount = moveLeftCount // 받는 카드를 세장씩 정렬
     
     var drawCards = $('.cards').each(function(index) {
                         $(this).delay(300*index).animate(direction)
@@ -304,6 +330,9 @@ function cardAnimation(userNumber){
                             }else if(moveLeftCount ==1){
                                 direction = {left: "+=55%", bottom: "-=40%"}
                                 directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "+=45%", bottom: "-=40%"}
+                                directionCount++
                             }
                         }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
                             if(moveLeftCount == 0 ){
@@ -311,6 +340,9 @@ function cardAnimation(userNumber){
                                 directionCount++
                             }else if(moveLeftCount ==1){
                                 direction = {left: "-=45%", bottom: "-=40%"}
+                                directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "+=35%", bottom: "-=40%"}
                                 directionCount++
                             }
                         }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
@@ -320,12 +352,19 @@ function cardAnimation(userNumber){
                             }else if(moveLeftCount ==1){
                                 direction = {left: "-=45%", bottom: "+=15%"}  
                                 directionCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "-=35%", bottom: "+=15%"}  
+                                directionCount++
                             }
                         }
                         else{//1번 플레이어
                             if(moveLeftCount == 0 ){
                                 direction = {left: "+=55%", bottom: "+=15%"}
                                 directionCount = 0
+                                moveLeftCount++
+                            }else if(moveLeftCount ==1){
+                                direction = {left: "-=45%", bottom: "+=15%"}  
+                                directionCount++
                                 moveLeftCount++
                             }
                         }
