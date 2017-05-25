@@ -4,7 +4,6 @@
   form#chat
     //- input#userName.name(type='text', readonly='', style="width: 10%;")=currentUser.userName
     if(currentUser)
-      h5#userName(style="width: 80%;")=currentUser.userName
       h5#userName(style="width: 80%; color:black;")=currentUser.userName
     else
       h5#userName(style="width: 80%;")= room.connUsers[room.connUsers.length-1].userName

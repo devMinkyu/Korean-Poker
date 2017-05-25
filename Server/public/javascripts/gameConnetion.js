@@ -14,11 +14,13 @@ socket.on('room_connection_receive', function(users){
   var win = document.getElementsByName("win");
   var lose = document.getElementsByName("lose");
   var state = document.getElementsByName("state");
+  var img = document.getElementsByName("userProfile");
   for(var i = 0; i < users.length; i++){
     $("#userWindow").append($('#rowTemplate1').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
+    img[i].src=users[i].photoURL;
     if(users[i].isReady === true)
       state[i].innerHTML = "준비 완료";
     else
@@ -59,49 +61,45 @@ socket.on('start_game', function(room){
     $("#userWindow").append($('#rowTemplate3').html());
     $(".gamefield").append($('#rowTemplate2').html());
   }
-  // var openCard1 = document.getElementsByName("opencard1");
-  // var openCard2 = document.getElementsByName("opencard2");
-  // var openCard3 = document.getElementsByName("opencard3");
-  // var name = document.getElementsByName("username");
-  // var money = document.getElementsByName("money");
-  // var turn = document.getElementsByName("turn");
-  // var currentUserName = document.getElementById("userName").innerHTML;
-  // for(var j = 0; j < room.connUsers.length; j++){
-  //   name[j].innerHTML = room.connUsers[j].userName;
-  //   openCard1[j].innerHTML = "카드";
-  //   openCard2[j].innerHTML = "카드";
-  //   if(currentUserName == room.connUsers[j].userName){
-  //     $('#card1').val(room.cards[2*j]);
-  //     $('#card2').val(room.cards[2*j+1]);
-  //     document.getElementById("cardImforamtion1").innerHTML = room.cards[2*j] + " ";
-  //     document.getElementById("cardImforamtion2").innerHTML = room.cards[2*j+1] + " ";
-  //   }
-  //   money[j].innerHTML = "금액: " + room.connUsers[j].money;
-  //   if(room.currentTurnUser == room.connUsers[j].userName)
-  //     turn[j].innerHTML = "현재 턴";
-  //   else
-  //     turn[j].innerHTML = "대기 중";
-  // }
+  var img = document.getElementsByName("userProfile");
+  var name = document.getElementsByName("username");
+  var cardImforamtion1 = document.getElementById("cardImforamtion1");
+  var cardImforamtion2 = document.getElementById("cardImforamtion2");
+  var currentUserName = document.getElementById("userName").innerHTML;
+  for(var i = 0; i < room.connUsers.length; i++){
+    name[i].innerHTML = room.connUsers[i].userName;
+    img[i].src=room.connUsers[i].photoURL;
+    if(currentUserName == room.connUsers[i].userName){
+      var card1 = room.cards[2*i];
+      var card2 = room.cards[2*i+1];
+      cardImforamtion1.src ="/images/card/" + card1 +".png";
+      cardImforamtion2.src ="/images/card/" + card2 +".png";
+    }
+  }
   cardAnimation(room.connUsers.length);
 });
 // 한장의 카드 눌렀을때
-$('#firstSelect').click('submit', function(e){
-  var card = document.getElementsByName("card");
-  var selectCard = null;
-  var checkCount = 0;
-  for(var i = 0; i < card.length; i++){
-    if(card[i].checked){
-      card[i].checked = false;
-      selectCard = card[i].value;
-      checkCount++;
+$('#cardImforamtion1').click(function(){
+    if($('.mycards.image-selected').index() == -1){ 
+        $('#cardImforamtion1').addClass("image-selected");
+    }else {
+        $('.mycards').removeClass("image-selected");
+        $('#cardImforamtion1').addClass("image-selected");
     }
-  }
-  if(checkCount > 1){
-    alert("한장만 선택하세요!!");
-    return;
-  }
-  socket.emit('one_open_card_send', selectCard);
 });
+$('#cardImforamtion2').click(function(){
+    if($('.mycards.image-selected').index() == -1){ 
+        $('#cardImforamtion2').addClass("image-selected");
+    }else {
+        $('.mycards').removeClass("image-selected");
+        $('#cardImforamtion2').addClass("image-selected");
+    }
+});
+function firstSelect(){
+  var cardImforamtion1 = document.getElementById("cardImforamtion1");
+  var cardImforamtion2 = document.getElementById("cardImforamtion2");
+  //socket.emit('one_open_card_send', selectCard);
+}
 // 카드한장을 눌렀을 때 반응하는 소켓
 socket.on('one_open_card_receive', function(room, user){
   document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
@@ -359,7 +357,6 @@ function cardAnimation(userNumber){
                     perspective: '100px',
                     rotateY: '180deg'
                 });
-                $(".mycards").attr('src','/images/card/1-1.png');
             });
         });
     }

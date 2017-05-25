@@ -16,33 +16,26 @@ block content
               span(name='state') 준비 완료
             else
               span(name='state') 대기 중     
-          img.profile.img-circle(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          img.profile.img-circle(name="userProfile" src=user.photoURL)
     .draw
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
-      //- img.cards(src="/images/Card-S.png")
       img.moneypanel(src="/images/Moneyarea.png")
       h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
       h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
     .row
       #buttons
-        //img.myprofile(src=currentUser.photoURL)
         h1(id='roomName')= room.roomName
         p#firstButton
-          img.myprofile(src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E")
+          if(currentUser)
+            img.myprofile(src=currentUser.photoURL)
+          else
+            img.myprofile(src=room.connUsers[room.connUsers.length-1].photoURL)
           button.btn(id="ready")
           button.btn(id="exit")
     .row
       .col.xs.4
-        img.mycards
-        img.mycards
-        img.mycards
+        img.mycards(id='cardImforamtion1', onclick="firstSelect()")
+        img.mycards(id='cardImforamtion2', onclick="firstSelect()")
+        img.mycards(id='cardImforamtion3')
     .row(id='bettingBar')
       button.col-md-2(id="dadang")
       button.col-md-2(id="call")
@@ -51,7 +44,6 @@ block content
       button.col-md-2(id="check")
       button.col-md-2(id="die")
     //- script(type='text/javascript', src='/javascripts/drawcard.js')
-    //- script(type='text/javascript', src='/javascripts/selectedcard.js')
 
     script(type='text/javascript', src='/javascripts/flipcard.js').
     script(src='/javascripts/gameConnetion.js').    
@@ -63,7 +55,7 @@ block content
         <p>
             <span name='state'></span>
         </p> 
-        <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
+        <img class="profile" class="img-circle", name="userProfile"/>
       </div>
 
     script#rowTemplate2(type='text/template').
@@ -73,7 +65,8 @@ block content
        </div> 
     script#rowTemplate3(type='text/template').
       <div class = "col-xs-6">
-        <img class="profile" class="img-circle" src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E"/>
+        <h3 name='username' ></h3>
+        <img class="profile" class="img-circle" name= "userProfile"/>
       </div> 
   style.
     #bettingBar{
@@ -327,11 +320,7 @@ block content
     }
     
     .image-selected{
-      position: absolute;
-      left : 37%;
-      top : 65%;
-      width: 8%;
-      display: none;
+      top : 65% !important;
     }
     .draw {
       position: absolute;

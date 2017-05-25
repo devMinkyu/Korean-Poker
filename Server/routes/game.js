@@ -132,7 +132,7 @@ router.get('/:id', function(req,res, next){
 
     // 테스트용
     var userTestID = "TEST" + count++;
-    addUser(selectedRoom._id, userTestID, userTestID);
+    addUser(selectedRoom._id, userTestID, userTestID, "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E");
 
     res.render('Game/GameRoom', {room: selectedRoom});
   } else {
