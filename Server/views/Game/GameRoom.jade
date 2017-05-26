@@ -84,17 +84,17 @@ block content
     #myName{
       position:absolute;
       left:2%;
-      top:82%;
+      top:84.5%;
     }
     #myWin{
       position:absolute;
       left:2%;
-      top:89%;
+      top:90.5%;
     }
     #myLose{
       position:absolute;
       left:4%;
-      top:89%;
+      top:90.5%;
     }
     .moneyBar {
       background: url('/images/nameBar.png');
@@ -227,7 +227,7 @@ block content
     }
     #ready{
       position:absolute;
-      left:60%;
+      left:42%;
       top:9%;
       width:30%;
       height:30%;
@@ -237,7 +237,7 @@ block content
     }
     #exit{
       position:absolute;
-      left:60%;
+      left:42%;
       top:40%;
       width:30%;
       height:30%;
@@ -247,7 +247,7 @@ block content
     }
     #buttons h1{
       position: absolute;
-      top : -60%;
+      bottom : 30%;
       left: 3%;
       color: white;
     }
@@ -265,8 +265,8 @@ block content
       position: absolute;
       width: 25%;
       height: 25%;
-      bottom : 7%;
-      left: 1%;
+      bottom : 4%;
+      left: 0.5%;
       background: url('/images/Butttonarea.png');
       background-repeat: no-repeat;
       background-size:auto;
@@ -469,29 +469,67 @@ block content
       h3{
         font-size: 8px;
       }
+      #myName{
+      position:absolute;
+      left:2%;
+      top:29.5%;
+      }
+      #myWin{
+        position:absolute;
+        left:2%;
+        top:61.5%;
+        font-size:7px;
+      }
+      #myLose{
+        position:absolute;
+        left:13%;
+        top:61.5%;
+        font-size:7px;
+      }
       .gamefield {
         -ms-transform: rotate(-90deg); /* IE 9 */
         -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
         transform: rotate(-90deg);
-        width: 640px;
-        height: 360px;
-        top: 140px;
-        left: -140px;
-        background: url('/images/BG.png');
-        background-repeat: no-repeat;
+        width: 560px;
+        height: 359px;
+        top: 100px;
+        left: -100px;
+        background-color: #0B610B;
         position: absolute;
-        background-position:center center;
-        background-size:contain;
+        overflow-x: hidden;
+        overflow-y: hidden;
       }
       #buttons {
         position: absolute;
         width: 25%;
         height: 25%;
-        bottom : 5%;
+        bottom : 10%;
         left: 1%;
         background: url('/images/Butttonarea.png');
         background-repeat: no-repeat;
         background-size:auto;
+        padding-top:0px;
+        padding-left:0px;
+      }
+       #ready{
+        position:absolute;
+        left:46%;
+        top:26%;
+        width:50%;
+        height:30%;
+        background: url('/images/button/ready.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+      }
+      #exit{
+        position:absolute;
+        left:46%;
+        top:71%;
+        width:50%;
+        height:30%;
+        background: url('/images/button/exit.png');
+        background-repeat: no-repeat;
+        background-position:center center;
       }
       #roomMoney{
         left : 35%;
@@ -506,6 +544,16 @@ block content
         position:relative;
         color: white;
         text-align: right;
+      } 
+      #firstButton {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom : 7%;
+        left: 1%;
+        background: url('/images/Butttonarea.png');
+        background-repeat: no-repeat;
+        background-size:auto;
       }
       .image-selected{
         position: absolute;
@@ -518,6 +566,12 @@ block content
         width: 8%;
         display: none;
       }
+      #buttons h1{
+        position: absolute;
+        bottom : 50%;
+        left: 3%;
+        color: white;
+     }
       .mycards {
         position: absolute;
         left : 37%;
@@ -563,4 +617,13 @@ block content
         width: 50%;
       }
     }
-    
+
+
+    @media all and (min-width:768px) {
+    }
+
+    @media all and (min-width:768px) and (max-width:1024px) {
+    }
+
+    @media all and (min-width:1025px) {
+    }
