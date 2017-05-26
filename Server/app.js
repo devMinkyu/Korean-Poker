@@ -130,7 +130,7 @@ app.io.on('connection', function(socket){
         var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
         timerValue = 15; 
         if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].connUsers[userIndex].userName)
-          call_send(rooms[roomIndex].roomAllMoney, socket);
+          bettingEnd(rooms[roomIndex].roomAllMoney, socket, "Call");
       // }else if(timerValue < 0 ){
       //   var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
       //   timerValue = 15; 

@@ -84,7 +84,7 @@ socket.on('start_game', function(room){
       cardImforamtion2.src ="/images/card/" + card2 +".png";
     }
   }
-  cardAnimation(room.connUsers.length, 0);
+  cardAnimation(room.connUsers.length);
 });
 // 한장의 카드 눌렀을때
 $('#cardImforamtion1').click(function(){
@@ -247,7 +247,7 @@ socket.on('lastCardDistribution_receive', function(room){
   var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
-  for(var i = 0; i < room.gamingUsers.length; i++){
+  for(var i = 0; i < room.connUsers.length; i++){
     $(".gamefield").append($('#rowTemplate4').html());
   }
   for(var i = 0; i < room.connUsers.length; i++){
@@ -266,7 +266,7 @@ socket.on('lastCardDistribution_receive', function(room){
     else
       turn[i].src = "";
   }
-  cardAnimation(room.gamingUsers.length, 2);
+  cardAnimationThird(room.connUsers.length);
 });
 $('#finallySelect').click('submit', function(e){
   var card = document.getElementsByName("card");
@@ -325,58 +325,45 @@ socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });
 
-function cardAnimation(userNumber, moveLeftCount){
+function cardAnimation(userNumber){
     var direction = {left: "+=65%", bottom: "+=15%"}
     var directionCount = 0 //주는 카드 방향 지정
-    var moveLeftCount = moveLeftCount // 받는 카드를 세장씩 정렬
+    var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
     
     var drawCards = $('.cards').each(function(index) {
-                        $(this).delay(300*index).animate(direction)
-                        if(directionCount == 0){
-                            if(moveLeftCount == 0 ){// 2번 플레이어
-                                direction = {left: "+=65%", bottom: "-=40%"}
-                                directionCount++
-                            }else if(moveLeftCount ==1){
-                                direction = {left: "+=55%", bottom: "-=40%"}
-                                directionCount++
-                            }else if(moveLeftCount ==2){
-                                direction = {left: "+=45%", bottom: "-=40%"}
-                                directionCount++
-                            }
-                        }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-                            if(moveLeftCount == 0 ){
-                                direction = {left: "-=55%", bottom: "-=40%"}
-                                directionCount++
-                            }else if(moveLeftCount ==1){
-                                direction = {left: "-=45%", bottom: "-=40%"}
-                                directionCount++
-                            }else if(moveLeftCount ==2){
-                                direction = {left: "+=35%", bottom: "-=40%"}
-                                directionCount++
-                            }
-                        }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
-                            if(moveLeftCount == 0 ){
-                                direction = {left: "-=55%", bottom: "+=15%"}
-                                directionCount++
-                            }else if(moveLeftCount ==1){
-                                direction = {left: "-=45%", bottom: "+=15%"}  
-                                directionCount++
-                            }else if(moveLeftCount ==2){
-                                direction = {left: "-=35%", bottom: "+=15%"}  
-                                directionCount++
-                            }
-                        }
-                        else{//1번 플레이어
-                            if(moveLeftCount == 0 ){
-                                direction = {left: "+=55%", bottom: "+=15%"}
-                                directionCount = 0
-                                moveLeftCount++
-                            }else if(moveLeftCount ==1){
-                                direction = {left: "-=45%", bottom: "+=15%"}  
-                                directionCount++
-                                moveLeftCount++
-                            }
-                        }
+      $(this).delay(300*index).animate(direction)
+      if(directionCount == 0){
+          if(moveLeftCount == 0 ){// 2번 플레이어
+              direction = {left: "+=65%", bottom: "-=40%"}
+              directionCount++
+          }else if(moveLeftCount ==1){
+              direction = {left: "+=55%", bottom: "-=40%"}
+              directionCount++
+          }
+      }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
+          if(moveLeftCount == 0 ){
+              direction = {left: "-=55%", bottom: "-=40%"}
+              directionCount++
+          }else if(moveLeftCount ==1){
+              direction = {left: "-=45%", bottom: "-=40%"}
+              directionCount++
+          }
+      }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
+          if(moveLeftCount == 0 ){
+              direction = {left: "-=55%", bottom: "+=15%"}
+              directionCount++
+          }else if(moveLeftCount ==1){
+              direction = {left: "-=45%", bottom: "+=15%"}  
+              directionCount++
+          }
+      }
+      else{//1번 플레이어
+          if(moveLeftCount == 0 ){
+              direction = {left: "+=55%", bottom: "+=15%"}
+              directionCount = 0
+              moveLeftCount++
+          }
+      }
     });
 
     $.when(drawCards).then(function (){
@@ -392,7 +379,7 @@ function cardAnimation(userNumber, moveLeftCount){
           var myCardsDirection = 0
           var myCardsDirectionCounter = 0;
             var checkMyCards = $('.mycards').each(function(index) {
-                $(this).delay(1*index).animate(myCardsDirection);
+                $(this).delay(10*index).animate(myCardsDirection);
                 if(myCardsDirectionCounter == 0 ){
                     myCardsDirection = {left: "+=8%"}
                     myCardsDirectionCounter++
@@ -408,3 +395,21 @@ function cardAnimation(userNumber, moveLeftCount){
             });
         });
     }
+
+function cardAnimationThird(userNumber){
+  var direction = {left: "+=45%", bottom: "+=22%"}
+  var directionCount = 0 //주는 카드 방향 지정
+  var drawCards = $('.lastCards').each(function(index) {
+    $(this).delay(300*index).animate(direction)
+    if(directionCount == 0){
+        direction = {left: "+=45%", bottom: "-=35%"}
+        directionCount++
+    }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
+        direction = {left: "-=35%", bottom: "-=35%"}
+        directionCount++
+    }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
+        direction = {left: "-=35%", bottom: "+=22%"}
+        directionCount++
+    }
+  });
+}
