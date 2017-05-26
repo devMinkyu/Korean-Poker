@@ -69,12 +69,15 @@ block content
         <h3 name='username' ></h3>
         <img class="profile" class="img-circle" name= "userProfile"/>
         <h3 class='playerdie'></h3>
-        <h5 class='playerdie'>hi</h5>
-        <h5 class='playercall'>call</h5>
-        <h5 class='playerhalf'>call</h5>
-        <img class="turn" src="/images/turn.png"/>
+        <h5 class='playerBettingState'></h5>
+        <img class="turn"/>
         <h4 class='moneyBar'></h4>
-      </div> 
+      </div>
+    script#rowTemplate4(type='text/template').
+      <div class = "draw">
+         <img class="cards"  src="/images/Card-S.png">
+       </div>
+       
   style.
     .moneyBar {
       background: url('/images/nameBar.png');
@@ -134,45 +137,25 @@ block content
       top: 60% ;
       right: 110%;
     }
-    .col-xs-6:nth-child(1) .playercall{
+    .col-xs-6:nth-child(1) .playerBettingState{
       position:absolute;
       top: 60% ;
       left: 120%;
     }
-    .col-xs-6:nth-child(2) .playercall{
+    .col-xs-6:nth-child(2) .playerBettingState{
       position:absolute;
       top: 60% ;
       left: 120%;
     }
-    .col-xs-6:nth-child(3) .playercall{
+    .col-xs-6:nth-child(3) .playerBettingState{
       position:absolute;
       top: 60% ;
       right: 120%;
     }
-    .col-xs-6:nth-child(4) .playercall{
+    .col-xs-6:nth-child(4) .playerBettingState{
       position:absolute;
       top: 60% ;
       right: 120%;
-    }
-    .col-xs-6:nth-child(1) .playerhalf{
-      position:absolute;
-      top: 60% ;
-      left: 130%;
-    }
-    .col-xs-6:nth-child(2) .playerhalf{
-      position:absolute;
-      top: 60% ;
-      left: 130%;
-    }
-    .col-xs-6:nth-child(3) .playerhalf{
-      position:absolute;
-      top: 60% ;
-      right: 130%;
-    }
-    .col-xs-6:nth-child(4) .playerhalf{
-      position:absolute;
-      top: 60% ;
-      right: 130%;
     }
     #bettingBar{
       top:200%;

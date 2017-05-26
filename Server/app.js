@@ -115,7 +115,7 @@ app.io.on('connection', function(socket){
             'userID' : (rooms[roomIndex].connUsers[userIndex].userID),
             'userName' : (rooms[roomIndex].connUsers[userIndex].userName),
             'isCall' : false,
-            'halfRemainCount' : 2,
+            'bettingRemainCount' : 2,
             'pedigreeResult' : ''
           });
           app.io.sockets.in(socket._id).emit('one_open_card_receive', rooms[roomIndex], rooms[roomIndex].connUsers[userIndex]);
@@ -296,9 +296,13 @@ function die_send(money , socket){
     var roomIndex = searchRoomIndex(rooms, socket._id);
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: rooms[roomIndex].connUsers[userIndex].userName });
+    var gamingNumber = rooms[roomIndex].gamingUsers.length;
     rooms[roomIndex].connUsers[userIndex].money -= money;
     rooms[roomIndex].roomAllMoney += money;
     if(gameUserIndex != -1){
+      if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].currentTurnUser){
+        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+      }
       rooms[roomIndex].gamingUsers.splice(gameUserIndex,1);
     }
     rooms[roomIndex].deadUsers.push({
@@ -324,7 +328,34 @@ function die_send(money , socket){
       app.io.sockets.in(socket._id).emit('gameContinueCheck_receive', rooms[roomIndex], user);
     }
   }
-function bettingEnd(money, socket, state){
+  function bettingContinue(money, socket, state){
+    var roomIndex = searchRoomIndex(rooms, socket._id);
+    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
+    var gamingNumber = rooms[roomIndex].gamingUsers.length;
+    if(rooms[roomIndex].gamingUsers[gameUserIndex].userName != rooms[roomIndex].currentTurnUser){
+      app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
+      return;
+    }else{
+      rooms[roomIndex].gamingUsers[(gameUserIndex+gamingNumber)%(gamingNumber-1)].isCall = false;
+      rooms[roomIndex].gamingUsers[gameUserIndex].isCall = false;
+      if(rooms[roomIndex].gamingUsers[gameUserIndex].bettingRemainCount === 0){
+        app.io.to(socket.id).emit('message_receive', "call, check을 제외한 배팅의 횟수가 끝났습니다.");
+        return;
+      }
+      rooms[roomIndex].gamingUsers[gameUserIndex].bettingRemainCount -= 1;
+      if(money > rooms[roomIndex].connUsers[userIndex].money){
+        app.io.to(socket.id).emit('message_receive', "돈이 부족합니다.");
+      }else{
+        rooms[roomIndex].connUsers[userIndex].money -= money;
+        rooms[roomIndex].roomAllMoney += money;
+        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+        app.io.sockets.in(socket._id).emit('betting_receive', rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex], state);
+      }
+      return;
+    }
+  }
+  function bettingEnd(money, socket, state){
     var roomIndex = searchRoomIndex(rooms, socket._id);
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
@@ -351,33 +382,6 @@ function bettingEnd(money, socket, state){
       app.io.sockets.in(socket._id).emit('lastCardDistribution_receive', rooms[roomIndex], roomIndex);
     }
     return;
-  }
-  function bettingContinue(money, socket, state){
-    var roomIndex = searchRoomIndex(rooms, socket._id);
-    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
-    var gamingNumber = rooms[roomIndex].gamingUsers.length;
-    if(rooms[roomIndex].gamingUsers[gameUserIndex].userName != rooms[roomIndex].currentTurnUser){
-      app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
-      return;
-    }else{
-      rooms[roomIndex].gamingUsers[(gameUserIndex+gamingNumber)%(gamingNumber-1)].isCall = false;
-      rooms[roomIndex].gamingUsers[gameUserIndex].isCall = false;
-      if(rooms[roomIndex].gamingUsers[gameUserIndex].halfRemainCount === 0){
-        app.io.to(socket.id).emit('message_receive', "call, check을 제외한 배팅의 횟수가 끝났습니다.");
-        return;
-      }
-      rooms[roomIndex].gamingUsers[gameUserIndex].halfRemainCount -= 1;
-      if(money > rooms[roomIndex].connUsers[userIndex].money){
-        app.io.to(socket.id).emit('message_receive', "돈이 부족합니다.");
-      }else{
-        rooms[roomIndex].connUsers[userIndex].money -= money;
-        rooms[roomIndex].roomAllMoney += money;
-        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
-        app.io.sockets.in(socket._id).emit('betting_receive', rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex], state);
-      }
-      return;
-    }
   }
   function finallySelect_send(cards, socket){
     var roomIndex = searchRoomIndex(rooms, socket._id);
