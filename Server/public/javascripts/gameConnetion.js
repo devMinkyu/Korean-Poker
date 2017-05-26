@@ -326,7 +326,7 @@ socket.on('timer_receive', function(timer){
 });
 
 function cardAnimation(userNumber){
-    var direction = {left: "+=65%", bottom: "+=15%"}
+    var direction = {left: "+=75%", bottom: "+=20%"}
     var directionCount = 0 //주는 카드 방향 지정
     var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
     
@@ -334,32 +334,32 @@ function cardAnimation(userNumber){
       $(this).delay(300*index).animate(direction)
       if(directionCount == 0){
           if(moveLeftCount == 0 ){// 2번 플레이어
-              direction = {left: "+=65%", bottom: "-=40%"}
+              direction = {left: "+=75%", bottom: "-=40%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "+=55%", bottom: "-=40%"}
+              direction = {left: "+=65%", bottom: "-=40%"}
               directionCount++
           }
       }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=55%", bottom: "-=40%"}
+              direction = {left: "-=65%", bottom: "-=40%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=45%", bottom: "-=40%"}
+              direction = {left: "-=55%", bottom: "-=40%"}
               directionCount++
           }
       }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=55%", bottom: "+=15%"}
+              direction = {left: "-=65%", bottom: "+=20%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=45%", bottom: "+=15%"}  
+              direction = {left: "-=55%", bottom: "+=20%"}  
               directionCount++
           }
       }
       else{//1번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "+=55%", bottom: "+=15%"}
+              direction = {left: "+=65%", bottom: "+=20%"}
               directionCount = 0
               moveLeftCount++
           }
@@ -397,18 +397,18 @@ function cardAnimation(userNumber){
     }
 
 function cardAnimationThird(userNumber){
-  var direction = {left: "+=45%", bottom: "+=22%"}
+  var direction = {left: "+=55%", bottom: "+=20%"}
   var directionCount = 0 //주는 카드 방향 지정
   var drawCards = $('.lastCards').each(function(index) {
     $(this).delay(300*index).animate(direction)
     if(directionCount == 0){
-        direction = {left: "+=45%", bottom: "-=35%"}
+        direction = {left: "+=55%", bottom: "-=40%"}
         directionCount++
     }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-        direction = {left: "-=35%", bottom: "-=35%"}
+        direction = {left: "-=45%", bottom: "-=40%"}
         directionCount++
     }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
-        direction = {left: "-=35%", bottom: "+=22%"}
+        direction = {left: "-=45%", bottom: "+=10%"}
         directionCount++
     }
   });

@@ -38,13 +38,12 @@ block content
         img.mycards(id='cardImforamtion2')
         img.mycards(id='cardImforamtion3')
     .row(id='bettingBar')
-      button.col-md-2(id="dadang")
-      button.col-md-2(id="call")
-      button.col-md-2(id="half")
-      button.col-md-2(id="bbing")
-      button.col-md-2(id="check")
-      button.col-md-2(id="die")
-    //- script(type='text/javascript', src='/javascripts/drawcard.js')
+      button.btn.btn-warning.col-md-2(id="dadang") 따당
+      button.btn.btn-primary.col-md-2(id="call") 콜
+      button.btn.btn-default.col-md-2(id="half") 하프
+      button.btn.btn-success.col-md-2(id="bbing") 삥
+      button.btn.btn-info.col-md-2(id="check") 체크
+      button.btn.btn-danger.col-md-2(id="die") 다이
 
     script(type='text/javascript', src='/javascripts/flipcard.js').
     script(src='/javascripts/gameConnetion.js').    
@@ -75,7 +74,7 @@ block content
       </div>
     script#rowTemplate4(type='text/template').
       <div class = "draw">
-         <img class="lastCards"  src="/images/Card-S.png">
+         <img class="lastCards"  src="/images/Card-S1.png">
        </div>
        
   style.
@@ -162,50 +161,30 @@ block content
       position:sticky;
     }
     #dadang{
-      background: url('/images/button/dadang.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
       height:25%;
     }
     #call{
-      background: url('/images/button/call.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
+      height:25%;
     }
     
     #half{
-      background: url('/images/button/half.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
+      height:25%;
     }
     
     #bbing{
-      background: url('/images/button/bbing.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
       height:25%;
     }
     #check{
-      background: url('/images/button/check.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
+      height:25%;
     }
     #die{
-      background: url('/images/button/die.png');
-      background-repeat: no-repeat;
-      background-position:center center;
-      background-size: 120% 120%;
-      width:12%;
+      width:15%;
+      height:25%;
     }
     .row{
       margin-right: 0px;
@@ -403,7 +382,7 @@ block content
     .gamefield {
       width: 100%;
       height: 100%;
-      background: url('/images/BG.png');
+      background-color: #0B610B;
       background-repeat: no-repeat;
       position: absolute;
     }
