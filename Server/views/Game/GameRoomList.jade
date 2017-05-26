@@ -1,7 +1,7 @@
 extends ../layout
 block content
     .container
-      h1.page-header Room List
+      h1.page-header 
       br
       .row
       .main
@@ -12,38 +12,36 @@ block content
                 .wthree_main_grid.agileinfo_main_grid
                   .w3ls_main_grid
                     .agileits_main_grid_left
-                      .agileits_main_grid_leftl
-                        h3
-                          | 방제목
-                      .agileits_main_grid_leftr
-                        h3= room.roomName
-                      .clear  
+                     h2= room.roomName
+                    .clear 
+                      //- .agileits_main_grid_leftl
+                      //-   h3= room.roomName
+                      //- .clear  
                     //- .agileits_main_grid_right
-                    .agileits_main_grid
-                      form(action='/game/#{room._id}', method='get')
-                        input(type='submit', value='입장')
-                    .clear  
+                    //- .agileits_main_grid
+                    //-   form(action='/game/#{room._id}', method='get')
+                    //-     input(type='submit', value='입장')
+                    //- .clear  
                   .w3l_main_grid_list
+                    ul#owl-demo3.owl-carousel.owl-theme
+                        li 
+                          h3=room.state
                     ul#owl-demo.owl-carousel.owl-theme
                       li 
-                        h2 배팅액 : #{room.roomMoney}
+                        h3 배팅액 : #{room.roomMoney}
                     ul#owl-demo3.owl-carousel.owl-theme
                       li 
-                        h2 참가인원 : #{room.connUsers.length}명/4명
+                        h3 참가인원 : #{room.connUsers.length}명 / 4명
                     ul#owl-demo3.owl-carousel.owl-theme
-                      li 
-                        h2=room.state
-                    ul#owl-demo3.owl-carousel.owl-theme
-                      li 
-                        h2 참가자 : 
-                      li 
-                        .w3layouts_icon
-                          img.w3_img_responsive(src='/stylesheets/images/image1.png', alt=' ')
-                      li 
-                        .w3layouts_icon
-                          img.w3_img_responsive(src='/stylesheets/images/image1.png', alt=' ')
-                      li 
-                        .w3layouts_icon
-                          img.w3_img_responsive(src='/stylesheets/images/image1.png', alt=' ')
+                      each user in room.connUsers
+                        li 
+                          .w3layouts_icon
+                            img.w3_img_responsive(src='#{user.photoURL}', alt=' ')
+                  .clear
+                  br
+                  .agileits_main_grid
+                      form(action='/game/#{room._id}', method='get')
+                        input(type='submit', value='입장')
+                  
     form(action='/game/create', method='get')
       input(type='submit', value='방만들기')

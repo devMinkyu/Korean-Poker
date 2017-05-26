@@ -21,6 +21,9 @@ module.exports = function(passport) {
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
     console.log(profile);
+    if(!profile.emails[0].value){
+      return done(null);
+    }
     var email = profile.emails[0].value;
     process.nextTick(function () {
       User.findOne({'facebook.id': profile.id}, function(err, user) {
