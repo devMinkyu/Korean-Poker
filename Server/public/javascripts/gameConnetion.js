@@ -1,6 +1,6 @@
 var socket = io.connect();
 var element = document.getElementById("_id");
-var currentUserName = document.getElementById("userName").innerHTML;
+var currentUserName = document.getElementById("myName").innerHTML;
 var cardOpenStage = 0;
 $("#dadang").attr('disabled',true);
 $("#call").attr('disabled',true);
