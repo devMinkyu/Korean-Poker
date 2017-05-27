@@ -63,7 +63,7 @@ router.get('/create', function(req,res, next){
 
 // router.post('/', needAuth, function(req, res, next){
 router.post('/', function(req, res, next){
-  var roomIndex = _.findIndex(rooms, { roomName: req.body.roomName})
+  var roomIndex = _.findIndex(rooms, { roomName: req.body.roomName});
   if(roomIndex == -1){
     var newRoom = {
       '_id' : roomsCount,
@@ -72,6 +72,7 @@ router.post('/', function(req, res, next){
       'roomUserNumber' : req.body.roomUserNumber, // 방의 참여인원
       'roomAllMoney' : 0, // 방의 배팅금
       'connUsers' : [], // 방에 들어온 사람들
+      'disconnUsers' : [], // 게임 도중에 나간 사람들 체크
       'gamingUsers' : [], // 게임의 참여자들
       'deadUsers' :[], // 게임의 죽은 유저
       'currentTurnUser': '',
@@ -81,8 +82,12 @@ router.post('/', function(req, res, next){
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
     rooms.push(newRoom);
+    roomIndex = _.findIndex(rooms, { _id: roomsCount});
+    console.log("+++++++++");
+    console.log(roomIndex);
     roomsCount++;
-    addUser(newRoom._id, req.user._id, req.user.userName, req.user.photoURL);
+    console.log(newRoom);
+    addUser(roomIndex, req.user._id, req.user.userName, req.user.photoURL);
     res.render('Game/GameRoom', {room: newRoom});
   } else{
     req.flash('danger', '똑같은 방이름이 있습니다.');
@@ -91,16 +96,19 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/:id', function(req,res, next){
-  var index = req.params.id;
-  var selectedRoom = rooms[index];
+  console.log(req.params.id);
+  roomIndex = _.findIndex(rooms, { _id: Number(req.params.id)});
+  console.log("+++++++++");
+  console.log(roomIndex);
+  var selectedRoom = rooms[roomIndex];
   if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "대기중"){
 
     // 원래 이렇게 해야함.
-    // addUser(selectedRoom._id, req.user._id, req.user.userName, , req.user.photoURL);
+    // addUser(roomIndex, req.user._id, req.user.userName, , req.user.photoURL);
 
     // 테스트용
     var userTestID = "TEST" + count++;
-    addUser(selectedRoom._id, userTestID, userTestID, "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E");
+    addUser(roomIndex, userTestID, userTestID, "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E");
 
     res.render('Game/GameRoom', {room: selectedRoom});
   } else {

@@ -32,7 +32,7 @@ block content
           else
             img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
           button.btn.btn-warning(id="ready") 준비
-          button.btn.btn-warning(id="exit") 나가기
+          a.btn.btn-warning(id="exit", href='javascript:window.history.back()') 나가기
         //- 원래
         //- h3(id='myName')= currentUser.userName
         //- span(id='myWin')= currentUser.win
@@ -471,7 +471,7 @@ block content
     }
     
     .image-selected{
-      top : 65% !important;
+      top : 60% !important;
     }
     .draw {
       position: absolute;
@@ -504,7 +504,7 @@ block content
     .mycards {
       position: absolute;
       left : 37%;
-      top : 70%;
+      top : 65%;
       height: 25%;
       width: 8%;
       display:none;

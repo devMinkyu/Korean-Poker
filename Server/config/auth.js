@@ -20,7 +20,6 @@ module.exports = function(passport) {
     callbackURL : 'http://localhost:3000/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
-    console.log(profile);
     if(!profile.emails[0].value){
       return done(null);
     }

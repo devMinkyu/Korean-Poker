@@ -38,14 +38,13 @@ app.io.on('connection', function(socket){
     // socket._id 는 room 배열의 인덱스
     socket._id = _id;
     socket.userName = currentUserName;
-
+    var roomIndex = searchRoomIndex(rooms, socket._id);
     console.log("**********Room ID*************");
     console.log(socket._id);
     console.log("***************************");
-    console.log(rooms[socket._id].connUsers);
     var message = socket.userName + " 님이 입장하셨습니다.";
     app.io.sockets.in(socket._id).emit('message_receive', message);
-    app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[socket._id].connUsers);
+    app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
   });
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
   socket.on('message_send', function(text){
@@ -73,24 +72,36 @@ app.io.on('connection', function(socket){
 
   // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
-    console.log(socket.id);
-    // // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
-    socket.leave(socket._id);
-    var index = searchRoomIndex(rooms, socket._id);
-    for(var i = 0; i < rooms[index].connUsers.length; i++){
-      if(rooms[index].connUsers[i].userName == socket.userName){
-        rooms[index].connUsers.splice(i,1);
-        var msg = socket.userName + '님이 ' + "나가셨습니다.";
-        app.io.sockets.in(socket._id).emit('message_receive', msg);
-        break;
+    var roomIndex = searchRoomIndex(rooms, socket._id);
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var msg;
+    if(rooms[roomIndex].state == "대기중"){
+      // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
+      socket.leave(socket._id);
+      msg = socket.userName + '님이 나가셨습니다.';
+      app.io.sockets.in(socket._id).emit('message_receive', msg);
+      rooms[roomIndex].connUsers.splice(userIndex, 1);
+      console.log("========대기중");
+      console.log(rooms[roomIndex].connUsers);
+      if(rooms[roomIndex].connUsers.length === 0){
+        rooms.splice(roomIndex, 1);
+        return;
       }
-    }
-    if(rooms[index].connUsers.length === 0){
-      rooms.splice(index, 1);
-      // roomsCount--;
-      // if(roomsCount < 0){
-      //   roomsCount = 0;
-      // }
+      app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
+    } else if(rooms[roomIndex].state == "게임중"){
+      console.log("========게임중");
+      console.log(rooms[roomIndex].connUsers);
+      rooms[roomIndex].connUsers[userIndex].lose -= 1;
+      userIndex = _.findIndex(rooms[roomIndex].disconnUsers, { userName: socket.userName });
+      die_send(rooms[roomIndex].roomMoney , socket);
+      socket.leave(socket._id);
+      rooms[roomIndex].disconnUsers.push(socket.userName);
+      msg = socket.userName + '님이 나가셨습니다.';
+      app.io.sockets.in(socket._id).emit('message_receive', msg);
+      console.log("========게임중1");
+      console.log(rooms[roomIndex].connUsers);
+      console.log("========게임중2");
+      console.log(rooms[roomIndex].disconnUsers);
     }
   });
 
@@ -100,6 +111,7 @@ app.io.on('connection', function(socket){
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
     var stage = 0;
     var currentTurnUser = rooms[roomIndex].currentTurnUser;
+    var gameUserIndex; 
     var timer = setInterval(function(){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
@@ -126,7 +138,7 @@ app.io.on('connection', function(socket){
           clearInterval(timer);
         }
       }else if(timerValue <= 0 && stage === 1 ){ // 15초 내로 배팅을 안하고 있으면 자동 콜이 된다
-        var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
+        gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
         timerValue = 15; 
         if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].connUsers[userIndex].userName)
           bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
@@ -186,7 +198,7 @@ app.io.on('connection', function(socket){
         gameStart(roomIndex, socket._id);
       } else if(checkIndex != -1){ // 한명이라도 동의 안한 사람이 있을 때
         rooms[roomIndex].state = '대기중';
-        app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[socket._id].connUsers);
+        app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
       }
     }
   });
@@ -250,6 +262,15 @@ function initialize(roomIndex){
   rooms[roomIndex].deadUsers = [];
   rooms[roomIndex].cards = [];
   rooms[roomIndex].regame = 0;
+  if(rooms[roomIndex].disconnUsers.length !== 0){
+    var disUserIndex;
+    for(var i = 0; i<rooms[roomIndex].disconnUsers.length;i++){
+      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].disconnUsers[i].userName });    
+      rooms[roomIndex].connUsers.splice(disUserIndex, 1);
+      console.log("+++++++++");
+    }
+  }
+  console.log(rooms[roomIndex].connUsers);
 }
 function gameStart(roomIndex, id) {
   rooms[roomIndex].cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
@@ -328,6 +349,7 @@ function die_send(money , socket){
           rooms[roomIndex].connUsers[i].lose += 1;
         }
       }
+      // 여기 함수의 안들어옴
       initialize(roomIndex);
       msg = user.userName + "님이 승리 하셨습니다.";
       app.io.sockets.in(socket._id).emit('message_receive', msg);
@@ -404,18 +426,19 @@ function die_send(money , socket){
       rooms[roomIndex].count += 1;
       rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
       rooms[roomIndex].gamingUsers[gameUserIndex].pedigreeResult = cardPriority(cards[0], cards[1]);
+      app.io.to(socket.id).emit('cardButtonEmpty_receive');
       app.io.sockets.in(socket._id).emit('finallySelect_receive', cards, rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex]);
     }
     // 참여자가 다 2장씩 선택 한후
     if(gamingNumber == rooms[roomIndex].count){
-      if(rooms[roomIndex].regame == 0){
+      if(rooms[roomIndex].regame === 0){
         setTimeout(function(){
           finallyResult(roomIndex, socket);
-        },1000)
+        },1000);
       }else if(rooms[roomIndex].regame == 1){
         setTimeout(function(){
           finallyResult(roomIndex, socket);
-        },5000)
+        },5000);
       }
     }
   }

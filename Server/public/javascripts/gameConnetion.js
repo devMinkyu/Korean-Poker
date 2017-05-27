@@ -9,7 +9,6 @@ socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
 socket.on('room_connection_receive', function(users){
   $('#userWindow').empty();
   $("#ready").attr('disabled',false);
-  $("#exit").attr('disabled',false);
   $("#dadang").attr('disabled',true);
   $("#call").attr('disabled',true);
   $("#half").attr('disabled',true);
@@ -51,6 +50,9 @@ socket.on('message_receive', function(msg){
 $('#ready').click('submit', function(e){
   socket.emit('ready_send');
 });
+window.onbeforeunload = function() {
+  socket.emit('leave_send');
+};
 socket.on('ready_receive', function(users, index){
   var state = document.getElementsByName("state");
   if(users[index].isReady === true){
@@ -63,7 +65,6 @@ socket.on('ready_receive', function(users, index){
 //게임 시작후 카드 뿌려주기
 socket.on('start_game', function(room){
   $("#ready").attr('disabled',true);
-  $("#exit").attr('disabled',true);
   $("#die").attr('disabled',false);
   $("#myCardWindow").append($('#rowTemplate6').html());
   socket.emit('timer_send');
@@ -307,6 +308,9 @@ function select3 (){
   selectCard[1] = ((card3[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
   socket.emit('finallySelect_send', selectCard);  
 }
+socket.on('cardButtonEmpty_receive', function(){
+  $("#myCardWindow").empty();
+})
 socket.on('finallySelect_receive', function(cards, room, user){
   var openCard = document.getElementsByClassName("cards");
   var turn = document.getElementsByClassName("turn");
@@ -373,10 +377,6 @@ socket.on('gameContinueCheck_receive', function(room, user){
   socket.emit('gameContinueCheck_send', continueCheck);
 });
 
-// window.onbeforeunload = function() {
-//   socket.emit('leave_send');
-//   return "gg";
-// };
 
 // window.onunload=function() {
 //  if (socket) socket.disconnect();
@@ -386,7 +386,7 @@ socket.on('timer_receive', function(timer){
 });
 
 function cardAnimation(userNumber){
-    var direction = {left: "+=70%", bottom: "+=0%"}
+    var direction = {left: "+=70%", bottom: "+=8%"}
     var directionCount = 0 //주는 카드 방향 지정
     var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
     
@@ -394,32 +394,32 @@ function cardAnimation(userNumber){
       $(this).delay(300*index).animate(direction)
       if(directionCount == 0){
           if(moveLeftCount == 0 ){// 2번 플레이어
-              direction = {left: "+=70%", bottom: "-=60%"}
+              direction = {left: "+=70%", bottom: "-=53%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "+=60%", bottom: "-=60%"}
+              direction = {left: "+=60%", bottom: "-=53%"}
               directionCount++
           }
       }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=60%", bottom: "-=60%"}
+              direction = {left: "-=60%", bottom: "-=53%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=50%", bottom: "-=60%"}
+              direction = {left: "-=50%", bottom: "-=53%"}
               directionCount++
           }
       }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=60%", bottom: "+=0%"}
+              direction = {left: "-=60%", bottom: "+=8%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=50%", bottom: "+=0%"}  
+              direction = {left: "-=50%", bottom: "+=8%"}  
               directionCount++
           }
       }
       else{//1번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "+=60%", bottom: "+=0%"}
+              direction = {left: "+=60%", bottom: "+=8%"}
               directionCount = 0
               moveLeftCount++
           }
@@ -457,18 +457,18 @@ function cardAnimation(userNumber){
     }
 
 function cardAnimationThird(userNumber){
-  var direction = {left: "+=50%", bottom: "+=0%"}
+  var direction = {left: "+=50%", bottom: "+=8%"}
   var directionCount = 0 //주는 카드 방향 지정
   var drawCards = $('.lastCards').each(function(index) {
     $(this).delay(300*index).animate(direction)
     if(directionCount == 0){
-        direction = {left: "+=50%", bottom: "-=60%"}
+        direction = {left: "+=50%", bottom: "-=53%"}
         directionCount++
     }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-        direction = {left: "-=40%", bottom: "-=60%"}
+        direction = {left: "-=40%", bottom: "-=53%"}
         directionCount++
     }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
-        direction = {left: "-=40%", bottom: "+=0%"}
+        direction = {left: "-=40%", bottom: "+=8%"}
         directionCount++
     }
   });
