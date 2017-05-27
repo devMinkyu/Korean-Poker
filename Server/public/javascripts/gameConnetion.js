@@ -86,6 +86,7 @@ socket.on('start_game', function(room){
       var card2 = room.cards[2*i+1];
       cardImforamtion1.src ="/images/card/" + card1 +".png";
       cardImforamtion2.src ="/images/card/" + card2 +".png";
+      socket.emit('one_open_card_send', card1);
     }
   }
   cardAnimation(room.connUsers.length);
@@ -140,10 +141,10 @@ socket.on('one_open_card_receive', function(room, user){
     else
       turn[i].src = "";
   }
-  $(".cards").transition({ 
-      perspective: '100px',
-      rotateY: '180deg'
-  });
+  // $(".cards").transition({ 
+  //     perspective: '100px',
+  //     rotateY: '180deg'
+  // });
 });
 // 한장씩 다 공개했을때 반응하는 소켄
 socket.on('one_open_card_end_receive',function(room){
@@ -171,7 +172,7 @@ $('#die').click('submit', function(e){
 });
 // 죽는 다고 할 때 반응하는 소켓
 socket.on('die_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
   var turn = document.getElementsByClassName("turn");
   var money = document.getElementsByClassName("moneyBar");
   var die = document.getElementsByClassName("playerdie");
@@ -191,6 +192,7 @@ socket.on('die_receive', function(room, user){
       $("#bbing").attr('disabled',true);
       $("#check").attr('disabled',true);
       $("#die").attr('disabled',true);
+      $('#myCardWindow').empty();
     }
     if(room.connUsers[i].userName == room.currentTurnUser)
       turn[i].src="/images/turn.png";
@@ -204,11 +206,11 @@ $('#call').click('submit', function (){
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
   socket.emit('call_send', 1*roomMoneyNumber);
 });
-// half을 눌렀을때(배팅금의 반만큼을 건다.)
+// half을 눌렀을때(배팅금만큼 건다.)
 $('#half').click('submit', function(){
   var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
   var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  var money = 0.5*roomMoneyNumber;
+  var money = 1*roomMoneyNumber;
   socket.emit('half_send', money);
 });
 // dadang을 눌렀을때(배팅금의 2배만큼을 건다.)
@@ -231,7 +233,7 @@ $('#check').click('submit', function(){
 });
 // 배팅의 대해 반응 하는 소켓
 socket.on('betting_receive', function(room, user, state){
-  document.getElementById("roomAllMoney").innerHTML = room.roomAllMoney;
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
   var turn = document.getElementsByClassName("turn");
   var money = document.getElementsByClassName("moneyBar");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
@@ -254,7 +256,6 @@ socket.on('lastCardDistribution_receive', function(room){
   var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
   $('#myCardWindow').empty();
-  $("#myCardWindow").append($('#rowTemplate5').html());
   var card1 = document.getElementsByClassName("card1");
   var card2 = document.getElementsByClassName("card2");
   var card3 = document.getElementsByClassName("card3");
@@ -263,6 +264,7 @@ socket.on('lastCardDistribution_receive', function(room){
   }
   for(var i = 0; i < room.connUsers.length; i++){
     if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+      $("#myCardWindow").append($('#rowTemplate5').html());
       $("#dadang").attr('disabled',true);
       $("#call").attr('disabled',true);
       $("#half").attr('disabled',true);
@@ -284,7 +286,6 @@ socket.on('lastCardDistribution_receive', function(room){
 function select1 (){
   var card1 = document.getElementsByClassName("card1");
   var card2 = document.getElementsByClassName("card2");
-  console.log(card1[0].src);
   var selectCard = [];
   selectCard[0] = ((card1[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
   selectCard[1] = ((card2[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
@@ -320,8 +321,34 @@ socket.on('finallySelect_receive', function(cards, room, user){
       turn[i].src = "";
   }
 });
-socket.on('resetGame_receive', function(cards, user){
-
+socket.on('resetGame_receive', function(room){
+  var die = document.getElementsByClassName("playerdie");
+  var selectCard = [];
+  $('#myCardWindow').empty();
+  $('.cards').remove();
+  $('.lastCards').remove();
+  $("#myCardWindow").append($('#rowTemplate6').html());
+  for(var i = 0; i < room.connUsers.length; i++){
+    $(".cardBundle").append($('#rowTemplate2').html());  
+  }
+  var openCard = document.getElementsByClassName("cards");
+  for(var i = 0; i < room.connUsers.length; i++){
+    if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+      $("#cardImforamtion1").attr("src", "/images/card/" + room.cards[2*i] +".png");
+      $("#cardImforamtion2").attr("src", "/images/card/" + room.cards[2*i+1] +".png");
+      selectCard[0] = room.cards[2*i];
+      selectCard[1] = room.cards[2*i+1];
+      socket.emit('finallySelect_send', selectCard); 
+    }
+    for(var j = 0; j<room.gamingUsers.length; j++){
+      if(room.gamingUsers[j].userName == room.connUsers[i].userName){
+        openCard[i].src = "/images/card/" + room.cards[2*i] +".png";
+        openCard[i+room.connUsers.length].src = "/images/card/" + room.cards[2*i+1] +".png";
+        break;
+      }
+    } 
+  }
+  cardAnimation(room.connUsers.length);
 });
 socket.on('gameContinueCheck_receive', function(room, user){
   document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
@@ -350,6 +377,10 @@ socket.on('gameContinueCheck_receive', function(room, user){
 //   socket.emit('leave_send');
 //   return "gg";
 // };
+
+// window.onunload=function() {
+//  if (socket) socket.disconnect();
+// }
 socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });

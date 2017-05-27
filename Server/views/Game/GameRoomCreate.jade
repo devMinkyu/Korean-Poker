@@ -9,7 +9,17 @@ block content
         label(for='roomName') 방 이름
         input.form-control(type='text', id='roomName', name='roomName', placeholder='ROOM NAME')
         label(for='roomMoney') 판돈
-        input.form-control(type='text', id='roomMoney', name='roomMoney', placeholder='판돈')
+          select.form-control(name="roomMoney")
+            option(value="10000" selected="selected") 10000
+            option(value="100000") 100000
+            option(value="1000000") 1000000
+            option(value="1000000") 10000000
+        br
+        label(for='roomUserNumber') 참여인원
+          select.form-control(name="roomUserNumber")
+            option(value="4" selected="selected") 4
+            option(value="3") 3
+            option(value="2") 2
       .form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
