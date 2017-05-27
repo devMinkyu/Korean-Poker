@@ -31,7 +31,8 @@ block content
             .parent
               img.myprofile.img-circle(src=currentUser.photoURL)
           else
-            img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
+            .parent
+              img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
           button.btn.btn-warning(id="ready") 준비
           a.btn.btn-warning(id='exit', href='javascript:window.history.back()') 나가기
         //- 원래
@@ -74,7 +75,9 @@ block content
     script#rowTemplate3(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
-        <img class="profile img-circle" name= "userProfile"/>
+        <div class='parent'>
+          <img class="profile img-circle" name= "userProfile"/>
+        </div>
         <h3 class='playerdie'></h3>
         <h5 class='playerBettingState'></h5>
         <img class="turn"/>
@@ -212,25 +215,25 @@ block content
     }
     .col-xs-6:nth-child(1) .playerBettingState{
       position:absolute;
-      top: 83% ;
+      top: 123%% ;
       left: 104%;
       width:100%;
     }
     .col-xs-6:nth-child(2) .playerBettingState{
       position:absolute;
-      top: 83% ;
+      top: 123%% ;
       left: 104%;
       width:100%;
     }
     .col-xs-6:nth-child(3) .playerBettingState{
       position:absolute;
-      top: 83% ;
+      top: 123%% ;
       right: 104%;
       width:100%;
     }
     .col-xs-6:nth-child(4) .playerBettingState{
       position:absolute;
-      top: 83% ;
+      top: 123%% ;
       right: 104%;
       width:100%;
     }
