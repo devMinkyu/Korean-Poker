@@ -28,11 +28,12 @@ block content
         #viewTimer
         p#firstButton
           if(currentUser)
-            img.myprofile.img-circle(src=currentUser.photoURL)
+            .parent
+              img.myprofile.img-circle(src=currentUser.photoURL)
           else
             img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
           button.btn.btn-warning(id="ready") 준비
-          a.btn.btn-warning(id="exit", href='javascript:window.history.back()') 나가기
+          a.btn.btn-warning(id='exit', href='javascript:window.history.back()') 나가기
         //- 원래
         //- h3(id='myName')= currentUser.userName
         //- span(id='myWin')= currentUser.win
@@ -59,7 +60,9 @@ block content
         <p>
             <span name='state' class='state'></span>
         </p> 
-        <img class="profile img-circle", name="userProfile"/>
+        <div class='parent'>
+          <img class="profile img-circle", name="userProfile"/>
+        </div>
         <h4 class='moneyBar'></h4>
       </div>
 
@@ -102,6 +105,10 @@ block content
         <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
       </div>
   style.
+    .parent{
+      width: 100%;
+      position: relative; /* If you want text inside of it */
+    }
     button#select1 {
       top: 18%;
       left: 26%;
@@ -130,7 +137,7 @@ block content
     #myName{
       position:absolute;
       left:2%;
-      top:62%;
+      top:71%;
       font-size:1em;
     }
     #myWin{
@@ -306,11 +313,13 @@ block content
       color: white;
     }
     .myprofile{
-      position:absolute;
-      left:3%;
-      top:19%;
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      bottom: 0;
+      right: 0;
       width:30%;
-      height:59%;
+      height:auto;
     }
     .navbar{
       display: none;
@@ -357,10 +366,12 @@ block content
     
     .col-xs-6:nth-child(1) .profile {
       position: absolute;
-      top: 10% ;
-      left: 110%;
-      width: 50%;
-      height: 75%;
+      top: 0px;
+      left: 100%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
     }
     .col-xs-6:nth-child(1) .userName{
       position: absolute;
@@ -385,10 +396,12 @@ block content
     }
     .col-xs-6:nth-child(2) .profile {
       position: absolute;
-      top: 10% ;
-      left: 110%;
-      width: 50%;
-      height: 75%;
+      top: 0px;
+      left: 100%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
     }
     .col-xs-6:nth-child(2) .userName{
       position: absolute;
@@ -414,10 +427,12 @@ block content
     
     .col-xs-6:nth-child(3) .profile {
       position: absolute;
-      top: 20% ;
-      right: 110%;
-      width: 50%;
-      height: 75%;
+      top: 0px;
+      left: -50%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
     }
     .col-xs-6:nth-child(3) .userName{
       position: absolute;
@@ -427,7 +442,7 @@ block content
       font-size:1.5em;
     }
     .col-xs-6:nth-child(4) {
-       background: url('/images/Profilearea.png');
+      background: url('/images/Profilearea.png');
       background-repeat: no-repeat;
       background-position:center center;
       background-size:cover;
@@ -443,10 +458,12 @@ block content
     
     .col-xs-6:nth-child(4) .profile {
       position: absolute;
-      top: 10% ;
-      right: 110%;
-      width: 50%;
-      height: 75%;
+      top: 0px;
+      left: -50%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
     }
     .col-xs-6:nth-child(4) .userName{
       position: absolute;
@@ -490,7 +507,7 @@ block content
     .lastCards {
       position: absolute;
       left : 50%;
-      bottom : 40%;
+      bottom : 49%;
       height: 35%;
       width: 11%;
     }
@@ -561,6 +578,10 @@ block content
       margin-left: 100px;
     }
     @media all and (max-width: 360px){
+      .parent{
+        width: 100%;
+        position: relative; /* If you want text inside of it */
+      }
       #chatLog.chat_log{
         font-size:0.5em;
         resize: none;
@@ -654,16 +675,18 @@ block content
         height:100%;
       }
       .myprofile{
-        position:absolute;
-        left:5%;
-        top:27%;
-        width:40%;
-        height:65%;
+        position: absolute;
+        top: 9px;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        width:30%;
+        height:auto;
       }
       #myName{
         position:absolute;
         left:4%;
-        top:50%;
+        top:69%;
         font-size:6px;
       }
       #myWin{
@@ -775,7 +798,7 @@ block content
       .mycards {
         position: absolute;
         left : 37%;
-        top : 70%;
+        top : 65%;
         height: 25%;
         width: 8%;
         display: none;
