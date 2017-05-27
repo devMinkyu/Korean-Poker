@@ -5,8 +5,6 @@
 @import url("http://fonts.googleapis.com/css?family=Poiret+One");
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
-@import url("css/style.css'");
-@import url("css/owl.carousel.css");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
 /*
 	Overflow by HTML5 UP
@@ -1175,7 +1173,7 @@ input[type="text"] {
   font-weight: normal;
   letter-spacing: 1px;
   font-family: 'Poiret One', cursive;
-  background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 325px 13px;
+  background: rgba(0, 0, 0, 0.5) no-repeat 325px 13px;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -1183,7 +1181,7 @@ input[type="text"] {
   -ms-transition: all 0.3s ease-in-out; }
 
 input[type="text"]:focus, input[type="text"]:hover {
-  background: #000 url(../images/user.png) no-repeat 325px 13px; }
+  background: #000 no-repeat 325px 13px; }
 
 .form-group2-agile {
   position: relative;
@@ -1200,7 +1198,7 @@ input[type="password"] {
   font-size: 20px;
   font-weight: normal;
   font-family: 'Poiret One', cursive;
-  background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 325px 13px;
+  background: rgba(0, 0, 0, 0.5) no-repeat 325px 13px;
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -1209,47 +1207,11 @@ input[type="password"] {
   -ms-transition: all 0.3s ease-in-out; }
 
 input[type="password"]:focus, input[type="password"]:hover {
-  background: #000 url(../images/key.png) no-repeat 325px 13px; }
+  background: #000 no-repeat 325px 13px; }
 
 .form-group3-agile {
   margin-bottom: 20px; }
 
-/*--checkbox--*/
-.form-group3-agile input[type="checkbox"] {
-  display: none; }
-
-.form-group3-agile input[type="checkbox"] + label {
-  position: relative;
-  padding-left: 2em;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  color: #fff;
-  font-weight: normal;
-  cursor: pointer;
-  letter-spacing: 1px;
-  font-family: 'Poiret One', cursive; }
-
-.form-group3-agile input[type="checkbox"] + label span:first-child {
-  width: 14px;
-  height: 14px;
-  border: 2px solid #6f1c21;
-  position: absolute;
-  left: 0;
-  background: #6f1c21;
-  top: 3px; }
-
-.form-group3-agile input[type="checkbox"]:checked + label span:first-child:before {
-  content: "";
-  background: url(/stylesheets/images/tick.png) no-repeat;
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  font-size: 10px;
-  width: 10px;
-  height: 10px; }
-
-/*--//checkbox--*/
 input[type="submit"] {
   padding: 10px;
   background-color: rgba(255, 84, 100, 0.17);
@@ -1368,17 +1330,17 @@ a.kakao-link:hover {
   .content-w3ls {
     width: 40%; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 327px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 327px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="text"]:hover, input[type="text"]:focus {
-    background: #000 url(../images/user.png) no-repeat 327px 10px; }
+    background: #000 no-repeat 327px 10px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 327px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 327px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="password"]:hover, input[type="password"]:focus {
-    background: #000 url(../images/key.png) no-repeat 327px 10px; }
+    background: #000 no-repeat 327px 10px; }
   input[type="submit"] {
     font-size: 20px; }
   input[type="text"], input[type="password"] {
@@ -1392,17 +1354,17 @@ a.kakao-link:hover {
   input[type="submit"] {
     width: 337px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 300px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 300px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="text"]:hover, input[type="text"]:focus {
-    background: #000 url(../images/user.png) no-repeat 300px 10px; }
+    background: #000 no-repeat 300px 10px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 300px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 300px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="password"]:hover, input[type="password"]:focus {
-    background: #000 url(../images/key.png) no-repeat 300px 10px; }
+    background: #000 no-repeat 300px 10px; }
   input[type="text"], input[type="password"] {
     width: 71%; } }
 
@@ -1446,17 +1408,17 @@ a.kakao-link:hover {
 
 @media (max-width: 640px) {
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 292px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 292px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 292px 10px; }
+    background: #000 no-repeat 292px 10px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 292px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 292px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 292px 10px; }
+    background: #000 no-repeat 292px 10px; }
   input[type="submit"] {
     width: 327px; } }
 
@@ -1464,17 +1426,17 @@ a.kakao-link:hover {
   .content-w3ls img.user-wthree {
     width: 120px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 273px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 273px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 273px 10px; }
+    background: #000 no-repeat 273px 10px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 273px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 273px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 273px 10px; }
+    background: #000 no-repeat 273px 10px; }
   input[type="submit"] {
     width: 308px; }
   .footer-w3ls p {
@@ -1487,17 +1449,17 @@ a.kakao-link:hover {
     font-size: 35px;
     letter-spacing: 1px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 258px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 258px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 258px 10px; }
+    background: #000 no-repeat 258px 10px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 258px 10px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 258px 10px;
     font-size: 18px;
     height: 25px; }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 258px 10px; }
+    background: #000 no-repeat 258px 10px; }
   input[type="submit"] {
     width: 295px; } }
 
@@ -1507,17 +1469,17 @@ a.kakao-link:hover {
     font-size: 30px;
     letter-spacing: 1px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 215px 9px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 215px 9px;
     font-size: 16px;
     height: 22px; }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 215px 9px; }
+    background: #000 no-repeat 215px 9px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 215px 9px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 215px 9px;
     font-size: 16px;
     height: 22px; }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 215px 9px; }
+    background: #000 no-repeat 215px 9px; }
   input[type="submit"] {
     width: 253px; }
   .form-group3-agile input[type="checkbox"] + label {
@@ -1541,19 +1503,19 @@ a.kakao-link:hover {
     font-size: 27px;
     letter-spacing: 1px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 219px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 219px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 219px 8px; }
+    background: #000 no-repeat 219px 8px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 219px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 219px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 219px 8px; }
+    background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
     width: 254px; }
@@ -1588,19 +1550,19 @@ a.kakao-link:hover {
     font-size: 25px;
     letter-spacing: 1px; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 214px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 214px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 214px 8px; }
+    background: #000 no-repeat 214px 8px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 214px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 214px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 214px 8px; }
+    background: #000 no-repeat 214px 8px; }
   input[type="text"], input[type="password"] {
     width: 78%; } }
 
@@ -1615,19 +1577,19 @@ a.kakao-link:hover {
   .form-group1-agile {
     margin: 15px auto; }
   input[type="text"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/user.png) no-repeat 198px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 198px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="text"]:focus, input[type="text"]:hover {
-    background: #000 url(../images/user.png) no-repeat 198px 8px; }
+    background: #000 no-repeat 198px 8px; }
   input[type="password"] {
-    background: rgba(0, 0, 0, 0.5) url(../images/key.png) no-repeat 198px 8px;
+    background: rgba(0, 0, 0, 0.5) no-repeat 198px 8px;
     font-size: 16px;
     height: 20px;
     border: 2px solid rgba(185, 0, 0, 0.35); }
   input[type="password"]:focus, input[type="password"]:hover {
-    background: #000 url(../images/key.png) no-repeat 198px 8px; }
+    background: #000 no-repeat 198px 8px; }
   input[type="submit"] {
     width: 235px;
     font-size: 14px; }

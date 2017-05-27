@@ -238,6 +238,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 // 초기화
 function initialize(roomIndex){
   rooms[roomIndex].roomAllMoney = 0;
@@ -393,6 +395,8 @@ function die_send(money , socket){
       app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
       return;
     }else{
+      rooms[roomIndex].connUsers[userIndex].cards[0] = cards[0];
+      rooms[roomIndex].connUsers[userIndex].cards[1] = cards[1];
       rooms[roomIndex].count += 1;
       rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
       rooms[roomIndex].gamingUsers[gameUserIndex].pedigreeResult = cardPriority(cards[0], cards[1]);

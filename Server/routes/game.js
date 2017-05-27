@@ -80,8 +80,8 @@ router.get('/create', function(req,res, next){
 
 // router.post('/', needAuth, function(req, res, next){
 router.post('/', function(req, res, next){
-  if(isNaN(Number(req.body.roomMoney))){
-    req.flash('danger', '판돈을 숫자로 입력해주세요.');
+  if(isNaN(Number(req.body.roomMoney)) || Number(req.body.roomMoney) <= 0){
+    req.flash('danger', '판돈을 다시 입력해주세요.');
     return res.redirect('back');
   }
   // if(searchRoomIndex(rooms, req.body.roomName) == -1){

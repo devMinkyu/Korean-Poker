@@ -16,11 +16,12 @@ block content
               span(name='state') 준비 완료
             else
               span(name='state') 대기 중     
-          img.profile.img-circle(name="userProfile" src=user.photoURL)
+          img.profile.img-circle(name="userProfile" src=user.photoURL)     
     .draw
       img.moneypanel(src="/images/Moneyarea.png")
       h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
       h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
+    .cardBundle 
     .row
       #buttons
         h1(id='roomName')= room.roomName
@@ -40,10 +41,6 @@ block content
         span(id='myWin') 승: #{room.connUsers[room.connUsers.length-1].win}
         span(id='myLose') / 패: #{room.connUsers[room.connUsers.length-1].lose}
     .row(id="myCardWindow")
-      .col.xs.4
-        img.mycards(id='cardImforamtion1')
-        img.mycards(id='cardImforamtion2')
-        img.mycards(id='cardImforamtion3')
     .row(id='bettingBar')
       button.btn.btn-warning.col-md-2(id="dadang") 따당
       button.btn.btn-primary.col-md-2(id="call") 콜
@@ -86,32 +83,37 @@ block content
        </div>
     script#rowTemplate5(type='text/template').
       <div class= "col xs 4">
-        <span id="select1">
+        <button id=select1 onclick=select1()>
           <img class='card1'>
           <img class='card2'>
-        </span>
-        <span id="select2">
+        </button>
+        <button id=select2 onclick=select2()>
           <img class='card1'>
           <img class='card3'>
-        </span>
-        <span id="select3">
+        </button>
+        <button id=select3 onclick=select3()>
           <img class='card2'>
           <img class='card3'>
-        </span>
+        </button>
+      </div>
+    script#rowTemplate6(type='text/template').
+      <div class= "col xs 4">
+        <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
+        <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
       </div>
   style.
-    span#select1 {
-      bottom: 5%;
+    button#select1 {
+      top: 70%;
       left: 26%;
       position: absolute;
     }
-    span#select2 {
-      bottom: 5%;
+    button#select2 {
+      top: 70%;
       left: 41%;
       position: absolute;
     }
-    span#select3 {
-      bottom: 5%;
+    button#select3 {
+      top: 70%;
       left: 56%;
       position: absolute;
     }
