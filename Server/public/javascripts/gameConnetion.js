@@ -1,6 +1,7 @@
 var socket = io.connect();
 var element = document.getElementById("_id");
 var currentUserName = document.getElementById("userName").innerHTML;
+var cardOpenStage = 0;
 $("#dadang").attr('disabled',true);
 $("#call").attr('disabled',true);
 $("#half").attr('disabled',true);
@@ -19,11 +20,13 @@ socket.on('room_connection_receive', function(users){
   var lose = document.getElementsByName("lose");
   var state = document.getElementsByName("state");
   var img = document.getElementsByName("userProfile");
+  var money = document.getElementsByClassName("moneyBar");
   for(var i = 0; i < users.length; i++){
     $("#userWindow").append($('#rowTemplate1').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
+    money[i].innerHTML = "돈: " + users[i].money;
     img[i].src=users[i].photoURL;
     if(users[i].isReady === true)
       state[i].innerHTML = "준비 완료";
@@ -88,6 +91,7 @@ socket.on('start_game', function(room){
 });
 // 한장의 카드 눌렀을때
 $('#cardImforamtion1').click(function(){
+  if(cardOpenStage === 0){
     if($('.mycards.image-selected').index() == -1){ 
         $('#cardImforamtion1').addClass("image-selected");
     }else {
@@ -95,8 +99,15 @@ $('#cardImforamtion1').click(function(){
         $('#cardImforamtion1').addClass("image-selected");
     }
     oneSelect();
+  }else if(cardOpenStage === 1){
+    if($('.mycards.image-selected').index() == -1){ 
+        $('#cardImforamtion1').addClass("image-selected");
+    }
+    twoSelect();
+  }
 });
 $('#cardImforamtion2').click(function(){
+  if(cardOpenStage === 0){
     if($('.mycards.image-selected').index() == -1){ 
         $('#cardImforamtion2').addClass("image-selected");
     }else {
@@ -104,6 +115,18 @@ $('#cardImforamtion2').click(function(){
         $('#cardImforamtion2').addClass("image-selected");
     }
     oneSelect();
+  }else if(cardOpenStage === 1){
+    if($('.mycards.image-selected').index() == -1){ 
+        $('#cardImforamtion2').addClass("image-selected");
+    }
+    twoSelect();    
+  }
+});
+$('#cardImforamtion3').click(function(){
+  if($('.mycards.image-selected').index() == -1){ 
+        $('#cardImforamtion3').addClass("image-selected");
+    }
+  twoSelect();
 });
 function oneSelect(){
   var cardImforamtion1 = document.getElementById("cardImforamtion1");
@@ -111,6 +134,21 @@ function oneSelect(){
   var selectCard;
   var card1 = cardImforamtion1.src;
   var card2 = cardImforamtion2.src;
+  if(cardImforamtion1.getAttribute("class").indexOf("image-selected") == -1){
+    selectCard = (card2.replace(/[^0-9]/g,"")).split("3000").join("");
+  } else if(cardImforamtion2.getAttribute("class").indexOf("image-selected") == -1){
+    selectCard = (card1.replace(/[^0-9]/g,"")).split("3000").join("");
+  }
+  socket.emit('one_open_card_send', 1*selectCard);
+}
+function twoSelect(){
+  var cardImforamtion1 = document.getElementById("cardImforamtion1");
+  var cardImforamtion2 = document.getElementById("cardImforamtion2");
+  var cardImforamtion3 = document.getElementById("cardImforamtion3");
+  var selectCard;
+  var card1 = cardImforamtion1.src;
+  var card2 = cardImforamtion2.src;
+  var card3 = cardImforamtion3.src;
   if(cardImforamtion1.getAttribute("class").indexOf("image-selected") == -1){
     selectCard = (card2.replace(/[^0-9]/g,"")).split("3000").join("");
   } else if(cardImforamtion2.getAttribute("class").indexOf("image-selected") == -1){
@@ -142,6 +180,7 @@ socket.on('one_open_card_receive', function(room, user){
 });
 // 한장씩 다 공개했을때 반응하는 소켄
 socket.on('one_open_card_end_receive',function(room){
+  cardOpenStage = 1;
   var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByClassName("turn");
   for(var i = 0; i < room.connUsers.length; i++){
@@ -243,10 +282,16 @@ socket.on('betting_receive', function(room, user, state){
 });
 // 모두 콜을 눌렀을 때 한장씩 더 나눠주는 코드
 socket.on('lastCardDistribution_receive', function(room){
-  var cardImforamtion3 = document.getElementById("cardImforamtion3");
+  var cardImforamtion1 = document.getElementById("cardImforamtion1");
+  var cardImforamtion2 = document.getElementById("cardImforamtion2");
   var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
+  $('#myCardWindow').empty();
+  $("#myCardWindow").append($('#rowTemplate5').html());
+  var card1 = document.getElementsByClassName("card1");
+  var card2 = document.getElementsByClassName("card2");
+  var card3 = document.getElementsByClassName("card3");
   for(var i = 0; i < room.connUsers.length; i++){
     $(".gamefield").append($('#rowTemplate4').html());
   }
@@ -257,8 +302,9 @@ socket.on('lastCardDistribution_receive', function(room){
       $("#half").attr('disabled',true);
       $("#bbing").attr('disabled',true);
       $("#check").attr('disabled',true);
-      $("#die").attr('disabled',true);
-      cardImforamtion3.src ="/images/card/" + room.cards[2*room.connUsers.length+i] +".png";
+      $(".card1").attr("src", cardImforamtion1.src);
+      $(".card2").attr("src", cardImforamtion2.src);
+      $(".card3").attr("src", "/images/card/" + room.cards[2*room.connUsers.length+i] +".png");
     }
     playerBettingState[i].innerHTML = '';
     if(room.connUsers[i].userName == room.currentTurnUser)
@@ -266,24 +312,8 @@ socket.on('lastCardDistribution_receive', function(room){
     else
       turn[i].src = "";
   }
+  
   cardAnimationThird(room.connUsers.length);
-});
-$('#finallySelect').click('submit', function(e){
-  var card = document.getElementsByName("card");
-  var selectCard = [];
-  var checkCount = 0;
-  for(var i = 0; i < card.length; i++){
-    if(card[i].checked){
-      card[i].checked = false;
-      selectCard.push(card[i].value);
-      checkCount++;
-    }
-  }
-  if(checkCount > 2){
-    alert("두장만 선택하세요!!");
-    return;
-  }
-  socket.emit('finallySelect_send', selectCard);
 });
 socket.on('finallySelect_receive', function(cards, room, user){
   var openCard1 = document.getElementsByName("opencard1");
@@ -326,7 +356,7 @@ socket.on('timer_receive', function(timer){
 });
 
 function cardAnimation(userNumber){
-    var direction = {left: "+=75%", bottom: "+=20%"}
+    var direction = {left: "+=70%", bottom: "+=0%"}
     var directionCount = 0 //주는 카드 방향 지정
     var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
     
@@ -334,32 +364,32 @@ function cardAnimation(userNumber){
       $(this).delay(300*index).animate(direction)
       if(directionCount == 0){
           if(moveLeftCount == 0 ){// 2번 플레이어
-              direction = {left: "+=75%", bottom: "-=40%"}
+              direction = {left: "+=70%", bottom: "-=60%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "+=65%", bottom: "-=40%"}
+              direction = {left: "+=60%", bottom: "-=60%"}
               directionCount++
           }
       }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=65%", bottom: "-=40%"}
+              direction = {left: "-=60%", bottom: "-=60%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=55%", bottom: "-=40%"}
+              direction = {left: "-=50%", bottom: "-=60%"}
               directionCount++
           }
       }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=65%", bottom: "+=20%"}
+              direction = {left: "-=60%", bottom: "+=0%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=55%", bottom: "+=20%"}  
+              direction = {left: "-=50%", bottom: "+=0%"}  
               directionCount++
           }
       }
       else{//1번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "+=65%", bottom: "+=20%"}
+              direction = {left: "+=60%", bottom: "+=0%"}
               directionCount = 0
               moveLeftCount++
           }
@@ -397,18 +427,18 @@ function cardAnimation(userNumber){
     }
 
 function cardAnimationThird(userNumber){
-  var direction = {left: "+=55%", bottom: "+=20%"}
+  var direction = {left: "+=50%", bottom: "+=0%"}
   var directionCount = 0 //주는 카드 방향 지정
   var drawCards = $('.lastCards').each(function(index) {
     $(this).delay(300*index).animate(direction)
     if(directionCount == 0){
-        direction = {left: "+=55%", bottom: "-=40%"}
+        direction = {left: "+=50%", bottom: "-=60%"}
         directionCount++
     }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-        direction = {left: "-=45%", bottom: "-=40%"}
+        direction = {left: "-=40%", bottom: "-=60%"}
         directionCount++
     }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
-        direction = {left: "-=45%", bottom: "+=10%"}
+        direction = {left: "-=40%", bottom: "+=0%"}
         directionCount++
     }
   });

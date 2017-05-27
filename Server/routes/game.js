@@ -94,7 +94,7 @@ router.post('/', function(req, res, next){
       'gamingUsers' : [], // 게임의 참여자들
       'deadUsers' :[], // 게임의 죽은 유저
       'currentTurnUser': '',
-      'state' : 'Waiting game',
+      'state' : '대기중',
       'cards' : [],
       'timer' : 15,
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
@@ -124,7 +124,7 @@ router.get('/:id', function(req,res, next){
   // var index = searchRoomIndex(rooms, req.params.id);
   var index = req.params.id;
   var selectedRoom = rooms[index];
-  if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "Waiting game"){
+  if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "대기중"){
 
     // 원래 이렇게 해야함.
     // addUser(selectedRoom._id, req.user._id, req.user.userName);

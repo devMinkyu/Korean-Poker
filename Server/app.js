@@ -61,7 +61,7 @@ app.io.on('connection', function(socket){
       var ReadyCheckIndex = _.findIndex(rooms[roomIndex].connUsers, { isReady: false });
       // 레디를 다 하고 2명 이상일떄
       if(ReadyCheckIndex == -1 && rooms[roomIndex].connUsers.length > 1){
-        rooms[roomIndex].state = "During a game";
+        rooms[roomIndex].state = "게임중";
         gameStart(roomIndex, socket._id);
         return;
       }
@@ -130,7 +130,7 @@ app.io.on('connection', function(socket){
         var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
         timerValue = 15; 
         if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].connUsers[userIndex].userName)
-          bettingEnd(rooms[roomIndex].roomAllMoney, socket, "Call");
+          bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
       // }else if(timerValue < 0 ){
       //   var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
       //   timerValue = 15; 
@@ -152,19 +152,19 @@ app.io.on('connection', function(socket){
     die_send(money, socket);
   });
   socket.on('half_send', function(money){
-    bettingContinue(money, socket, "Half");
+    bettingContinue(money, socket, "하프");
   });
   socket.on('bbing_send', function(money){
-    bettingContinue(money, socket, "Bbing");
+    bettingContinue(money, socket, "삥");
   });
   socket.on('dadang_send', function(money){
-    bettingContinue(money, socket, "Dadang");
+    bettingContinue(money, socket, "따당");
   });
   socket.on('check_send', function(money){
-    bettingEnd(0, socket, "Check");
+    bettingEnd(0, socket, "체크");
   });
   socket.on('call_send', function(money){
-    bettingEnd(money, socket, "Call");
+    bettingEnd(money, socket, "콜");
   });
   socket.on('finallySelect_send', function(cards){
     finallySelect_send(cards,socket);
@@ -182,7 +182,7 @@ app.io.on('connection', function(socket){
       if(checkIndex == -1 ){ // 모두 동의
         gameStart(roomIndex, socket._id);
       } else if(checkIndex != -1){ // 한명이라도 동의 안한 사람이 있을 때
-        rooms[roomIndex].state = 'Waiting game';
+        rooms[roomIndex].state = '대기중';
         app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[socket._id].connUsers);
       }
     }

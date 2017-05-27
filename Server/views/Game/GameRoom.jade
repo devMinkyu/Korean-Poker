@@ -30,12 +30,16 @@ block content
             img.myprofile.img-circle(src=currentUser.photoURL)
           else
             img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
-          button.btn(id="ready")
-          button.btn(id="exit")
-        h3(id='myName') name
-        span(id='myWin') win
-        span(id='myLose') / lose
-    .row
+          button.btn.btn-warning(id="ready") 준비
+          button.btn.btn-warning(id="exit") 나가기
+        //- 원래
+        //- h3(id='myName')= currentUser.userName
+        //- span(id='myWin')= currentUser.win
+        //- span(id='myLose') / #{currentUser.lose}
+        h3(id='myName')= room.connUsers[room.connUsers.length-1].userName
+        span(id='myWin') 승: #{room.connUsers[room.connUsers.length-1].win}
+        span(id='myLose') / 패: #{room.connUsers[room.connUsers.length-1].lose}
+    .row(id="myCardWindow")
       .col.xs.4
         img.mycards(id='cardImforamtion1')
         img.mycards(id='cardImforamtion2')
@@ -59,6 +63,7 @@ block content
             <span name='state'></span>
         </p> 
         <img class="profile img-circle", name="userProfile"/>
+        <h4 class='moneyBar'></h4>
       </div>
 
     script#rowTemplate2(type='text/template').
@@ -79,8 +84,37 @@ block content
       <div class = "draw">
          <img class="lastCards"  src="/images/Card-S1.png">
        </div>
-       
+    script#rowTemplate5(type='text/template').
+      <div class= "col xs 4">
+        <span id="select1">
+          <img class='card1'>
+          <img class='card2'>
+        </span>
+        <span id="select2">
+          <img class='card1'>
+          <img class='card3'>
+        </span>
+        <span id="select3">
+          <img class='card2'>
+          <img class='card3'>
+        </span>
+      </div>
   style.
+    span#select1 {
+      bottom: 5%;
+      left: 26%;
+      position: absolute;
+    }
+    span#select2 {
+      bottom: 5%;
+      left: 41%;
+      position: absolute;
+    }
+    span#select3 {
+      bottom: 5%;
+      left: 56%;
+      position: absolute;
+    }
     #myName{
       position:absolute;
       left:2%;
@@ -227,23 +261,17 @@ block content
     }
     #ready{
       position:absolute;
-      left:42%;
+      left:50%;
       top:9%;
       width:30%;
-      height:30%;
-      background: url('/images/button/ready.png');
-      background-repeat: no-repeat;
-      background-position:center center;
+      height:20%;
     }
     #exit{
       position:absolute;
-      left:42%;
+      left:50%;
       top:40%;
       width:30%;
-      height:30%;
-      background: url('/images/button/exit.png');
-      background-repeat: no-repeat;
-      background-position:center center;
+      height:20%;
     }
     #buttons h1{
       position: absolute;
@@ -254,7 +282,7 @@ block content
     .myprofile{
       position:absolute;
       left:3%;
-      top:10%;
+      top:5%;
       width:30%;
       height:60%;
     }
@@ -517,9 +545,6 @@ block content
         top:26%;
         width:50%;
         height:30%;
-        background: url('/images/button/ready.png');
-        background-repeat: no-repeat;
-        background-position:center center;
       }
       #exit{
         position:absolute;
@@ -527,9 +552,6 @@ block content
         top:71%;
         width:50%;
         height:30%;
-        background: url('/images/button/exit.png');
-        background-repeat: no-repeat;
-        background-position:center center;
       }
       #roomMoney{
         left : 35%;
