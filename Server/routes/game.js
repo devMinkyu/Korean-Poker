@@ -64,7 +64,7 @@ router.get('/create', function(req,res, next){
 
 router.post('/', needAuth, function(req, res, next){
   var roomIndex = _.findIndex(rooms, { roomName: req.body.roomName});
-  if(roomIndex == -1){
+  if(roomIndex == -1 && req.body.roomName !== ""){
     var newRoom = {
       '_id' : roomsCount,
       'roomName' : req.body.roomName, // 방 제목
@@ -90,7 +90,7 @@ router.post('/', needAuth, function(req, res, next){
     addUser(roomIndex, req.user._id, req.user.userName, req.user.photoURL);
     res.render('Game/GameRoom', {room: newRoom});
   } else{
-    req.flash('danger', '똑같은 방이름이 있습니다.');
+    req.flash('danger', '다시 입력헤주세요');
     return res.redirect('back');
   }
 });
@@ -123,11 +123,11 @@ function addUser(roomIndex, userID, userName, photoURL){
     'userName' : userName,
     'isReady' :  false,
     'photoURL' : photoURL,
+    'cards' : [],
     // 여기 부분은 디비에 있는것을 집어넣어준다.
     'win' : 0,
     'lose' : 0,
-    'money' : 10000000000,
-    'cards' : []
+    'money' : 10000000000
   });
 }
 module.exports = router;

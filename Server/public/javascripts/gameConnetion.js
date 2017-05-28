@@ -274,6 +274,7 @@ socket.on('lastCardDistribution_receive', function(room){
       $(".card1").attr("src", cardImforamtion1.src);
       $(".card2").attr("src", cardImforamtion2.src);
       $(".card3").attr("src", "/images/card/" + room.cards[2*room.connUsers.length+i] +".png");
+      socket.emit('twoCardAutoSelect', [room.cards[2*i],room.cards[2*i+1]]);
     }
     playerBettingState[i].innerHTML = '';
     if(room.connUsers[i].userName == room.currentTurnUser)
@@ -377,10 +378,6 @@ socket.on('gameContinueCheck_receive', function(room, user){
   socket.emit('gameContinueCheck_send', continueCheck);
 });
 
-
-// window.onunload=function() {
-//  if (socket) socket.disconnect();
-// }
 socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });
