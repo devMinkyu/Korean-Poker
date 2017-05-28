@@ -27,7 +27,7 @@ app.set('view engine', 'jade');
 
 app.locals.moment = require('moment');
 // mongodb connect
-mongoose.connect('mongodb://localhost:27017/koreanpoker');
+mongoose.connect('mongodb://localhost:9336/koreanpoker');
 mongoose.connection.on('error', console.log);
 
 app.io.on('connection', function(socket){
