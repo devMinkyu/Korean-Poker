@@ -1,10 +1,10 @@
 var socket = io.connect();
 var element = document.getElementById("_id");
-var currentUserName = document.getElementById("myName").innerHTML;
-
+var currentUserID = document.getElementById("userID").innerHTML;
+var cards=[];
 
 // 연결
-socket.emit('room_connection_send', element.innerHTML-1, currentUserName);
+socket.emit('room_connection_send', element.innerHTML-1, currentUserID);
 
 socket.on('room_connection_receive', function(users){
   $('#userWindow').empty();
@@ -50,9 +50,12 @@ socket.on('message_receive', function(msg){
 $('#ready').click('submit', function(e){
   socket.emit('ready_send');
 });
-window.onbeforeunload = function() {
+$('#exit').click('submit', function(e){
   socket.emit('leave_send');
-};
+});
+// window.onbeforeunload = function() {
+//   socket.emit('leave_send');
+// };
 socket.on('ready_receive', function(users, index){
   var state = document.getElementsByName("state");
   if(users[index].isReady === true){
@@ -82,11 +85,11 @@ socket.on('start_game', function(room){
     money[i].innerHTML = "돈: " + room.connUsers[i].money;
     name[i].innerHTML = room.connUsers[i].userName;
     img[i].src=room.connUsers[i].photoURL;
-    if(currentUserName == room.connUsers[i].userName){
-      var card1 = room.cards[2*i];
-      var card2 = room.cards[2*i+1];
-      cardImforamtion1.src ="/images/card/" + card1 +".png";
-      cardImforamtion2.src ="/images/card/" + card2 +".png";
+    if(currentUserID == room.connUsers[i].userID){
+      cards[0] = room.cards[2*i];
+      cards[1] = room.cards[2*i+1];
+      cardImforamtion1.src ="/images/card/" + cards[0] +".png";
+      cardImforamtion2.src ="/images/card/" + cards[1] +".png";
       socket.emit('one_open_card_send', card1);
     }
   }
@@ -112,15 +115,11 @@ function firstCardSelect2(){
   oneSelect();
 }
 function oneSelect(){
-  var cardImforamtion1 = document.getElementById("cardImforamtion1");
-  var cardImforamtion2 = document.getElementById("cardImforamtion2");
   var selectCard;
-  var card1 = cardImforamtion1.src;
-  var card2 = cardImforamtion2.src;
   if(cardImforamtion1.getAttribute("class").indexOf("image-selected") == -1){
-    selectCard = (card2.replace(/[^0-9]/g,"")).split("3000").join("");
+    selectCard = cards[1];
   } else if(cardImforamtion2.getAttribute("class").indexOf("image-selected") == -1){
-    selectCard = (card1.replace(/[^0-9]/g,"")).split("3000").join("");
+    selectCard = cards[2];
   }
   socket.emit('one_open_card_send', 1*selectCard);
 }
@@ -133,11 +132,11 @@ socket.on('one_open_card_receive', function(room, user){
   var money = document.getElementsByClassName("moneyBar");
 
   for(var i = 0; i < room.connUsers.length; i++){
-    if(user.userName == room.connUsers[i].userName){
+    if(user.userID == room.connUsers[i].userID){
       openCard[i].src ="/images/card/" + user.cards[0] +".png";
       money[i].innerHTML = "돈: " + room.connUsers[i].money;
     }
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
@@ -152,14 +151,14 @@ socket.on('one_open_card_end_receive',function(room){
   var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByClassName("turn");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+    if(currentUserID == room.connUsers[i].userID && die[i].innerHTML != "Die"){
       $("#dadang").attr('disabled',false);
       $("#call").attr('disabled',false);
       $("#half").attr('disabled',false);
       $("#bbing").attr('disabled',false);
       $("#check").attr('disabled',false);
     }
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
@@ -178,15 +177,15 @@ socket.on('die_receive', function(room, user){
   var money = document.getElementsByClassName("moneyBar");
   var die = document.getElementsByClassName("playerdie");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
-    if(user.userName == room.connUsers[i].userName){
+    if(user.userID == room.connUsers[i].userID){
       money[i].innerHTML = "돈: " + room.connUsers[i].money;
       die[i].innerHTML = "Die";
     }
-    if(currentUserName == room.connUsers[i].userName && die[i].innerHTML == "Die"){
+    if(currentUserID == room.connUsers[i].userID && die[i].innerHTML == "Die"){
       $("#dadang").attr('disabled',true);
       $("#call").attr('disabled',true);
       $("#half").attr('disabled',true);
@@ -195,7 +194,7 @@ socket.on('die_receive', function(room, user){
       $("#die").attr('disabled',true);
       $('#myCardWindow').empty();
     }
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
@@ -239,11 +238,11 @@ socket.on('betting_receive', function(room, user, state){
   var money = document.getElementsByClassName("moneyBar");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
-    if(user.userName == room.connUsers[i].userName){
+    if(user.userID == room.connUsers[i].userID){
       money[i].innerHTML = "돈: " + room.connUsers[i].money;
       playerBettingState[i].innerHTML = state;
     }
@@ -264,7 +263,7 @@ socket.on('lastCardDistribution_receive', function(room){
     $(".cardBundle").append($('#rowTemplate4').html());
   }
   for(var i = 0; i < room.connUsers.length; i++){
-    if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+    if(currentUserID == room.connUsers[i].userID && die[i].innerHTML != "Die"){
       $("#myCardWindow").append($('#rowTemplate5').html());
       $("#dadang").attr('disabled',true);
       $("#call").attr('disabled',true);
@@ -274,10 +273,11 @@ socket.on('lastCardDistribution_receive', function(room){
       $(".card1").attr("src", cardImforamtion1.src);
       $(".card2").attr("src", cardImforamtion2.src);
       $(".card3").attr("src", "/images/card/" + room.cards[2*room.connUsers.length+i] +".png");
-      socket.emit('twoCardAutoSelect', [room.cards[2*i],room.cards[2*i+1]]);
+      cards[2] = room.cards[2*room.connUsers.length+i];
+      socket.emit('twoCardAutoSelect', [cards[0],cards[1]]);
     }
     playerBettingState[i].innerHTML = '';
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
@@ -286,27 +286,22 @@ socket.on('lastCardDistribution_receive', function(room){
 });
 // 두장씩 선택하는거
 function select1 (){
-  var card1 = document.getElementsByClassName("card1");
-  var card2 = document.getElementsByClassName("card2");
   var selectCard = [];
-  selectCard[0] = ((card1[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
-  selectCard[1] = ((card2[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
+  selectCard[0] = cards[0];
+  selectCard[1] = cards[1];
   socket.emit('finallySelect_send', selectCard);
 }
 function select2 (){
-  var card1 = document.getElementsByClassName("card1");
-  var card3 = document.getElementsByClassName("card3");
+  var card1 = document.getElementsByClassName("card1")
   var selectCard = [];
-  selectCard[0] = ((card1[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
-  selectCard[1] = ((card3[0].src).replace(/[^0-9]/g,"")).split("3000").join("");  
+  selectCard[0] = cards[0];
+  selectCard[1] = cards[2];  
   socket.emit('finallySelect_send', selectCard);
 }
 function select3 (){
-  var card2 = document.getElementsByClassName("card2");
-  var card3 = document.getElementsByClassName("card3");
   var selectCard = [];
-  selectCard[0] = ((card2[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
-  selectCard[1] = ((card3[0].src).replace(/[^0-9]/g,"")).split("3000").join("");
+  selectCard[0] = cards[1];
+  selectCard[1] = cards[2];
   socket.emit('finallySelect_send', selectCard);  
 }
 socket.on('cardButtonEmpty_receive', function(){
@@ -316,11 +311,11 @@ socket.on('finallySelect_receive', function(cards, room, user){
   var openCard = document.getElementsByClassName("cards");
   var turn = document.getElementsByClassName("turn");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(user.userName == room.connUsers[i].userName){
+    if(user.userID == room.connUsers[i].userID){
       openCard[i].src= "/images/card/" + cards[0] +".png";
       openCard[i+room.connUsers.length].src = "/images/card/" + cards[1] +".png";
     }
-    if(room.connUsers[i].userName == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
@@ -338,7 +333,7 @@ socket.on('resetGame_receive', function(room){
   }
   var openCard = document.getElementsByClassName("cards");
   for(var i = 0; i < room.connUsers.length; i++){
-    if(currentUserName == room.connUsers[i].userName && die[i].innerHTML != "Die"){
+    if(currentUserID == room.connUsers[i].userID && die[i].innerHTML != "Die"){
       $("#cardImforamtion1").attr("src", "/images/card/" + room.cards[2*i] +".png");
       $("#cardImforamtion2").attr("src", "/images/card/" + room.cards[2*i+1] +".png");
       selectCard[0] = room.cards[2*i];
@@ -346,7 +341,7 @@ socket.on('resetGame_receive', function(room){
       socket.emit('finallySelect_send', selectCard); 
     }
     for(var j = 0; j<room.gamingUsers.length; j++){
-      if(room.gamingUsers[j].userName == room.connUsers[i].userName){
+      if(room.gamingUsers[j].userID == room.connUsers[i].userID){
         openCard[i].src = "/images/card/" + room.cards[2*i] +".png";
         openCard[i+room.connUsers.length].src = "/images/card/" + room.cards[2*i+1] +".png";
         break;
@@ -365,10 +360,10 @@ socket.on('gameContinueCheck_receive', function(room, user){
   $('.cards').remove();
   $('.lastCards').remove();
   for(var i = 0; i < room.connUsers.length; i++){
-    if(user.userName == room.connUsers[i].userName){
+    if(user.userID == room.connUsers[i].userID){
       money[i].innerHTML = "돈: " + room.connUsers[i].money;
     }
-    if(currentUserName == room.connUsers[i].userName){
+    if(currentUserID == room.connUsers[i].userID){
       myWin.innerHTML = " 승: " + room.connUsers[i].win;
       myLose.innerHTML = " / 패: " + room.connUsers[i].lose;
     }

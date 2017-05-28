@@ -8,7 +8,10 @@ var schema = new Schema({
   userEmail: {type: mongoose.SchemaTypes.Email, required: true, unique: true, trim: true},
   contents : {type: String},
   facebook: {id: String, token: String},
-  photoURL : {type: String}
+  photoURL : {type: String},
+  win : {type: Number, default: 0},
+  lose : {type: Number, default: 0},
+  money: {type: Number, default: 1000000}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

@@ -4,6 +4,7 @@ block content
   .gamefield
     .row
       h5#_id #{room._id+1}
+      #userID= currentUser._id
       include ../includes/chat
     .row(id='userWindow')
       each user in room.connUsers
@@ -27,21 +28,22 @@ block content
       #buttons
         #viewTimer
         p#firstButton
-          if(currentUser)
-            .parent
-              img.myprofile.img-circle(src=currentUser.photoURL)
-          else
-            .parent
-              img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
+          //- if(currentUser)
+          .parent
+            img.myprofile.img-circle(src=currentUser.photoURL)
+          //- else
+          //-   .parent
+          //-     img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
           button.btn.btn-warning(id="ready") 준비
-          a.btn.btn-warning(id='exit', href='javascript:window.history.back()') 나가기
+          a.btn.btn-warning(id='exit', href='/game') 나가기
         //- 원래
-        //- h3(id='myName')= currentUser.userName
-        //- span(id='myWin')= currentUser.win
-        //- span(id='myLose') / #{currentUser.lose}
-        h3(id='myName')= room.connUsers[room.connUsers.length-1].userName
-        span(id='myWin') 승: #{room.connUsers[room.connUsers.length-1].win}
-        span(id='myLose') / 패: #{room.connUsers[room.connUsers.length-1].lose}
+        h3(id='myName')= currentUser.userName
+        span(id='myWin') 승: #{currentUser.win}
+        span(id='myLose') / 패: #{currentUser.lose}
+
+        //- h3(id='myName')= room.connUsers[room.connUsers.length-1].userName
+        //- span(id='myWin') 승: #{room.connUsers[room.connUsers.length-1].win}
+        //- span(id='myLose') / 패: #{room.connUsers[room.connUsers.length-1].lose}
     .row(id="myCardWindow")
     .row(id='bettingBar')
       button.btn.btn-warning.col-md-2(id="dadang") 따당
@@ -108,6 +110,9 @@ block content
         <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
       </div>
   style.
+    #userID{
+      display:none;
+    }
     .parent{
       width: 100%;
       position: relative; /* If you want text inside of it */
