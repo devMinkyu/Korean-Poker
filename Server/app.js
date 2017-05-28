@@ -102,14 +102,9 @@ app.io.on('connection', function(socket){
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
     var currentTurnUser = rooms[roomIndex].currentTurnUser;
     var gameUserIndex; 
-    var timer;
     var stage = 0;
     var timerValue = 15;
-    var count = 0;
-    timer = setInterval(function(){
-      console.log("+++++++++++");
-      console.log(count)
-      count++;
+    var timer = setInterval(function(){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
       var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userName: socket.userName });
@@ -462,12 +457,13 @@ function finallyResult(roomIndex, socket){
   var ddangKiller = _.findIndex(rooms[roomIndex].gamingUsers, {pedigreeResult: 300});
   var user = _.min(rooms[roomIndex].gamingUsers, "pedigreeResult");
   if(pato != -1){
-    if(user.pedigreeResult < 13){
+    if(user.pedigreeResult > 13){
       rooms[roomIndex].cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
       msg = "49파토 때문에 다시 게임을 시작합니다.";
       rooms[roomIndex].regame = 1;
       app.io.sockets.in(socket._id).emit('message_receive', msg);
       app.io.sockets.in(socket._id).emit('resetGame_receive', rooms[roomIndex]);
+      return;
     }
   }else if(ddangKiller != -1){
     if(user.pedigreeResult > 3 && user.pedigreeResult < 14){
