@@ -18,13 +18,13 @@ block content
               span(name='state') 대기 중     
           img.profile.img-circle(name="userProfile" src=user.photoURL)     
     .draw
+      h1(id='roomName')= room.roomName
       img.moneypanel(src="/images/Moneyarea.png")
       h5#roomMoney='배팅 금액 : '+room.roomMoney+'원'
       h3#roomAllMoney='총 금액 : '+room.roomAllMoney +'원'
     .cardBundle 
     .row
       #buttons
-        h1(id='roomName')= room.roomName
         #viewTimer
         p#firstButton
           if(currentUser)
@@ -78,8 +78,8 @@ block content
         <div class='parent'>
           <img class="profile img-circle" name= "userProfile"/>
         </div>
-        <h3 class='playerdie'></h3>
-        <h5 class='playerBettingState'></h5>
+        <h1 class='playerdie'></h1>
+        <h1 class='playerBettingState'></h1>
         <img class="turn"/>
         <h4 class='moneyBar'></h4>
       </div>
@@ -195,55 +195,67 @@ block content
     }
     .col-xs-6:nth-child(1) .playerdie{
       position:absolute;
-      top: 68% ;
-      left: 117%;
+      top: 95% ;
+      left: 111%;
       color:black;
+      width:50%;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(2) .playerdie{
       position:absolute;
-      top: 68% ;
-      left: 117%;
+      top: 95% ;
+      left: 111%;
       color:black;
+      width:50%;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(3) .playerdie{
       position:absolute;
-      top: 68%;
-      right: 129%;
+      top: 95%;
+      right: 111%;
       color:black;
+      width:50%;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(4) .playerdie{
       position:absolute;
-      top: 68% ;
-      right: 129%;
+      top: 95% ;
+      right: 111%;
       color:black;
+      width:50%;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(1) .playerBettingState{
       position:absolute;
-      top: 70% ;
-      left: 117%;
-      width:100%;
+      top: 95% ;
+      left: 111%;
+      width:50%;
       color:red;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(2) .playerBettingState{
       position:absolute;
-      top: 70% ;
-      left: 117%;
-      width:100%;
+      top: 95% ;
+      left: 111%;
+      width:50%;
       color:red;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(3) .playerBettingState{
       position:absolute;
-      top: 70% ;
-      right: 47%;
-      width:100%;
+      top: 95% ;
+      right: 111%;
+      width:50%;
       color:red;
+      -webkit-text-fill-color:unset;
     }
     .col-xs-6:nth-child(4) .playerBettingState{
       position:absolute;
-      top: 70% ;
-      right: 47%;
-      width:100%;
+      top: 95% ;
+      right: 111%;
+      width:50%;
       color:red;
+      -webkit-text-fill-color:unset;
     }
     #bettingBar{
       width:71%;
@@ -317,10 +329,10 @@ block content
       background-repeat: no-repeat;
       background-size:cover;
     }
-    #buttons h1{
+    #roomName{
       position: absolute;
-      bottom : 94%;
-      left: 3%;
+      bottom : 85%;
+      left: 44%;
       color: white;
     }
     .myprofile{
@@ -799,7 +811,7 @@ block content
         width: 8%;
         display: none;
       }
-      #buttons h1{
+      #roomName{
         position: absolute;
         bottom : 95%;
         left: 8%;
@@ -1101,7 +1113,7 @@ block content
         width: 8%;
         display: none;
       }
-      #buttons h1{
+      #roomName{
         position: absolute;
         bottom : 95%;
         left: 8%;
@@ -1410,7 +1422,7 @@ block content
         width: 8%;
         display: none;
       }
-      #buttons h1{
+      #roomName{
         position: absolute;
         bottom : 95%;
         left: 8%;
@@ -1719,7 +1731,7 @@ block content
         width: 8%;
         display: none;
       }
-      #buttons h1{
+      #roomName{
         position: absolute;
         bottom : 95%;
         left: 8%;
