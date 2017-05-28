@@ -12,14 +12,15 @@ var multipart = require('multiparty');
 // middle ware 회원 확인
 
 
+
 function needAuth(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
-    return res.sendStatus(401);
+    req.flash('danger', '로그인이 필요합니다.');
+    return res.redirect('/');
   }
 }
-
 function ensureExists(path, mask, cb) {
     if (typeof mask == 'function') {
         cb = mask;
@@ -61,8 +62,7 @@ router.get('/create', function(req,res, next){
   res.render('Game/GameRoomCreate');
 });
 
-// router.post('/', needAuth, function(req, res, next){
-router.post('/', function(req, res, next){
+router.post('/', needAuth, function(req, res, next){
   var roomIndex = _.findIndex(rooms, { roomName: req.body.roomName});
   if(roomIndex == -1){
     var newRoom = {

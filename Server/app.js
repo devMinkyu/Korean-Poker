@@ -81,27 +81,19 @@ app.io.on('connection', function(socket){
       msg = socket.userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
       rooms[roomIndex].connUsers.splice(userIndex, 1);
-      console.log("========대기중");
-      console.log(rooms[roomIndex].connUsers);
       if(rooms[roomIndex].connUsers.length === 0){
         rooms.splice(roomIndex, 1);
         return;
       }
       app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
     } else if(rooms[roomIndex].state == "게임중"){
-      console.log("========게임중");
-      console.log(rooms[roomIndex].connUsers);
       rooms[roomIndex].connUsers[userIndex].lose -= 1;
       userIndex = _.findIndex(rooms[roomIndex].disconnUsers, { userName: socket.userName });
-      die_send(rooms[roomIndex].roomMoney , socket);
       socket.leave(socket._id);
       rooms[roomIndex].disconnUsers.push(socket.userName);
+      die_send(rooms[roomIndex].roomMoney , socket);
       msg = socket.userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
-      console.log("========게임중1");
-      console.log(rooms[roomIndex].connUsers);
-      console.log("========게임중2");
-      console.log(rooms[roomIndex].disconnUsers);
     }
   });
 
@@ -187,20 +179,22 @@ app.io.on('connection', function(socket){
   socket.on('gameContinueCheck_send', function(check){
     var roomIndex = searchRoomIndex(rooms, socket._id);
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
-    var connNumber = rooms[roomIndex].connUsers.length;
-    rooms[roomIndex].connUsers[userIndex].isReady = check;
-    rooms[roomIndex].count += 1;
+    if(userIndex == -1){
+      return;
+    }else{
+      rooms[roomIndex].connUsers[userIndex].isReady = check;
+      rooms[roomIndex].count += 1;
+    }
     // 참여인원이 다 눌렀을 때
-    if(connNumber == rooms[roomIndex].count){
-      rooms[roomIndex].count = 0;
+    if(rooms[roomIndex].roomUserNumber == rooms[roomIndex].count){
       var checkIndex = _.findIndex(rooms[roomIndex].connUsers, { isReady: false });
       if(checkIndex == -1 ){ // 모두 동의
         gameStart(roomIndex, socket._id);
-      } else if(checkIndex != -1){ // 한명이라도 동의 안한 사람이 있을 때
-        rooms[roomIndex].state = '대기중';
-        app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
+        return;
       }
     }
+    rooms[roomIndex].state = '대기중';
+    app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
   });
 });
 
@@ -265,14 +259,14 @@ function initialize(roomIndex){
   if(rooms[roomIndex].disconnUsers.length !== 0){
     var disUserIndex;
     for(var i = 0; i<rooms[roomIndex].disconnUsers.length;i++){
-      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].disconnUsers[i].userName });    
+      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].disconnUsers[i] });    
       rooms[roomIndex].connUsers.splice(disUserIndex, 1);
-      console.log("+++++++++");
     }
   }
-  console.log(rooms[roomIndex].connUsers);
+  rooms[roomIndex].disconnUsers=[];
 }
 function gameStart(roomIndex, id) {
+  rooms[roomIndex].count = 0;
   rooms[roomIndex].cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
   var msg = "한장씩 카드를 공개 하세요. 아니시면 Die 하세요.";
   app.io.sockets.in(id).emit('message_receive', msg);
@@ -349,7 +343,6 @@ function die_send(money , socket){
           rooms[roomIndex].connUsers[i].lose += 1;
         }
       }
-      // 여기 함수의 안들어옴
       initialize(roomIndex);
       msg = user.userName + "님이 승리 하셨습니다.";
       app.io.sockets.in(socket._id).emit('message_receive', msg);

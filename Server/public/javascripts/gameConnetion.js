@@ -386,7 +386,7 @@ socket.on('timer_receive', function(timer){
 });
 
 function cardAnimation(userNumber){
-    var direction = {left: "+=70%", bottom: "+=8%"}
+    var direction = {left: "+=70%", bottom: "+=9%"}
     var directionCount = 0 //주는 카드 방향 지정
     var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
     
@@ -410,16 +410,16 @@ function cardAnimation(userNumber){
           }
       }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "-=60%", bottom: "+=8%"}
+              direction = {left: "-=60%", bottom: "+=9%"}
               directionCount++
           }else if(moveLeftCount ==1){
-              direction = {left: "-=50%", bottom: "+=8%"}  
+              direction = {left: "-=50%", bottom: "+=9%"}  
               directionCount++
           }
       }
       else{//1번 플레이어
           if(moveLeftCount == 0 ){
-              direction = {left: "+=60%", bottom: "+=8%"}
+              direction = {left: "+=60%", bottom: "+=9%"}
               directionCount = 0
               moveLeftCount++
           }
@@ -457,18 +457,18 @@ function cardAnimation(userNumber){
     }
 
 function cardAnimationThird(userNumber){
-  var direction = {left: "+=50%", bottom: "+=8%"}
+  var direction = {left: "+=50%", bottom: "+=0%"}
   var directionCount = 0 //주는 카드 방향 지정
   var drawCards = $('.lastCards').each(function(index) {
     $(this).delay(300*index).animate(direction)
     if(directionCount == 0){
-        direction = {left: "+=50%", bottom: "-=53%"}
+        direction = {left: "+=50%", bottom: "-=62%"}
         directionCount++
     }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-        direction = {left: "-=40%", bottom: "-=53%"}
+        direction = {left: "-=40%", bottom: "-=62%"}
         directionCount++
     }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
-        direction = {left: "-=40%", bottom: "+=8%"}
+        direction = {left: "-=40%", bottom: "+=0%"}
         directionCount++
     }
   });

@@ -27,12 +27,11 @@ html(lang='ko')
     script(src='/javascripts/ie/respond.min.js')
   body
     block top-nav 
-      include ./includes/topnav
-    //- if flashMessages
-    //-   each texts, type in flashMessages
-    //-     .container
-    //-       .alert(class='alert-#{type}')
-    //-         each msg in texts
-    //-           p= msg   
+      include ./includes/topnav 
     block content
-      
+    if flashMessages
+      each texts, type in flashMessages
+        .container
+          .alert(class='alert-#{type}')
+            each msg in texts
+              p= msg  
