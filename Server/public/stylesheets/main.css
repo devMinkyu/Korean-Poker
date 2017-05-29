@@ -1373,7 +1373,7 @@ a.kakao-link:hover {
   .content-w3ls {
     width: 42%; }
   input[type="submit"] {
-    width: 220px; }
+    width: 340px; }
   input[type="text"], input[type="password"] {
     width: 69%; } }
 
@@ -1522,7 +1522,7 @@ a.kakao-link:hover {
     width: 200px; }
   a.face-link {
     margin: 15px auto;
-    width: 153px;
+    width: 253px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
@@ -1531,7 +1531,7 @@ a.kakao-link:hover {
     text-align: left;
     margin: 0 5px 0 40px; }
   a.kakao-link {
-    width: 153px;
+    width: 253px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
@@ -1595,7 +1595,7 @@ a.kakao-link:hover {
     width: 175px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
-    width: 134px;
+    width: 234px;
     height: 38px;
     line-height: 38px;
     font-size: 14px; }
@@ -1756,11 +1756,11 @@ input[type="submit"], .agileits_copyright p a, a {
 
 /*-- //main --*/
 .w3_agile_main_grids {
-  width: 30%;
+  width: 60%;
   margin: 0 auto; }
 
 .agileits_w3layouts_main_grid_left, .w3_agileits_main_grid_right {
-  width: 50%; }
+  width: 55%; }
 
 .agileits_w3layouts_main_grid_left {
   float: left; }
