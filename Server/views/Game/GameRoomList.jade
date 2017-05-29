@@ -33,7 +33,8 @@ block content
                   br
                   .agileits_main_grid
                       form(action='/game/#{room._id}', method='get')
-                        input(type='submit', value='입장')
+                        input(type='submit', value='입장',  onclick="move()")
                   
     form(action='/game/create', method='get')
       input(type='submit', value='방만들기')
+

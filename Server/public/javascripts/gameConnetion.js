@@ -50,12 +50,12 @@ socket.on('message_receive', function(msg){
 $('#ready').click('submit', function(e){
   socket.emit('ready_send');
 });
-$('#exit').click('submit', function(e){
-  socket.emit('leave_send');
-});
-// window.onbeforeunload = function() {
+// $('#exit').click('submit', function(e){
 //   socket.emit('leave_send');
-// };
+// });
+window.onbeforeunload = function() {
+  socket.emit('leave_send');
+};
 socket.on('ready_receive', function(users, index){
   var state = document.getElementsByName("state");
   if(users[index].isReady === true){
@@ -90,7 +90,7 @@ socket.on('start_game', function(room){
       cards[1] = room.cards[2*i+1];
       cardImforamtion1.src ="/images/card/" + cards[0] +".png";
       cardImforamtion2.src ="/images/card/" + cards[1] +".png";
-      socket.emit('one_open_card_send', card1);
+      socket.emit('one_open_card_send', cards[0]);
     }
   }
   cardAnimation(room.connUsers.length);
@@ -464,4 +464,8 @@ function cardAnimationThird(userNumber){
         directionCount++
     }
   });
+}
+history.pushState(null, null, location.href); 
+window.onpopstate = function(event) { 
+  history.go(1); 
 }

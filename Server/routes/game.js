@@ -96,15 +96,9 @@ router.post('/', needAuth, function(req, res, next){
 router.get('/:id', needAuth, function(req,res, next){
   roomIndex = _.findIndex(rooms, { _id: Number(req.params.id)});
   var selectedRoom = rooms[roomIndex];
-  if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "대기중"){
-
+  if(selectedRoom.connUsers.length < rooms[roomIndex].roomUserNumber && selectedRoom.state == "대기중"){
     // 원래 이렇게 해야함.
     addUser(roomIndex, req.user);
-
-    // 테스트용
-    // var userTestID = "TEST" + count++;
-    // addUser(roomIndex, userTestID, userTestID, "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E");
-
     res.render('Game/GameRoom', {room: selectedRoom});
   } else {
     req.flash('danger', '방을 들어갈 수 없습니다.');

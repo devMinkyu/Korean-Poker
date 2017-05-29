@@ -17,7 +17,7 @@ module.exports = function(passport) {
   passport.use(new FacebookStrategy({
     clientID : clientID,
     clientSecret : clientSecret,
-    callbackURL : 'http://localhost:3000/auth/facebook/callback',
+    callbackURL : 'http://localhost:9000/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
     if(!profile.emails[0].value){

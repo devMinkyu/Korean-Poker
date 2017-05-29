@@ -16,6 +16,8 @@ var favicon = require('serve-favicon');
 var flash = require('connect-flash');
 var _ = require('underscore');
 
+
+var User = require('./models/User');
 var app = express();
 app.io = require('socket.io')();
 
