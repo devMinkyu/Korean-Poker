@@ -83,11 +83,9 @@ router.post('/', needAuth, function(req, res, next){
     };
     rooms.push(newRoom);
     roomIndex = _.findIndex(rooms, { _id: roomsCount});
-    console.log("+++++++++");
-    console.log(roomIndex);
     roomsCount++;
-    console.log(newRoom);
-    addUser(roomIndex, req.user._id, req.user.userName, req.user.photoURL);
+    addUser(roomIndex, req.user);
+
     res.render('Game/GameRoom', {room: newRoom});
   } else{
     req.flash('danger', '다시 입력헤주세요');
@@ -95,21 +93,12 @@ router.post('/', needAuth, function(req, res, next){
   }
 });
 
-router.get('/:id', function(req,res, next){
-  console.log(req.params.id);
+router.get('/:id', needAuth, function(req,res, next){
   roomIndex = _.findIndex(rooms, { _id: Number(req.params.id)});
-  console.log("+++++++++");
-  console.log(roomIndex);
   var selectedRoom = rooms[roomIndex];
-  if(selectedRoom.connUsers.length < 4 && selectedRoom.state == "대기중"){
-
+  if(selectedRoom.connUsers.length < rooms[roomIndex].roomUserNumber && selectedRoom.state == "대기중"){
     // 원래 이렇게 해야함.
-    // addUser(roomIndex, req.user._id, req.user.userName, , req.user.photoURL);
-
-    // 테스트용
-    var userTestID = "TEST" + count++;
-    addUser(roomIndex, userTestID, userTestID, "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E");
-
+    addUser(roomIndex, req.user);
     res.render('Game/GameRoom', {room: selectedRoom});
   } else {
     req.flash('danger', '방을 들어갈 수 없습니다.');
@@ -117,17 +106,17 @@ router.get('/:id', function(req,res, next){
   }
 });
 
-function addUser(roomIndex, userID, userName, photoURL){
+function addUser(roomIndex, user){
   rooms[roomIndex].connUsers.push({
-    'userID' : userID,
-    'userName' : userName,
+    'userID' : (user._id).toString(),
+    'userName' : user.userName,
     'isReady' :  false,
-    'photoURL' : photoURL,
+    'photoURL' : user.photoURL,
     'cards' : [],
     // 여기 부분은 디비에 있는것을 집어넣어준다.
-    'win' : 0,
-    'lose' : 0,
-    'money' : 10000000000
+    'win' : user.win,
+    'lose' : user.lose,
+    'money' : user.money
   });
 }
 module.exports = router;

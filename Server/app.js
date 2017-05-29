@@ -16,45 +16,56 @@ var favicon = require('serve-favicon');
 var flash = require('connect-flash');
 var _ = require('underscore');
 
+
+var User = require('./models/User');
 var app = express();
 app.io = require('socket.io')();
 
 
-// app.use(favicon(__dirname + '/public/images/logos/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/logos/favicon.ico'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.locals.moment = require('moment');
 // mongodb connect
-mongoose.connect('mongodb://localhost:27017/koreanpoker');
+mongoose.connect('mongodb://localhost:9336/koreanpoker');
 mongoose.connection.on('error', console.log);
 
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
 
-  socket.on('room_connection_send', function(_id, currentUserName){
+  socket.on('room_connection_send', function(_id, currentUserID){
     socket.join(_id);
     // socket._id 는 room 배열의 인덱스
     socket._id = _id;
-    socket.userName = currentUserName;
+    socket.userID = currentUserID;
     var roomIndex = searchRoomIndex(rooms, socket._id);
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
     console.log("**********Room ID*************");
     console.log(socket._id);
     console.log("***************************");
-    var message = socket.userName + " 님이 입장하셨습니다.";
+    var message = rooms[roomIndex].connUsers[userIndex].userName + " 님이 입장하셨습니다.";
     app.io.sockets.in(socket._id).emit('message_receive', message);
     app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
   });
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
   socket.on('message_send', function(text){
-    var message = socket.userName + ':' + text;
+    var roomIndex = searchRoomIndex(rooms, socket._id);
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
+    var message = rooms[roomIndex].connUsers[userIndex].userName + ':' + text;
     app.io.sockets.in(socket._id).emit('message_receive', message);
   });
 
   socket.on('ready_send', function(){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
     if(rooms[roomIndex].connUsers[userIndex].isReady === false){
       rooms[roomIndex].connUsers[userIndex].isReady = true;
       var ReadyCheckIndex = _.findIndex(rooms[roomIndex].connUsers, { isReady: false });
@@ -73,12 +84,15 @@ app.io.on('connection', function(socket){
   // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var msg;
     if(rooms[roomIndex].state == "대기중"){
       // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
       socket.leave(socket._id);
-      msg = socket.userName + '님이 나가셨습니다.';
+      msg = rooms[roomIndex].connUsers[userIndex].userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
       rooms[roomIndex].connUsers.splice(userIndex, 1);
       if(rooms[roomIndex].connUsers.length === 0){
@@ -86,20 +100,20 @@ app.io.on('connection', function(socket){
         return;
       }
       app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
-    } else if(rooms[roomIndex].state == "게임중"){
-      rooms[roomIndex].connUsers[userIndex].lose -= 1;
-      userIndex = _.findIndex(rooms[roomIndex].disconnUsers, { userName: socket.userName });
+    } else if(rooms[roomIndex].state == "게임중"){ // 게임 도중에는 새로고침을 해도 나가진다.
       socket.leave(socket._id);
-      rooms[roomIndex].disconnUsers.push(socket.userName);
+      rooms[roomIndex].disconnUsers.push(socket.userID);
+      var user = rooms[roomIndex].connUsers[userIndex];
       die_send(rooms[roomIndex].roomMoney , socket);
-      msg = socket.userName + '님이 나가셨습니다.';
+      userDataSave(user);
+      msg = user.userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
     }
   });
 
   socket.on('timer_send', function(){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var currentTurnUser = rooms[roomIndex].currentTurnUser;
     var gameUserIndex; 
     var stage = 0;
@@ -107,8 +121,12 @@ app.io.on('connection', function(socket){
     var timer = setInterval(function(){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
-      var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userName: socket.userName });
+      var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userID: socket.userID});
       if( deadUserIndex != -1 ){
+        clearInterval(timer);
+      }
+      var deadUsersNumber = rooms[roomIndex].deadUsers.length;
+      if( deadUsersNumber == rooms[roomIndex].roomUserNumber-1 ){
         clearInterval(timer);
       }
       // 첫번쨰 패를 공개를 15초동안 기다리고 한번에 공개 만약 선택한 패가 없으면 첫번째 카드 공개
@@ -127,19 +145,19 @@ app.io.on('connection', function(socket){
           });
           app.io.sockets.in(socket._id).emit('one_open_card_receive', rooms[roomIndex], rooms[roomIndex].connUsers[userIndex]);
           var msg = "배팅을 시작하세요.";
-          rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[0].userName;
+          rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[0].userID;
           app.io.to(socket.id).emit('message_receive', msg);
           app.io.sockets.in(socket._id).emit('one_open_card_end_receive', rooms[roomIndex]);
         }
       } else if(timerValue <= 0 && stage === 1 ){ // 15초 내로 배팅을 안하고 있으면 자동 콜이 된다
-          gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
+          gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
           timerValue = 15; 
-          if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].connUsers[userIndex].userName)
+          if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].connUsers[userIndex].userID)
             bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
       } else if(timerValue <= 0 && stage === 2 ){ // 15초 내로 카드 두장을 선택 안하면 첫번째, 두번째 패가 자동으로 선택
-          gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: currentTurnUser });
+          gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
           timerValue = 15; 
-          if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].connUsers[userIndex].userName)
+          if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].connUsers[userIndex].userID)
             finallySelect_send(rooms[roomIndex].connUsers[userIndex].cards, socket);
       }
       if(currentTurnUser != rooms[roomIndex].currentTurnUser){
@@ -159,7 +177,7 @@ app.io.on('connection', function(socket){
   });
   socket.on('one_open_card_send', function (card) {
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     rooms[roomIndex].connUsers[userIndex].cards[0] = card;
   });
   socket.on('die_send', function(money){
@@ -183,7 +201,7 @@ app.io.on('connection', function(socket){
   socket.on('twoCardAutoSelect', function (cards) {
     console.log(cards);
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     rooms[roomIndex].connUsers[userIndex].cards[0] = cards[0];
     rooms[roomIndex].connUsers[userIndex].cards[1] = cards[1];
   });
@@ -192,7 +210,7 @@ app.io.on('connection', function(socket){
   });
   socket.on('gameContinueCheck_send', function(check){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     if(userIndex == -1){
       return;
     }else{
@@ -267,19 +285,19 @@ app.use(function(err, req, res, next) {
 function initialize(roomIndex){
   rooms[roomIndex].roomAllMoney = 0;
   rooms[roomIndex].gamingUsers = [];
-  rooms[roomIndex].deadUsers = [];
   rooms[roomIndex].cards = [];
   rooms[roomIndex].regame = 0;
   if(rooms[roomIndex].disconnUsers.length !== 0){
     var disUserIndex;
     for(var i = 0; i<rooms[roomIndex].disconnUsers.length;i++){
-      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].disconnUsers[i] });    
+      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].disconnUsers[i] });    
       rooms[roomIndex].connUsers.splice(disUserIndex, 1);
     }
   }
   rooms[roomIndex].disconnUsers=[];
 }
 function gameStart(roomIndex, id) {
+  rooms[roomIndex].deadUsers = [];
   rooms[roomIndex].count = 0;
   rooms[roomIndex].cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
   var msg = "한장씩 카드를 선택해주세요.";
@@ -329,14 +347,14 @@ function cardPriority(card1, card2){
 }
 function die_send(money , socket){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: socket.userName });
-    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: rooms[roomIndex].connUsers[userIndex].userName });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
+    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: rooms[roomIndex].connUsers[userIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
     rooms[roomIndex].connUsers[userIndex].money -= money;
     rooms[roomIndex].roomAllMoney += money;
     if(gameUserIndex != -1){
-      if(rooms[roomIndex].gamingUsers[gameUserIndex].userName == rooms[roomIndex].currentTurnUser){
-        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+      if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].currentTurnUser){
+        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
       }
       rooms[roomIndex].gamingUsers.splice(gameUserIndex,1);
     }
@@ -348,7 +366,7 @@ function die_send(money , socket){
     if(rooms[roomIndex].deadUsers.length == rooms[roomIndex].connUsers.length-1){
       var user;
       for(var i = 0; i < rooms[roomIndex].connUsers.length; i++){
-        var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userName: rooms[roomIndex].connUsers[i].userName });
+        var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userID: rooms[roomIndex].connUsers[i].userID });
         if(deadUserIndex == -1){
           rooms[roomIndex].connUsers[i].money += rooms[roomIndex].roomAllMoney;
           rooms[roomIndex].connUsers[i].win += 1;
@@ -365,10 +383,10 @@ function die_send(money , socket){
   }
   function bettingContinue(money, socket, state){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
+    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
-    if(rooms[roomIndex].gamingUsers[gameUserIndex].userName != rooms[roomIndex].currentTurnUser){
+    if(rooms[roomIndex].gamingUsers[gameUserIndex].userID != rooms[roomIndex].currentTurnUser){
       app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
       return;
     }else{
@@ -384,7 +402,7 @@ function die_send(money , socket){
       }else{
         rooms[roomIndex].connUsers[userIndex].money -= money;
         rooms[roomIndex].roomAllMoney += money;
-        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+        rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
         app.io.sockets.in(socket._id).emit('betting_receive', rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex], state);
       }
       return;
@@ -392,10 +410,10 @@ function die_send(money , socket){
   }
   function bettingEnd(money, socket, state){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
+    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
-    if(rooms[roomIndex].gamingUsers[gameUserIndex].userName != rooms[roomIndex].currentTurnUser){
+    if(rooms[roomIndex].gamingUsers[gameUserIndex].userID != rooms[roomIndex].currentTurnUser){
       app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
       return;
     }else{
@@ -408,7 +426,7 @@ function die_send(money , socket){
         rooms[roomIndex].connUsers[userIndex].money -= money;
         rooms[roomIndex].roomAllMoney += money;
       }
-      rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+      rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
       app.io.sockets.in(socket._id).emit('betting_receive', rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex], state);
     }
     var callIndexCount = _.countBy(rooms[roomIndex].gamingUsers, { isCall : true });
@@ -420,18 +438,18 @@ function die_send(money , socket){
   }
   function finallySelect_send(cards, socket){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userName: socket.userName });
-    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userName: rooms[roomIndex].gamingUsers[gameUserIndex].userName });
+    var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
+    var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
     var msg;
-    if(rooms[roomIndex].gamingUsers[gameUserIndex].userName != rooms[roomIndex].currentTurnUser && rooms[roomIndex].regame === 0){
+    if(rooms[roomIndex].gamingUsers[gameUserIndex].userID != rooms[roomIndex].currentTurnUser && rooms[roomIndex].regame === 0){
       app.io.to(socket.id).emit('message_receive', "자신의 턴이 아닙니다.");
       return;
     }else{
       rooms[roomIndex].connUsers[userIndex].cards[0] = cards[0];
       rooms[roomIndex].connUsers[userIndex].cards[1] = cards[1];
       rooms[roomIndex].count += 1;
-      rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userName;
+      rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
       rooms[roomIndex].gamingUsers[gameUserIndex].pedigreeResult = cardPriority(cards[0], cards[1]);
       app.io.to(socket.id).emit('cardButtonEmpty_receive');
       app.io.sockets.in(socket._id).emit('finallySelect_receive', cards, rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex]);
@@ -486,7 +504,7 @@ function finallyResult(roomIndex, socket){
   }
   // (다시 만지기)
   for(var i = 0; i < rooms[roomIndex].connUsers.length; i++){
-    if(user.userName == rooms[roomIndex].connUsers[i].userName){
+    if(user.userID == rooms[roomIndex].connUsers[i].userID){
       rooms[roomIndex].connUsers[i].money += rooms[roomIndex].roomAllMoney;
       rooms[roomIndex].connUsers[i].win += 1;
     } else{
@@ -497,5 +515,21 @@ function finallyResult(roomIndex, socket){
   msg = user.userName + "님이 승리 하셨습니다.";
   app.io.sockets.in(socket._id).emit('message_receive', msg);
   app.io.sockets.in(socket._id).emit('gameContinueCheck_receive', rooms[roomIndex], user);
+}
+
+function userDataSave(user){
+  User.findOne({_id: user.userID},function(err, myUser){
+      if (err) {
+        return next(err);
+      }
+      myUser.win = user.win;
+      myUser.lose = user.lose;
+      myUser.money = user.money;
+      myUser.save(function(err) {
+        if (err) {
+          return next(err);
+        }
+      });
+  });
 }
 module.exports = app;

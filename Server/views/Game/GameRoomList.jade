@@ -13,15 +13,7 @@ block content
                   .w3ls_main_grid
                     .agileits_main_grid_left
                      h2= room.roomName
-                    .clear 
-                      //- .agileits_main_grid_leftl
-                      //-   h3= room.roomName
-                      //- .clear  
-                    //- .agileits_main_grid_right
-                    //- .agileits_main_grid
-                    //-   form(action='/game/#{room._id}', method='get')
-                    //-     input(type='submit', value='입장')
-                    //- .clear  
+                    .clear  
                   .w3l_main_grid_list
                     ul#owl-demo3.owl-carousel.owl-theme
                         li 
@@ -41,7 +33,8 @@ block content
                   br
                   .agileits_main_grid
                       form(action='/game/#{room._id}', method='get')
-                        input(type='submit', value='입장')
+                        input(type='submit', value='입장',  onclick="move()")
                   
     form(action='/game/create', method='get')
       input(type='submit', value='방만들기')
+
