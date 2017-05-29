@@ -82,7 +82,6 @@ app.io.on('connection', function(socket){
     var msg;
     if(rooms[roomIndex].state == "대기중"){
       // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
-      userDataSave(rooms[roomIndex].connUsers[userIndex]);
       socket.leave(socket._id);
       msg = rooms[roomIndex].connUsers[userIndex].userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
@@ -93,12 +92,12 @@ app.io.on('connection', function(socket){
       }
       app.io.sockets.in(socket._id).emit('room_connection_receive', rooms[roomIndex].connUsers);
     } else if(rooms[roomIndex].state == "게임중"){ // 게임 도중에는 새로고침을 해도 나가진다.
-      rooms[roomIndex].connUsers[userIndex].lose -= 1;
       socket.leave(socket._id);
       rooms[roomIndex].disconnUsers.push(socket.userID);
+      var user = rooms[roomIndex].connUsers[userIndex];
       die_send(rooms[roomIndex].roomMoney , socket);
-      userDataSave(rooms[roomIndex].connUsers[userIndex]);
-      msg = rooms[roomIndex].connUsers[userIndex].userName + '님이 나가셨습니다.';
+      userDataSave(user);
+      msg = user + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
     }
   });

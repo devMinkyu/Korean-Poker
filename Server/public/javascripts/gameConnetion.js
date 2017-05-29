@@ -50,9 +50,6 @@ socket.on('message_receive', function(msg){
 $('#ready').click('submit', function(e){
   socket.emit('ready_send');
 });
-// $('#exit').click('submit', function(e){
-//   socket.emit('leave_send');
-// });
 window.onbeforeunload = function() {
   socket.emit('leave_send');
 };
@@ -119,7 +116,7 @@ function oneSelect(){
   if(cardImforamtion1.getAttribute("class").indexOf("image-selected") == -1){
     selectCard = cards[1];
   } else if(cardImforamtion2.getAttribute("class").indexOf("image-selected") == -1){
-    selectCard = cards[2];
+    selectCard = cards[0];
   }
   socket.emit('one_open_card_send', 1*selectCard);
 }
