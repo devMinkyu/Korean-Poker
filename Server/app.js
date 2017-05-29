@@ -115,7 +115,7 @@ app.io.on('connection', function(socket){
     var roomIndex = searchRoomIndex(rooms, socket._id);
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var currentTurnUser = rooms[roomIndex].currentTurnUser;
-    var gameUserIndex; 
+    var gameUserIndex;
     var stage = 0;
     var timerValue = 15;
     var timer = setInterval(function(){
@@ -151,12 +151,12 @@ app.io.on('connection', function(socket){
         }
       } else if(timerValue <= 0 && stage === 1 ){ // 15초 내로 배팅을 안하고 있으면 자동 콜이 된다
           gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
-          timerValue = 15; 
+          timerValue = 15;
           if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].connUsers[userIndex].userID)
             bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
       } else if(timerValue <= 0 && stage === 2 ){ // 15초 내로 카드 두장을 선택 안하면 첫번째, 두번째 패가 자동으로 선택
           gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
-          timerValue = 15; 
+          timerValue = 15;
           if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].connUsers[userIndex].userID)
             finallySelect_send(rooms[roomIndex].connUsers[userIndex].cards, socket);
       }
@@ -290,7 +290,7 @@ function initialize(roomIndex){
   if(rooms[roomIndex].disconnUsers.length !== 0){
     var disUserIndex;
     for(var i = 0; i<rooms[roomIndex].disconnUsers.length;i++){
-      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].disconnUsers[i] });    
+      disUserIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].disconnUsers[i] });
       rooms[roomIndex].connUsers.splice(disUserIndex, 1);
     }
   }

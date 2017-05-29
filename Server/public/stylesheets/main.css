@@ -6,10 +6,7 @@
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
-<<<<<<< HEAD
 @import url(print.css) print;
-=======
->>>>>>> dee2b6ba57cfe950f741b9dfe3d12fe4a77e00d6
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -1356,7 +1353,7 @@ a.kakao-link:hover {
 
 @media (max-width: 1024px) {
   input[type="submit"] {
-    width: 300px; }
+    width: 307px; }
   input[type="text"] {
     background: rgba(0, 0, 0, 0.5) no-repeat 300px 10px;
     font-size: 18px;
@@ -1522,7 +1519,7 @@ a.kakao-link:hover {
     background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
-    width: 204px; }
+    width: 200px; }
   a.face-link {
     margin: 15px auto;
     width: 153px;
@@ -1532,7 +1529,7 @@ a.kakao-link:hover {
   a.face-link i.fa, a.kakao-link i.fa {
     font-size: 16px;
     text-align: left;
-    margin: 0 5px 0 39px; }
+    margin: 0 5px 0 40px; }
   a.kakao-link {
     width: 153px;
     height: 38px;
@@ -1595,7 +1592,7 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 198px 8px; }
   input[type="submit"] {
-    width: 185px;
+    width: 175px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
     width: 134px;
@@ -1746,8 +1743,7 @@ input[type="submit"], .agileits_copyright p a, a {
   -ms-transition: .5s ease-in; }
 
 .main {
-  padding: 3em 0;
-  display:block;}
+  padding: 3em 0; }
 
 .main h1 {
   text-align: center;
