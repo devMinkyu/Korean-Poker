@@ -6,6 +6,7 @@
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
+@import url(print.css) print;
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -1134,7 +1135,7 @@ h1 {
     background-position: 0 -30px; } }
 
 p {
-  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
+  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
@@ -1352,7 +1353,7 @@ a.kakao-link:hover {
 
 @media (max-width: 1024px) {
   input[type="submit"] {
-    width: 337px; }
+    width: 300px; }
   input[type="text"] {
     background: rgba(0, 0, 0, 0.5) no-repeat 300px 10px;
     font-size: 18px;
@@ -1372,7 +1373,7 @@ a.kakao-link:hover {
   .content-w3ls {
     width: 42%; }
   input[type="submit"] {
-    width: 340px; }
+    width: 220px; }
   input[type="text"], input[type="password"] {
     width: 69%; } }
 
@@ -1518,19 +1519,19 @@ a.kakao-link:hover {
     background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
-    width: 254px; }
+    width: 204px; }
   a.face-link {
     margin: 15px auto;
-    width: 253px;
+    width: 153px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
   a.face-link i.fa, a.kakao-link i.fa {
     font-size: 16px;
     text-align: left;
-    margin: 0 5px 0 79px; }
+    margin: 0 5px 0 39px; }
   a.kakao-link {
-    width: 253px;
+    width: 153px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
@@ -1591,10 +1592,10 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 198px 8px; }
   input[type="submit"] {
-    width: 235px;
+    width: 185px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
-    width: 234px;
+    width: 134px;
     height: 38px;
     line-height: 38px;
     font-size: 14px; }
@@ -1742,7 +1743,8 @@ input[type="submit"], .agileits_copyright p a, a {
   -ms-transition: .5s ease-in; }
 
 .main {
-  padding: 3em 0; }
+  padding: 3em 0;
+  display:block;}
 
 .main h1 {
   text-align: center;
@@ -1755,11 +1757,11 @@ input[type="submit"], .agileits_copyright p a, a {
 
 /*-- //main --*/
 .w3_agile_main_grids {
-  width: 60%;
+  width: 30%;
   margin: 0 auto; }
 
 .agileits_w3layouts_main_grid_left, .w3_agileits_main_grid_right {
-  width: 55%; }
+  width: 50%; }
 
 .agileits_w3layouts_main_grid_left {
   float: left; }
