@@ -41,6 +41,9 @@ app.io.on('connection', function(socket){
     socket._id = _id;
     socket.userID = currentUserID;
     var roomIndex = searchRoomIndex(rooms, socket._id);
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
     console.log("**********Room ID*************");
     console.log(socket._id);
@@ -52,6 +55,9 @@ app.io.on('connection', function(socket){
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
   socket.on('message_send', function(text){
     var roomIndex = searchRoomIndex(rooms, socket._id);
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
     var message = rooms[roomIndex].connUsers[userIndex].userName + ':' + text;
     app.io.sockets.in(socket._id).emit('message_receive', message);
@@ -78,6 +84,9 @@ app.io.on('connection', function(socket){
   // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
     var roomIndex = searchRoomIndex(rooms, socket._id);
+    if(rooms[roomIndex].connUsers.length == 0){
+      next(err);
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var msg;
     if(rooms[roomIndex].state == "대기중"){
@@ -97,7 +106,7 @@ app.io.on('connection', function(socket){
       var user = rooms[roomIndex].connUsers[userIndex];
       die_send(rooms[roomIndex].roomMoney , socket);
       userDataSave(user);
-      msg = user + '님이 나가셨습니다.';
+      msg = user.userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
     }
   });
