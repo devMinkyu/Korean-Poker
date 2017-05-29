@@ -6,10 +6,7 @@
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
-<<<<<<< HEAD
 @import url(print.css) print;
-=======
->>>>>>> dee2b6ba57cfe950f741b9dfe3d12fe4a77e00d6
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -1356,7 +1353,7 @@ a.kakao-link:hover {
 
 @media (max-width: 1024px) {
   input[type="submit"] {
-    width: 300px; }
+    width: 337px; }
   input[type="text"] {
     background: rgba(0, 0, 0, 0.5) no-repeat 300px 10px;
     font-size: 18px;
@@ -1376,7 +1373,7 @@ a.kakao-link:hover {
   .content-w3ls {
     width: 42%; }
   input[type="submit"] {
-    width: 220px; }
+    width: 340px; }
   input[type="text"], input[type="password"] {
     width: 69%; } }
 
@@ -1522,19 +1519,19 @@ a.kakao-link:hover {
     background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
-    width: 204px; }
+    width: 254px; }
   a.face-link {
     margin: 15px auto;
-    width: 153px;
+    width: 253px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
   a.face-link i.fa, a.kakao-link i.fa {
     font-size: 16px;
     text-align: left;
-    margin: 0 5px 0 39px; }
+    margin: 0 5px 0 79px; }
   a.kakao-link {
-    width: 153px;
+    width: 253px;
     height: 38px;
     line-height: 38px;
     font-size: 16px; }
@@ -1595,10 +1592,10 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 198px 8px; }
   input[type="submit"] {
-    width: 185px;
+    width: 235px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
-    width: 134px;
+    width: 234px;
     height: 38px;
     line-height: 38px;
     font-size: 14px; }
@@ -1746,8 +1743,7 @@ input[type="submit"], .agileits_copyright p a, a {
   -ms-transition: .5s ease-in; }
 
 .main {
-  padding: 3em 0;
-  display:block;}
+  padding: 3em 0; }
 
 .main h1 {
   text-align: center;
@@ -1760,11 +1756,11 @@ input[type="submit"], .agileits_copyright p a, a {
 
 /*-- //main --*/
 .w3_agile_main_grids {
-  width: 30%;
+  width: 60%;
   margin: 0 auto; }
 
 .agileits_w3layouts_main_grid_left, .w3_agileits_main_grid_right {
-  width: 50%; }
+  width: 55%; }
 
 .agileits_w3layouts_main_grid_left {
   float: left; }

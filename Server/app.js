@@ -41,7 +41,7 @@ app.io.on('connection', function(socket){
     socket._id = _id;
     socket.userID = currentUserID;
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    if(rooms[roomIndex].connUsers.length == 0){
+    if(rooms[roomIndex].connUsers.length === 0){
       next(err);
     }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
@@ -55,7 +55,7 @@ app.io.on('connection', function(socket){
   // 방에 들어온 인원들만 메세지를 주고 받을 수 있다.
   socket.on('message_send', function(text){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    if(rooms[roomIndex].connUsers.length == 0){
+    if(rooms[roomIndex].connUsers.length === 0){
       next(err);
     }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
@@ -84,7 +84,7 @@ app.io.on('connection', function(socket){
   // 방 나가는건 나중에 다시 만지자
   socket.on('leave_send', function(){
     var roomIndex = searchRoomIndex(rooms, socket._id);
-    if(rooms[roomIndex].connUsers.length == 0){
+    if(rooms[roomIndex].connUsers.length === 0){
       next(err);
     }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
