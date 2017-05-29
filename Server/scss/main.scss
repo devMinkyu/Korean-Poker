@@ -440,7 +440,7 @@
 
 	@media (max-width: 1024px) {
 	input[type="submit"]	{
-		width: 337px;
+		width: 300px;
 	}
 	input[type="text"] {
 	    background: rgba(0,0,0,0.5) no-repeat 300px 10px;
@@ -468,7 +468,7 @@
 	    width: 42%;
 	}
 	input[type="submit"] {
-	    width: 340px;
+	    width: 220px;
 	}
 	input[type="text"], input[type="password"] {
 	    width: 69%;
@@ -669,11 +669,11 @@
 	}
 	input[type="submit"] {
 	    font-size: 16px;
-		width: 254px;
+		width: 204px;
 	}
 	a.face-link {
 		margin: 15px auto;
-	    width: 253px;
+	    width: 153px;
 	    height: 38px;
 	    line-height: 38px;
 		font-size:16px;
@@ -681,10 +681,10 @@
 	a.face-link i.fa, a.kakao-link i.fa {
 	    font-size: 16px;
 	    text-align: left;
-	    margin: 0 5px 0 79px;
+	    margin: 0 5px 0 39px;
 	}
 	a.kakao-link {
-		width: 253px;
+		width: 153px;
 	    height: 38px;
 	    line-height: 38px;
 		font-size:16px;
@@ -765,11 +765,11 @@
 		background: #000 no-repeat 198px 8px;
 	}
 	input[type="submit"] {
-	    width: 235px;
+	    width: 185px;
 		font-size:14px;
 	}
 	a.face-link,a.kakao-link {
-	    width: 234px;
+	    width: 134px;
 	    height: 38px;
 	    line-height: 38px;
 	    font-size: 14px;
@@ -876,11 +876,11 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 /*-- //main --*/
 .w3_agile_main_grids{
-	width:60%;
+	width:30%;
 	margin:0 auto;
 }
 .agileits_w3layouts_main_grid_left,.w3_agileits_main_grid_right{
-	width:55%;
+	width:50%;
 }
 .agileits_w3layouts_main_grid_left{
 	float:left;
@@ -907,48 +907,7 @@ input[type="submit"],.agileits_copyright p a,a{
 	border:10px solid #888;
 	margin: 5px;
 }
-.agileinfo_main_grid1{
-	background:url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-	background-size:cover;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	-o-border-radius: 20px;
-	-ms-border-radius: 20px;
-	border:10px solid #888
-}
-.agileinfo_main_grid2{
-	background:url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-	background-size:cover;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	-o-border-radius: 20px;
-	-ms-border-radius: 20px;
-	border:10px solid #888
-}
-.agileinfo_main_grid3{
-	background:url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-	background-size:cover;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	-o-border-radius: 20px;
-	-ms-border-radius: 20px;
-	border:10px solid #888
-}
+
 .agileits_main_grid_left{
 	float:left;
 }

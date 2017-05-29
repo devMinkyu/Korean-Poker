@@ -1592,7 +1592,7 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 198px 8px; }
   input[type="submit"] {
-    width: 135px;
+    width: 185px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
     width: 134px;
@@ -1759,12 +1759,15 @@ input[type="submit"], .agileits_copyright p a, a {
   width: 30%;
   margin: 0 auto; }
 
-.agileits_w3layouts_main_grid_left {
+.agileits_w3layouts_main_grid_left, .w3_agileits_main_grid_right {
   width: 50%; }
 
 .agileits_w3layouts_main_grid_left {
-  float: left;}
+  float: left; }
 
+.w3_agileits_main_grid_right {
+  float: right;
+  margin-left: 2em; }
 
 .wthree_main_grid {
   padding: 2em; }
@@ -1783,48 +1786,6 @@ input[type="submit"], .agileits_copyright p a, a {
   -ms-border-radius: 20px;
   border: 10px solid #888;
   margin: 5px; }
-
-.agileinfo_main_grid1 {
-  background: url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  border: 10px solid #888; }
-
-.agileinfo_main_grid2 {
-  background: url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  border: 10px solid #888; }
-
-.agileinfo_main_grid3 {
-  background: url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  border: 10px solid #888; }
 
 .agileits_main_grid_left {
   float: left; }
