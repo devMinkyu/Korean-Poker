@@ -19,8 +19,6 @@ module.exports = function(passport) {
     clientSecret : clientSecret,
     callbackURL : 'http://localhost:9000/auth/facebook/callback',
     // callbackURL : 'http://dev-yutae.me/auth/facebook/callback',
-    // callbackURL : 'http://localhost:9000/auth/facebook/callback',
-    callbackURL : 'http://dev-yutae.me/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
     if(!profile.emails[0].value){
