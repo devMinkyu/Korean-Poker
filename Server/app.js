@@ -22,7 +22,7 @@ var app = express();
 app.io = require('socket.io')();
 
 
-// app.use(favicon(__dirname + '/public/images/logos/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/logos/favicon.ico'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
