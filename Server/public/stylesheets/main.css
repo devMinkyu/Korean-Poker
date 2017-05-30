@@ -1134,7 +1134,7 @@ h1 {
     background-position: 0 -30px; } }
 
 p {
-  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
+  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
@@ -1816,7 +1816,7 @@ input[type="submit"], .agileits_copyright p a, a {
 
 /*-- //main --*/
 .w3_agile_main_grids {
-  width: 30%;
+  width: 80%;
   margin: 0 auto; }
 
 .agileits_w3layouts_main_grid_left, .w3_agileits_main_grid_right {
