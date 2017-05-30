@@ -1326,6 +1326,10 @@ a.kakao-link:hover {
   input[type="text"], input[type="password"] {
     width: 69.5%; } }
 
+@media (max-width: 1200px) {
+  input[type="submit"] {
+    width: 280px; } }
+
 @media (max-width: 1080px) {
   .content-w3ls {
     width: 40%; }
@@ -1388,7 +1392,9 @@ a.kakao-link:hover {
 
 @media (max-width: 768px) {
   input[type="text"], input[type="password"] {
-    width: 79%; } }
+    width: 79%; }
+  input[type="submit"] {
+    width: 180px; } }
 
 @media (max-width: 736px) {
   .content-w3ls {
@@ -1420,11 +1426,11 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 292px 10px; }
   input[type="submit"] {
-    width: 327px; } }
+    width: 157px; } }
 
 @media (max-width: 600px) {
   .content-w3ls img.user-wthree {
-    width: 120px; }
+    width: 130px; }
   input[type="text"] {
     background: rgba(0, 0, 0, 0.5) no-repeat 273px 10px;
     font-size: 18px;
@@ -1438,7 +1444,7 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 273px 10px; }
   input[type="submit"] {
-    width: 308px; }
+    width: 138px; }
   .footer-w3ls p {
     font-size: 14px;
     padding: 0 10px 20px; } }
@@ -1461,7 +1467,26 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 258px 10px; }
   input[type="submit"] {
-    width: 295px; } }
+    width: 295px; }
+  a.face-link {
+    margin: 15px auto;
+    width: 123px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px; }
+  a.face-link i.fa, a.kakao-link i.fa {
+    font-size: 16px;
+    text-align: left;
+    margin: 0 5px 0 19px; }
+  a.kakao-link {
+    width: 123px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px; } }
+
+@media (max-width: 524px) {
+  input[type="submit"] {
+    width: 255px; } }
 
 @media (max-width: 480px) {
   h1 {
@@ -1481,7 +1506,7 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 215px 9px; }
   input[type="submit"] {
-    width: 253px; }
+    width: 203px; }
   .form-group3-agile input[type="checkbox"] + label {
     font-size: 13px; }
   .form-group3-agile input[type="checkbox"] + label span:first-child {
@@ -1518,7 +1543,7 @@ a.kakao-link:hover {
     background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
-    width: 204px; }
+    width: 234px; }
   a.face-link {
     margin: 15px auto;
     width: 153px;
@@ -1564,7 +1589,26 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 214px 8px; }
   input[type="text"], input[type="password"] {
-    width: 78%; } }
+    width: 78%; }
+  a.face-link {
+    margin: 15px auto;
+    width: 133px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px; }
+  a.face-link i.fa, a.kakao-link i.fa {
+    font-size: 16px;
+    text-align: left;
+    margin: 0 5px 0 15px; }
+  a.kakao-link {
+    width: 133px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 16px; } }
+
+@media (max-width: 340px) {
+  input[type="submit"] {
+    width: 145px; } }
 
 @media (max-width: 320px) {
   h1 {
@@ -1594,7 +1638,7 @@ a.kakao-link:hover {
     width: 185px;
     font-size: 14px; }
   a.face-link, a.kakao-link {
-    width: 134px;
+    width: 104px;
     height: 38px;
     line-height: 38px;
     font-size: 14px; }
@@ -1603,6 +1647,23 @@ a.kakao-link:hover {
     padding: 0 10px 10px; }
   input[type="text"], input[type="password"] {
     width: 78%; } }
+
+@media (max-width: 320px) {
+  input[type="submit"] {
+    width: 125px; } }
+
+@media (max-width: 280px) {
+  a.face-link, a.kakao-link {
+    width: 90px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px; }
+  input[type="submit"] {
+    width: 115px; } }
+
+@media (max-width: 228px) {
+  input[type="submit"] {
+    width: 65px; } }
 
 /*--
 Author: W3layouts
@@ -1866,7 +1927,7 @@ input[type="submit"], .agileits_copyright p a, a {
 
 @media (max-width: 1280px) {
   .w3_agile_main_grids {
-    width: 71%; } }
+    width: 81%; } }
 
 @media (max-width: 1080px) {
   .w3_agile_main_grids {

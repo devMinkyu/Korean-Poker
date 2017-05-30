@@ -140,6 +140,7 @@ app.io.on('connection', function(socket){
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var msg;
     if(rooms[roomIndex].state == "대기중"){
+      // 새로고침하거나 뒤로가기 할 때 정보를 삭제 시킨다.
       socket.leave(socket._id);
       serverconnetion.userDataSave(rooms[roomIndex].connUsers[userIndex]);
       msg = rooms[roomIndex].connUsers[userIndex].userName + '님이 나가셨습니다.';
@@ -153,8 +154,10 @@ app.io.on('connection', function(socket){
     } else if(rooms[roomIndex].state == "게임중"){ // 게임 도중에는 새로고침을 해도 나가진다.
       socket.leave(socket._id);
       rooms[roomIndex].disconnUsers.push(socket.userID);
-      msg = rooms[roomIndex].connUsers[userIndex].userName + '님이 나가셨습니다.';
+      var user = rooms[roomIndex].connUsers[userIndex];
       die_send(rooms[roomIndex].roomMoney , socket);
+      userDataSave(user);
+      msg = user.userName + '님이 나가셨습니다.';
       app.io.sockets.in(socket._id).emit('message_receive', msg);
     }
   });
@@ -459,10 +462,13 @@ function finallyResult(roomIndex, socket){
     } else{
       rooms[roomIndex].connUsers[i].lose += 1;
     }
+<<<<<<< HEAD
     if(rooms[roomIndex].connUsers[i].money === 0){
       rooms[roomIndex].connUsers[i].money += 300000;
     }
     serverconnetion.insigniaCheck(roomIndex, i);
+=======
+>>>>>>> 4632e78a2152812c145e875ed96209fc1ebe9788
   }
   serverconnetion.initialize(roomIndex);
   msg = user.userName + "님이 승리 하셨습니다.";
