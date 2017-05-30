@@ -48,7 +48,7 @@ block content
 
     script(type='text/javascript', src='/javascripts/flipcard.js').
     script(src='/javascripts/gameConnetion.js').    
-    script#initialView(type='text/template').
+    script#rowTemplate1(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
         <span name='win' class='win'></span>
@@ -58,6 +58,7 @@ block content
         </p> 
         <div class='parent'>
           <img class="profile img-circle", name="userProfile"/>
+          <img class="insignia"/>
         </div>
         <div class='parent'>
           <img class="insignia", name="insignia" />
@@ -67,7 +68,13 @@ block content
           <img class='card1'>
           <img class='card2'>
       </div>
-    script#gameView(type='text/template').
+
+    script#rowTemplate2(type='text/template').
+      <div class = "draw">
+         <img class="cards"  src="/images/Card-S.png">
+         <img class="cards"  src="/images/Card-S.png">
+       </div> 
+    script#rowTemplate3(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
         <div class='parent'>
@@ -75,33 +82,18 @@ block content
         </div>
         <div class='parent'>
           <img class="insignia", name="insignia" />
+          <img class="insignia"/>
         </div>
         <h1 class='playerdie'></h1>
         <h1 class='playerBettingState'></h1>
         <img class="turn"/>
         <h4 class='moneyBar'></h4>
       </div>
-    script#publicViewCard(type='text/template').
+    script#rowTemplate4(type='text/template').
       <div class = "draw">
-         <img class="cards"  src="/images/Card-S.png">
-         <img class="cards"  src="/images/Card-S.png">
-       </div> 
-    script#publicViewLastCard(type='text/template').
-      <div class = "draw">
-         <img class="lastCards"  src="/images/Card-S.png">
+         <img class="lastCards"  src="/images/Card-S1.png">
        </div>
-    script#privateViewCard(type='text/template').
-      <div class= "col xs 4">
-        <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
-        <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
-      </div>
-    script#privateViewLastCard(type='text/template').
-      <div class= "col xs 4">
-        <img class= "mycards" id='cardImforamtion1'>
-        <img class= "mycards" id='cardImforamtion2'>
-        <img class= "mycards" id='cardImforamtion3'>
-      </div>
-    script#privateViewCardSelect(type='text/template').
+    script#rowTemplate5(type='text/template').
       <div class= "col xs 4">
         <button id=select1 onclick=select1()>
           <img class='card1'>
@@ -116,8 +108,24 @@ block content
           <img class='card3'>
         </button>
       </div>
-    
+    script#rowTemplate6(type='text/template').
+      <div class= "col xs 4">
+        <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
+        <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
+      </div>
   style.
+    .card1{
+      position: relative;
+      width: 50%;
+    }
+    .card2{
+      position: relative;
+      width: 50%;
+    }
+    .card3{
+      position: relative;
+      width: 50%;
+    }
     .insignia{
         position: absolute;
         top: 0px;
@@ -126,16 +134,16 @@ block content
         right: 0;
         width:50%;
         height:auto;
-      }
-      .myinsignia{
-        position: absolute;
-        top: 0px;
-        left: 110%;
-        bottom: 0;
-        right: 0;
-        width:50%;
-        height:auto;
-      }
+    }
+    .myinsignia{
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      bottom: 0;
+      right: 0;
+      width:30%;
+      height:auto;
+    }
     #userID{
       display:none;
     }
@@ -144,35 +152,41 @@ block content
       position: relative; /* If you want text inside of it */
     }
     button#select1 {
-        top: 18%;
-        left: 26%;
-        position: absolute;
-        background:none;
-        display:inline-block;
-        border-width: 0px;
-        width:15%;
-        height:15%;
-      }
-      button#select2 {
-        top: 18%;
-        left: 41%;
-        position: absolute;
-        background:none;
-        display:inline-block;
-        border-width: 0px;
-        width:15%;
-        height:15%;
-      }
-      button#select3 {
-        top: 18%;
-        left: 56%;
-        position: absolute;
-        background:none;
-        display:inline-block;
-        border-width: 0px;
-        width:15%;
-        height:15%;
-      }
+      top: 28%;
+      left: 23%;
+      position: absolute;
+      background:none;
+      display:inline-block;
+      border-width: 0px;
+      width:100%;
+      height:15%;
+      padding:0;
+      vertical-align:top;
+    }
+    button#select2 {
+      top: 28%;
+      left: 42%;
+      position: absolute;
+      background:none;
+      display:inline-block;
+      border-width: 0px;
+      width:100%;
+      height:15%;
+      padding:0;
+      vertical-align:top;
+    }
+    button#select3 {
+      top: 28%;
+      left: 62%;
+      position: absolute;
+      background:none;
+      display:inline-block;
+      border-width: 0px;
+      width:100%;
+      height:15%;
+      padding:0;
+      vertical-align:top;
+    }
     .row{
       margin-right:0px;
       margin-left:0px;
@@ -652,34 +666,46 @@ block content
       margin-left: 100px;
     }
     @media all and (width: 360px){
+      .card1{
+        position: relative;
+        width: 10%;
+      }
+      .card2{
+        position: relative;
+        width: 10%;
+      }
+      .card3{
+        position: relative;
+        width: 10%;
+      }
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 26%;
+        left: -25%;
         position: absolute;
         background:none;
         display:inline-block;
         border-width: 0px;
-        width:15%;
+        width:100%;
         height:15%;
       }
       button#select2 {
-        top: 18%;
-        left: 41%;
+        top: 26%;
+        left: 0%;
         position: absolute;
         background:none;
         display:inline-block;
         border-width: 0px;
-        width:15%;
+        width:100%;
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 26%;
+        left: 25%;
         position: absolute;
         background:none;
         display:inline-block;
         border-width: 0px;
-        width:15%;
+        width:100%;
         height:15%;
       }
       .parent{
@@ -1004,8 +1030,8 @@ block content
     }
     @media all and (width:320px){
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1014,7 +1040,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -1024,8 +1050,8 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1355,8 +1381,8 @@ block content
     }
     @media all and (width:375px){
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1365,7 +1391,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -1375,8 +1401,8 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1711,10 +1737,10 @@ block content
         width: 50%;
       }
     }
-    @media all and (min-width:414px) and (max-width:425px){
+    @media all and (width:425px){
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1723,7 +1749,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -1733,8 +1759,8 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -1894,10 +1920,10 @@ block content
         -ms-transform: rotate(-90deg); /* IE 9 */
         -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
         transform: rotate(-90deg);
-        width: 688px;
-        height: 414px;
-        top: 137px;
-        left: -137px;
+        width: 838px;
+        height: 423px;
+        top: 209px;
+        left: -207px;
         background-color: #0B610B;
         position: absolute;
         overflow-x: hidden;
@@ -2070,7 +2096,7 @@ block content
       }
     }
     
-    @media all and (min-width:768px) and (max-width:1024px){
+    @media all and (min-width:425px) and (max-width:768px){
       #userID{
         display:none;
       }
@@ -2079,8 +2105,8 @@ block content
         position: relative; /* If you want text inside of it */
       }
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -2089,7 +2115,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -2099,8 +2125,525 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
+        position: absolute;
+        background:none;
+        display:inline-block;
+        border-width: 0px;
+        width:15%;
+        height:15%;
+      }
+      .row{
+        margin-right:0px;
+        margin-left:0px;
+      }
+      #viewTimer{
+        position:absolute;
+        left:161%;
+        top:-48%;
+        font-size:3em;
+      }
+      #myName{
+        position:absolute;
+        left:2%;
+        top:41%;
+        font-size:1em;
+      }
+      #myWin{
+        position:absolute;
+        left:2%;
+        top:71%;
+      }
+      #myLose{
+        position:absolute;
+        left:2%;
+        top:71%;
+        padding-left:14%;
+      }
+      .moneyBar {
+        background: url('/images/namebar.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+        position:absolute;
+        top:89%;
+        width:100%; 
+        height:30%;
+        left:0.2%;
+        text-indent: 3px;
+        line-height: 3.5;
+      }
+      .col-xs-6:nth-child(1) .turn{
+        position:absolute;
+        top: 5% ;
+        left: 122%;
+        width: 25%;
+        height: 25%;
+      }
+      .col-xs-6:nth-child(2) .turn{
+        position:absolute;
+        top: 5% ;
+        left: 122%;
+        width: 25%;
+        height: 25%;
+      }
+      .col-xs-6:nth-child(3) .turn{
+        position:absolute;
+        top: 5% ;
+        right: 122%;
+        width: 25%;
+        height: 25%;
+      }
+      .col-xs-6:nth-child(4) .turn{
+        position:absolute;
+        top: 5% ;
+        right: 122%;
+        width: 25%;
+        height: 25%;
+      }
+      .col-xs-6:nth-child(1) .playerdie{
+        position:absolute;
+        top: 95% ;
+        left: 111%;
+        color:black;
+        width:50%;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(2) .playerdie{
+        position:absolute;
+        top: 95% ;
+        left: 111%;
+        color:black;
+        width:50%;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(3) .playerdie{
+        position:absolute;
+        top: 95%;
+        right: 111%;
+        color:black;
+        width:50%;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(4) .playerdie{
+        position:absolute;
+        top: 95% ;
+        right: 111%;
+        color:black;
+        width:50%;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(1) .playerBettingState{
+        position:absolute;
+        top: 95% ;
+        left: 111%;
+        width:50%;
+        color:red;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(2) .playerBettingState{
+        position:absolute;
+        top: 95% ;
+        left: 111%;
+        width:50%;
+        color:red;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(3) .playerBettingState{
+        position:absolute;
+        top: 95% ;
+        right: 111%;
+        width:50%;
+        color:red;
+        -webkit-text-fill-color:unset;
+      }
+      .col-xs-6:nth-child(4) .playerBettingState{
+        position:absolute;
+        top: 95% ;
+        right: 111%;
+        width:50%;
+        color:red;
+        -webkit-text-fill-color:unset;
+      }
+      #bettingBar{
+        width:71%;
+        left:0%;
+        top:96%;
+        height:7.4%;
+        position:absolute;
+      }
+      #dadang{
+        width:16.6%;
+        height:100%;
+      }
+      #call{
+        width:16.6%;
+        height:100%;
+      }
+      
+      #half{
+        width:16.6%;
+        height:100%;
+      }
+      
+      #bbing{
+        width:16.6%;
+        height:100%;
+      }
+      #check{
+        width:16.6%;
+        height:100%;
+      }
+      #die{
+        width:16.6%;
+        height:100%;
+      }
+      #roomAllMoney{
+        right : 13%;
+        bottom : 45%;
+        position:absolute;
+        color: white;
+        text-align: right;
+      }
+      #ready{
+        position:absolute;
+        left:50%;
+        top:25%;
+        width:30%;
+        height:25%;
+      }
+      #ready{
+        position:absolute;
+        left:50%;
+        top:25%;
+        width:30%;
+        height:25%;
+      }
+      #exit{
+        position:absolute;
+        left:50%;
+        top:70%;
+        width:30%;
+        height:25%;
+        line-height:2.5;
+      }
+      #buttons{
+        position: absolute;
+        width:30%;
+        height:25%;
+        top:64.5%;
+        left:1%;
+        padding:0;
+        background: url('/images/Butttonarea.png');
+        background-repeat: no-repeat;
+        background-size:cover;
+      }
+      #roomName{
+        position: absolute;
+        bottom : 85%;
+        left: 44%;
+        color: white;
+      }
+      .myprofile{
+        position: absolute;
+        top: 9px;
+        left: 10px;
+        bottom: 0;
+        right: 0;
+        width:30%;
+        height:auto;
+      }
+      .navbar{
+        display: none;
+      }
+      #firstButton {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom : 7%;
+        left: 0.5%;
+      }
+      .state{
+        position: absolute;
+        top: 29%;
+        left: 2%;
+        width:95%;
+        font-size:1em;
+      }
+      .win{
+        position: absolute;
+        top: 8%;
+        left: 2%;
+        width:95%;
+        font-size:1em;
+      }
+      .lose{
+        position: absolute;
+        top: 8%;
+        left: 35%;
+        width:95%;
+        font-size:1em;
+      }
+      .col-xs-6:nth-child(1) {
+        background: url('/images/Profilearea.png');
+        background-position:center center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        position: absolute;
+        top: 6%;
+        left: 66%;
+        padding-top:0px;
+        padding-left:0px;
+        padding-right:0px;
+        width: 20%;
+        height: 20%;
+      }
+      
+      .col-xs-6:nth-child(1) .profile {
+        position: absolute;
+        top: 0px;
+        left: 110%;
+        bottom: 0;
+        right: 0;
+        width:50%;
+        height:auto;
+      }
+      .col-xs-6:nth-child(1) .userName{
+        position: absolute;
+        top:-26%;
+        left: 2%;
+        width:95%;
+        font-size:1.5em;
+      }
+      .col-xs-6:nth-child(2) {
+        background: url('/images/Profilearea.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-size:cover;
+        left: 66%;
+        top: 37%;
+        position: absolute;
+        padding-top:0px;
+        padding-left:0px;
+        padding-right:0px;
+        width: 20%;
+        height: 20%;
+      }
+      .col-xs-6:nth-child(2) .profile {
+        position: absolute;
+        top: 0px;
+        left: 110%;
+        bottom: 0;
+        right: 0;
+        width:50%;
+        height:auto;
+      }
+      .col-xs-6:nth-child(2) .userName{
+        position: absolute;
+        top:-24%;
+        left: 2%;
+        width:95%;
+        font-size:1.5em;
+      }
+      .col-xs-6:nth-child(3) {
+        background: url('/images/Profilearea.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-size:cover;
+        position: absolute;
+        top: 37%;
+        right: 66%;
+        padding-top:0px;
+        padding-left:0px;
+        padding-right:0px;
+        width: 20%;
+        height: 20%
+      }
+      
+      .col-xs-6:nth-child(3) .profile {
+        position: absolute;
+        top: 0px;
+        left: -60%;
+        bottom: 0;
+        right: 0;
+        width:50%;
+        height:auto;
+      }
+      .col-xs-6:nth-child(3) .userName{
+        position: absolute;
+        top:-24%;
+        left: 2%;
+        width:95%;
+        font-size:1.5em;
+      }
+      .col-xs-6:nth-child(4) {
+        background: url('/images/Profilearea.png');
+        background-repeat: no-repeat;
+        background-position:center center;
+        background-size:cover;
+        top: 6%;
+        position: absolute;
+        right: 66%;
+        padding-top:0px;
+        padding-left:0px;
+        padding-right:0px;
+        width: 20%;
+        height: 20%;
+      }
+      
+      .col-xs-6:nth-child(4) .profile {
+        position: absolute;
+        top: 0px;
+        left: -60%;
+        bottom: 0;
+        right: 0;
+        width:50%;
+        height:auto;
+      }
+      .col-xs-6:nth-child(4) .userName{
+        position: absolute;
+        top:-26%;
+        left: 2%;
+        width:95%;
+        font-size:1.5em;
+      }
+      
+      .gamefield {
+        width: 100%;
+        height: 100%;
+        background-color: #0B610B;
+        background-repeat: no-repeat;
+        position: absolute;
+      }
+      
+      .cardarea{
+        position: absolute;
+        width:25%;
+        height:25%;
+      }
+      
+      .image-selected{
+        top : 60% !important;
+      }
+      .draw {
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        top: 0%;
+        left: 20%;
+      }
+      .cards {
+        position: absolute;
+        left : 50%;
+        bottom : 40%;
+        height: 35%;
+        width: 11%;
+      }
+      .lastCards {
+        position: absolute;
+        left : 50%;
+        bottom : 49%;
+        height: 35%;
+        width: 11%;
+      }
+      .moneypanel {
+        position: absolute;
+        height: 100%;
+        width: 60%;
+        left : 30.5%;
+        bottom : -10%;
+      }
+      .mycards {
+        position: absolute;
+        left : 37%;
+        top : 65%;
+        height: 25%;
+        width: 8%;
+        display:none;
+      }
+      #chatLog.chat_log{
+        position:absolute;
+        font-size:1em;
+        height: 86%;
+        resize: none;
+        width:100%;
+        color:#ddf8c6;
+        background: #88b7d5;
+        border: 4px solid #c2e1f5;
+      }
+      #message.message{
+        width:100%;
+        background: #88b7d5;
+        border: 4px solid #c2e1f5;
+        color:#ddf8c6;
+        opacity:1;
+        position:absolute;
+        top:85%;
+      }
+      .arrow_box {
+        position: absolute;
+        background: #88b7d5;
+        border: 4px solid #c2e1f5;
+        width:29%;
+        height:24%;
+        top:75.5%;
+        left:70.8%;
+        padding-top:0px;
+        padding-left:0px;
+      }
+      .arrow_box:after, .arrow_box:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      .arrow_box:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #88b7d5;
+        border-width: 30px;
+        margin-left: -30px;
+      }
+      .arrow_box:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: #c2e1f5;
+        border-width: 36px;
+        margin-left: 100px;
+      }
+    }
+    @media all and (min-width:768px) and (max-width:1024px){
+      #userID{
+        display:none;
+      }
+      .parent{
+        width: 100%;
+        position: relative; /* If you want text inside of it */
+      }
+      button#select1 {
+        top: 28%;
+        left: 23%;
+        position: absolute;
+        background:none;
+        display:inline-block;
+        border-width: 0px;
+        width:15%;
+        height:15%;
+      }
+      button#select2 {
+        top: 28%;
+        left: 41%;
+        position: absolute;
+        background:none;
+        display:inline-block;
+        border-width: 0px;
+        width:15%;
+        height:15%;
+      }
+      button#select3 {
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -2596,8 +3139,8 @@ block content
         position: relative; /* If you want text inside of it */
       }
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -2606,7 +3149,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -2616,8 +3159,8 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -3114,8 +3657,8 @@ block content
         position: relative; /* If you want text inside of it */
       }
       button#select1 {
-        top: 18%;
-        left: 26%;
+        top: 28%;
+        left: 23%;
         position: absolute;
         background:none;
         display:inline-block;
@@ -3124,7 +3667,7 @@ block content
         height:15%;
       }
       button#select2 {
-        top: 18%;
+        top: 28%;
         left: 41%;
         position: absolute;
         background:none;
@@ -3134,8 +3677,8 @@ block content
         height:15%;
       }
       button#select3 {
-        top: 18%;
-        left: 56%;
+        top: 28%;
+        left: 62%;
         position: absolute;
         background:none;
         display:inline-block;
