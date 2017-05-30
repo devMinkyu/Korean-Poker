@@ -114,6 +114,7 @@ function addUser(roomIndex, user){
     'photoURL' : user.photoURL,
     'cards' : [],
     // 여기 부분은 디비에 있는것을 집어넣어준다.
+    'insignia' : user.insignia,
     'win' : user.win,
     'lose' : user.lose,
     'money' : user.money

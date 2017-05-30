@@ -21,12 +21,14 @@ socket.on('room_connection_receive', function(users){
   var state = document.getElementsByName("state");
   var img = document.getElementsByName("userProfile");
   var money = document.getElementsByClassName("moneyBar");
+  var insignia = document.getElementsByClassName("insignia");
   for(var i = 0; i < users.length; i++){
     $("#userWindow").append($('#rowTemplate1').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
     money[i].innerHTML = "돈: " + users[i].money;
+    insignia[i].src= '/images/insignia/' + users[i].insignia +'.png'
     img[i].src=users[i].photoURL;
     if(users[i].isReady === true)
       state[i].innerHTML = "준비 완료";
@@ -69,18 +71,22 @@ socket.on('start_game', function(room){
   $("#myCardWindow").append($('#rowTemplate6').html());
   socket.emit('timer_send');
   $('#userWindow').empty();
-  for(var i = 0; i < room.connUsers.length; i++){
-    $("#userWindow").append($('#rowTemplate3').html());
-    $(".cardBundle").append($('#rowTemplate2').html());
-  }
+  // for(var i = 0; i < room.connUsers.length; i++){
+  //   $("#userWindow").append($('#rowTemplate3').html());
+  //   $(".cardBundle").append($('#rowTemplate2').html());
+  // }
   var money = document.getElementsByClassName("moneyBar");
   var img = document.getElementsByName("userProfile");
+  var insignia = document.getElementsByClassName("insignia");
   var name = document.getElementsByName("username");
   var cardImforamtion1 = document.getElementById("cardImforamtion1");
   var cardImforamtion2 = document.getElementById("cardImforamtion2");
   for(var i = 0; i < room.connUsers.length; i++){
+    $("#userWindow").append($('#rowTemplate3').html());
+    $(".cardBundle").append($('#rowTemplate2').html());
     money[i].innerHTML = "돈: " + room.connUsers[i].money;
     name[i].innerHTML = room.connUsers[i].userName;
+    insignia[i].src= '/images/insignia/' + room.connUsers[i].insignia +'.png'
     img[i].src=room.connUsers[i].photoURL;
     if(currentUserID == room.connUsers[i].userID){
       cards[0] = room.cards[2*i];

@@ -6,7 +6,6 @@
 @import url("http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900");
 @import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
-@import url(print.css) print;
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -1135,7 +1134,7 @@ h1 {
     background-position: 0 -30px; } }
 
 p {
-  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
+  text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px, skyblue 1.4px -1.4px, skyblue -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
