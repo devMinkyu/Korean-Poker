@@ -6,6 +6,7 @@ exports.initialize =function(roomIndex){
   rooms[roomIndex].gamingUsers = [];
   rooms[roomIndex].cards = [];
   rooms[roomIndex].regame = 0;
+  rooms[roomIndex].bettingStage = 0;
   if(rooms[roomIndex].disconnUsers.length !== 0){
     var disUserIndex;
     for(var i = 0; i<rooms[roomIndex].disconnUsers.length;i++){

@@ -9,6 +9,7 @@ var schema = new Schema({
   contents : {type: String},
   facebook: {id: String, token: String},
   photoURL : {type: String},
+  insignia : {type: Number, default: 0},
   win : {type: Number, default: 0},
   lose : {type: Number, default: 0},
   money: {type: Number, default: 1000000}

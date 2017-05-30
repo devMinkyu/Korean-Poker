@@ -18,7 +18,7 @@ block content
             else
               span(name='state') 대기 중     
           img.profile.img-circle(name="userProfile" src=user.photoURL)
-          img.insignia(name="insignia" src='/images/insignia/gold.png')
+          img.insignia(class="insignia")
     .draw
       h1(id='roomName')= room.roomName
       img.moneypanel(src="/images/Moneyarea.png")
@@ -29,23 +29,14 @@ block content
       #buttons
         #viewTimer
         p#firstButton
-          //- if(currentUser)
           .parent
             img.myprofile.img-circle(src=currentUser.photoURL)
-            img.myinsignia(name="myinsignia" src='/images/insignia/gold.png')
-          //- else
-          //-   .parent
-          //-     img.myprofile.img-circle(src=room.connUsers[room.connUsers.length-1].photoURL)
+            img.myinsignia(id="myinsignia" src= '/images/insignia/' + currentUser.insignia + '.png')
           button.btn.btn-warning(id="ready") 준비
           a.btn.btn-warning(id='exit', href='/game') 나가기
-        //- 원래
         h3(id='myName')= currentUser.userName
         span(id='myWin') 승: #{currentUser.win}
         span(id='myLose') / 패: #{currentUser.lose}
-
-        //- h3(id='myName')= room.connUsers[room.connUsers.length-1].userName
-        //- span(id='myWin') 승: #{room.connUsers[room.connUsers.length-1].win}
-        //- span(id='myLose') / 패: #{room.connUsers[room.connUsers.length-1].lose}
     .row(id="myCardWindow")
     .row(id='bettingBar')
       button.btn.btn-warning.col-md-2(id="dadang") 따당
@@ -69,7 +60,7 @@ block content
           <img class="profile img-circle", name="userProfile"/>
         </div>
         <div class='parent'>
-          <img class="insignia", name="insignia" src="/images/insignia/gold.png"/>
+          <img class="insignia", name="insignia" />
         </div>
         <h4 class='moneyBar'></h4>
         <button id=select1 onclick=select1()>
@@ -83,7 +74,7 @@ block content
           <img class="profile img-circle" name= "userProfile"/>
         </div>
         <div class='parent'>
-          <img class="insignia", name="insignia" src="/images/insignia/gold.png"/>
+          <img class="insignia", name="insignia" />
         </div>
         <h1 class='playerdie'></h1>
         <h1 class='playerBettingState'></h1>
