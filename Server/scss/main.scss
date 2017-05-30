@@ -10,7 +10,7 @@
 @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
 
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
-//@import url(print.css) print;
+// @import url(print.css) print;
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -404,6 +404,12 @@
 	}
 	}
 
+	@media (max-width: 1200px){
+	input[type="submit"]	{
+		width: 280px;
+	}
+  }
+
 	@media (max-width: 1080px) {
 	.content-w3ls {
 	    width: 40%;
@@ -494,6 +500,9 @@
 	input[type="text"], input[type="password"] {
 	    width: 79%;
 	}
+	input[type="submit"] {
+	    width: 180px;
+	}
 	}
 
 	@media (max-width: 736px) {
@@ -537,13 +546,13 @@
 		background: #000 no-repeat 292px 10px;
 	}
 	input[type="submit"] {
-	    width: 327px;
+	    width: 157px;
 	}
 	}
 
 	@media (max-width: 600px) {
 	.content-w3ls img.user-wthree {
-		width:120px;
+		width:130px;
 	}
 	input[type="text"] {
 	    background: rgba(0,0,0,0.5) no-repeat 273px 10px;
@@ -562,7 +571,7 @@
 		background: #000 no-repeat 273px 10px;
 	}
 	input[type="submit"] {
-	    width: 308px;
+	    width: 138px;
 	}
 	.footer-w3ls p {
 		font-size:14px;
@@ -595,6 +604,30 @@
 	input[type="submit"] {
 	    width: 295px;
 	}
+	a.face-link {
+		margin: 15px auto;
+	    width: 123px;
+	    height: 38px;
+	    line-height: 38px;
+		font-size:16px;
+	}
+	a.face-link i.fa, a.kakao-link i.fa {
+	    font-size: 16px;
+	    text-align: left;
+	    margin: 0 5px 0 19px;
+	}
+	a.kakao-link {
+		width: 123px;
+	    height: 38px;
+	    line-height: 38px;
+		font-size:16px;
+	}
+	}
+
+	@media (max-width: 524px) {
+	input[type="submit"] {
+		  width: 255px;
+	}
 	}
 
 	@media (max-width: 480px) {
@@ -620,7 +653,7 @@
 		background: #000 no-repeat 215px 9px;
 	}
 	input[type="submit"] {
-	    width: 253px;
+	    width: 203px;
 	}
 	.form-group3-agile input[type="checkbox"]+label {
 		font-size:13px;
@@ -637,6 +670,7 @@
 	input[type="text"], input[type="password"] {
 	    width: 75.5%;
 	}
+	
 	}
 
 	@media (max-width:414px) {
@@ -669,7 +703,7 @@
 	}
 	input[type="submit"] {
 	    font-size: 16px;
-		width: 204px;
+		width: 234px;
 	}
 	a.face-link {
 		margin: 15px auto;
@@ -731,6 +765,31 @@
 	input[type="text"], input[type="password"] {
 	    width: 78%;
 	}
+
+	a.face-link {
+		margin: 15px auto;
+	    width: 133px;
+	    height: 38px;
+	    line-height: 38px;
+		font-size:16px;
+	}
+	a.face-link i.fa, a.kakao-link i.fa {
+	    font-size: 16px;
+	    text-align: left;
+	    margin: 0 5px 0 15px;
+	}
+	a.kakao-link {
+		width: 133px;
+	    height: 38px;
+	    line-height: 38px;
+		font-size:16px;
+	}
+	}
+
+	@media (max-width: 340px) {
+	input[type="submit"] {
+	    width: 145px;
+	}
 	}
 
 	@media (max-width: 320px) {
@@ -769,7 +828,7 @@
 		font-size:14px;
 	}
 	a.face-link,a.kakao-link {
-	    width: 134px;
+	    width: 104px;
 	    height: 38px;
 	    line-height: 38px;
 	    font-size: 14px;
@@ -783,6 +842,29 @@
 	}
 	}
 
+	@media (max-width: 320px) {
+	input[type="submit"] {
+	    width: 125px;
+	}
+	}
+
+	@media (max-width: 280px) {
+	a.face-link,a.kakao-link {
+	    width: 90px;
+		  height: 38px;
+		  line-height: 38px;
+		  font-size: 14px;
+		}
+	input[type="submit"] {
+		  width: 115px;
+	}
+	}
+
+	@media (max-width: 228px) {
+	input[type="submit"] {
+		  width: 65px;
+	}
+	}
 
 // waitRoom
 /*--
@@ -990,7 +1072,7 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 @media (max-width: 1280px){
 	.w3_agile_main_grids {
-		width: 71%;
+		width: 81%;
 	}
 }
 @media (max-width: 1080px){
