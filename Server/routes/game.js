@@ -78,7 +78,8 @@ router.post('/', needAuth, function(req, res, next){
       'currentTurnUser': '',
       'state' : '대기중',
       'cards' : [],
-      'regame' : 0,
+      'bettingStage' : 0,
+      'regame' : 0, // 리게임
       'count' : 0 // 참여한 사람이 한번씩 돌아가면서 돌릴 수 있도록 카운트해준다
     };
     rooms.push(newRoom);

@@ -23,7 +23,7 @@ socket.on('room_connection_receive', function(users){
   var money = document.getElementsByClassName("moneyBar");
   var insignia = document.getElementsByClassName("insignia");
   for(var i = 0; i < users.length; i++){
-    $("#userWindow").append($('#rowTemplate1').html());
+    $("#userWindow").append($('#initialView').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
@@ -68,13 +68,9 @@ socket.on('ready_receive', function(users, index){
 socket.on('start_game', function(room){
   $("#ready").attr('disabled',true);
   $("#die").attr('disabled',false);
-  $("#myCardWindow").append($('#rowTemplate6').html());
+  $("#myCardWindow").append($('#privateViewCard').html());
   socket.emit('timer_send');
   $('#userWindow').empty();
-  // for(var i = 0; i < room.connUsers.length; i++){
-  //   $("#userWindow").append($('#rowTemplate3').html());
-  //   $(".cardBundle").append($('#rowTemplate2').html());
-  // }
   var money = document.getElementsByClassName("moneyBar");
   var img = document.getElementsByName("userProfile");
   var insignia = document.getElementsByClassName("insignia");
@@ -82,8 +78,8 @@ socket.on('start_game', function(room){
   var cardImforamtion1 = document.getElementById("cardImforamtion1");
   var cardImforamtion2 = document.getElementById("cardImforamtion2");
   for(var i = 0; i < room.connUsers.length; i++){
-    $("#userWindow").append($('#rowTemplate3').html());
-    $(".cardBundle").append($('#rowTemplate2').html());
+    $("#userWindow").append($('#gameView').html());
+    $(".cardBundle").append($('#publicViewCard').html());
     money[i].innerHTML = "돈: " + room.connUsers[i].money;
     name[i].innerHTML = room.connUsers[i].userName;
     insignia[i].src= '/images/insignia/' + room.connUsers[i].insignia +'.png'
@@ -253,31 +249,22 @@ socket.on('betting_receive', function(room, user, state){
 });
 // 모두 콜을 눌렀을 때 한장씩 더 나눠주는 코드
 socket.on('lastCardDistribution_receive', function(room){
-  var cardImforamtion1 = document.getElementById("cardImforamtion1");
-  var cardImforamtion2 = document.getElementById("cardImforamtion2");
   var die = document.getElementsByClassName("playerdie");
   var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
   $('#myCardWindow').empty();
-  var card1 = document.getElementsByClassName("card1");
-  var card2 = document.getElementsByClassName("card2");
-  var card3 = document.getElementsByClassName("card3");
   for(var i = 0; i < room.connUsers.length; i++){
-    $(".cardBundle").append($('#rowTemplate4').html());
-  }
-  for(var i = 0; i < room.connUsers.length; i++){
+    $(".cardBundle").append($('#publicViewLastCard').html());
     if(currentUserID == room.connUsers[i].userID && die[i].innerHTML != "Die"){
-      $("#myCardWindow").append($('#rowTemplate5').html());
-      $("#dadang").attr('disabled',true);
-      $("#call").attr('disabled',true);
-      $("#half").attr('disabled',true);
-      $("#bbing").attr('disabled',true);
-      $("#check").attr('disabled',true);
-      $(".card1").attr("src", cardImforamtion1.src);
-      $(".card2").attr("src", cardImforamtion2.src);
-      $(".card3").attr("src", "/images/card/" + room.cards[2*room.connUsers.length+i] +".png");
       cards[2] = room.cards[2*room.connUsers.length+i];
       socket.emit('twoCardAutoSelect', [cards[0],cards[1]]);
+      $("#myCardWindow").append($('#privateViewLastCard').html());
+      var cardImforamtion1 = document.getElementById("cardImforamtion1");
+      var cardImforamtion2 = document.getElementById("cardImforamtion2");
+      var cardImforamtion3 = document.getElementById("cardImforamtion3");
+      cardImforamtion1.src ="/images/card/" + cards[0] +".png";
+      cardImforamtion2.src ="/images/card/" + cards[1] +".png";
+      cardImforamtion3.src ="/images/card/" + cards[2] +".png";
     }
     playerBettingState[i].innerHTML = '';
     if(room.connUsers[i].userID == room.currentTurnUser)
@@ -286,6 +273,34 @@ socket.on('lastCardDistribution_receive', function(room){
       turn[i].src = "";
   }
   cardAnimationThird(room.connUsers.length);
+});
+// 카드 나눠준 후 다 콜 했을 때 두장 선택하게끔 만드는 코드
+socket.on('lastSelect_receive', function(room){
+  var die = document.getElementsByClassName("playerdie");
+  var turn = document.getElementsByClassName("turn");
+  var playerBettingState = document.getElementsByClassName("playerBettingState");
+  $('#myCardWindow').empty();
+  var card1 = document.getElementsByClassName("card1");
+  var card2 = document.getElementsByClassName("card2");
+  var card3 = document.getElementsByClassName("card3");
+  for(var i = 0; i < room.connUsers.length; i++){
+    if(currentUserID == room.connUsers[i].userID && die[i].innerHTML != "Die"){
+      $("#myCardWindow").append($('#privateViewCardSelect').html());
+      $("#dadang").attr('disabled',true);
+      $("#call").attr('disabled',true);
+      $("#half").attr('disabled',true);
+      $("#bbing").attr('disabled',true);
+      $("#check").attr('disabled',true);
+      $(".card1").attr("src", "/images/card/" + cards[0] +".png");
+      $(".card2").attr("src", "/images/card/" + cards[1] +".png");
+      $(".card3").attr("src", "/images/card/" + cards[2] +".png");
+    }
+    playerBettingState[i].innerHTML = '';
+    if(room.connUsers[i].userID == room.currentTurnUser)
+      turn[i].src="/images/turn.png";
+    else
+      turn[i].src = ""; 
+  }
 });
 // 두장씩 선택하는거
 function select1 (){
@@ -330,9 +345,9 @@ socket.on('resetGame_receive', function(room){
   $('#myCardWindow').empty();
   $('.cards').remove();
   $('.lastCards').remove();
-  $("#myCardWindow").append($('#rowTemplate6').html());
+  $("#myCardWindow").append($('#privateViewCard').html());
   for(var i = 0; i < room.connUsers.length; i++){
-    $(".cardBundle").append($('#rowTemplate2').html());  
+    $(".cardBundle").append($('#publicViewCard').html());  
   }
   var openCard = document.getElementsByClassName("cards");
   for(var i = 0; i < room.connUsers.length; i++){
@@ -467,6 +482,38 @@ function cardAnimationThird(userNumber){
         directionCount++
     }
   });
+
+      $.when(drawCards).then(function (){
+        $(".moneypanel").fadeIn();
+        $(".lastCards").transition({ 
+            perspective: '100px',
+            rotateY: '180deg'
+        });
+    });
+
+    $.when(drawCards).then(function (){
+         $(".mycards").fadeIn();
+          var myCardsDirection = 0
+          var myCardsDirectionCounter = 0;
+            var checkMyCards = $('.mycards').each(function(index) {
+                $(this).delay(10*index).animate(myCardsDirection);
+                if(myCardsDirectionCounter == 0 ){
+                    myCardsDirection = {left: "+=8%"}
+                    myCardsDirectionCounter++
+                }else if(myCardsDirectionCounter ==1){
+                    myCardsDirection = {left: "+=16%"}
+                    myCardsDirectionCounter++
+                }else if(myCardsDirectionCounter ==2){
+                    myCardsDirection = {left: "+=24%"}
+                }
+            });
+            $.when(checkMyCards).then(function (){
+                $(".mycards").transition({ 
+                    perspective: '100px',
+                    rotateY: '180deg'
+                });
+            });
+        });
 }
 history.pushState(null, null, location.href); 
 window.onpopstate = function(event) { 

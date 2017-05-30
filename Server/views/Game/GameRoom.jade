@@ -48,7 +48,7 @@ block content
 
     script(type='text/javascript', src='/javascripts/flipcard.js').
     script(src='/javascripts/gameConnetion.js').    
-    script#rowTemplate1(type='text/template').
+    script#initialView(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
         <span name='win' class='win'></span>
@@ -67,13 +67,7 @@ block content
           <img class='card1'>
           <img class='card2'>
       </div>
-
-    script#rowTemplate2(type='text/template').
-      <div class = "draw">
-         <img class="cards"  src="/images/Card-S.png">
-         <img class="cards"  src="/images/Card-S.png">
-       </div> 
-    script#rowTemplate3(type='text/template').
+    script#gameView(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
         <div class='parent'>
@@ -87,11 +81,27 @@ block content
         <img class="turn"/>
         <h4 class='moneyBar'></h4>
       </div>
-    script#rowTemplate4(type='text/template').
+    script#publicViewCard(type='text/template').
       <div class = "draw">
-         <img class="lastCards"  src="/images/Card-S1.png">
+         <img class="cards"  src="/images/Card-S.png">
+         <img class="cards"  src="/images/Card-S.png">
+       </div> 
+    script#publicViewLastCard(type='text/template').
+      <div class = "draw">
+         <img class="lastCards"  src="/images/Card-S.png">
        </div>
-    script#rowTemplate5(type='text/template').
+    script#privateViewCard(type='text/template').
+      <div class= "col xs 4">
+        <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
+        <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
+      </div>
+    script#privateViewLastCard(type='text/template').
+      <div class= "col xs 4">
+        <img class= "mycards" id='cardImforamtion1'>
+        <img class= "mycards" id='cardImforamtion2'>
+        <img class= "mycards" id='cardImforamtion3'>
+      </div>
+    script#privateViewCardSelect(type='text/template').
       <div class= "col xs 4">
         <button id=select1 onclick=select1()>
           <img class='card1'>
@@ -106,11 +116,7 @@ block content
           <img class='card3'>
         </button>
       </div>
-    script#rowTemplate6(type='text/template').
-      <div class= "col xs 4">
-        <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
-        <img class= "mycards" id='cardImforamtion2' onclick="firstCardSelect2()">
-      </div>
+    
   style.
     .insignia{
         position: absolute;
