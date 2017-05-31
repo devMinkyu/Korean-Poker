@@ -175,7 +175,7 @@
 		font-weight:normal;
 		letter-spacing:4px;
 
-		background-image: -webkit-linear-gradient(skyblue 50%, #fff 50%);/*그라디언트 배경을 스트라이프모양으로 모양잡음*/
+		background-image: -webkit-linear-gradient(red 50%, #fff 50%);/*그라디언트 배경을 스트라이프모양으로 모양잡음*/
 		background-position: 0 0;
 		-webkit-background-clip: text;/*배경이 텍스트 만큼만 나오게끔*/
 		background-size: 100% 30px;/*가로 100% 세로 30px 크기*/
@@ -199,9 +199,12 @@
 
 
 	p {
-		text-shadow: skyblue 0px 2px, skyblue 2px 0px, skyblue -2px 0px,
-    skyblue 0px -2px, skyblue -1.4px -1.4px, skyblue 1.4px 1.4px,
-    skyblue 1.4px -1.4px, skyblue -1.4px 1.4px;
+		padding:30px 0;
+		font-size:50px;
+		font-weight: normal;
+		text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px,
+    #6f1c21 0px -2px, #6f1c21 -1.4px -1.4px, #6f1c21 1.4px 1.4px,
+    #6f1c21 1.4px -1.4px, #6f1c21 -1.4px 1.4px;
 	}
 
 	.content-w3ls {
@@ -227,7 +230,7 @@
 	}
 	.form-group1-agile {
 	    position: relative;
-		margin:20px 0;
+		margin:30px 0;
 	}
 	input[type="text"] {
 		padding: 10px 40px 10px 10px;
@@ -671,7 +674,7 @@
 	input[type="text"], input[type="password"] {
 	    width: 75.5%;
 	}
-	
+
 	}
 
 	@media (max-width:414px) {
