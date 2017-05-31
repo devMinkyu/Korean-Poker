@@ -1,8 +1,11 @@
 extends ../layout
 block content
     .container
-      h1.page-header 
+      h1.page-header
+      include ../includes/chat 
       br
+      form(action='/game/create', method='get')
+        input(type='submit', value='방만들기')
       .row
       .main
         each room in rooms
@@ -33,8 +36,7 @@ block content
                   br
                   .agileits_main_grid
                       form(action='/game/#{room._id}', method='get')
-                        input(type='submit', value='입장',  onclick="move()")
+                        input(type='submit', value='입장')
                   
-    form(action='/game/create', method='get')
-      input(type='submit', value='방만들기')
 
+    script(src='/javascripts/viewconnetion/waitingroomconnetion.js').    
