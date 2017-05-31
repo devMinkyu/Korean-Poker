@@ -291,8 +291,13 @@ function die_send(money , socket){
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: rooms[roomIndex].connUsers[userIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
-    rooms[roomIndex].connUsers[userIndex].money -= money;
-    rooms[roomIndex].roomAllMoney += money;
+    if(money > rooms[roomIndex].connUsers[userIndex].money){
+        rooms[roomIndex].roomAllMoney += rooms[roomIndex].connUsers[userIndex].money;
+        rooms[roomIndex].connUsers[userIndex].money = 0;
+    } else{
+      rooms[roomIndex].connUsers[userIndex].money -= money;
+      rooms[roomIndex].roomAllMoney += money;
+    }
     if(gameUserIndex != -1){
       if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].currentTurnUser){
         rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
@@ -340,7 +345,7 @@ function die_send(money , socket){
       }
       rooms[roomIndex].gamingUsers[gameUserIndex].bettingRemainCount -= 1;
       if(money > rooms[roomIndex].connUsers[userIndex].money){
-        app.io.to(socket.id).emit('message_receive', "돈이 부족합니다.");
+        app.io.to(socket.id).emit('message_receive', "돈이 부족합니다. Call 하세요");
       }else{
         rooms[roomIndex].connUsers[userIndex].money -= money;
         rooms[roomIndex].roomAllMoney += money;
