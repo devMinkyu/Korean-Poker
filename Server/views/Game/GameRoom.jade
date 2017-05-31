@@ -16,7 +16,7 @@ block content
             if(user.isReady == true)
               span(name='state') 준비 완료
             else
-              span(name='state') 대기 중     
+              span(name='state') 대기 중
           img.profile.img-circle(name="userProfile" src=user.photoURL)
           img.insignia(class="insignia")
     .draw
@@ -117,26 +117,53 @@ block content
         </button>
       </div>
   style.
-    .card1{
+    div.col.xs.4 .card1{
       position: relative;
       width: 50%;
     }
-    .card2{
+    div.col.xs.4 .card2{
       position: relative;
       width: 50%;
     }
-    .card3{
+    div.col.xs.4 .card3{
       position: relative;
       width: 50%;
     }
-    .insignia{
-        position: absolute;
-        top: 0px;
-        left: 110%;
-        bottom: 0;
-        right: 0;
-        width:50%;
-        height:auto;
+    .col-xs-6:nth-child(1) .insignia {
+      position: absolute;
+      top: 0px;
+      left: 110%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
+    }
+    .col-xs-6:nth-child(2) .insignia {
+      position: absolute;
+      top: 0px;
+      left: 110%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
+    }
+    .col-xs-6:nth-child(3) .insignia {
+      position: absolute;
+      top: 0px;
+      left: -60%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
+    }
+    .col-xs-6:nth-child(4) .insignia {
+      position: absolute;
+      top: 0px;
+      left: -60%;
+      bottom: 0;
+      right: 0;
+      width:50%;
+      height:auto;
     }
     .myinsignia{
       position: absolute;
@@ -151,10 +178,11 @@ block content
       display:none;
     }
     .parent{
+      background:url('/images/insignia/0.png');
       width: 100%;
       position: relative; /* If you want text inside of it */
     }
-    button#select1 {
+    div.col.xs.4 button#select1 {
       top: 28%;
       left: 23%;
       position: absolute;
@@ -166,7 +194,7 @@ block content
       padding:0;
       vertical-align:top;
     }
-    button#select2 {
+    div.col.xs.4 button#select2 {
       top: 28%;
       left: 42%;
       position: absolute;
@@ -178,7 +206,7 @@ block content
       padding:0;
       vertical-align:top;
     }
-    button#select3 {
+    div.col.xs.4 button#select3 {
       top: 28%;
       left: 62%;
       position: absolute;
@@ -3657,6 +3685,7 @@ block content
       }
       .parent{
         width: 100%;
+        background:url('/images/insignia/0.png');
         position: relative; /* If you want text inside of it */
       }
       button#select1 {
