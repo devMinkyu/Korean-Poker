@@ -22,12 +22,14 @@ socket.on('room_connection_receive', function(users){
   var img = document.getElementsByName("userProfile");
   var money = document.getElementsByClassName("moneyBar");
   var insignia = document.getElementsByClassName("insignia");
+  var koreanMoney
   for(var i = 0; i < users.length; i++){
+    koreanMoney = viewKoreanMoney(users[i].money);
     $("#userWindow").append($('#initialView').html());
     name[i].innerHTML = users[i].userName;
     win[i].innerHTML = "승: " + users[i].win;
     lose[i].innerHTML = "/ 패: " + users[i].lose;
-    money[i].innerHTML = "돈: " + users[i].money;
+    money[i].innerHTML = "돈: " + koreanMoney;
     img[i].src=users[i].photoURL;
     insignia[i].src='/images/insignia/' + users[i].insignia + '.png'
     if(users[i].isReady === true)
@@ -77,10 +79,12 @@ socket.on('start_game', function(room){
   var name = document.getElementsByName("username");
   var cardImforamtion1 = document.getElementById("cardImforamtion1");
   var cardImforamtion2 = document.getElementById("cardImforamtion2");
+  var koreanMoney;
   for(var i = 0; i < room.connUsers.length; i++){
+    koreanMoney = viewKoreanMoney(room.connUsers[i].money);
     $("#userWindow").append($('#gameView').html());
     $(".cardBundle").append($('#publicViewCard').html());
-    money[i].innerHTML = "돈: " + room.connUsers[i].money;
+    money[i].innerHTML = "돈: " + koreanMoney;
     name[i].innerHTML = room.connUsers[i].userName;
     img[i].src=room.connUsers[i].photoURL;
     insignia[i].src='/images/insignia/' + room.connUsers[i].insignia + '.png'
@@ -125,15 +129,16 @@ function oneSelect(){
 
 // 카드한장씩 공개
 socket.on('one_open_card_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+ viewKoreanMoney(room.roomAllMoney);
   var openCard = document.getElementsByClassName("cards");
   var turn = document.getElementsByClassName("turn");
   var money = document.getElementsByClassName("moneyBar");
-
+  var koreanMoney;
   for(var i = 0; i < room.connUsers.length; i++){
     if(user.userID == room.connUsers[i].userID){
+      koreanMoney = viewKoreanMoney(room.connUsers[i].money);
       openCard[i].src ="/images/card/" + user.cards[0] +".png";
-      money[i].innerHTML = "돈: " + room.connUsers[i].money;
+      money[i].innerHTML = "돈: " + koreanMoney;
     }
     if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
@@ -161,23 +166,23 @@ socket.on('one_open_card_end_receive',function(room){
 });
 // 죽는 다고 할때
 $('#die').click('submit', function(e){
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  socket.emit('die_send', 1*roomMoneyNumber);
+  socket.emit('die_send');
 });
 // 죽는 다고 할 때 반응하는 소켓
 socket.on('die_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+ viewKoreanMoney(room.roomAllMoney);
   var turn = document.getElementsByClassName("turn");
   var money = document.getElementsByClassName("moneyBar");
   var die = document.getElementsByClassName("playerdie");
+  var koreanMoney;
   for(var i = 0; i < room.connUsers.length; i++){
     if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
     if(user.userID == room.connUsers[i].userID){
-      money[i].innerHTML = "돈: " + room.connUsers[i].money;
+      koreanMoney = viewKoreanMoney(room.connUsers[i].money);
+      money[i].innerHTML = "돈: " + koreanMoney;
       die[i].innerHTML = "Die";
     }
     if(currentUserID == room.connUsers[i].userID && die[i].innerHTML == "Die"){
@@ -197,48 +202,39 @@ socket.on('die_receive', function(room, user){
 });
 // call을 눌렀을때(지금까지 주어진 배팅금만큼만 걸고 끝내기를 선언)
 $('#call').click('submit', function (){
-  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  socket.emit('call_send', 1*roomMoneyNumber);
+  socket.emit('call_send');
 });
 // half을 눌렀을때(배팅금만큼 건다.)
 $('#half').click('submit', function(){
-  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  var money = 1*roomMoneyNumber;
-  socket.emit('half_send', money);
+  socket.emit('half_send');
 });
 // dadang을 눌렀을때(배팅금의 2배만큼을 건다.)
 $('#dadang').click('submit', function(){
-  var roomMoney = (document.getElementById("roomAllMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  var money = 2*roomMoneyNumber;
-  socket.emit('dadang_send', money);
+  socket.emit('dadang_send');
 });
 // bbing을 눌렀을때(판돈만큼을 건다.)
 $('#bbing').click('submit', function(){
-  var roomMoney = (document.getElementById("roomMoney").innerHTML);
-  var roomMoneyNumber = roomMoney.replace(/[^0-9]/g,"");
-  var money = 1*roomMoneyNumber;
-  socket.emit('bbing_send', money);
+  socket.emit('bbing_send');
 });
-// bbing을 눌렀을때 돈을 안걸고 그냥 턴을 넘긴다. 그리고 그냥 끝내기를 선언
+// check을 눌렀을때 돈을 안걸고 그냥 턴을 넘긴다. 그리고 그냥 끝내기를 선언
 $('#check').click('submit', function(){
   socket.emit('check_send');
 });
 // 배팅의 대해 반응 하는 소켓
 socket.on('betting_receive', function(room, user, state){
-  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+ viewKoreanMoney(room.roomAllMoney);
   var turn = document.getElementsByClassName("turn");
   var money = document.getElementsByClassName("moneyBar");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
+  var koreanMoney;
   for(var i = 0; i < room.connUsers.length; i++){
     if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
     else
       turn[i].src = "";
     if(user.userID == room.connUsers[i].userID){
-      money[i].innerHTML = "돈: " + room.connUsers[i].money;
+      koreanMoney = viewKoreanMoney(room.connUsers[i].money);
+      money[i].innerHTML = "돈: " + koreanMoney;
       playerBettingState[i].innerHTML = state;
     }
   }
@@ -365,17 +361,19 @@ socket.on('resetGame_receive', function(room){
   cardAnimation(room.connUsers.length);
 });
 socket.on('gameContinueCheck_receive', function(room, user){
-  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+room.roomAllMoney +'원';
+  document.getElementById("roomAllMoney").innerHTML = '총 금액 : '+viewKoreanMoney(room.roomAllMoney) ;
   var money = document.getElementsByClassName("moneyBar");
   var myWin = document.getElementById("myWin");
   var myLose = document.getElementById("myLose");
   var Cards = document.getElementsByClassName("cards");
+  var koreanMoney;
   $('#myCardWindow').empty();
   $('.cards').remove();
   $('.lastCards').remove();
   for(var i = 0; i < room.connUsers.length; i++){
     if(user.userID == room.connUsers[i].userID){
-      money[i].innerHTML = "돈: " + room.connUsers[i].money;
+      koreanMoney = viewKoreanMoney(room.connUsers[i].money);
+      money[i].innerHTML = "돈: " + koreanMoney;
     }
     if(currentUserID == room.connUsers[i].userID){
       myWin.innerHTML = " 승: " + room.connUsers[i].win;
@@ -514,4 +512,26 @@ function cardAnimationThird(userNumber){
 history.pushState(null, null, location.href); 
 window.onpopstate = function(event) { 
   history.go(1); 
+}
+
+function viewKoreanMoney(money) {	
+    var danA = new Array("","십","백","천","","십","백","천","","십","백","천","","십","백","천");
+    var result = "";
+    var num = money.toString();
+	for(i=0; i<num.length; i++) {		
+		str = "";
+		han = num.charAt(num.length-(i+1))
+		if(han != 0)
+			str += han+danA[i];
+		if(i == 4) str += "만";
+		if(i == 8) str += "억";
+		if(i == 12) str += "조";
+		result = str + result;
+	}
+	if(num != 0){
+		result = result + "원";
+    return result ;
+  } else{
+    return "0원";
+  }
 }

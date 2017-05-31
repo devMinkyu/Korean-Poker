@@ -229,23 +229,28 @@ app.io.on('connection', function(socket){
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     rooms[roomIndex].connUsers[userIndex].cards[0] = card;
   });
-  socket.on('die_send', function(money){
-    die_send(money, socket);
+  socket.on('die_send', function(){
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    die_send(rooms[roomIndex].roomMoney, socket);
   });
-  socket.on('half_send', function(money){
-    bettingContinue(money, socket, "하프");
+  socket.on('half_send', function(){
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    bettingContinue(rooms[roomIndex].roomAllMoney, socket, "하프");
   });
-  socket.on('bbing_send', function(money){
-    bettingContinue(money, socket, "삥");
+  socket.on('bbing_send', function(){
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    bettingContinue(rooms[roomIndex].roomMoney, socket, "삥");
   });
-  socket.on('dadang_send', function(money){
-    bettingContinue(money, socket, "따당");
+  socket.on('dadang_send', function(){
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    bettingContinue(2*rooms[roomIndex].roomAllMoney, socket, "따당");
   });
-  socket.on('check_send', function(money){
+  socket.on('check_send', function(){
     bettingEnd(0, socket, "체크");
   });
-  socket.on('call_send', function(money){
-    bettingEnd(money, socket, "콜");
+  socket.on('call_send', function(){
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
   });
   socket.on('twoCardAutoSelect', function (cards) {
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
@@ -321,6 +326,9 @@ function die_send(money , socket){
         } else{
           rooms[roomIndex].connUsers[i].lose += 1;
         }
+        if(rooms[roomIndex].connUsers[i].money === 0){
+          rooms[roomIndex].connUsers[i].money += 300000;
+        }
       }
       serverconnetion.initialize(roomIndex);
       msg = user.userName + "님이 승리 하셨습니다.";
@@ -343,10 +351,10 @@ function die_send(money , socket){
         app.io.to(socket.id).emit('message_receive', "call, check을 제외한 배팅의 횟수가 끝났습니다.");
         return;
       }
-      rooms[roomIndex].gamingUsers[gameUserIndex].bettingRemainCount -= 1;
       if(money > rooms[roomIndex].connUsers[userIndex].money){
         app.io.to(socket.id).emit('message_receive', "돈이 부족합니다. Call 하세요");
       }else{
+        rooms[roomIndex].gamingUsers[gameUserIndex].bettingRemainCount -= 1;
         rooms[roomIndex].connUsers[userIndex].money -= money;
         rooms[roomIndex].roomAllMoney += money;
         rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[(gameUserIndex+1)%gamingNumber].userID;
