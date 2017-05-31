@@ -2,4 +2,5 @@
   div
     textarea#chatLog.chat_log(readonly=true)
   form#chat
+    h5#playerName(style="width: auto; color:black;")=currentUser.userName
     input#message.message(type='text')

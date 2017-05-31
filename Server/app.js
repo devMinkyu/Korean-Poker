@@ -84,7 +84,21 @@ app.use(function(err, req, res, next) {
 
 app.io.on('connection', function(socket){
   console.log('user conneected: ', socket.id);
-
+  // 대기방
+   socket.on('WaitingRoomConnection_send', function(roomName, user){
+    socket.join(roomName);
+    socket.roomName = roomName;
+    socket.user = user;
+  });
+  socket.on('WaitingRoomMessage_send', function(text){
+    var message = socket.user  + ':' + text;
+    app.io.sockets.in(socket.roomName).emit('WaitingRoomMessage_receive', message);
+  });
+  socket.on('WaitingRoomLeave_send', function(){
+    socket.leave(socket.roomName);
+  });
+  
+  // 게임방
   socket.on('room_connection_send', function(_id, currentUserID){
     socket.join(_id);
     // socket._id 는 room 배열의 인덱스
