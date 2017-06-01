@@ -56,10 +56,10 @@ global.roomsCount = 0;
 global.name = null;
 var count = 1;
 router.get('/', needAuth, function(req,res, next){
-  res.render('game/gameroomList');
+  res.render('Game/GameRoomList');
 });
 router.get('/create',needAuth, function(req,res, next){
-  res.render('game/gameroomcreate');
+  res.render('Game/GameRoomCreate');
 });
 
 router.post('/', needAuth, function(req, res, next){
@@ -87,7 +87,7 @@ router.post('/', needAuth, function(req, res, next){
     roomsCount++;
     addUser(roomIndex, req.user);
 
-    res.render('game/gameroom', {room: newRoom});
+    res.render('Game/GameRoom', {room: newRoom});
   } else{
     req.flash('danger', '다시 입력헤주세요');
     return res.redirect('back');
@@ -100,7 +100,7 @@ router.get('/:id', needAuth, function(req,res, next){
   if(selectedRoom.connUsers.length < rooms[roomIndex].roomUserNumber && selectedRoom.state == "대기중"){
     // 원래 이렇게 해야함.
     addUser(roomIndex, req.user);
-    res.render('game/gameroom', {room: selectedRoom});
+    res.render('Game/GameRoom', {room: selectedRoom});
   } else {
     req.flash('danger', '방을 들어갈 수 없습니다.');
     return res.redirect('back');
