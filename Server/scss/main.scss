@@ -195,10 +195,12 @@
 		100% { background-position: 0 -30px; }
 	}
 
+	.arrow_box{
+		margin-left: 80px;
+	}
 
 
-
-	p {
+	h4 {
 		padding:30px 0;
 		font-size:50px;
 		text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px,
@@ -233,6 +235,7 @@
 	}
 	input[type="text"] {
 		padding: 10px 40px 10px 10px;
+		margin-left: 80px;
 	    width: 53%;
 		height:30px;
 	    border: 3px solid rgba(185, 0, 0, 0.35);
