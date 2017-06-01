@@ -1,0 +1,56 @@
+.container #chatLog.chat_log {
+  font-size: 1em;
+  resize: none;
+  width: 100%;
+  height: 300px;
+  color: white;
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px; }
+
+.container #message.message {
+  width: 100%;
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px;
+  color: white;
+  opacity: 1; }
+
+.container .arrow_box {
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px;
+  height: 30%;
+  width: 100%;
+  padding-top: 0px;
+  padding-left: 0px; }
+
+.container #playerName {
+  background-color: rgba(255, 84, 100, 0.17);
+  border-radius: 10px;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
+.container .arrow_box:after, .container .arrow_box:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.container .arrow_box:after {
+  border-color: rgba(255, 84, 100, 0.17);
+  border-top-color: white;
+  border-width: 30px;
+  border-radius: 10px;
+  margin-left: -30px; }
+
+.container .arrow_box:before {
+  border-color: rgba(255, 84, 100, 0.17);
+  border-top-color: white;
+  border-width: 36px;
+  border-radius: 10px;
+  margin-left: 100px; }

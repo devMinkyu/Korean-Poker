@@ -2,7 +2,7 @@ var socket = io.connect();
 var element = document.getElementById("_id");
 var currentUserID = document.getElementById("userID").innerHTML;
 var cards=[];
-
+var count = 0;
 // 연결
 socket.emit('room_connection_send', element.innerHTML-1, currentUserID);
 
@@ -47,7 +47,8 @@ $('#chat').on('submit', function(e){
 });
 socket.on('message_receive', function(msg){
   $('#chatLog').append(msg+"\n");
-  $('#chatLog').scrollTop($('#chatLog').innerHeight());
+    $('#chatLog').scrollTop(count);
+    count += 50;
 });
 
 // 준비 눌렀을 때

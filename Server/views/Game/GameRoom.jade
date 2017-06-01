@@ -1,5 +1,5 @@
 extends ../layout
-
+block top-nav 
 block content
   .gamefield
     .row
@@ -83,13 +83,13 @@ block content
       </div>
     script#publicViewCard(type='text/template').
       <div class = "draw">
-         <img class="cards"  src="/images/Card-S.png">
-         <img class="cards"  src="/images/Card-S.png">
-       </div> 
+          <img class="cards"  src="/images/Card-S.png">
+          <img class="cards"  src="/images/Card-S.png">
+        </div> 
     script#publicViewLastCard(type='text/template').
       <div class = "draw">
-         <img class="lastCards"  src="/images/Card-S.png">
-       </div>
+          <img class="lastCards"  src="/images/Card-S.png">
+        </div>
     script#privateViewCard(type='text/template').
       <div class= "col xs 4">
         <img class= "mycards" id='cardImforamtion1' onclick="firstCardSelect1()">
