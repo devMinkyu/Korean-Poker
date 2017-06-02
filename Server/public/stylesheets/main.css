@@ -13,6 +13,60 @@
   background-repeat: no-repeat;
   position: absolute; }
 
+.gamefield .parentMoney {
+  width: 100%;
+  position: absolute;
+  /* If you want text inside of it */
+  padding-left: 0px; }
+
+.gamefield .parentMoney .bettingMoney1 {
+  position: absolute;
+  top: 220%;
+  left: 88%;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  height: auto;
+  display: none;
+  z-index: 1;
+  padding: 0px; }
+
+.gamefield .parentMoney .bettingMoney2 {
+  position: absolute;
+  top: 1000%;
+  left: 88%;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  height: auto;
+  display: none;
+  z-index: 1;
+  padding: 0px; }
+
+.gamefield .parentMoney .bettingMoney3 {
+  position: absolute;
+  top: 1000%;
+  left: 2%;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  height: auto;
+  display: none;
+  z-index: 1;
+  padding: 0px; }
+
+.gamefield .parentMoney .bettingMoney4 {
+  position: absolute;
+  top: 220%;
+  left: 2%;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  height: auto;
+  display: none;
+  z-index: 1;
+  padding: 0px; }
+
 .gamefield .col-xs-6:nth-child(1) .insignia {
   position: absolute;
   top: 0px;
@@ -62,7 +116,6 @@
   display: none; }
 
 .gamefield .parent {
-  background: url("/images/insignia/0.png");
   width: 100%;
   position: relative;
   /* If you want text inside of it */ }
@@ -3227,7 +3280,6 @@
     display: none; }
   .gamefield .parent {
     width: 100%;
-    background: url("/images/insignia/0.png");
     position: relative;
     /* If you want text inside of it */ }
   .gamefield button#select1 {
@@ -5096,28 +5148,30 @@ a.kakao-link:hover {
 /*-- responsive design --*/
 @media (max-width: 1600px) {
   input[type="text"], input[type="password"] {
-    width: 55%; } }
+    width: 100%; } }
 
 @media (max-width: 1440px) {
   input[type="text"], input[type="password"] {
-    width: 62%; }
+    width: 100%; }
   .form-group3-agile input[type="checkbox"] + label span:first-child {
     top: 1px; } }
 
 @media (max-width: 1366px) {
   input[type="text"], input[type="password"] {
-    width: 65.5%; } }
+    width: 100%; } }
 
 @media (max-width: 1280px) {
   h1 {
     padding: 30px 0;
     font-size: 45px; }
   input[type="text"], input[type="password"] {
-    width: 69.5%; } }
+    width: 100%; } }
 
 @media (max-width: 1200px) {
   input[type="submit"] {
-    width: 280px; } }
+    width: 280px; }
+  input[type="text"] {
+    width: 100%; } }
 
 @media (max-width: 1080px) {
   .content-w3ls {
@@ -5125,7 +5179,8 @@ a.kakao-link:hover {
   input[type="text"] {
     background: rgba(0, 0, 0, 0.5) no-repeat 327px 10px;
     font-size: 18px;
-    height: 25px; }
+    height: 25px;
+    width: 100%; }
   input[type="text"]:hover, input[type="text"]:focus {
     background: #000 no-repeat 327px 10px; }
   input[type="password"] {
@@ -5141,7 +5196,7 @@ a.kakao-link:hover {
 
 @media (max-width: 1050px) {
   input[type="text"], input[type="password"] {
-    width: 74.5%; } }
+    width: 100%; } }
 
 @media (max-width: 1024px) {
   input[type="submit"] {
@@ -5159,7 +5214,7 @@ a.kakao-link:hover {
   input[type="password"]:hover, input[type="password"]:focus {
     background: #000 no-repeat 300px 10px; }
   input[type="text"], input[type="password"] {
-    width: 71%; } }
+    width: 100%; } }
 
 @media (max-width: 991px) {
   .content-w3ls {
@@ -5167,21 +5222,21 @@ a.kakao-link:hover {
   input[type="submit"] {
     width: 220px; }
   input[type="text"], input[type="password"] {
-    width: 69%; } }
+    width: 100%; } }
 
 @media (max-width: 900px) {
   input[type="text"], input[type="password"] {
-    width: 77%; } }
+    width: 100%; } }
 
 @media (max-width: 800px) {
   .content-w3ls {
     width: 47%; }
   input[type="text"], input[type="password"] {
-    width: 76%; } }
+    width: 100%; } }
 
 @media (max-width: 768px) {
   input[type="text"], input[type="password"] {
-    width: 79%; }
+    width: 100%; }
   input[type="submit"] {
     width: 180px; } }
 
@@ -5189,7 +5244,7 @@ a.kakao-link:hover {
   .content-w3ls {
     width: 51%; }
   input[type="text"], input[type="password"] {
-    width: 78%; } }
+    width: 100%; } }
 
 @media (max-width: 667px) {
   h1 {
@@ -5199,7 +5254,7 @@ a.kakao-link:hover {
     width: 57%;
     padding: 30px 20px; }
   input[type="text"], input[type="password"] {
-    width: 77%; } }
+    width: 100%; } }
 
 @media (max-width: 640px) {
   input[type="text"] {
@@ -5306,7 +5361,7 @@ a.kakao-link:hover {
     left: 1px;
     top: 1px; }
   input[type="text"], input[type="password"] {
-    width: 75.5%; } }
+    width: 100%; } }
 
 @media (max-width: 414px) {
   .content-w3ls {
@@ -5349,14 +5404,14 @@ a.kakao-link:hover {
     line-height: 38px;
     font-size: 16px; }
   input[type="text"], input[type="password"] {
-    width: 76%; } }
+    width: 100%; } }
 
 @media (max-width: 384px) {
   .content-w3ls {
     width: 72%;
     padding: 20px 15px; }
   input[type="text"], input[type="password"] {
-    width: 76%; } }
+    width: 100%; } }
 
 @media (max-width: 375px) {
   h1 {
@@ -5378,7 +5433,7 @@ a.kakao-link:hover {
   input[type="password"]:focus, input[type="password"]:hover {
     background: #000 no-repeat 214px 8px; }
   input[type="text"], input[type="password"] {
-    width: 78%; }
+    width: 100%; }
   a.face-link {
     margin: 15px auto;
     width: 133px;
@@ -5435,7 +5490,7 @@ a.kakao-link:hover {
     font-size: 13px;
     padding: 0 10px 10px; }
   input[type="text"], input[type="password"] {
-    width: 78%; } }
+    width: 100%; } }
 
 @media (max-width: 320px) {
   input[type="submit"] {

@@ -395,13 +395,13 @@
 	/*-- responsive design --*/
 	@media (max-width:1600px) {
 	input[type="text"],input[type="password"]  {
-		width:55%;
+		width:100%;
 	}
 	}
 
 	@media (max-width: 1440px) {
 	input[type="text"], input[type="password"] {
-	    width: 62%;
+	    width: 100%;
 	}
 	.form-group3-agile input[type="checkbox"]+label span:first-child {
 		top:1px;
@@ -410,7 +410,7 @@
 
 	@media (max-width: 1366px) {
 	input[type="text"], input[type="password"] {
-	    width: 65.5%;
+	    width: 100%;
 	}
 	}
 
@@ -420,13 +420,16 @@
 	    font-size: 45px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 69.5%;
+	    width: 100%;
 	}
 	}
 
 	@media (max-width: 1200px){
 	input[type="submit"]	{
 		width: 280px;
+	}
+	input[type="text"] {
+	    width: 100%;
 	}
   }
 
@@ -438,6 +441,7 @@
 		background: rgba(0,0,0,0.5) no-repeat 327px 10px;
 		font-size:18px;
 		height:25px;
+		width: 100%;
 	}
 	input[type="text"]:hover,input[type="text"]:focus {
 		background: #000 no-repeat 327px 10px;
@@ -460,7 +464,7 @@
 
 	@media (max-width: 1050px) {
 	input[type="text"], input[type="password"] {
-	    width: 74.5%;
+	    width: 100%;
 	}
 	}
 
@@ -485,7 +489,7 @@
 	    background: #000 no-repeat 300px 10px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 71%;
+	    width: 100%;
 	}
 	}
 
@@ -497,13 +501,13 @@
 	    width: 220px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 69%;
+	    width: 100%;
 	}
 	}
 
 	@media (max-width: 900px) {
 	input[type="text"], input[type="password"] {
-	    width: 77%;
+	    width: 100%;
 	}
 	}
 
@@ -512,13 +516,13 @@
 	    width: 47%;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 76%;
+	    width: 100%;
 	}
 	}
 
 	@media (max-width: 768px) {
 	input[type="text"], input[type="password"] {
-	    width: 79%;
+	    width: 100%;
 	}
 	input[type="submit"] {
 	    width: 180px;
@@ -530,7 +534,7 @@
 	    width: 51%;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 78%;
+	    width: 100%;
 	}
 	}
 
@@ -544,7 +548,7 @@
 		padding: 30px 20px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 77%;
+	    width: 100%;
 	}
 	}
 
@@ -688,7 +692,7 @@
 	    top: 1px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 75.5%;
+	    width: 100%;
 	}
 
 	}
@@ -744,7 +748,7 @@
 		font-size:16px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 76%;
+	    width: 100%;
 	}
 	}
 
@@ -754,7 +758,7 @@
 	    padding: 20px 15px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 76%;
+	    width: 100%;
 	}
 	}
 
@@ -783,7 +787,7 @@
 		background: #000 no-repeat 214px 8px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 78%;
+	    width: 100%;
 	}
 
 	a.face-link {
@@ -858,7 +862,7 @@
 	    padding: 0 10px 10px;
 	}
 	input[type="text"], input[type="password"] {
-	    width: 78%;
+	    width: 100%;
 	}
 	}
 
