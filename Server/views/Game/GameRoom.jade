@@ -45,8 +45,14 @@ block content
       button.btn.btn-success.col-md-2(id="bbing") 삥
       button.btn.btn-info.col-md-2(id="check") 체크
       button.btn.btn-danger.col-md-2(id="die") 다이
-
+    .row(id='bettingMoney')
+      .parentMoney
+        img.bettingMoney1(src='/images/moneys.png')
+        img.bettingMoney2(src='/images/moneys.png')
+        img.bettingMoney3(src='/images/moneys.png')
+        img.bettingMoney4(src='/images/moneys.png')
     script(type='text/javascript', src='/javascripts/viewconnetion/flipcard.js').
+    script(type='text/javascript', src='/javascripts/bettingmoney.js').
     script(src='/javascripts/viewconnetion/gameConnetion.js').    
     script#initialView(type='text/template').
       <div class = "col-xs-6">
@@ -116,3 +122,13 @@ block content
           <img class='card3'>
         </button>
       </div>
+    script#bettingMoney(type='text/template').
+      <div class= ".parentMoney">
+        <img class="bettingMoney1" src= '/images/moneys.png'/>
+        <img class="bettingMoney2" src= '/images/moneys.png'/>
+        <img class="bettingMoney3" src= '/images/moneys.png'/>
+        <img class="bettingMoney4" src= '/images/moneys.png'/>
+      </div>
+
+//플레이어는 각 카드를 
+      

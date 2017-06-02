@@ -7,6 +7,65 @@
       position: absolute;
     }
     .gamefield {
+      .parentMoney{
+        width: 100%;
+        position: absolute; /* If you want text inside of it */
+        padding-left: 0px;
+      }
+      .parentMoney{
+          .bettingMoney1 {
+            position: absolute;
+            top: 220%;
+            left: 88%;
+            //55%;
+            bottom: 0;
+            right: 0;
+            width:10%;
+            height:auto;
+            display:none;
+            z-index: 1;
+            padding:0px;
+          }
+          .bettingMoney2 {
+            position: absolute;
+            top: 1000%;
+            left: 88%;
+            //55%;
+            bottom: 0;
+            right: 0;
+            width:10%;
+            height:auto;
+            display:none;
+            z-index: 1;
+            padding:0px;
+          }
+          .bettingMoney3 {
+            position: absolute;
+            top: 1000%;
+            left: 2%;
+            //37%
+            bottom: 0;
+            right: 0;
+            width: 10%;
+            height:auto;
+            display:none;
+            z-index: 1;
+            padding:0px;
+          }
+          .bettingMoney4 {
+            position: absolute;
+            top: 220%;
+            left: 2%;
+            //37%
+            bottom: 0;
+            right: 0;
+            width:10%;
+            height:auto;
+            display:none;
+            z-index: 1;
+            padding:0px;
+          }
+      }
       .col-xs-6:nth-child(1) .insignia {
         position: absolute;
         top: 0px;
