@@ -25,6 +25,22 @@ module.exports = function(app, passport) {
       // res.redirect('/game');
     }
   );
+   app.get('/auth/kakao',
+    passport.authenticate('kakao')
+  );
+  app.get('/auth/kakao/callback',
+    passport.authenticate('kakao', {
+      failureRedirect : '/',
+      failureFlash : false
+    }),
+    function(req, res, next) {
+      console.log("---------Session---------");
+      console.log(req.user);
+      console.log("-------------------------");
+      res.redirect('/game');
+      // res.redirect('/game');
+    }
+  );
   /*
   app.get('/auth/facebook/token',
     passport.authenticate('facebook-token'),

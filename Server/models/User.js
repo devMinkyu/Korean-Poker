@@ -8,6 +8,7 @@ var schema = new Schema({
   userEmail: {type: mongoose.SchemaTypes.Email, required: true, unique: true, trim: true},
   contents : {type: String},
   facebook: {id: String, token: String},
+  kakao: {id: String, token: String},
   photoURL : {type: String},
   insignia : {type: Number, default: 0},
   win : {type: Number, default: 0},

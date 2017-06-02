@@ -2,8 +2,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/User');
 var FacebookTokenStrategy = require('passport-facebook-token');
 var FacebookStrategy = require('passport-facebook').Strategy;
-var clientID = '613559305514339';
-var clientSecret = 'b8a4ab9771c55af309460dcc7cf98e73';
+var FacebookClientID = '613559305514339';
+var FacebookClientSecret = 'b8a4ab9771c55af309460dcc7cf98e73';
+var KakaoStrategy = require('passport-kakao').Strategy;
+var KakaoClientID = '5a98281feb79b8e43adbf51624c08a2e';
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -15,8 +17,8 @@ module.exports = function(passport) {
   });
 
   passport.use(new FacebookStrategy({
-    clientID : clientID,
-    clientSecret : clientSecret,
+    clientID : FacebookClientID,
+    clientSecret : FacebookClientSecret,
     callbackURL : 'http://localhost:9000/auth/facebook/callback',
     // callbackURL : 'http://dev-yutae.me/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
@@ -57,8 +59,47 @@ module.exports = function(passport) {
       });
     });
   }));
-};
 
+  passport.use(new KakaoStrategy({
+      clientID : KakaoClientID,
+      callbackURL : 'http://localhost:9000/auth/kakao/callback',
+    },
+    function(accessToken, refreshToken, profile, done){
+      var email = profile._json.kaccount_email;
+      process.nextTick(function () {
+        User.findOne({'kakao.id': profile.id}, function(err, user) {
+          if (err) {
+            return done(err);
+          }
+          if (user) {
+            return done(null, user);
+          } else {
+            User.findOne({userEmail: email}, function(err, user) {
+              if (err) {
+                return done(err);
+              }
+              if (!user) {
+                user = new User({
+                  userName: profile.displayName,
+                  userEmail: profile._json.kaccount_email
+                });
+              }
+              user.kakao.id = profile.id;
+              user.kakao.token = profile.token;
+              user.photoURL = profile._json.properties.profile_image;
+              user.save(function(err) {
+                if (err) {
+                  return done(err);
+                }
+                return done(null, user);
+              });
+            });
+          }
+        });
+      });
+    }
+  ));
+};
 /*
   passport.use('local-login', new LocalStrategy({
     // usernameField : 'userEmail',

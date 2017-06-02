@@ -3749,6 +3749,40 @@
     background-repeat: no-repeat;
     background-size: cover; } }
 
+.container #chatLog.chat_log {
+  font-size: 1em;
+  resize: none;
+  width: 100%;
+  height: 300px;
+  color: white;
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px; }
+
+.container #message.message {
+  width: 100%;
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px;
+  color: white;
+  opacity: 1; }
+
+.container .arrow_box {
+  background: rgba(255, 84, 100, 0.17);
+  border: 4px solid white;
+  border-radius: 10px;
+  height: 30%;
+  width: 100%;
+  padding-top: 0px;
+  padding-left: 0px; }
+
+.container #playerName {
+  background-color: rgba(255, 84, 100, 0.17);
+  border-radius: 10px;
+  color: white;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
 /*
 	Overflow by HTML5 UP
 	html5up.net | @ajlkn
@@ -4876,9 +4910,6 @@ h1 {
   100% {
     background-position: 0 -30px; } }
 
-.arrow_box {
-  margin-left: 80px; }
-
 h4 {
   padding: 30px 0;
   font-size: 50px;
@@ -4911,7 +4942,6 @@ h4 {
 
 input[type="text"] {
   padding: 10px 40px 10px 10px;
-  margin-left: 80px;
   width: 53%;
   height: 30px;
   border: 3px solid rgba(185, 0, 0, 0.35);
@@ -5781,3 +5811,6 @@ input[type="submit"], .agileits_copyright p a, a {
     font-size: 2em; }
   .agileits_main_grid_leftr {
     margin: .2em 0 0 0.5em; } }
+
+.gameroomcreateform {
+  display: inline-block; }

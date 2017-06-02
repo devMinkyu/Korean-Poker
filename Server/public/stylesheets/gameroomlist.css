@@ -31,26 +31,3 @@
   color: white;
   margin-top: 0px;
   margin-bottom: 0px; }
-
-.container .arrow_box:after, .container .arrow_box:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none; }
-
-.container .arrow_box:after {
-  border-color: rgba(255, 84, 100, 0.17);
-  border-top-color: white;
-  border-width: 30px;
-  border-radius: 10px;
-  margin-left: -30px; }
-
-.container .arrow_box:before {
-  border-color: rgba(255, 84, 100, 0.17);
-  border-top-color: white;
-  border-width: 36px;
-  border-radius: 10px;
-  margin-left: 100px; }
