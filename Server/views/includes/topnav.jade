@@ -17,11 +17,13 @@
         else
           li
             a.navbar-brand(href='/game')
-              img.img-circle(src=currentUser.photoURL style="position: relative; top: -15px; float: left; left: -5px; size: 2px;")
+              img.img-circle(src=currentUser.photoURL style="position: relative; top: -15px; float: left; left: -5px; width:50px")
             //- 나중에 이 부분 css 파일로 빼야함              
         if(!currentUser)
           li
-            a.smoothScroll(href='/auth/facebook') 로그인
+            a.smoothScroll(href='/auth/facebook') 페이스북 로그인
+          li
+            a.smoothScroll(href='/auth/kakao') 카카오 로그인
         else
           li
             a.smoothScroll(href='/user/logout') 로그아웃
