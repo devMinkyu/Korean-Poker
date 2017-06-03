@@ -86,7 +86,7 @@ module.exports = function(passport) {
               }
               user.kakao.id = profile.id;
               user.kakao.token = profile.token;
-              if(profile._json.properties.thumbnail_image == ""){
+              if(profile._json.properties.thumbnail_image === ""){
                 user.photoURL = "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F2466D94653EC5DBD29E64E";
               }else{
                 user.photoURL = profile._json.properties.thumbnail_image;

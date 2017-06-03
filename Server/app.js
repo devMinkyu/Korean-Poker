@@ -91,7 +91,7 @@ app.io.on('connection', function(socket){
     socket.user = user;
   });
   socket.on('WaitingRoomMessage_send', function(text){
-    var message = socket.user  + ':' + text;
+    var message = socket.user  + ' : ' + text;
     app.io.sockets.in(socket.roomName).emit('WaitingRoomMessage_receive', message);
   });
   socket.on('WaitingRoomLeave_send', function(){

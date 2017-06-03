@@ -137,9 +137,11 @@ socket.on('one_open_card_receive', function(room, user){
   var koreanMoney;
   for(var i = 0; i < room.connUsers.length; i++){
     if(user.userID == room.connUsers[i].userID){
+      $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       koreanMoney = viewKoreanMoney(room.connUsers[i].money);
       openCard[i].src ="/images/card/" + user.cards[0] +".png";
       money[i].innerHTML = "돈: " + koreanMoney;
+      firstBetting(i);
     }
     if(room.connUsers[i].userID == room.currentTurnUser)
       turn[i].src="/images/turn.png";
@@ -182,9 +184,11 @@ socket.on('die_receive', function(room, user){
     else
       turn[i].src = "";
     if(user.userID == room.connUsers[i].userID){
+      $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       koreanMoney = viewKoreanMoney(room.connUsers[i].money);
       money[i].innerHTML = "돈: " + koreanMoney;
       die[i].innerHTML = "Die";
+      firstBetting(i);
     }
     if(currentUserID == room.connUsers[i].userID && die[i].innerHTML == "Die"){
       $("#dadang").attr('disabled',true);
@@ -234,9 +238,11 @@ socket.on('betting_receive', function(room, user, state){
     else
       turn[i].src = "";
     if(user.userID == room.connUsers[i].userID){
+      $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       koreanMoney = viewKoreanMoney(room.connUsers[i].money);
       money[i].innerHTML = "돈: " + koreanMoney;
       playerBettingState[i].innerHTML = state;
+      firstBetting(i);
     }
   }
 });
@@ -375,6 +381,7 @@ socket.on('gameContinueCheck_receive', function(room, user){
     if(user.userID == room.connUsers[i].userID){
       koreanMoney = viewKoreanMoney(room.connUsers[i].money);
       money[i].innerHTML = "돈: " + koreanMoney;
+      combineMoney(i+1);
     }
     if(currentUserID == room.connUsers[i].userID){
       myWin.innerHTML = " 승: " + room.connUsers[i].win;
@@ -390,126 +397,7 @@ socket.on('timer_receive', function(timer){
   document.getElementById("viewTimer").innerHTML = timer;
 });
 
-function cardAnimation(userNumber){
-    var direction = {left: "+=70%", bottom: "+=9%"}
-    var directionCount = 0 //주는 카드 방향 지정
-    var moveLeftCount = 0 // 받는 카드를 세장씩 정렬
-    
-    var drawCards = $('.cards').each(function(index) {
-      $(this).delay(300*index).animate(direction)
-      if(directionCount == 0){
-          if(moveLeftCount == 0 ){// 2번 플레이어
-              direction = {left: "+=70%", bottom: "-=53%"}
-              directionCount++
-          }else if(moveLeftCount ==1){
-              direction = {left: "+=60%", bottom: "-=53%"}
-              directionCount++
-          }
-      }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-          if(moveLeftCount == 0 ){
-              direction = {left: "-=60%", bottom: "-=53%"}
-              directionCount++
-          }else if(moveLeftCount ==1){
-              direction = {left: "-=50%", bottom: "-=53%"}
-              directionCount++
-          }
-      }else if(directionCount == 2  && userNumber > 3){//4번 플레이어
-          if(moveLeftCount == 0 ){
-              direction = {left: "-=60%", bottom: "+=9%"}
-              directionCount++
-          }else if(moveLeftCount ==1){
-              direction = {left: "-=50%", bottom: "+=9%"}  
-              directionCount++
-          }
-      }
-      else{//1번 플레이어
-          if(moveLeftCount == 0 ){
-              direction = {left: "+=60%", bottom: "+=9%"}
-              directionCount = 0
-              moveLeftCount++
-          }
-      }
-    });
 
-    $.when(drawCards).then(function (){
-        $(".moneypanel").fadeIn();
-        $(".cards").transition({ 
-            perspective: '100px',
-            rotateY: '180deg'
-        });
-    });
-
-    $.when(drawCards).then(function (){
-         $(".mycards").fadeIn();
-          var myCardsDirection = 0
-          var myCardsDirectionCounter = 0;
-            var checkMyCards = $('.mycards').each(function(index) {
-                $(this).delay(10*index).animate(myCardsDirection);
-                if(myCardsDirectionCounter == 0 ){
-                    myCardsDirection = {left: "+=8%"}
-                    myCardsDirectionCounter++
-                }else if(myCardsDirectionCounter ==1){
-                    myCardsDirection = {left: "+=16%"}
-                }
-            });
-            $.when(checkMyCards).then(function (){
-                $(".mycards").transition({ 
-                    perspective: '100px',
-                    rotateY: '180deg'
-                });
-            });
-        });
-    }
-
-function cardAnimationThird(userNumber){
-  var direction = {left: "+=50%", bottom: "+=0%"}
-  var directionCount = 0 //주는 카드 방향 지정
-  var drawCards = $('.lastCards').each(function(index) {
-    $(this).delay(300*index).animate(direction)
-    if(directionCount == 0){
-        direction = {left: "+=50%", bottom: "-=62%"}
-        directionCount++
-    }else if(directionCount == 1 && userNumber > 2){ //3번 플레이어
-        direction = {left: "-=40%", bottom: "-=62%"}
-        directionCount++
-    }else if(directionCount == 2 && userNumber > 3){//4번 플레이어
-        direction = {left: "-=40%", bottom: "+=0%"}
-        directionCount++
-    }
-  });
-
-      $.when(drawCards).then(function (){
-        $(".moneypanel").fadeIn();
-        $(".lastCards").transition({ 
-            perspective: '100px',
-            rotateY: '180deg'
-        });
-    });
-
-    $.when(drawCards).then(function (){
-         $(".mycards").fadeIn();
-          var myCardsDirection = 0
-          var myCardsDirectionCounter = 0;
-            var checkMyCards = $('.mycards').each(function(index) {
-                $(this).delay(10*index).animate(myCardsDirection);
-                if(myCardsDirectionCounter == 0 ){
-                    myCardsDirection = {left: "+=8%"}
-                    myCardsDirectionCounter++
-                }else if(myCardsDirectionCounter ==1){
-                    myCardsDirection = {left: "+=16%"}
-                    myCardsDirectionCounter++
-                }else if(myCardsDirectionCounter ==2){
-                    myCardsDirection = {left: "+=24%"}
-                }
-            });
-            $.when(checkMyCards).then(function (){
-                $(".mycards").transition({ 
-                    perspective: '100px',
-                    rotateY: '180deg'
-                });
-            });
-        });
-}
 history.pushState(null, null, location.href); 
 window.onpopstate = function(event) { 
   history.go(1); 

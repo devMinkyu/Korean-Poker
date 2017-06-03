@@ -47,13 +47,10 @@ block content
       button.btn.btn-danger.col-md-2(id="die") 다이
     .row(id='bettingMoney')
       .parentMoney
-        img.bettingMoney1(src='/images/moneys.png')
-        img.bettingMoney2(src='/images/moneys.png')
-        img.bettingMoney3(src='/images/moneys.png')
-        img.bettingMoney4(src='/images/moneys.png')
-    script(type='text/javascript', src='/javascripts/viewconnetion/flipcard.js').
-    script(type='text/javascript', src='/javascripts/bettingmoney.js').
+    script(src='/javascripts/viewconnetion/flipcard.js').
+    script(src='/javascripts/bettingmoney.js').
     script(src='/javascripts/viewconnetion/gameConnetion.js').    
+    script(src='/javascripts/viewconnetion/drawcard.js').    
     script#initialView(type='text/template').
       <div class = "col-xs-6">
         <h3 name='username' class='userName'></h3>
@@ -122,13 +119,14 @@ block content
           <img class='card3'>
         </button>
       </div>
-    script#bettingMoney(type='text/template').
-      <div class= ".parentMoney">
-        <img class="bettingMoney1" src= '/images/moneys.png'/>
-        <img class="bettingMoney2" src= '/images/moneys.png'/>
-        <img class="bettingMoney3" src= '/images/moneys.png'/>
-        <img class="bettingMoney4" src= '/images/moneys.png'/>
-      </div>
+    script#bettingMoneyView1(type='text/template').
+      <img class="bettingMoney1" src= '/images/moneys.png'/>
+    script#bettingMoneyView2(type='text/template').
+      <img class="bettingMoney2" src= '/images/moneys.png'/>
+    script#bettingMoneyView3(type='text/template').
+      <img class="bettingMoney3" src= '/images/moneys.png'/>
+    script#bettingMoneyView4(type='text/template').
+      <img class="bettingMoney4" src= '/images/moneys.png'/>
 
-//플레이어는 각 카드를 
+
       
