@@ -658,6 +658,12 @@
         overflow-y: hidden;
       }
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 25%;
@@ -1029,6 +1035,12 @@
         overflow-y: hidden;
       }
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 25%;
@@ -1400,6 +1412,12 @@
         overflow-y: hidden;
       }
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 25%;
@@ -1779,6 +1797,12 @@
       }
 
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 25%;
@@ -2145,6 +2169,12 @@
     
     @media all and (min-width:425px) and (max-width:768px){
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 25%;
@@ -3225,6 +3255,12 @@
     }
     @media all and (min-width:1024px) and (max-width:1440px){
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-1%;
+        }
         #userID{
           display:none;
         }
@@ -4305,6 +4341,12 @@
     }
     @media all and (max-height:540px){
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+        }
         .card1{
           position: relative;
           width: 50%;
@@ -4400,6 +4442,26 @@
           background: url('/images/Butttonarea.png');
           background-repeat: no-repeat;
           background-size:cover;
+        }
+      }
+    }
+    @media all and (min-height:500px) and (max-height:600px){
+      .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-18%;
+        }
+      }
+    }
+    @media all and (min-height:600px) and (max-height:850px){
+      .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-3%;
         }
       }
     }
