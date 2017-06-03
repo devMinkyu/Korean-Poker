@@ -61,6 +61,9 @@ router.get('/', needAuth, function(req,res, next){
 router.get('/create',needAuth, function(req,res, next){
   res.render('Game/GameRoomCreate');
 });
+router.get('/manual', function(req,res, next){
+  res.render('Game/gamemanual');
+});
 
 router.post('/', needAuth, function(req, res, next){
   var roomIndex = _.findIndex(rooms, { roomName: req.body.roomName});

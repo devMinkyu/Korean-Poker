@@ -29,10 +29,11 @@ html(lang='ko')
   body
     block top-nav 
       include ./includes/topnav 
-    block content
     if flashMessages
-      each texts, type in flashMessages
+      each type, texts in flashMessages
         .container
           .alert(class='alert-#{type}')
             each msg in texts
-              p= msg  
+              p= msg
+
+    block content

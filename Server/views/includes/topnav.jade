@@ -20,11 +20,15 @@
               img.img-circle(src=currentUser.photoURL style="position: relative; top: -15px; float: left; left: -5px; width:50px")
             //- 나중에 이 부분 css 파일로 빼야함              
         if(!currentUser)
+          li
+            a.smoothScroll(href='/') 로그인
         else
           li
             a.smoothScroll(href='/user/logout') 로그아웃
           li
-            a.smoothScroll(href='/game') 목록          
+            a.smoothScroll(href='/game') 목록      
+        li
+          a.smoothScroll(href='/game/manual') 게임 설명서      
         
 //- a.navbar-brand(href='/') 
 //-         i.fa.fa-home

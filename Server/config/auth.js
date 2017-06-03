@@ -19,11 +19,11 @@ module.exports = function(passport) {
   passport.use(new FacebookStrategy({
     clientID : FacebookClientID,
     clientSecret : FacebookClientSecret,
-    callbackURL : 'http://localhost:9000/auth/facebook/callback',
-    // callbackURL : 'http://dev-yutae.me/auth/facebook/callback',
+    //callbackURL : 'http://localhost:9000/auth/facebook/callback',
+    callbackURL : 'http://dev-minkyu.me/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
-    if(!profile.emails[0].value){
+    if(!profile.emails){
       return done(null);
     }
     var email = profile.emails[0].value;
@@ -62,7 +62,8 @@ module.exports = function(passport) {
 
   passport.use(new KakaoStrategy({
       clientID : KakaoClientID,
-      callbackURL : 'http://localhost:9000/auth/kakao/callback'
+      //callbackURL : 'http://localhost:9000/auth/kakao/callback'
+      callbackURL : 'http://dev-minkyu.me/auth/facebook/callback'
     },
     function(accessToken, refreshToken, profile, done){
       var email = profile._json.kaccount_email;

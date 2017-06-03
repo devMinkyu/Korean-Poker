@@ -652,6 +652,12 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -965,6 +971,12 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1278,6 +1290,12 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1597,6 +1615,12 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1902,6 +1926,12 @@
     width: 50%; } }
 
 @media all and (min-width: 425px) and (max-width: 768px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -2810,6 +2840,12 @@
     margin-left: 100px; } }
 
 @media all and (min-width: 1024px) and (max-width: 1440px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -1%; }
   .gamefield #userID {
     display: none; }
   .gamefield .parent {
@@ -3718,6 +3754,12 @@
     margin-left: 100px; } }
 
 @media all and (max-height: 540px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -10%; }
   .gamefield .card1 {
     position: relative;
     width: 50%; }
@@ -3800,6 +3842,22 @@
     background: url("/images/Butttonarea.png");
     background-repeat: no-repeat;
     background-size: cover; } }
+
+@media all and (min-height: 500px) and (max-height: 600px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -18%; } }
+
+@media all and (min-height: 600px) and (max-height: 850px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -3%; } }
 
 .container #chatLog.chat_log {
   font-size: 1em;
