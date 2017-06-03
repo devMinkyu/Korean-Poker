@@ -22,22 +22,22 @@ function firstBetting(i){
         var collectMoney =  $.when(collectCenter1,collectCenter2,collectCenter3,collectCenter4).then(function (){
             if(player === 1){ //1번 플레이어
                 var winDirection = {left: "+=43%" , top: "-=210%"};
-                $.when($('.parentMoney').children().animate(winDirection)).then(function (){
+                $.when($('.parentMoney').children().animate(winDirection),500).then(function (){
                     $('.parentMoney').children().remove();
                 });
             }else if(player ===2){//2번 플레이어
                 var winDirection = {left: "+=43%", top:"+=570%"};
-                $.when($('.parentMoney').children().animate(winDirection)).then(function (){
+                $.when($('.parentMoney').children().animate(winDirection),500).then(function (){
                     $('.parentMoney').children().remove();
                 });
             }else if(player ===3){//3번 플레이어
                 var winDirection = {left: "-=43%", top: "+=570%"};
-                $.when($('.parentMoney').children().animate(winDirection)).then(function (){
+                $.when($('.parentMoney').children().animate(winDirection),500).then(function (){
                     $('.parentMoney').children().remove();
                 });
             }else if(player ===4){//4번 플레이어
                 var winDirection = {left: "-=43%",  top: "-=210%"};
-                $.when($('.parentMoney').children().animate(winDirection)).then(function (){
+                $.when($('.parentMoney').children().animate(winDirection),500).then(function (){
                     $('.parentMoney').children().remove();
                 });
             }

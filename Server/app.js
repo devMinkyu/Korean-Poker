@@ -176,6 +176,9 @@ app.io.on('connection', function(socket){
 
   socket.on('timer_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID});
     var currentTurnUser = rooms[roomIndex].currentTurnUser;
     var gameUserIndex;
@@ -240,31 +243,37 @@ app.io.on('connection', function(socket){
   });
   socket.on('one_open_card_send', function (card) {
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     rooms[roomIndex].connUsers[userIndex].cards[0] = card;
   });
   socket.on('die_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     die_send(rooms[roomIndex].roomMoney, socket);
   });
   socket.on('half_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
-    bettingContinue(rooms[roomIndex].roomAllMoney, socket, "하프");
+    bettingContinue(roomIndex,rooms[roomIndex].roomAllMoney, socket, "하프");
   });
   socket.on('bbing_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
-    bettingContinue(rooms[roomIndex].roomMoney, socket, "삥");
+    bettingContinue(roomIndex,rooms[roomIndex].roomMoney, socket, "삥");
   });
   socket.on('dadang_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
-    bettingContinue(2*rooms[roomIndex].roomAllMoney, socket, "따당");
+    bettingContinue(roomIndex,2*rooms[roomIndex].roomAllMoney, socket, "따당");
   });
   socket.on('check_send', function(){
     bettingEnd(0, socket, "체크");
   });
   socket.on('call_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
-    bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
+    bettingEnd(roomIndex,rooms[roomIndex].roomAllMoney, socket, "콜");
   });
   socket.on('twoCardAutoSelect', function (cards) {
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
@@ -277,6 +286,9 @@ app.io.on('connection', function(socket){
   });
   socket.on('gameContinueCheck_send', function(check){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: socket.userID });
     if(userIndex == -1){
       return;
@@ -350,8 +362,10 @@ function die_send(money , socket){
       app.io.sockets.in(socket._id).emit('gameContinueCheck_receive', rooms[roomIndex], user);
     }
   }
-  function bettingContinue(money, socket, state){
-    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+  function bettingContinue(roomIndex,money, socket, state){
+    if(roomIndex == -1){
+      return;
+    }
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
@@ -377,8 +391,10 @@ function die_send(money , socket){
       return;
     }
   }
-  function bettingEnd(money, socket, state){
-    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+  function bettingEnd(roomIndex,money, socket, state){
+    if(roomIndex == -1){
+      return;
+    }
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
@@ -415,6 +431,9 @@ function die_send(money , socket){
   }
   function finallySelect_send(cards, socket){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     var gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: socket.userID });
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, { userID: rooms[roomIndex].gamingUsers[gameUserIndex].userID });
     var gamingNumber = rooms[roomIndex].gamingUsers.length;
@@ -446,6 +465,9 @@ function die_send(money , socket){
   }
 
 function finallyResult(roomIndex, socket){
+  if(roomIndex == -1){
+    return;
+  }
   rooms[roomIndex].count = 0;
   var amhang = _.findIndex(rooms[roomIndex].gamingUsers, {pedigreeResult: 100});
   var pato = _.findIndex(rooms[roomIndex].gamingUsers, {pedigreeResult: 200});
