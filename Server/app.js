@@ -190,7 +190,8 @@ app.io.on('connection', function(socket){
     var timer = setInterval(function(){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
-      var deadUserIndex = _.findIndex(roomIndex,rooms[roomIndex].deadUsers, { userID: socket.userID});
+      var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userID: socket.userID});
+      console.log(deadUserIndex);
       if( deadUserIndex != -1 ){
         clearInterval(timer);
       }
@@ -200,17 +201,17 @@ app.io.on('connection', function(socket){
       }
       // 첫번쨰 패를 공개를 15초동안 기다리고 한번에 공개 만약 선택한 패가 없으면 첫번째 카드 공개
       if(timerValue <= 0 && stage === 0){
-        timerValue = 15;
-        stage = 1;
-        rooms[roomIndex].connUsers[userIndex].money -= rooms[roomIndex].roomMoney;
-        rooms[roomIndex].roomAllMoney += rooms[roomIndex].roomMoney;
-        if( deadUserIndex == -1 ){
-          rooms[roomIndex].gamingUsers.push({
-            'userID' : (rooms[roomIndex].connUsers[userIndex].userID),
-            'userName' : (rooms[roomIndex].connUsers[userIndex].userName),
-            'isCall' : false,
-            'bettingRemainCount' : 2,
-            'pedigreeResult' : ''
+          timerValue = 15;
+          stage = 1;
+          rooms[roomIndex].connUsers[userIndex].money -= rooms[roomIndex].roomMoney;
+          rooms[roomIndex].roomAllMoney += rooms[roomIndex].roomMoney;
+          if( deadUserIndex == -1 ){
+            rooms[roomIndex].gamingUsers.push({
+              'userID' : (rooms[roomIndex].connUsers[userIndex].userID),
+              'userName' : (rooms[roomIndex].connUsers[userIndex].userName),
+              'isCall' : false,
+              'bettingRemainCount' : 2,
+              'pedigreeResult' : ''
           });
           app.io.sockets.in(socket._id).emit('one_open_card_receive', rooms[roomIndex], rooms[roomIndex].connUsers[userIndex]);
           var msg = "배팅을 시작하세요.";
@@ -272,7 +273,8 @@ app.io.on('connection', function(socket){
     bettingContinue(roomIndex,2*rooms[roomIndex].roomAllMoney, socket, "따당");
   });
   socket.on('check_send', function(){
-    bettingEnd(0, socket, "체크");
+    var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    bettingEnd(roomIndex, 0, socket, "체크");
   });
   socket.on('call_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});

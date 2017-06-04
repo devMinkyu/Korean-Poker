@@ -4,6 +4,7 @@
 @import "gameroom";
 @import "gameroomlist";
 @charset "UTF-8";
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800");
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600');
 @import url('font-awesome.min.css');
 @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
@@ -1118,6 +1119,13 @@ input[type="submit"],.agileits_copyright p a,a{
 	.agileits_main_grid_leftl h3 {
 		font-size: 2.5em;
 	}
+	#main-slider .carousel h1 {
+		font-size: 25px;
+	}
+
+	#main-slider .carousel h2 {
+		font-size: 20px;
+	}
 }
 @media (max-width: 900px){
 	.w3_agileits_main_grid_right {
@@ -1139,6 +1147,12 @@ input[type="submit"],.agileits_copyright p a,a{
 	}
 	.w3_agile_main_gridsub {
 		margin: 1.5em 0 0;
+	}
+	#main-slider .carousel h1 {
+		font-size: 25px;
+	}
+	#main-slider .carousel h2 {
+		font-size: 16px;
 	}
 }
 @media (max-width: 667px){
@@ -1227,4 +1241,190 @@ input[type="submit"],.agileits_copyright p a,a{
 
 .gameroomcreateform{
 	display: inline-block;
+}
+
+
+
+/*************************
+*******Home Page******
+**************************/
+
+
+#main-slider {
+  position: relative;
+}
+
+.no-margin {
+  margin: 0;
+  padding: 0;
+}
+
+#main-slider .carousel .carousel-content {
+  margin-top: 150px;
+}
+
+#main-slider .carousel .slide-margin{
+  margin-top: 00px;
+}
+
+#main-slider .carousel h2 {
+  color: #fff;
+}
+
+#main-slider .carousel .btn-slide
+{
+    border: 1px outset #0066FF;
+    padding: 8px 20px;
+    background: #0066FF;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 25px;
+    display: inline-block;
+}
+
+#main-slider .carousel .slider-img{
+  text-align: right;
+  position: absolute;
+}
+
+
+#main-slider .carousel .item {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 0 !important;
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block !important;
+  height: 530px;
+  -webkit-transition: opacity ease-in-out 500ms;
+  -moz-transition: opacity ease-in-out 500ms;
+  -o-transition: opacity ease-in-out 500ms;
+  transition: opacity ease-in-out 500ms;
+}
+
+#main-slider .carousel .item:first-child {
+  top: auto;
+  position: relative;
+}
+
+#main-slider .carousel .item.active {
+  opacity: 1;
+  -webkit-transition: opacity ease-in-out 500ms;
+  -moz-transition: opacity ease-in-out 500ms;
+  -o-transition: opacity ease-in-out 500ms;
+  transition: opacity ease-in-out 500ms;
+  z-index: 1;
+}
+
+#main-slider .prev, #main-slider .next
+{
+    position: absolute;
+    top: 40%;
+    background-color: #191919;
+    color: #fff;
+    display: inline-block;
+    margin-top: 0px;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 5;
+    padding-top: 12px;
+}
+
+#main-slider .prev:hover,
+#main-slider .next:hover {
+  background-color: #000;
+}
+
+#main-slider .prev
+{
+    left: 10px;
+   
+}
+
+#main-slider .next {
+  right: 10px;
+}
+
+#main-slider .carousel-indicators li
+{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    margin: 0px 15px 0 0;
+    position: relative;
+}
+
+#main-slider .carousel-indicators li:after
+{
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #99CCFF;
+    left: -3px;
+    top: -3px;
+}
+
+#main-slider .carousel-indicators .active
+{
+    width: 20px;
+    height: 20px;
+    background-color: #0099FF;
+    margin: 0 15px 0 0;
+    border: 1px solid #0099FF;
+    position: relative;
+}
+
+#main-slider .carousel-indicators .active:after
+{
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background: #0099FF;
+    border: 1px solid #0085DD;
+    left: -3px;
+    top: -3px;
+}
+
+#main-slider .active .animation.animated-item-1 {
+  -webkit-animation: fadeInUp 300ms linear 300ms both;
+  -moz-animation: fadeInUp 300ms linear 300ms both;
+  -o-animation: fadeInUp 300ms linear 300ms both;
+  -ms-animation: fadeInUp 300ms linear 300ms both;
+  animation: fadeInUp 300ms linear 300ms both;
+}
+
+#main-slider .active .animation.animated-item-2 {
+  -webkit-animation: fadeInUp 300ms linear 600ms both;
+  -moz-animation: fadeInUp 300ms linear 600ms both;
+  -o-animation: fadeInUp 300ms linear 600ms both;
+  -ms-animation: fadeInUp 300ms linear 600ms both;
+  animation: fadeInUp 300ms linear 600ms both;
+}
+
+#main-slider .active .animation.animated-item-3 {
+  -webkit-animation: fadeInUp 300ms linear 900ms both;
+  -moz-animation: fadeInUp 300ms linear 900ms both;
+  -o-animation: fadeInUp 300ms linear 900ms both;
+  -ms-animation: fadeInUp 300ms linear 900ms both;
+  animation: fadeInUp 300ms linear 900ms both;
+}
+
+#main-slider .active .animation.animated-item-4 {
+  -webkit-animation: fadeInUp 300ms linear 1200ms both;
+  -moz-animation: fadeInUp 300ms linear 1200ms both;
+  -o-animation: fadeInUp 300ms linear 1200ms both;
+  -ms-animation: fadeInUp 300ms linear 1200ms both;
+  animation: fadeInUp 300ms linear 1200ms both;
 }

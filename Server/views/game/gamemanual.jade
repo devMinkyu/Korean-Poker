@@ -1,5 +1,84 @@
 extends ../layout
 
 block content
-  .content-w3ls.agileits
-    h1.page-header 방만들기
+  section#main-slider.no-margin
+    .carousel.slide
+        ol.carousel-indicators
+          li.active(data-target='#main-slider', data-slide-to='0')
+          |                 
+          li(data-target='#main-slider', data-slide-to='1')
+          |                 
+          li(data-target='#main-slider', data-slide-to='2')
+        |             
+        .carousel-inner
+          .item.active(style='background-image: url(/images/bg1.jpg)')
+            .container
+              .row.slide-margin
+                .col-sm-6
+                  .carousel-content
+                    h1.animation.animated-item-1
+                      | Bootstrap is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first web sites.
+                    |                                     
+                    h2.animation.animated-item-2 Bootstrap is completely free to download and use!
+                    |                                     
+                    a.btn-slide.animation.animated-item-3(href='#') Read More
+                |                             
+                .col-sm-6.hidden-xs.animation.animated-item-4
+                  .slider-img
+                    img.img-responsive(src='/images/img1.png')
+          .item(style='background-image: url(/images/bg2.jpg)')
+            .container
+              .row.slide-margin
+                .col-sm-6
+                  .carousel-content
+                    h1.animation.animated-item-1 What is Responsive Web Design?
+                    |                                     
+                    h2.animation.animated-item-2
+                      | Responsive web design is about creating web sites which automatically adjust themselves to look good on all devices, from small phones to large desktops.
+                    |                                     
+                    a.btn-slide.animation.animated-item-3(href='#') Read More
+                |                             
+                .col-sm-6.hidden-xs.animation.animated-item-4
+                  .slider-img
+                    img.img-responsive(src='/images/img2.png')
+          .item(style='background-image: url(/images/bg3.jpg)')
+            .container
+              .row.slide-margin
+                .col-sm-6
+                  .carousel-content
+                    h1.animation.animated-item-1 Mobile-first approach
+                    |                                     
+                    h2.animation.animated-item-2 In Bootstrap 3, mobile-first styles are part of the core framework
+                    |                                     
+                    a.btn-slide.animation.animated-item-3(href='#') Read More
+                |                             
+                .col-sm-6.hidden-xs.animation.animated-item-4
+                  .slider-img
+                    img.img-responsive(src='/images/img3.png')
+        a.prev.hidden-xs(href='#main-slider', data-slide='prev')
+          i.fa.fa-chevron-left
+        |         
+        a.next.hidden-xs(href='#main-slider', data-slide='next')
+          i.fa.fa-chevron-right
+
+  script(src='/javascripts/main.js').
+  script(src='/javascripts/jquery.isotope.min.js').
+  script(src='/javascripts/jquery.prettyPhoto.js').
+  script(type="text/javascript").
+    jQuery(document).ready(function () {
+        var offset = 300;
+        var duration = 500;
+        jQuery(window).scroll(function () {
+            if (jQuery(this).scrollTop() > offset) {
+                jQuery('.back-to-top').fadeIn(duration);
+            } else {
+                jQuery('.back-to-top').fadeOut(duration);
+            }
+        });
+
+        jQuery('.back-to-top').click(function (event) {
+            event.preventDefault();
+            jQuery('html, body').animate({ scrollTop: 0 }, duration);
+            return false;
+        })
+    });
