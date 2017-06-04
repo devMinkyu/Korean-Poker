@@ -35,7 +35,7 @@ block content
             img.myprofile.img-circle(src=currentUser.photoURL)
             img.myinsignia(id="myinsignia" src= '/images/insignia/' + currentUser.insignia + '.png')
           button.btn.btn-warning(id="ready") 준비
-          a.btn.btn-warning(id='exit',onclick="buttonSound();", href='/game') 나가기
+          a.btn.btn-warning(id='exit',onclick="buttonSound('/video/button.wav');", href='/game') 나가기
         h3(id='myName')= currentUser.userName
         span(id='myWin') 승: #{currentUser.win}
         span(id='myLose') / 패: #{currentUser.lose}
@@ -50,7 +50,9 @@ block content
     .row(id='bettingMoney')
       .parentMoney
 
-    audio(id="music")
+    audio(id="button")
+    audio(id="click")
+    audio(id="passTurn")
 
     script(src='/javascripts/viewconnetion/flipcard.js').
     script(src='/javascripts/bettingmoney.js').
@@ -86,7 +88,7 @@ block content
         </div>
         <h1 class='playerdie'></h1>
         <h1 class='playerBettingState'></h1>
-        <img class="turn"/>
+        <img class="turn" src= "/images/turn.png"/>
         <h4 class='moneyBar'></h4>
       </div>
     script#publicViewCard(type='text/template').

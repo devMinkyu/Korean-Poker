@@ -136,16 +136,11 @@
 	}
 	/*--- end reset code ---*/
 	body {
-		margin: 0;
-		padding: 0;
-		background: url(../video/solidDarkGrey.png) #fff;
-		background-attachment: fixed;
-		background-size: cover;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		-ms-background-size: cover;
-		position:relative;
+		width: 100%;
+		height: 100%;
+		background-color: #071418 !important;
+		background-repeat: no-repeat;
+		position: absolute;
 		font-family: 'Raleway', sans-serif;
 	}
 	#video-background {

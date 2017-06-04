@@ -16,3 +16,9 @@ socket.on('WaitingRoomMessage_receive', function(msg){
 window.onbeforeunload = function() {
     socket.emit('WaitingRoomLeave_send');
 }   
+
+function buttonSound(str) { 
+  var music = document.getElementById("music");
+  music.src = str;
+  music.play();
+}

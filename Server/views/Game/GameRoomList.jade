@@ -6,7 +6,7 @@ block content
       include ../includes/chat 
       br
       form(action='/game/create', method='get')
-        input(type='submit', value='방만들기')
+        input(type='submit', value='방만들기', onclick="buttonSound('/video/button.wav');")
       br
       br
       .row
@@ -38,7 +38,8 @@ block content
                   br
                   .agileits_main_grid
                       form(action='/game/#{room._id}', method='get')
-                        input(type='submit', value='입장')
+                        input(type='submit', value='입장', onclick="buttonSound('/video/button.wav');")
                   
 
+    audio(id="music")
     script(src='/javascripts/viewconnetion/waitingroomconnetion.js').    

@@ -129,6 +129,9 @@ app.io.on('connection', function(socket){
 
   socket.on('ready_send', function(){
     var roomIndex = _.findIndex(rooms, {_id: socket._id});
+    if(roomIndex == -1){
+      return;
+    }
     var userIndex = _.findIndex(rooms[roomIndex].connUsers, {userID: socket.userID});
     if(rooms[roomIndex].connUsers[userIndex].isReady === false){
       rooms[roomIndex].connUsers[userIndex].isReady = true;

@@ -54,7 +54,7 @@ socket.on('message_receive', function(msg){
 });
 
 // 준비 눌렀을 때
-$('#ready').click('submit', function(e){
+$('#ready').click('submit', function(){
   buttonSound();
   socket.emit('ready_send');
 });
@@ -105,6 +105,7 @@ socket.on('start_game', function(room){
 });
 // 한장의 카드 눌렀을때
 function firstCardSelect1(){
+  clickSound();
   if($('.mycards.image-selected').index() == -1){ 
       $('#cardImforamtion1').addClass("image-selected");
   }else {
@@ -114,6 +115,7 @@ function firstCardSelect1(){
   oneSelect();
 }
 function firstCardSelect2(){
+  clickSound();
   if($('.mycards.image-selected').index() == -1){ 
       $('#cardImforamtion2').addClass("image-selected");
   }else {
@@ -150,10 +152,6 @@ socket.on('one_open_card_receive', function(room, user){
       money[i].innerHTML = "돈: " + koreanMoney;
       firstBetting(i);
     }
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
   }
 });
 // 한장씩 다 공개했을때 반응하는 소켄
@@ -168,10 +166,12 @@ socket.on('one_open_card_end_receive',function(room){
       $("#bbing").attr('disabled',false);
       $("#check").attr('disabled',false);
     }
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
   }
 });
 // 죽는 다고 할때
@@ -188,10 +188,10 @@ socket.on('die_receive', function(room, user){
   var koreanMoney;
   var bettingMoney;
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userID == room.currentTurnUser)
+    if(room.connUsers[i].userID == room.currentTurnUser){
       turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+      turnSound();
+    } else{ turn[i].src = "";}
     if(user.userID == room.connUsers[i].userID){
       $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       bettingMoney = document.getElementsByClassName("bettingMoney" + (i+1));
@@ -210,10 +210,12 @@ socket.on('die_receive', function(room, user){
       $("#die").attr('disabled',true);
       $('#myCardWindow').empty();
     }
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
   }
 });
 // call을 눌렀을때(지금까지 주어진 배팅금만큼만 걸고 끝내기를 선언)
@@ -251,10 +253,12 @@ socket.on('betting_receive', function(room, user, state){
   var koreanMoney;
   var bettingMoney;
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
     if(user.userID == room.connUsers[i].userID){
       $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       bettingMoney = document.getElementsByClassName("bettingMoney" + (i+1));
@@ -287,10 +291,12 @@ socket.on('lastCardDistribution_receive', function(room){
       cardImforamtion3.src ="/images/card/" + cards[2] +".png";
     }
     playerBettingState[i].innerHTML = '';
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
   }
   cardAnimationThird(room.connUsers.length);
 });
@@ -316,20 +322,24 @@ socket.on('lastSelect_receive', function(room){
       $(".card3").attr("src", "/images/card/" + cards[2] +".png");
     }
     playerBettingState[i].innerHTML = '';
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = ""; 
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
   }
 });
 // 두장씩 선택하는거
 function select1 (){
+  clickSound();
   var selectCard = [];
   selectCard[0] = cards[0];
   selectCard[1] = cards[1];
   socket.emit('finallySelect_send', selectCard);
 }
 function select2 (){
+  clickSound();
   var card1 = document.getElementsByClassName("card1")
   var selectCard = [];
   selectCard[0] = cards[0];
@@ -337,6 +347,7 @@ function select2 (){
   socket.emit('finallySelect_send', selectCard);
 }
 function select3 (){
+  clickSound();
   var selectCard = [];
   selectCard[0] = cards[1];
   selectCard[1] = cards[2];
@@ -353,10 +364,12 @@ socket.on('finallySelect_receive', function(cards, room, user){
       openCard[i].src= "/images/card/" + cards[0] +".png";
       openCard[i+room.connUsers.length].src = "/images/card/" + cards[1] +".png";
     }
-    if(room.connUsers[i].userID == room.currentTurnUser)
-      turn[i].src="/images/turn.png";
-    else
-      turn[i].src = "";
+    if(room.connUsers[i].userID == room.currentTurnUser){
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
+      turnSound();
+    } else{ 
+      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
+    }
   }
 });
 socket.on('resetGame_receive', function(room){
@@ -448,7 +461,17 @@ function viewKoreanMoney(money) {
 
 
 function buttonSound() { 
-  var music = document.getElementById("music");
+  var music = document.getElementById("button");
   music.src = "/video/button.wav";
   music.play();
-} 
+}
+function clickSound() { 
+  var music = document.getElementById("click");
+  music.src = "/video/click.wav";
+  music.play();
+}
+function turnSound() { 
+  var music = document.getElementById("passTurn");
+  music.src = "/video/Passturn.wav";
+  music.play();
+}
