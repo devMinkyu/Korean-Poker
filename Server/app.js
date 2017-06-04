@@ -191,7 +191,6 @@ app.io.on('connection', function(socket){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
       var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userID: socket.userID});
-      console.log(deadUserIndex);
       if( deadUserIndex != -1 ){
         clearInterval(timer);
       }
@@ -347,6 +346,7 @@ function die_send(money , socket){
       'userName' : (rooms[roomIndex].connUsers[userIndex].userName)
     });
     app.io.sockets.in(socket._id).emit('die_receive', rooms[roomIndex], rooms[roomIndex].connUsers[userIndex]);
+    lastCheck(gamingNumber-1, socket);
     if(rooms[roomIndex].deadUsers.length == rooms[roomIndex].connUsers.length-1){
       rooms[roomIndex].count = 0;
       var user;
@@ -458,19 +458,21 @@ function die_send(money , socket){
       app.io.sockets.in(socket._id).emit('finallySelect_receive', cards, rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex]);
     }
     // 참여자가 다 2장씩 선택 한후
-    if(gamingNumber == rooms[roomIndex].count){
-      if(rooms[roomIndex].regame === 0){
-        setTimeout(function(){
-          finallyResult(roomIndex, socket);
-        },1000);
-      }else if(rooms[roomIndex].regame == 1){
-        setTimeout(function(){
-          finallyResult(roomIndex, socket);
-        },5000);
-      }
+    lastCheck(gamingNumber, socket);
+  }
+function lastCheck(gamingNumber, socket){
+  if(gamingNumber == rooms[roomIndex].count){
+    if(rooms[roomIndex].regame === 0){
+      setTimeout(function(){
+        finallyResult(roomIndex, socket);
+      },1000);
+    }else if(rooms[roomIndex].regame == 1){
+      setTimeout(function(){
+        finallyResult(roomIndex, socket);
+      },5000);
     }
   }
-
+}
 function finallyResult(roomIndex, socket){
   if(roomIndex == -1){
     return;

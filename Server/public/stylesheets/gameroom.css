@@ -883,22 +883,70 @@
     width: 100%;
     position: relative;
     /* If you want text inside of it */ }
-  .gamefield .playerBettingState {
+  .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
-    top: 54%;
+    top: 95%;
     left: 111%;
-    width: 50%;
-    font-size: 2em;
-    color: red;
-    -webkit-text-fill-color: unset; }
-  .gamefield .playerdie {
-    position: absolute;
-    top: 54%;
-    left: 111%;
-    width: 50%;
-    font-size: 2em;
     color: black;
-    -webkit-text-fill-color: unset; }
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(1) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
   .gamefield #chatLog.chat_log {
     font-size: 0.5em;
     resize: none;
@@ -1291,22 +1339,70 @@
     width: 25%;
     height: 15%;
     z-index: 1; }
-  .gamefield .playerBettingState {
+  .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
-    top: 54%;
+    top: 95%;
     left: 111%;
-    width: 50%;
-    font-size: 2em;
-    color: red;
-    -webkit-text-fill-color: unset; }
-  .gamefield .playerdie {
-    position: absolute;
-    top: 54%;
-    left: 111%;
-    width: 50%;
-    font-size: 2em;
     color: black;
-    -webkit-text-fill-color: unset; }
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(1) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
   .gamefield .parent {
     width: 100%;
     position: relative;
@@ -1704,22 +1800,70 @@
     width: 25%;
     height: 15%;
     z-index: 1; }
-  .gamefield .playerBettingState {
+  .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
-    top: 54%;
+    top: 95%;
     left: 111%;
-    width: 50%;
-    font-size: 2em;
-    color: red;
-    -webkit-text-fill-color: unset; }
-  .gamefield .playerdie {
-    position: absolute;
-    top: 54%;
-    left: 111%;
-    width: 50%;
-    font-size: 2em;
     color: black;
-    -webkit-text-fill-color: unset; }
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(1) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -2123,22 +2267,70 @@
     width: 25%;
     height: 15%;
     z-index: 1; }
-  .gamefield .playerBettingState {
+  .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
-    top: 54%;
+    top: 95%;
     left: 111%;
-    width: 50%;
-    font-size: 2em;
-    color: red;
-    -webkit-text-fill-color: unset; }
-  .gamefield .playerdie {
-    position: absolute;
-    top: 54%;
-    left: 111%;
-    width: 50%;
-    font-size: 2em;
     color: black;
-    -webkit-text-fill-color: unset; }
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(1) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -2532,6 +2724,70 @@
     width: 100%;
     height: 15%;
     z-index: 1; }
+  .gamefield .col-xs-6:nth-child(1) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerdie {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    color: black;
+    width: 50%;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(1) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(2) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: 111%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(3) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
+  .gamefield .col-xs-6:nth-child(4) .playerBettingState {
+    position: absolute;
+    top: 95%;
+    left: -58%;
+    width: 50%;
+    color: red;
+    -webkit-text-fill-color: unset;
+    margin: 0; }
   .gamefield .row {
     margin-right: 0px;
     margin-left: 0px; }
@@ -4634,8 +4890,7 @@
     width: 20%;
     height: 15%;
     padding: 0;
-    vertical-align: top;
-    z-index: 1; }
+    vertical-align: top; }
   .gamefield button#select3 {
     top: 28%;
     left: 68%;
