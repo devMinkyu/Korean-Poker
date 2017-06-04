@@ -19,8 +19,8 @@ module.exports = function(passport) {
   passport.use(new FacebookStrategy({
     clientID : FacebookClientID,
     clientSecret : FacebookClientSecret,
-    // callbackURL : 'http://localhost:9000/auth/facebook/callback',
-    callbackURL : 'http://dev-minkyu.me/auth/facebook/callback',
+    callbackURL : 'http://localhost:9000/auth/facebook/callback',
+    // callbackURL : 'http://dev-minkyu.me/auth/facebook/callback',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
     if(!profile.emails){
