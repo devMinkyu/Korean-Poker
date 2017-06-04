@@ -11,6 +11,7 @@
         width: 100%;
         position: absolute; /* If you want text inside of it */
         padding-left: 0px;
+        top: 8%;
       }
       .parentMoney{
           .bettingMoney1 {
@@ -659,10 +660,11 @@
       }
       .gamefield{
         .parentMoney{
-          width: 100%;
-          position: absolute; /* If you want text inside of it */
-          padding-left: 0px;
-          top:-10%;
+          width: 100% !important;
+          position: absolute !important; /* If you want text inside of it */
+          padding-left: 0px !important;
+          top:0% !important;
+          padding-top: 15px !important;
         }
         .card1{
           position: relative;
@@ -1036,10 +1038,11 @@
       }
       .gamefield{
         .parentMoney{
-          width: 100%;
-          position: absolute; /* If you want text inside of it */
-          padding-left: 0px;
-          top:-10%;
+          width: 100% !important;
+          position: absolute !important; /* If you want text inside of it */
+          padding-left: 0px !important;
+          top:-3% !important;
+          padding-top: 16px !important;
         }
         .card1{
           position: relative;
@@ -1414,10 +1417,11 @@
       }
       .gamefield{
         .parentMoney{
-          width: 100%;
-          position: absolute; /* If you want text inside of it */
-          padding-left: 0px;
-          top:-10%;
+          width: 100% !important;
+          position: absolute !important; /* If you want text inside of it */
+          padding-left: 0px !important;
+          top:-2% !important;
+          padding-top: 18px !important;
         }
         .card1{
           position: relative;
@@ -1804,6 +1808,7 @@
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
           top:-10%;
+          padding-top: 40px;
         }
         .card1{
           position: relative;
@@ -2175,7 +2180,7 @@
           width: 100%;
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
-          top:-10%;
+          top:15%;
         }
         .card1{
           position: relative;
@@ -3262,6 +3267,7 @@
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
           top:-1%;
+          padding-top:56px;
         }
         #userID{
           display:none;
@@ -4343,23 +4349,61 @@
     }
     @media all and (max-height:540px){
       .gamefield{
+        button#select1 {
+          top: 28%;
+          left: 8%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:20%;
+          height:15%;
+          padding:0;
+          vertical-align:top;
+        }
+        button#select2 {
+          top: 28%;
+          left: 38%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:20%;
+          height:15%;
+          padding:0;
+          vertical-align:top;
+        }
+        button#select3 {
+          top: 28%;
+          left: 68%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:20%;
+          height:15%;
+          padding:0;
+          vertical-align:top;
+        }
         .parentMoney{
           width: 100%;
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
-          top:-10%;
+          top:-5%;
+          padding-top: 20px;
+
         }
         .card1{
           position: relative;
-          width: 50%;
+          width: 40%;
         }
         .card2{
           position: relative;
-          width: 50%;
+          width: 40%;
         }
         .card3{
           position: relative;
-          width: 50%;
+          width: 40%;
         }
         .moneyBar {
           background: url('/images/namebar.png');
@@ -4453,7 +4497,8 @@
           width: 100%;
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
-          top:-18%;
+          top:-3%;
+          padding-top: 25px;
         }
       }
     }
@@ -4464,6 +4509,7 @@
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
           top:-3%;
+          padding-top: 30px;
         }
       }
     }
