@@ -33,10 +33,11 @@ socket.on('room_connection_receive', function(users){
     money[i].innerHTML = "돈: " + koreanMoney;
     img[i].src=users[i].photoURL;
     insignia[i].src='/images/insignia/' + users[i].insignia + '.png'
+    var ready = i +1;
     if(users[i].isReady === true)
-      state[i].innerHTML = "준비 완료";
+      $('.ready-game'+ready).transition({ opacity: 1 });
     else
-      state[i].innerHTML = "대기 중";
+      $('.ready-game'+ready).transition({ opacity: 0 });
   }
 });
 
@@ -61,11 +62,12 @@ window.onbeforeunload = function() {
 };
 socket.on('ready_receive', function(users, index){
   var state = document.getElementsByName("state");
+  var ready = index +1;
   if(users[index].isReady === true){
-    state[index].innerHTML = "준비 완료";
+    $('.ready-game'+ready).transition({ opacity: 1 });
   }
   else{
-    state[index].innerHTML = "대기 중";
+    $('.ready-game'+ready).transition({ opacity: 0});
   }
 });
 //게임 시작후 카드 뿌려주기
