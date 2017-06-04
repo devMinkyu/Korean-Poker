@@ -19,7 +19,7 @@
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   border: none;
-  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  font: normal 3em/normal "Anton", Helvetica, sans-serif;
   color: white;
   text-align: center;
   -o-text-overflow: clip;
@@ -44,7 +44,7 @@
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   border: none;
-  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  font: normal 3em/normal "Anton", Helvetica, sans-serif;
   color: white;
   text-align: center;
   -o-text-overflow: clip;
@@ -62,12 +62,12 @@
 .gamefield .ready-game3 {
   position: absolute;
   top: 43%;
-  right: 72%;
+  left: 13%;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   border: none;
-  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  font: normal 3em/normal "Anton", Helvetica, sans-serif;
   color: white;
   text-align: center;
   -o-text-overflow: clip;
@@ -85,12 +85,12 @@
 .gamefield .ready-game4 {
   position: absolute;
   top: 12%;
-  right: 72%;
+  left: 13%;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   border: none;
-  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  font: normal 3em/normal "Anton", Helvetica, sans-serif;
   color: white;
   text-align: center;
   -o-text-overflow: clip;
@@ -752,7 +752,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -776,7 +776,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -793,12 +793,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 47%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -815,12 +815,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1161,7 +1161,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1185,7 +1185,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1202,12 +1202,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 47%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1224,12 +1224,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1571,7 +1571,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1595,7 +1595,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1612,12 +1612,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 46%;
-    right: 72%;
+    left: 15%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1634,12 +1634,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 72%;
+    left: 15%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -1987,7 +1987,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2011,7 +2011,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2028,12 +2028,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 43%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2050,12 +2050,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 72%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2388,7 +2388,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2412,7 +2412,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2429,12 +2429,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 43%;
-    right: 65%;
+    left: 15%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2451,12 +2451,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 65%;
+    left: 15%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2934,7 +2934,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2958,7 +2958,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2975,12 +2975,12 @@
   .gamefield .ready-game3 {
     position: absolute;
     top: 43%;
-    right: 69%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -2997,12 +2997,12 @@
   .gamefield .ready-game4 {
     position: absolute;
     top: 12%;
-    right: 69%;
+    left: 13%;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    font: normal 2.3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -3480,7 +3480,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -3504,7 +3504,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -3526,7 +3526,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
@@ -3548,7 +3548,7 @@
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     border: none;
-    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
     color: white;
     text-align: center;
     -o-text-overflow: clip;
