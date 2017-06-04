@@ -191,10 +191,6 @@ socket.on('die_receive', function(room, user){
   var koreanMoney;
   var bettingMoney;
   for(var i = 0; i < room.connUsers.length; i++){
-    if(room.connUsers[i].userID == room.currentTurnUser){
-      turn[i].src="/images/turn.png";
-      turnSound();
-    } else{ turn[i].src = "";}
     if(user.userID == room.connUsers[i].userID){
       $(".parentMoney").append($('#bettingMoneyView' + (i+1)).html());
       bettingMoney = document.getElementsByClassName("bettingMoney" + (i+1));
@@ -277,7 +273,6 @@ socket.on('betting_receive', function(room, user, state){
 // 모두 콜을 눌렀을 때 한장씩 더 나눠주는 코드
 socket.on('lastCardDistribution_receive', function(room){
   var die = document.getElementsByClassName("playerdie");
-  var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
   $('#myCardWindow').empty();
   for(var i = 0; i < room.connUsers.length; i++){
@@ -294,19 +289,12 @@ socket.on('lastCardDistribution_receive', function(room){
       cardImforamtion3.src ="/images/card/" + cards[2] +".png";
     }
     playerBettingState[i].innerHTML = '';
-    if(room.connUsers[i].userID == room.currentTurnUser){
-      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
-      turnSound();
-    } else{ 
-      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
-    }
   }
   cardAnimationThird(room.connUsers.length);
 });
 // 카드 나눠준 후 다 콜 했을 때 두장 선택하게끔 만드는 코드
 socket.on('lastSelect_receive', function(room){
   var die = document.getElementsByClassName("playerdie");
-  var turn = document.getElementsByClassName("turn");
   var playerBettingState = document.getElementsByClassName("playerBettingState");
   $('#myCardWindow').empty();
   var card1 = document.getElementsByClassName("card1");
@@ -325,12 +313,6 @@ socket.on('lastSelect_receive', function(room){
       $(".card3").attr("src", "/images/card/" + cards[2] +".png");
     }
     playerBettingState[i].innerHTML = '';
-    if(room.connUsers[i].userID == room.currentTurnUser){
-      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 1 });
-      turnSound();
-    } else{ 
-      $('.col-xs-6:nth-child('+ ( i+1 )+') .turn').transition({ opacity: 0 });
-    }
   }
 });
 // 두장씩 선택하는거

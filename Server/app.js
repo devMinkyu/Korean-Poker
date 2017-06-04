@@ -216,7 +216,7 @@ app.io.on('connection', function(socket){
           var msg = "배팅을 시작하세요.";
           rooms[roomIndex].currentTurnUser = rooms[roomIndex].gamingUsers[0].userID;
           app.io.to(socket.id).emit('message_receive', msg);
-          app.io.sockets.in(socket._id).emit('one_open_card_end_receive', rooms[roomIndex]);
+          app.io.to(socket.id).emit('one_open_card_end_receive', rooms[roomIndex]);
         }
       } else if(timerValue <= 0 && stage === 1 ){ // 15초 내로 배팅을 안하고 있으면 자동 콜이 된다
           gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
@@ -316,6 +316,8 @@ function gameStart(roomIndex, id) {
   rooms[roomIndex].deadUsers = [];
   rooms[roomIndex].count = 0;
   rooms[roomIndex].cards = _.shuffle([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+  for(var i = 0; i< rooms[roomIndex].connUsers.length; i++)
+    rooms[roomIndex].connUsers[i].isReady = false;
   var msg = "한장씩 카드를 선택해주세요.";
   app.io.sockets.in(id).emit('message_receive', msg);
   app.io.sockets.in(id).emit('start_game', rooms[roomIndex]);

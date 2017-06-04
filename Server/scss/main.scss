@@ -1001,12 +1001,9 @@ input[type="submit"],.agileits_copyright p a,a{
 	padding:2em;
 }
 .agileinfo_main_grid{
-	background:url(/stylesheets/images/solidGreen.png) no-repeat 0px 0px;
-	background-size:cover;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
+	background-color: #0B3B2E !important;
+	background-repeat: no-repeat;
+	position: absolute;
 	border-radius: 20px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
