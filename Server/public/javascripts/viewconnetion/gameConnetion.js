@@ -34,10 +34,12 @@ socket.on('room_connection_receive', function(users){
     img[i].src=users[i].photoURL;
     insignia[i].src='/images/insignia/' + users[i].insignia + '.png'
     var ready = i +1;
-    if(users[i].isReady === true)
+    if(users[i].isReady === true){
       $('.ready-game'+ready).transition({ opacity: 1 });
-    else
+    }
+    else{
       $('.ready-game'+ready).transition({ opacity: 0 });
+    }
   }
 });
 
@@ -78,6 +80,7 @@ socket.on('start_game', function(room){
   $("#myCardWindow").append($('#privateViewCard').html());
   socket.emit('timer_send');
   $('#userWindow').empty();
+  $('#readyAction').children().transition({ opacity: 0 });
   var money = document.getElementsByClassName("moneyBar");
   var img = document.getElementsByName("userProfile");
   var insignia = document.getElementsByClassName("insignia");
