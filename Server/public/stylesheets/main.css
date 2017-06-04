@@ -235,7 +235,8 @@
   width: 100%;
   height: 15%;
   padding: 0;
-  vertical-align: top; }
+  vertical-align: top;
+  z-index: 1; }
 
 .gamefield button#select2 {
   top: 28%;
@@ -247,7 +248,8 @@
   width: 100%;
   height: 15%;
   padding: 0;
-  vertical-align: top; }
+  vertical-align: top;
+  z-index: 1; }
 
 .gamefield button#select3 {
   top: 28%;
@@ -259,7 +261,8 @@
   width: 100%;
   height: 15%;
   padding: 0;
-  vertical-align: top; }
+  vertical-align: top;
+  z-index: 1; }
 
 .gamefield .row {
   margin-right: 0px;
@@ -352,7 +355,7 @@
 .gamefield .col-xs-6:nth-child(3) .playerdie {
   position: absolute;
   top: 95%;
-  right: 111%;
+  left: -58%;
   color: black;
   width: 50%;
   -webkit-text-fill-color: unset; }
@@ -360,7 +363,7 @@
 .gamefield .col-xs-6:nth-child(4) .playerdie {
   position: absolute;
   top: 95%;
-  right: 111%;
+  left: -58%;
   color: black;
   width: 50%;
   -webkit-text-fill-color: unset; }
@@ -384,7 +387,7 @@
 .gamefield .col-xs-6:nth-child(3) .playerBettingState {
   position: absolute;
   top: 95%;
-  right: 111%;
+  left: -58%;
   width: 50%;
   color: red;
   -webkit-text-fill-color: unset; }
@@ -392,7 +395,7 @@
 .gamefield .col-xs-6:nth-child(4) .playerBettingState {
   position: absolute;
   top: 95%;
-  right: 111%;
+  left: -58%;
   width: 50%;
   color: red;
   -webkit-text-fill-color: unset; }
@@ -862,7 +865,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 26%;
     left: 37%;
@@ -871,7 +875,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 26%;
     left: 65%;
@@ -880,7 +885,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .parent {
     width: 100%;
     position: relative;
@@ -1271,7 +1277,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 26%;
     left: 37%;
@@ -1280,7 +1287,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 26%;
     left: 65%;
@@ -1289,7 +1297,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .playerBettingState {
     position: absolute;
     top: 54%;
@@ -1681,7 +1690,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 26%;
     left: 37%;
@@ -1690,7 +1700,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 26%;
     left: 65%;
@@ -1699,7 +1710,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .playerBettingState {
     position: absolute;
     top: 54%;
@@ -2097,7 +2109,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 26%;
     left: 37%;
@@ -2106,7 +2119,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 26%;
     left: 65%;
@@ -2115,7 +2129,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .playerBettingState {
     position: absolute;
     top: 54%;
@@ -2503,7 +2518,8 @@
     display: inline-block;
     border-width: 0px;
     width: 100%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 28%;
     left: 41%;
@@ -2512,7 +2528,8 @@
     display: inline-block;
     border-width: 0px;
     width: 100%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 28%;
     left: 62%;
@@ -2521,7 +2538,8 @@
     display: inline-block;
     border-width: 0px;
     width: 100%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .row {
     margin-right: 0px;
     margin-left: 0px; }
@@ -3049,7 +3067,8 @@
     width: 30%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 28%;
     left: 38%;
@@ -3060,7 +3079,8 @@
     width: 30%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 28%;
     left: 68%;
@@ -3071,7 +3091,8 @@
     width: 30%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield .row {
     margin-right: 0px;
     margin-left: 0px; }
@@ -3606,7 +3627,8 @@
     width: 25%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 28%;
     left: 38%;
@@ -3617,7 +3639,8 @@
     width: 25%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 28%;
     left: 68%;
@@ -3628,7 +3651,8 @@
     width: 25%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield .row {
     margin-right: 0px;
     margin-left: 0px; }
@@ -4160,7 +4184,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 28%;
     left: 41%;
@@ -4169,7 +4194,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 28%;
     left: 67%;
@@ -4178,7 +4204,8 @@
     display: inline-block;
     border-width: 0px;
     width: 25%;
-    height: 15%; }
+    height: 15%;
+    z-index: 1; }
   .gamefield .row {
     margin-right: 0px;
     margin-left: 0px; }
@@ -4603,7 +4630,8 @@
     width: 20%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select2 {
     top: 28%;
     left: 38%;
@@ -4614,7 +4642,8 @@
     width: 20%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield button#select3 {
     top: 28%;
     left: 68%;
@@ -4625,7 +4654,8 @@
     width: 20%;
     height: 15%;
     padding: 0;
-    vertical-align: top; }
+    vertical-align: top;
+    z-index: 1; }
   .gamefield .parentMoney {
     width: 100%;
     position: absolute;
@@ -5893,7 +5923,7 @@ h1 {
 h4 {
   padding: 30px 0;
   font-size: 50px;
-  text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px, #6f1c21 0px -2px, #6f1c21 -1.4px -1.4px, #6f1c21 1.4px 1.4px, #6f1c21 1.4px -1.4px, #6f1c21 -1.4px 1.4px; }
+  text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px, #6f1c21 0px -2px, #6f1c21 -1.4px -1.4px, #6f1c21 1.4px 1.4px, #6f1c21 1.4px -1.4px, #6f1c21 -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
@@ -6033,7 +6063,7 @@ a.face-link i.fa, a.kakao-link i.fa {
 
 a.kakao-link {
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
   width: 200px;
   height: 40px;
   line-height: 40px;
