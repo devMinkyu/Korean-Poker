@@ -54,6 +54,7 @@ socket.on('message_receive', function(msg){
 
 // 준비 눌렀을 때
 $('#ready').click('submit', function(e){
+  buttonSound();
   socket.emit('ready_send');
 });
 window.onbeforeunload = function() {
@@ -436,3 +437,10 @@ function viewKoreanMoney(money) {
     return "0원";
   }
 }
+
+
+function buttonSound() { 
+  var music = document.getElementById("music");
+  music.src = "/video/button.wav";
+  music.play();
+} 

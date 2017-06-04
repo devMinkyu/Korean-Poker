@@ -2,6 +2,7 @@ extends ../layout
 block content
     .container
       h1.page-header
+      audio(src="/video/waitingroom.mp3" controls="controls" autoplay loop)
       include ../includes/chat 
       br
       form(action='/game/create', method='get')
@@ -39,6 +40,5 @@ block content
                       form(action='/game/#{room._id}', method='get')
                         input(type='submit', value='입장')
                   
-    audio(src="/video/waitingroom.mp3" autoplay loop)
 
     script(src='/javascripts/viewconnetion/waitingroomconnetion.js').    

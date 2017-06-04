@@ -1,6 +1,7 @@
 extends layout
 block content
   .overlay
+    audio(src="video/background.mp3" controls="controls" autoplay loop)
     br
     .content-w3ls.agileits
       img.user-wthree(src='/stylesheets/images/KoreanPokerMain.png', alt='')
@@ -18,7 +19,7 @@ block content
       //-   a(href='https://w3layouts.com/', target='_blank') w3layouts
   video#video-background(autoplay='', loop='', muted='')
     source(src='/video/KoreanPoker.mp4', type='video/mp4')
-  audio(src="/video/background.mp3" autoplay loop)
+  //audio(src="/video/background.mp3" autoplay loop)
   // js
   script(src='javascripts/modernizr.min.js').
   // /js

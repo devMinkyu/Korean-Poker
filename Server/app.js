@@ -187,7 +187,7 @@ app.io.on('connection', function(socket){
     var timer = setInterval(function(){
       timerValue -= 1;
       app.io.sockets.in(socket._id).emit('timer_receive', timerValue);
-      var deadUserIndex = _.findIndex(rooms[roomIndex].deadUsers, { userID: socket.userID});
+      var deadUserIndex = _.findIndex(roomIndex,rooms[roomIndex].deadUsers, { userID: socket.userID});
       if( deadUserIndex != -1 ){
         clearInterval(timer);
       }
@@ -219,7 +219,7 @@ app.io.on('connection', function(socket){
           gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
           timerValue = 15;
           if(rooms[roomIndex].gamingUsers[gameUserIndex].userID == rooms[roomIndex].connUsers[userIndex].userID)
-            bettingEnd(rooms[roomIndex].roomAllMoney, socket, "콜");
+            bettingEnd(roomIndex, rooms[roomIndex].roomAllMoney, socket, "콜");
       } else if(timerValue <= 0 && stage === 2 ){ // 15초 내로 카드 두장을 선택 안하면 첫번째, 두번째 패가 자동으로 선택
           gameUserIndex = _.findIndex(rooms[roomIndex].gamingUsers, { userID: currentTurnUser });
           timerValue = 15;

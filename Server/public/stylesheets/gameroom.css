@@ -9,7 +9,8 @@
   width: 100%;
   position: absolute;
   /* If you want text inside of it */
-  padding-left: 0px; }
+  padding-left: 0px;
+  top: 8%; }
 
 .gamefield .parentMoney .bettingMoney1 {
   position: absolute;
@@ -645,11 +646,12 @@
     overflow-x: hidden;
     overflow-y: hidden; }
   .gamefield .parentMoney {
-    width: 100%;
-    position: absolute;
+    width: 100% !important;
+    position: absolute !important;
     /* If you want text inside of it */
-    padding-left: 0px;
-    top: -10%; }
+    padding-left: 0px !important;
+    top: 0% !important;
+    padding-top: 15px !important; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -873,8 +875,8 @@
     display: none; }
   .gamefield #roomName {
     position: absolute;
-    bottom: 95%;
-    left: 8%;
+    bottom: 84%;
+    left: 46%;
     color: white;
     font-size: 1em; }
   .gamefield .mycards {
@@ -964,11 +966,12 @@
     overflow-x: hidden;
     overflow-y: hidden; }
   .gamefield .parentMoney {
-    width: 100%;
-    position: absolute;
+    width: 100% !important;
+    position: absolute !important;
     /* If you want text inside of it */
-    padding-left: 0px;
-    top: -10%; }
+    padding-left: 0px !important;
+    top: -3% !important;
+    padding-top: 16px !important; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1192,10 +1195,11 @@
     display: none; }
   .gamefield #roomName {
     position: absolute;
-    bottom: 95%;
-    left: 8%;
+    bottom: 85%;
+    left: 46%;
     color: white;
-    font-size: 1em; }
+    font-size: 1em;
+    margin: 0px; }
   .gamefield .mycards {
     position: absolute;
     left: 37%;
@@ -1283,11 +1287,12 @@
     overflow-x: hidden;
     overflow-y: hidden; }
   .gamefield .parentMoney {
-    width: 100%;
-    position: absolute;
+    width: 100% !important;
+    position: absolute !important;
     /* If you want text inside of it */
-    padding-left: 0px;
-    top: -10%; }
+    padding-left: 0px !important;
+    top: -2% !important;
+    padding-top: 18px !important; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1517,10 +1522,11 @@
     display: none; }
   .gamefield #roomName {
     position: absolute;
-    bottom: 95%;
-    left: 8%;
+    bottom: 84%;
+    left: 47%;
     color: white;
-    font-size: 1em; }
+    font-size: 1em;
+    margin: 0px; }
   .gamefield .mycards {
     position: absolute;
     left: 37%;
@@ -1612,7 +1618,8 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -10%; }
+    top: -10%;
+    padding-top: 40px; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -1923,7 +1930,7 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -10%; }
+    top: 15%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -2837,7 +2844,8 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -1%; }
+    top: -1%;
+    padding-top: 56px; }
   .gamefield #userID {
     display: none; }
   .gamefield .parent {
@@ -3746,21 +3754,55 @@
     margin-left: 100px; } }
 
 @media all and (max-height: 540px) {
+  .gamefield button#select1 {
+    top: 28%;
+    left: 8%;
+    position: absolute;
+    background: none;
+    display: inline-block;
+    border-width: 0px;
+    width: 20%;
+    height: 15%;
+    padding: 0;
+    vertical-align: top; }
+  .gamefield button#select2 {
+    top: 28%;
+    left: 38%;
+    position: absolute;
+    background: none;
+    display: inline-block;
+    border-width: 0px;
+    width: 20%;
+    height: 15%;
+    padding: 0;
+    vertical-align: top; }
+  .gamefield button#select3 {
+    top: 28%;
+    left: 68%;
+    position: absolute;
+    background: none;
+    display: inline-block;
+    border-width: 0px;
+    width: 20%;
+    height: 15%;
+    padding: 0;
+    vertical-align: top; }
   .gamefield .parentMoney {
     width: 100%;
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -10%; }
+    top: -5%;
+    padding-top: 20px; }
   .gamefield .card1 {
     position: relative;
-    width: 50%; }
+    width: 40%; }
   .gamefield .card2 {
     position: relative;
-    width: 50%; }
+    width: 40%; }
   .gamefield .card3 {
     position: relative;
-    width: 50%; }
+    width: 40%; }
   .gamefield .moneyBar {
     background: url("/images/namebar.png");
     background-repeat: no-repeat;
@@ -3841,7 +3883,8 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -18%; } }
+    top: -3%;
+    padding-top: 25px; } }
 
 @media all and (min-height: 600px) and (max-height: 850px) {
   .gamefield .parentMoney {
@@ -3849,4 +3892,5 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -3%; } }
+    top: -3%;
+    padding-top: 30px; } }
