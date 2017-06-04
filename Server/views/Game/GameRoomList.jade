@@ -2,7 +2,8 @@ extends ../layout
 block content
     .container
       h1.page-header
-      audio(src="/video/waitingroom.mp3" controls="controls" autoplay loop)
+      .speaker.speakerplay
+      audio#player(src="/video/waitingroom.mp3" autoplay loop)
       include ../includes/chat 
       br
       form(action='/game/create', method='get')
@@ -39,7 +40,8 @@ block content
                   .agileits_main_grid
                       form(action='/game/#{room._id}', method='get')
                         input(type='submit', value='입장', onclick="buttonSound('/video/button.wav');")
-                  
+      
 
     audio(id="music")
-    script(src='/javascripts/viewconnetion/waitingroomconnetion.js').    
+    script(src='/javascripts/viewconnetion/waitingroomconnetion.js').
+    script(src='/javascripts/audio.js').

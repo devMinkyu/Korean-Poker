@@ -238,6 +238,7 @@
         height:15%;
         padding:0;
         vertical-align:top;
+        z-index: 1;
       }
       button#select2 {
         top: 28%;
@@ -250,6 +251,7 @@
         height:15%;
         padding:0;
         vertical-align:top;
+        z-index: 1;
       }
       button#select3 {
         top: 28%;
@@ -262,6 +264,7 @@
         height:15%;
         padding:0;
         vertical-align:top;
+        z-index: 1;
       }
       .row{
         margin-right:0px;
@@ -354,7 +357,7 @@
       .col-xs-6:nth-child(3) .playerdie{
         position:absolute;
         top: 95%;
-        right: 111%;
+        left: -58%;
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
@@ -362,7 +365,7 @@
       .col-xs-6:nth-child(4) .playerdie{
         position:absolute;
         top: 95% ;
-        right: 111%;
+        left: -58%;
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
@@ -386,7 +389,7 @@
       .col-xs-6:nth-child(3) .playerBettingState{
         position:absolute;
         top: 95% ;
-        right: 111%;
+        left: -58%;
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
@@ -394,7 +397,7 @@
       .col-xs-6:nth-child(4) .playerBettingState{
         position:absolute;
         top: 95% ;
-        right: 111%;
+        left: -58%;
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
@@ -884,6 +887,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 26%;
@@ -894,6 +898,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 26%;
@@ -904,6 +909,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         .parent{
           width: 100%;
@@ -927,6 +933,7 @@
           color:black;
           -webkit-text-fill-color:unset;
         }
+        
         #chatLog.chat_log{
           font-size:0.5em;
           resize: none;
@@ -1359,6 +1366,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 26%;
@@ -1369,6 +1377,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 26%;
@@ -1379,6 +1388,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         .playerBettingState{
           position:absolute;
@@ -1835,6 +1845,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 26%;
@@ -1845,6 +1856,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 26%;
@@ -1855,6 +1867,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         .playerBettingState{
           position:absolute;
@@ -2319,6 +2332,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 26%;
@@ -2329,6 +2343,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 26%;
@@ -2339,6 +2354,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         .playerBettingState{
           position:absolute;
@@ -2795,6 +2811,7 @@
           border-width: 0px;
           width:100%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 28%;
@@ -2805,6 +2822,7 @@
           border-width: 0px;
           width:100%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 28%;
@@ -2815,6 +2833,7 @@
           border-width: 0px;
           width:100%;
           height:15%;
+          z-index: 1;
         }
         .row{
           margin-right:0px;
@@ -3435,6 +3454,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select2 {
           top: 28%;
@@ -3447,6 +3467,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select3 {
           top: 28%;
@@ -3459,6 +3480,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         .row{
           margin-right:0px;
@@ -4086,6 +4108,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select2 {
           top: 28%;
@@ -4098,6 +4121,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select3 {
           top: 28%;
@@ -4110,6 +4134,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         .row{
           margin-right:0px;
@@ -4730,6 +4755,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select2 {
           top: 28%;
@@ -4740,6 +4766,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         button#select3 {
           top: 28%;
@@ -4750,6 +4777,7 @@
           border-width: 0px;
           width:25%;
           height:15%;
+          z-index: 1;
         }
         .row{
           margin-right:0px;
@@ -5255,6 +5283,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select2 {
           top: 28%;
@@ -5267,6 +5296,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         button#select3 {
           top: 28%;
@@ -5279,6 +5309,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
+          z-index: 1;
         }
         .parentMoney{
           width: 100%;

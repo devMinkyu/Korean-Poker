@@ -1,7 +1,8 @@
 extends layout
 block content
   .overlay
-    audio(src="video/background.mp3" controls="controls" autoplay loop)
+    .speaker.speakerplay
+    audio#player(src="/video/waitingroom.mp3" autoplay loop)
     br
     .content-w3ls.agileits
       img.user-wthree(src='/stylesheets/images/KoreanPokerMain.png', alt='')
@@ -11,8 +12,9 @@ block content
         i.fa.fa-facebook(aria-hidden='true')
         |  Facebook
       a.kakao-link(href='/auth/kakao')
-        i.fa.fa-kakao(aria-hidden='true')
-        |  Kakao
+        //- i.fa.fa-kakao(aria-hidden='true')
+        //- |  Kakao
+        img(src='/stylesheets/images/kakao.png', alt='')
     .footer-w3ls.w3-agile
       //- p.w3-agileits
       //-   | © 2017 Proficient Login Form. All Rights Reserved | Design by 
@@ -22,4 +24,4 @@ block content
   //audio(src="/video/background.mp3" autoplay loop)
   // js
   script(src='javascripts/modernizr.min.js').
-  // /js
+  script(src='/javascripts/audio.js').
