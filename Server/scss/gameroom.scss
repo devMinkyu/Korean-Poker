@@ -345,7 +345,6 @@
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(2) .playerdie{
         position:absolute;
@@ -354,7 +353,6 @@
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(3) .playerdie{
         position:absolute;
@@ -363,7 +361,6 @@
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(4) .playerdie{
         position:absolute;
@@ -372,7 +369,6 @@
         color:black;
         width:50%;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(1) .playerBettingState{
         position:absolute;
@@ -381,7 +377,6 @@
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(2) .playerBettingState{
         position:absolute;
@@ -390,7 +385,6 @@
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(3) .playerBettingState{
         position:absolute;
@@ -399,7 +393,6 @@
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       .col-xs-6:nth-child(4) .playerBettingState{
         position:absolute;
@@ -408,7 +401,6 @@
         width:50%;
         color:red;
         -webkit-text-fill-color:unset;
-        margin:0;
       }
       #bettingBar{
         width:71%;
@@ -923,25 +915,96 @@
           width: 100%;
           position: relative; /* If you want text inside of it */
         }
-        .playerBettingState{
+        // .playerBettingState{
+        //   position:absolute;
+        //   top:54%;
+        //   left:111%;
+        //   width:50%;
+        //   font-size:2em;
+        //   color:red;
+        //   -webkit-text-fill-color:unset;
+        // }
+        // .playerdie{
+        //   position:absolute;
+        //   top:54%;
+        //   left:111%;
+        //   width:50%;
+        //   font-size:2em;
+        //   color:black;
+        //   -webkit-text-fill-color:unset;
+        // }
+        .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
+          color:black;
           width:50%;
-          font-size:2em;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
           color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
         }
-        .playerdie{
+        .col-xs-6:nth-child(2) .playerBettingState{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
           width:50%;
-          font-size:2em;
-          color:black;
+          color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
         }
-        
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
         #chatLog.chat_log{
           font-size:0.5em;
           resize: none;
@@ -1398,23 +1461,77 @@
           height:15%;
           z-index: 1;
         }
-        .playerBettingState{
+        .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
+          color:black;
           width:50%;
-          font-size:2em;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
           color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
         }
-        .playerdie{
+        .col-xs-6:nth-child(2) .playerBettingState{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
           width:50%;
-          font-size:2em;
-          color:black;
+          color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
         }
         .parent{
           width: 100%;
@@ -1877,23 +1994,77 @@
           height:15%;
           z-index: 1;
         }
-        .playerBettingState{
+        .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
+          color:black;
           width:50%;
-          font-size:2em;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
           color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
         }
-        .playerdie{
+        .col-xs-6:nth-child(2) .playerBettingState{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
           width:50%;
-          font-size:2em;
-          color:black;
+          color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
         }
         .cards {
           position: absolute;
@@ -2364,23 +2535,77 @@
           height:15%;
           z-index: 1;
         }
-        .playerBettingState{
+        .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
+          color:black;
           width:50%;
-          font-size:2em;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
           color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
         }
-        .playerdie{
+        .col-xs-6:nth-child(2) .playerBettingState{
           position:absolute;
-          top:54%;
-          left:111%;
+          top: 95% ;
+          left: 111%;
           width:50%;
-          font-size:2em;
-          color:black;
+          color:red;
           -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
         }
         .cards {
           position: absolute;
@@ -2842,6 +3067,78 @@
           width:100%;
           height:15%;
           z-index: 1;
+        }
+        .col-xs-6:nth-child(1) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
         }
         .row{
           margin-right:0px;
@@ -5304,7 +5601,7 @@
           height:15%;
           padding:0;
           vertical-align:top;
-          z-index: 1;
+          
         }
         button#select3 {
           top: 28%;
