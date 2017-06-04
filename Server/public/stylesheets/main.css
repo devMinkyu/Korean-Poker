@@ -5445,7 +5445,7 @@ a.kakao-link:hover {
     background: #000 no-repeat 219px 8px; }
   input[type="submit"] {
     font-size: 16px;
-    width: 234px; }
+    width: 220px; }
   a.face-link {
     margin: 15px auto;
     width: 153px;
@@ -5506,7 +5506,10 @@ a.kakao-link:hover {
     width: 133px;
     height: 38px;
     line-height: 38px;
-    font-size: 16px; } }
+    font-size: 16px; }
+  input[type="submit"] {
+    font-size: 16px;
+    width: 160px; } }
 
 @media (max-width: 340px) {
   input[type="submit"] {
