@@ -298,28 +298,32 @@
   top: 5%;
   left: 122%;
   width: 25%;
-  height: 25%; }
+  height: 25%;
+  opacity: 0; }
 
 .gamefield .col-xs-6:nth-child(2) .turn {
   position: absolute;
   top: 5%;
   left: 122%;
   width: 25%;
-  height: 25%; }
+  height: 25%;
+  opacity: 0; }
 
 .gamefield .col-xs-6:nth-child(3) .turn {
   position: absolute;
   top: 5%;
   right: 122%;
   width: 25%;
-  height: 25%; }
+  height: 25%;
+  opacity: 0; }
 
 .gamefield .col-xs-6:nth-child(4) .turn {
   position: absolute;
   top: 5%;
   right: 122%;
   width: 25%;
-  height: 25%; }
+  height: 25%;
+  opacity: 0; }
 
 .gamefield .col-xs-6:nth-child(1) .playerdie {
   position: absolute;
@@ -2467,7 +2471,7 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: 15%; }
+    top: 8%; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -2549,25 +2553,29 @@
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(2) .turn {
     position: absolute;
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(3) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(4) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
     top: 95%;
@@ -3095,25 +3103,29 @@
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(2) .turn {
     position: absolute;
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(3) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(4) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
     top: 95%;
@@ -3648,25 +3660,29 @@
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(2) .turn {
     position: absolute;
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(3) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(4) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
     top: 95%;
@@ -4019,6 +4035,12 @@
     margin-left: 100px; } }
 
 @media all and (min-width: 1440px) {
+  .gamefield .parentMoney {
+    width: 100%;
+    position: absolute;
+    /* If you want text inside of it */
+    padding-left: 0px;
+    top: -2%; }
   .gamefield .ready-game1 {
     opacity: 0;
     position: absolute;
@@ -4188,25 +4210,29 @@
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(2) .turn {
     position: absolute;
     top: 5%;
     left: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(3) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(4) .turn {
     position: absolute;
     top: 5%;
     right: 122%;
     width: 25%;
-    height: 25%; }
+    height: 25%;
+    opacity: 0; }
   .gamefield .col-xs-6:nth-child(1) .playerdie {
     position: absolute;
     top: 95%;

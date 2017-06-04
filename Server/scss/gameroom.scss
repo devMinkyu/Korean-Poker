@@ -309,6 +309,7 @@
         left: 122%;
         width: 25%;
         height: 25%;
+        opacity: 0;
       }
       .col-xs-6:nth-child(2) .turn{
         position:absolute;
@@ -316,6 +317,7 @@
         left: 122%;
         width: 25%;
         height: 25%;
+        opacity: 0;
       }
       .col-xs-6:nth-child(3) .turn{
         position:absolute;
@@ -323,6 +325,7 @@
         right: 122%;
         width: 25%;
         height: 25%;
+        opacity: 0;
       }
       .col-xs-6:nth-child(4) .turn{
         position:absolute;
@@ -330,6 +333,7 @@
         right: 122%;
         width: 25%;
         height: 25%;
+        opacity: 0;
       }
       .col-xs-6:nth-child(1) .playerdie{
         position:absolute;
@@ -2761,7 +2765,7 @@
           width: 100%;
           position: absolute; /* If you want text inside of it */
           padding-left: 0px;
-          top:15%;
+          top:8%;
         }
         .card1{
           position: relative;
@@ -2858,6 +2862,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(2) .turn{
           position:absolute;
@@ -2865,6 +2870,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(3) .turn{
           position:absolute;
@@ -2872,6 +2878,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(4) .turn{
           position:absolute;
@@ -2879,6 +2886,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
@@ -3498,6 +3506,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(2) .turn{
           position:absolute;
@@ -3505,6 +3514,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(3) .turn{
           position:absolute;
@@ -3512,6 +3522,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(4) .turn{
           position:absolute;
@@ -3519,6 +3530,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
@@ -4145,6 +4157,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(2) .turn{
           position:absolute;
@@ -4152,6 +4165,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(3) .turn{
           position:absolute;
@@ -4159,6 +4173,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(4) .turn{
           position:absolute;
@@ -4166,6 +4181,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
@@ -4588,6 +4604,12 @@
     }
     @media all and (min-width:1440px) {
       .gamefield{
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-2%;
+        }
         .ready-game1 {
           opacity:0;
           position:absolute;
@@ -4775,6 +4797,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(2) .turn{
           position:absolute;
@@ -4782,6 +4805,7 @@
           left: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(3) .turn{
           position:absolute;
@@ -4789,6 +4813,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(4) .turn{
           position:absolute;
@@ -4796,6 +4821,7 @@
           right: 122%;
           width: 25%;
           height: 25%;
+          opacity: 0;
         }
         .col-xs-6:nth-child(1) .playerdie{
           position:absolute;
