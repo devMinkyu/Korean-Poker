@@ -176,6 +176,7 @@ socket.on('one_open_card_end_receive',function(room){
 });
 // 죽는 다고 할때
 $('#die').click('submit', function(e){
+  buttonSound();
   socket.emit('die_send');
 });
 // 죽는 다고 할 때 반응하는 소켓
@@ -217,22 +218,27 @@ socket.on('die_receive', function(room, user){
 });
 // call을 눌렀을때(지금까지 주어진 배팅금만큼만 걸고 끝내기를 선언)
 $('#call').click('submit', function (){
+  buttonSound();
   socket.emit('call_send');
 });
 // half을 눌렀을때(배팅금만큼 건다.)
 $('#half').click('submit', function(){
+  buttonSound();
   socket.emit('half_send');
 });
 // dadang을 눌렀을때(배팅금의 2배만큼을 건다.)
 $('#dadang').click('submit', function(){
+  buttonSound();
   socket.emit('dadang_send');
 });
 // bbing을 눌렀을때(판돈만큼을 건다.)
 $('#bbing').click('submit', function(){
+  buttonSound();
   socket.emit('bbing_send');
 });
 // check을 눌렀을때 돈을 안걸고 그냥 턴을 넘긴다. 그리고 그냥 끝내기를 선언
 $('#check').click('submit', function(){
+  buttonSound();
   socket.emit('check_send');
 });
 // 배팅의 대해 반응 하는 소켓

@@ -13,6 +13,98 @@
   background-repeat: no-repeat;
   position: absolute; }
 
+.gamefield .ready-game1 {
+  position: absolute;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+  -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  padding: 0px;
+  top: 12%;
+  left: 66%;
+  opacity: 0; }
+
+.gamefield .ready-game2 {
+  position: absolute;
+  left: 66%;
+  top: 43%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+  -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  padding: 0px;
+  opacity: 0; }
+
+.gamefield .ready-game3 {
+  position: absolute;
+  top: 43%;
+  right: 72%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+  -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  padding: 0px;
+  opacity: 0; }
+
+.gamefield .ready-game4 {
+  position: absolute;
+  top: 12%;
+  right: 72%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  font: normal 84px/normal "Anton", Helvetica, sans-serif;
+  color: white;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+  -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+  -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  transform: rotateX(26.92902deg) rotateY(12.03211deg);
+  padding: 0px;
+  opacity: 0; }
+
 .gamefield .parentMoney {
   width: 100%;
   position: absolute;
@@ -398,6 +490,7 @@
   left: 0.5%; }
 
 .gamefield .state {
+  opacity: 0;
   position: absolute;
   top: 29%;
   left: 2%;
@@ -653,6 +746,94 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 70%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 70%;
+    top: 47%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 47%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100% !important;
     position: absolute !important;
@@ -907,6 +1088,7 @@
     width: 95%;
     font-size: 0.8em; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 55%;
     left: 2%;
@@ -973,6 +1155,94 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 70%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 70%;
+    top: 46%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 47%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100% !important;
     position: absolute !important;
@@ -1228,6 +1498,7 @@
     width: 95%;
     font-size: 0.8em; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 55%;
     left: 2%;
@@ -1294,6 +1565,94 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 70%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 70%;
+    top: 47%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 46%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100% !important;
     position: absolute !important;
@@ -1555,6 +1914,7 @@
     width: 95%;
     font-size: 0.8em; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 55%;
     left: 2%;
@@ -1621,6 +1981,94 @@
     position: absolute;
     overflow-x: hidden;
     overflow-y: hidden; }
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 66%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 66%;
+    top: 43%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 43%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 72%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100%;
     position: absolute;
@@ -1881,6 +2329,7 @@
     width: 95%;
     font-size: 0.8em; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 55%;
     left: 2%;
@@ -1933,6 +2382,94 @@
     width: 50%; } }
 
 @media all and (min-width: 425px) and (max-width: 768px) {
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 66%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 66%;
+    top: 43%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 43%;
+    right: 65%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 65%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 2.8em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100%;
     position: absolute;
@@ -2176,6 +2713,7 @@
     bottom: 7%;
     left: 0.5%; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 29%;
     left: 2%;
@@ -2390,6 +2928,94 @@
     margin-left: 100px; } }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 66%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 66%;
+    top: 43%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 43%;
+    right: 69%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    right: 69%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 3em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield #userID {
     display: none; }
   .gamefield .parent {
@@ -2633,6 +3259,7 @@
     bottom: 7%;
     left: 0.5%; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 29%;
     left: 2%;
@@ -2847,6 +3474,94 @@
     margin-left: 100px; } }
 
 @media all and (min-width: 1024px) and (max-width: 1440px) {
+  .gamefield .ready-game1 {
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 66%;
+    opacity: 0; }
+  .gamefield .ready-game2 {
+    position: absolute;
+    left: 66%;
+    top: 43%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game3 {
+    position: absolute;
+    top: 43%;
+    left: 13%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
+  .gamefield .ready-game4 {
+    position: absolute;
+    top: 12%;
+    left: 13%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    opacity: 0; }
   .gamefield .parentMoney {
     width: 100%;
     position: absolute;
@@ -3097,6 +3812,7 @@
     bottom: 7%;
     left: 0.5%; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 29%;
     left: 2%;
@@ -3311,6 +4027,94 @@
     margin-left: 100px; } }
 
 @media all and (min-width: 1440px) {
+  .gamefield .ready-game1 {
+    opacity: 0;
+    position: absolute;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px;
+    top: 12%;
+    left: 66%; }
+  .gamefield .ready-game2 {
+    opacity: 0;
+    position: absolute;
+    left: 66%;
+    top: 43%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px; }
+  .gamefield .ready-game3 {
+    opacity: 0;
+    position: absolute;
+    top: 43%;
+    left: 13%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px; }
+  .gamefield .ready-game4 {
+    opacity: 0;
+    position: absolute;
+    top: 12%;
+    left: 13%;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal 5em/normal "Anton", Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 5px 5px 0 #2f911b, 10px 10px 0 #0b140b, 15px 14px 0 #41a80d, 20px 20px 0 black;
+    -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+    -webkit-transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    transform: rotateX(26.92902deg) rotateY(12.03211deg);
+    padding: 0px; }
   .gamefield .card1 {
     position: relative;
     width: 40%; }
@@ -3548,6 +4352,7 @@
     bottom: 7%;
     left: 0.5%; }
   .gamefield .state {
+    opacity: 0;
     position: absolute;
     top: 29%;
     left: 2%;
