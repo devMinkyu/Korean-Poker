@@ -1428,6 +1428,8 @@ input[type="submit"],.agileits_copyright p a,a{
   -ms-animation: fadeInUp 300ms linear 1200ms both;
   animation: fadeInUp 300ms linear 1200ms both;
       /* Give the player a height & width of 0. Otherwise the player is visible on mobile devices (tested on iPhone 5). */
+}
+
 #player {
 	height: 0;
 	width: 0;
@@ -1449,5 +1451,4 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 .speakerplay {
 	background-position: 0 0;
-}
 }
