@@ -404,7 +404,7 @@
 .gamefield #bettingBar {
   width: 71%;
   left: 0%;
-  top: 96%;
+  top: 92%;
   height: 7.4%;
   position: absolute; }
 
@@ -899,7 +899,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -907,7 +908,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -915,7 +917,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -923,7 +926,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(1) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -931,7 +935,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -939,7 +944,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -947,7 +953,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -955,7 +962,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield #chatLog.chat_log {
     font-size: 0.5em;
     resize: none;
@@ -1014,7 +1022,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 97%;
+    top: 92%;
     height: 8%;
     position: absolute; }
   .gamefield #dadang {
@@ -1355,7 +1363,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -1363,7 +1372,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -1371,7 +1381,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -1387,7 +1398,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1395,7 +1407,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1403,7 +1416,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1411,7 +1425,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .parent {
     width: 100%;
     position: relative;
@@ -1474,7 +1489,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 98%;
+    top: 92%;
     height: 10%;
     position: absolute; }
   .gamefield #dadang {
@@ -1625,7 +1640,7 @@
     width: 95%; }
   .gamefield .col-xs-6:nth-child(2) {
     left: 70%;
-    top: 40%;
+    top: 38%;
     position: absolute;
     width: 100px; }
   .gamefield .col-xs-6:nth-child(2) .userName {
@@ -1636,7 +1651,7 @@
     font-size: 0.8em; }
   .gamefield .col-xs-6:nth-child(3) {
     position: absolute;
-    top: 40%;
+    top: 38%;
     right: 70%;
     width: 100px; }
   .gamefield .col-xs-6:nth-child(3) .userName {
@@ -1816,7 +1831,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -1824,7 +1840,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -1832,7 +1849,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -1840,7 +1858,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(1) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1848,7 +1867,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1856,7 +1876,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1864,7 +1885,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -1872,7 +1894,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -1941,7 +1964,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 96%;
+    top: 92%;
     height: 9%;
     position: absolute; }
   .gamefield #dadang {
@@ -2294,7 +2317,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -2302,7 +2326,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -2310,7 +2335,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -2318,7 +2344,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(1) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2334,7 +2361,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2342,7 +2370,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2350,7 +2379,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -2419,7 +2449,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 98%;
+    top: 92%;
     height: 10%;
     position: absolute; }
   .gamefield #dadang {
@@ -2775,7 +2805,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -2783,7 +2814,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -2791,7 +2823,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -2799,7 +2832,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(1) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2807,7 +2841,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2815,7 +2850,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2823,7 +2859,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -2831,7 +2868,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -2900,7 +2938,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 98%;
+    top: 92%;
     height: 10%;
     position: absolute; }
   .gamefield #dadang {
@@ -3241,7 +3279,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerdie {
     position: absolute;
     top: 95%;
@@ -3249,7 +3288,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerdie {
     position: absolute;
     top: 95%;
@@ -3257,7 +3297,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerdie {
     position: absolute;
     top: 95%;
@@ -3265,7 +3306,8 @@
     color: black;
     width: 50%;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(1) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -3273,7 +3315,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(2) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -3281,7 +3324,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(3) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -3289,7 +3333,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .col-xs-6:nth-child(4) .playerBettingState {
     position: absolute;
     top: 95%;
@@ -3297,7 +3342,8 @@
     width: 50%;
     color: red;
     -webkit-text-fill-color: unset;
-    margin: 0; }
+    margin: 0;
+    font-size: 1.5em; }
   .gamefield .cards {
     position: absolute;
     left: 50%;
@@ -3366,7 +3412,7 @@
   .gamefield #bettingBar {
     width: 70%;
     left: 0%;
-    top: 98%;
+    top: 92%;
     height: 10%;
     position: absolute; }
   .gamefield #dadang {
@@ -3876,7 +3922,7 @@
   .gamefield #bettingBar {
     width: 71%;
     left: 0%;
-    top: 96%;
+    top: 92%;
     height: 7.4%;
     position: absolute; }
   .gamefield #dadang {
@@ -4429,7 +4475,7 @@
   .gamefield #bettingBar {
     width: 71%;
     left: 0%;
-    top: 96%;
+    top: 92%;
     height: 7.4%;
     position: absolute; }
   .gamefield #dadang {
@@ -4989,7 +5035,7 @@
   .gamefield #bettingBar {
     width: 71%;
     left: 0%;
-    top: 96%;
+    top: 92%;
     height: 7.4%;
     position: absolute; }
   .gamefield #dadang {
@@ -5542,7 +5588,7 @@
   .gamefield #bettingBar {
     width: 71%;
     left: 0%;
-    top: 96%;
+    top: 92%;
     height: 7.4%;
     position: absolute; }
   .gamefield #dadang {
@@ -5946,7 +5992,7 @@
   .gamefield #bettingBar {
     width: 71%;
     left: 0%;
-    top: 100%;
+    top: 92%;
     height: 7.4%;
     position: absolute; }
   .gamefield #buttons {
@@ -6166,7 +6212,7 @@ h1 {
 h4 {
   padding: 30px 0;
   font-size: 50px;
-  text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px, #6f1c21 0px -2px, #6f1c21 -1.4px -1.4px, #6f1c21 1.4px 1.4px, #6f1c21 1.4px -1.4px, #6f1c21 -1.4px 1.4px; }
+  text-shadow: #6f1c21 0px 2px, #6f1c21 2px 0px, #6f1c21 -2px 0px, #6f1c21 0px -2px, #6f1c21 -1.4px -1.4px, #6f1c21 1.4px 1.4px, #6f1c21 1.4px -1.4px, #6f1c21 -1.4px 1.4px; }
 
 .content-w3ls {
   width: 35%;
@@ -6883,7 +6929,7 @@ input[type="submit"], .agileits_copyright p a, a {
 .agileinfo_main_grid {
   background-color: #0B3B2E !important;
   background-repeat: no-repeat;
-  position: absolute;
+  position: left;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
