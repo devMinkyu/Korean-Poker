@@ -1239,7 +1239,10 @@ input[type="submit"],.agileits_copyright p a,a{
 
 #main-slider .carousel .slider-img{
   text-align: right;
-  position: absolute;
+  position: relative;
+  width: 150%;
+  top: 200px;
+  right: 20%;
 }
 
 

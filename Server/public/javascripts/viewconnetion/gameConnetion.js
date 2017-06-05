@@ -339,6 +339,7 @@ function select3 (){
   socket.emit('finallySelect_send', selectCard);  
 }
 socket.on('cardButtonEmpty_receive', function(){
+  $("#die").attr('disabled',true);
   $("#myCardWindow").empty();
 })
 socket.on('finallySelect_receive', function(cards, room, user){
