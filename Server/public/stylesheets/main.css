@@ -6929,7 +6929,7 @@ input[type="submit"], .agileits_copyright p a, a {
 .agileinfo_main_grid {
   background-color: #0B3B2E !important;
   background-repeat: no-repeat;
-  position: absolute;
+  position: left;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
