@@ -3682,7 +3682,8 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: 8%; }
+    top: 8%;
+    padding-top: 30px; }
   .gamefield .card1 {
     position: relative;
     width: 25%; }
@@ -5324,7 +5325,8 @@
     position: absolute;
     /* If you want text inside of it */
     padding-left: 0px;
-    top: -2%; }
+    top: 8%;
+    padding-top: 30px; }
   .gamefield .ready-game1 {
     opacity: 0;
     position: absolute;

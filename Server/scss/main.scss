@@ -1207,6 +1207,8 @@ input[type="submit"],.agileits_copyright p a,a{
 
 #main-slider {
   position: relative;
+  -webkit-text-fill-color:unset;
+  text-align: center;
 }
 
 .no-margin {
@@ -1215,7 +1217,8 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 
 #main-slider .carousel .carousel-content {
-  margin-top: 150px;
+  margin-top: 60%;
+  
 }
 
 #main-slider .carousel .slide-margin{
@@ -1242,7 +1245,7 @@ input[type="submit"],.agileits_copyright p a,a{
   position: relative;
   width: 150%;
   top: 200px;
-  right: 20%;
+  left: -6%;
 }
 
 
@@ -1353,13 +1356,17 @@ input[type="submit"],.agileits_copyright p a,a{
     left: -3px;
     top: -3px;
 }
-
+.longcontent{
+	margin-top: 60%;
+}
 #main-slider .active .animation.animated-item-1 {
   -webkit-animation: fadeInUp 300ms linear 300ms both;
   -moz-animation: fadeInUp 300ms linear 300ms both;
   -o-animation: fadeInUp 300ms linear 300ms both;
   -ms-animation: fadeInUp 300ms linear 300ms both;
   animation: fadeInUp 300ms linear 300ms both;
+  -webkit-text-fill-color:unset;
+  font-size:3em;
 }
 
 #main-slider .active .animation.animated-item-2 {
@@ -1368,6 +1375,7 @@ input[type="submit"],.agileits_copyright p a,a{
   -o-animation: fadeInUp 300ms linear 600ms both;
   -ms-animation: fadeInUp 300ms linear 600ms both;
   animation: fadeInUp 300ms linear 600ms both;
+  font-size:2em;
 }
 
 #main-slider .active .animation.animated-item-3 {
@@ -1376,6 +1384,7 @@ input[type="submit"],.agileits_copyright p a,a{
   -o-animation: fadeInUp 300ms linear 900ms both;
   -ms-animation: fadeInUp 300ms linear 900ms both;
   animation: fadeInUp 300ms linear 900ms both;
+  font-size:2em;
 }
 
 #main-slider .active .animation.animated-item-4 {
@@ -1384,9 +1393,72 @@ input[type="submit"],.agileits_copyright p a,a{
   -o-animation: fadeInUp 300ms linear 1200ms both;
   -ms-animation: fadeInUp 300ms linear 1200ms both;
   animation: fadeInUp 300ms linear 1200ms both;
+  font-size:2em;
       /* Give the player a height & width of 0. Otherwise the player is visible on mobile devices (tested on iPhone 5). */
 }
+@media (max-width: 767px){
+	#main-slider .carousel .carousel-content {
+		margin-top: 50%;
+	}
+}
+@media (max-width: 900px){
+	#main-slider .carousel .slider-img{
+		text-align: right;
+		position: relative;
+		width: 130%;
+		top: 150px;
+		left: -6%;
+	}
+}
+@media (max-width: 767px){
+	#main-slider .carousel .carousel-content {
+		margin-top: 30%;
+	}
+	#main-slider .carousel .slider-img{
+		text-align: right;
+		position: relative;
+		width: 110%;
+		top: 100px;
+		right: 10%;
+	}
+	#main-slider .active .animation.animated-item-1 {
+		-webkit-animation: fadeInUp 300ms linear 300ms both;
+		-moz-animation: fadeInUp 300ms linear 300ms both;
+		-o-animation: fadeInUp 300ms linear 300ms both;
+		-ms-animation: fadeInUp 300ms linear 300ms both;
+		animation: fadeInUp 300ms linear 300ms both;
+		-webkit-text-fill-color:unset;
+		font-size:2em;
+	}
 
+	#main-slider .active .animation.animated-item-2 {
+		-webkit-animation: fadeInUp 300ms linear 600ms both;
+		-moz-animation: fadeInUp 300ms linear 600ms both;
+		-o-animation: fadeInUp 300ms linear 600ms both;
+		-ms-animation: fadeInUp 300ms linear 600ms both;
+		animation: fadeInUp 300ms linear 600ms both;
+		font-size:1em;
+	}
+
+	#main-slider .active .animation.animated-item-3 {
+		-webkit-animation: fadeInUp 300ms linear 900ms both;
+		-moz-animation: fadeInUp 300ms linear 900ms both;
+		-o-animation: fadeInUp 300ms linear 900ms both;
+		-ms-animation: fadeInUp 300ms linear 900ms both;
+		animation: fadeInUp 300ms linear 900ms both;
+		font-size:1em;
+	}
+
+	#main-slider .active .animation.animated-item-4 {
+		-webkit-animation: fadeInUp 300ms linear 1200ms both;
+		-moz-animation: fadeInUp 300ms linear 1200ms both;
+		-o-animation: fadeInUp 300ms linear 1200ms both;
+		-ms-animation: fadeInUp 300ms linear 1200ms both;
+		animation: fadeInUp 300ms linear 1200ms both;
+		font-size:1em;
+			/* Give the player a height & width of 0. Otherwise the player is visible on mobile devices (tested on iPhone 5). */
+	}
+}
 #player {
 	height: 0;
 	width: 0;
