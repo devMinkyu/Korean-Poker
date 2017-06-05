@@ -346,7 +346,7 @@ function die_send(money , socket){
       'userName' : (rooms[roomIndex].connUsers[userIndex].userName)
     });
     app.io.sockets.in(socket._id).emit('die_receive', rooms[roomIndex], rooms[roomIndex].connUsers[userIndex]);
-    lastCheck(gamingNumber-1, socket);
+    lastCheck(roomIndex,gamingNumber-1, socket);
     if(rooms[roomIndex].deadUsers.length == rooms[roomIndex].connUsers.length-1){
       rooms[roomIndex].count = 0;
       var user;
@@ -458,9 +458,9 @@ function die_send(money , socket){
       app.io.sockets.in(socket._id).emit('finallySelect_receive', cards, rooms[roomIndex], rooms[roomIndex].gamingUsers[gameUserIndex]);
     }
     // 참여자가 다 2장씩 선택 한후
-    lastCheck(gamingNumber, socket);
+    lastCheck(roomIndex,gamingNumber, socket);
   }
-function lastCheck(gamingNumber, socket){
+function lastCheck(roomIndex, gamingNumber, socket){
   if(gamingNumber == rooms[roomIndex].count){
     if(rooms[roomIndex].regame === 0){
       setTimeout(function(){
