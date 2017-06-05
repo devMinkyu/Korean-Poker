@@ -2371,6 +2371,1118 @@
         }
       }
     }
+    @media all and (width:412px){
+      .gamefield {
+        -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+        width: 658px;
+        height: 410px;
+        top: 124px;
+        left: -123px;
+        background-color: #0B610B;
+        position: absolute;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      .gamefield{
+        #viewTimer {
+          left: 181% !important;
+          top: -77% !important;
+          font-size: 2.5em !important;
+          color: red !important;
+        }
+        .parentMoney {
+          width: 100% !important;
+          position: absolute !important;
+          padding-left: 0px !important;
+          top: -3% !important;
+          padding-top: 17px !important;
+        }
+        .ready-game1 {
+          //- display:none;
+          position:absolute;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          top: 12%;
+          left: 70%;
+          opacity: 0;
+        }
+        .ready-game2 {
+          //- display:none;
+          position:absolute;
+          left: 70%;
+          top: 46%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .ready-game3 {
+          //- display:none;
+          position:absolute;
+          top: 46%;
+          left: 15%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .ready-game4 {
+          //- display:none;
+          position:absolute;
+          top: 12%;
+          left: 15%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+          padding-top: 40px;
+        }
+        .card1{
+          position: relative;
+          width: 25%;
+        }
+        .card2{
+          position: relative;
+          width: 25%;
+        }
+        .card3{
+          position: relative;
+          width: 25%;
+        }
+        button#select1 {
+          top: 26%;
+          left: 10%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        button#select2 {
+          top: 26%;
+          left: 37%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        button#select3 {
+          top: 26%;
+          left: 65%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        .col-xs-6:nth-child(1) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .cards {
+          position: absolute;
+          left : 50%;
+          bottom : 42%;
+          height: 35%;
+          width: 11%;
+        }
+        .parent{
+          width: 100%;
+          position: relative; /* If you want text inside of it */
+        }
+        #chatLog.chat_log{
+          font-size:0.5em;
+          resize: none;
+          width:100%;
+          color:white;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          height: 75%;
+        }
+        #message.message{
+          width:100%;
+          color:white;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          opacity:1;
+          font-size:1em;
+          top:74%;
+        }
+        .arrow_box {
+          position: absolute;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          width:29%;
+          height:33%;
+          top:66.5%;
+          left:70%;
+          padding-top:0px;
+          padding-left:0px;
+        }
+        .arrow_box:after, .arrow_box:before {
+          top: 100%;
+          left: 50%;
+          border: solid transparent;
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+        .arrow_box:after {
+          border-color: rgba(136, 183, 213, 0);
+          border-top-color: #77946E;
+          border-radius: 10px;
+          border-width: 30px;
+          margin-left: -30px;
+        }
+        .arrow_box:before {
+          border-color: rgba(194, 225, 245, 0);
+          border-top-color: #77946E;
+          border-radius: 10px;
+          border-width: 36px;
+          margin-left: 100px;
+        }
+        h3{
+          font-size: 8px;
+        }
+        h5{
+          font-size: 7px;
+        }
+        h3{
+          font-size: 8px;
+        }
+        #bettingBar{
+          width:70%;
+          left:0%;
+          top:98%;
+          height:10%;
+          position:absolute;
+        }
+        #dadang{
+          width:16.6%;
+          height:100%;
+        }
+        #call{
+          width:16.6%;
+          height:100%;
+        }
+        
+        #half{
+          width:16.6%;
+          height:100%;
+        }
+        
+        #bbing{
+          width:16.6%;
+          height:100%;
+        }
+        #check{
+          width:16.6%;
+          height:100%;
+        }
+        #die{
+          width:16.6%;
+          height:100%;
+        }
+        .myprofile{
+          position: absolute;
+          top: 9px;
+          left: 10px;
+          bottom: 0;
+          right: 0;
+          width:30%;
+          height:auto;
+        }
+        #myName{
+          position:absolute;
+          left:3%;
+          top:44%;
+          font-size:6px;
+        }
+        #myWin{
+          position:absolute;
+          left:4%;
+          top:83%;
+          font-size:6px;
+        }
+        #myLose{
+          position:absolute;
+          left:19%;
+          top:83%;
+          font-size:6px;
+        }
+        
+        .moneyBar {
+          background: url('/images/namebar.png');
+          background-repeat: no-repeat;
+          background-position:center center;
+          position:absolute;
+          top:91%;
+          width:100%;
+          height:20%;
+          left:0.2%;
+          font-size:11px;
+          text-indent: 3px;
+          line-height: 1.5;
+        }
+        #buttons{
+          position: absolute;
+          width: 25%;
+          height: 22%;
+          top : 68%;
+          left: 1%; 
+          padding-top:0px;
+          padding-left:0px;
+          padding:0;
+          background: url('/images/Butttonarea.png');
+          background-repeat: no-repeat;
+        }
+        #ready{
+          position:absolute;
+          left:55%;
+          top:30%;
+          width:40%;
+          height:25%;
+          padding:0;
+          text-align:center
+        }
+        #exit{
+          position:absolute;
+          left:55%;
+          top:67%;
+          width:40%;
+          height:25%;
+          padding:0;
+          line-height:1.5;
+        }
+        #roomMoney{
+          left : 35%;
+          bottom :-60%;
+          position:relative;
+          text-align: left;
+          color: white;
+        }
+        #roomAllMoney{
+          right : 13%;
+          bottom : -31%;
+          position:relative;
+          color: white;
+          text-align: right;
+        } 
+        #firstButton {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          bottom : 7%;
+          left: 1%;
+        }
+        .image-selected{
+          position: absolute;
+          //- left : 37%;
+          //- top : 70%;
+          //- height: 30%;
+          //- width: 10%;
+          left : 37%;
+          top : 65%;
+          width: 8%;
+          display: none;
+        }
+        #roomName{
+          position: absolute;
+          bottom : 95%;
+          left: 8%;
+          color: white;
+          font-size:1em;
+        }
+        .mycards {
+          position: absolute;
+          left : 37%;
+          top : 65%;
+          height: 25%;
+          width: 8%;
+          display: none;
+        }
+        .col-xs-6:nth-child(1) {
+          position: absolute;
+          top: 5%;
+          left: 70%;
+          width: 100px;
+          font-size: 1em;
+        }
+        .col-xs-6:nth-child(1) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .state{
+          opacity: 0;
+          position: absolute;
+          top: 55%;
+          left: 2%;
+          width:95%;
+        }
+        .win{
+          position: absolute;
+          top: 8%;
+          left: 2%;
+          width:95%;
+        }
+        .lose{
+          position: absolute;
+          top: 8%;
+          left: 35%;
+          width:95%;
+        }
+        .col-xs-6:nth-child(2) {
+          left: 70%;
+          top: 40%;
+          position: absolute;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(2) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .col-xs-6:nth-child(3) {
+          position: absolute;
+          top: 40%;
+          right: 70%;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(3) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .col-xs-6:nth-child(4) {
+          top: 5%;
+          position: absolute;
+          right: 70%;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(4) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .profile {
+          height: 50%;
+          width: 50%;
+        }
+      }
+    }
+    @media all and (width:414px){
+      .gamefield {
+        -ms-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        width: 735px;
+        height: 410px;
+        top: 163px;
+        left: -162px;
+        background-color: #0B610B;
+        position: absolute;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+      .gamefield{
+        .draw {
+          position: absolute;
+          height: 50%;
+          width: 50%;
+          top: 0%;
+          left: 17%;
+        }
+        #viewTimer {
+          left: 181% !important;
+          top: -77% !important;
+          font-size: 2.5em !important;
+          color: red !important;
+        }
+        .parentMoney {
+          width: 100% !important;
+          position: absolute !important;
+          padding-left: 0px !important;
+          top: -3% !important;
+          padding-top: 17px !important;
+        }
+        .ready-game1 {
+          //- display:none;
+          position:absolute;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          top: 12%;
+          left: 70%;
+          opacity: 0;
+        }
+        .ready-game2 {
+          //- display:none;
+          position:absolute;
+          left: 70%;
+          top: 46%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .ready-game3 {
+          //- display:none;
+          position:absolute;
+          top: 46%;
+          left: 15%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .ready-game4 {
+          //- display:none;
+          position:absolute;
+          top: 12%;
+          left: 15%;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+          border: none;
+          font: normal 1.3em/normal "Anton", Helvetica, sans-serif;
+          color: rgba(255,255,255,1);
+          text-align: center;
+          -o-text-overflow: clip;
+          text-overflow: clip;
+          text-shadow: 5px 5px 0 rgba(47,145,27,1) , 10px 10px 0 rgba(11,20,11,1) , 15px 14px 0 rgba(65,168,13,1) , 20px 20px 0 rgba(0,0,0,1) ;
+          -webkit-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -moz-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -o-transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          transition: all 200ms cubic-bezier(0.895, 0.03, 0.08, 0.595) 10ms;
+          -webkit-transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          transform: rotateX(26.92901637114869deg) rotateY(12.032113697747288deg);
+          padding:0px;
+          opacity: 0;
+        }
+        .parentMoney{
+          width: 100%;
+          position: absolute; /* If you want text inside of it */
+          padding-left: 0px;
+          top:-10%;
+          padding-top: 40px;
+        }
+        .card1{
+          position: relative;
+          width: 25%;
+        }
+        .card2{
+          position: relative;
+          width: 25%;
+        }
+        .card3{
+          position: relative;
+          width: 25%;
+        }
+        button#select1 {
+          top: 26%;
+          left: 10%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        button#select2 {
+          top: 26%;
+          left: 37%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        button#select3 {
+          top: 26%;
+          left: 65%;
+          position: absolute;
+          background:none;
+          display:inline-block;
+          border-width: 0px;
+          width:25%;
+          height:15%;
+          z-index: 1;
+        }
+        .col-xs-6:nth-child(1) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerdie{
+          position:absolute;
+          top: 95%;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerdie{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          color:black;
+          width:50%;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(1) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(2) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: 111%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(3) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .col-xs-6:nth-child(4) .playerBettingState{
+          position:absolute;
+          top: 95% ;
+          left: -58%;
+          width:50%;
+          color:red;
+          -webkit-text-fill-color:unset;
+          margin:0;
+        }
+        .cards {
+          position: absolute;
+          left : 50%;
+          bottom : 42%;
+          height: 35%;
+          width: 11%;
+        }
+        .parent{
+          width: 100%;
+          position: relative; /* If you want text inside of it */
+        }
+        #chatLog.chat_log{
+          font-size:0.5em;
+          resize: none;
+          width:100%;
+          color:white;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          height: 75%;
+        }
+        #message.message{
+          width:100%;
+          color:white;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          opacity:1;
+          font-size:1em;
+          top:74%;
+        }
+        .arrow_box {
+          position: absolute;
+          background: #0F4300;
+          border: 4px solid #77946E;
+          border-radius: 10px;
+          width:29%;
+          height:33%;
+          top:66.5%;
+          left:70%;
+          padding-top:0px;
+          padding-left:0px;
+        }
+        .arrow_box:after, .arrow_box:before {
+          top: 100%;
+          left: 50%;
+          border: solid transparent;
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+        .arrow_box:after {
+          border-color: rgba(136, 183, 213, 0);
+          border-top-color: #77946E;
+          border-radius: 10px;
+          border-width: 30px;
+          margin-left: -30px;
+        }
+        .arrow_box:before {
+          border-color: rgba(194, 225, 245, 0);
+          border-top-color: #77946E;
+          border-radius: 10px;
+          border-width: 36px;
+          margin-left: 100px;
+        }
+        h3{
+          font-size: 8px;
+        }
+        h5{
+          font-size: 7px;
+        }
+        h3{
+          font-size: 8px;
+        }
+        #bettingBar{
+          width:70%;
+          left:0%;
+          top:98%;
+          height:10%;
+          position:absolute;
+        }
+        #dadang{
+          width:16.6%;
+          height:100%;
+        }
+        #call{
+          width:16.6%;
+          height:100%;
+        }
+        
+        #half{
+          width:16.6%;
+          height:100%;
+        }
+        
+        #bbing{
+          width:16.6%;
+          height:100%;
+        }
+        #check{
+          width:16.6%;
+          height:100%;
+        }
+        #die{
+          width:16.6%;
+          height:100%;
+        }
+        .myprofile{
+          position: absolute;
+          top: 9px;
+          left: 10px;
+          bottom: 0;
+          right: 0;
+          width:30%;
+          height:auto;
+        }
+        #myName{
+          position:absolute;
+          left:3%;
+          top:44%;
+          font-size:6px;
+        }
+        #myWin{
+          position:absolute;
+          left:4%;
+          top:83%;
+          font-size:6px;
+        }
+        #myLose{
+          position:absolute;
+          left:19%;
+          top:83%;
+          font-size:6px;
+        }
+        
+        .moneyBar {
+          background: url('/images/namebar.png');
+          background-repeat: no-repeat;
+          background-position:center center;
+          position:absolute;
+          top:91%;
+          width:100%;
+          height:20%;
+          left:0.2%;
+          font-size:11px;
+          text-indent: 3px;
+          line-height: 1.5;
+        }
+        #buttons{
+          position: absolute;
+          width: 25%;
+          height: 22%;
+          top : 68%;
+          left: 1%; 
+          padding-top:0px;
+          padding-left:0px;
+          padding:0;
+          background: url('/images/Butttonarea.png');
+          background-repeat: no-repeat;
+        }
+        #ready{
+          position:absolute;
+          left:55%;
+          top:30%;
+          width:40%;
+          height:25%;
+          padding:0;
+          text-align:center
+        }
+        #exit{
+          position:absolute;
+          left:55%;
+          top:67%;
+          width:40%;
+          height:25%;
+          padding:0;
+          line-height:1.5;
+        }
+        #roomMoney{
+          left : 35%;
+          bottom :-60%;
+          position:relative;
+          text-align: left;
+          color: white;
+        }
+        #roomAllMoney{
+          right : 13%;
+          bottom : -31%;
+          position:relative;
+          color: white;
+          text-align: right;
+        } 
+        #firstButton {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          bottom : 7%;
+          left: 1%;
+        }
+        .image-selected{
+          position: absolute;
+          //- left : 37%;
+          //- top : 70%;
+          //- height: 30%;
+          //- width: 10%;
+          left : 37%;
+          top : 65%;
+          width: 8%;
+          display: none;
+        }
+        #roomName{
+          position: absolute;
+          bottom : 95%;
+          left: 8%;
+          color: white;
+          font-size:1em;
+        }
+        .mycards {
+          position: absolute;
+          left : 37%;
+          top : 65%;
+          height: 25%;
+          width: 8%;
+          display: none;
+        }
+        .col-xs-6:nth-child(1) {
+          position: absolute;
+          top: 5%;
+          left: 70%;
+          width: 100px;
+          font-size: 1em;
+        }
+        .col-xs-6:nth-child(1) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .state{
+          opacity: 0;
+          position: absolute;
+          top: 55%;
+          left: 2%;
+          width:95%;
+        }
+        .win{
+          position: absolute;
+          top: 8%;
+          left: 2%;
+          width:95%;
+        }
+        .lose{
+          position: absolute;
+          top: 8%;
+          left: 35%;
+          width:95%;
+        }
+        .col-xs-6:nth-child(2) {
+          left: 70%;
+          top: 40%;
+          position: absolute;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(2) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .col-xs-6:nth-child(3) {
+          position: absolute;
+          top: 40%;
+          right: 70%;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(3) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .col-xs-6:nth-child(4) {
+          top: 5%;
+          position: absolute;
+          right: 70%;
+          width: 100px;
+        }
+        .col-xs-6:nth-child(4) .userName{
+          position: absolute;
+          top:-41%;
+          left: 2%;
+          width:95%;
+          font-size: 0.8em;
+        }
+        .profile {
+          height: 50%;
+          width: 50%;
+        }
+      }
+    }
     @media all and (width:425px){
       .gamefield {
         -ms-transform: rotate(-90deg); /* IE 9 */
