@@ -1,6 +1,3 @@
-@import 'libs/vars';
-@import 'libs/functions';
-@import 'libs/mixins';
 @import "gameroom";
 @import "gameroomlist";
 @charset "UTF-8";
@@ -13,48 +10,6 @@
 @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
 
 @import url("http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
-// @import url(print.css) print;
-/*
-	Overflow by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
-	@import "libs/skel";
-
-	@include skel-breakpoints((
-		wide: '(max-width: 1680px)',
-		normal: '(max-width: 1080px)',
-		narrow: '(max-width: 840px)',
-		mobile: '(max-width: 736px)'
-	));
-
-	@include skel-layout((
-		reset: 'full',
-		boxModel: 'border',
-		grid: ( gutters: (40px, 40px) ),
-		conditionals: true,
-		containers: 1140px,
-		breakpoints: (
-			wide: (
-				containers: 960px,
-			),
-			normal: (
-				containers: 95%,
-			),
-			narrow: (
-				grid: (
-					gutters: (30px, 30px)
-				),
-			),
-			mobile: (
-				containers: (95%, true),
-				grid: (
-					gutters: (20px, 20px)
-				),
-			)
-		)
-	));
 
 
 	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
@@ -1297,8 +1252,8 @@ input[type="submit"],.agileits_copyright p a,a{
   top: 0;
   position: absolute;
   width: 100%;
+  height: 900px;
   display: block !important;
-  height: 530px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
@@ -1334,7 +1289,6 @@ input[type="submit"],.agileits_copyright p a,a{
     text-align: center;
     border-radius: 4px;
     z-index: 5;
-    padding-top: 12px;
 }
 
 #main-slider .prev:hover,

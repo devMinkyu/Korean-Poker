@@ -2,16 +2,9 @@ extends ../layout
 
 block content
   section#main-slider.no-margin
-    .carousel.slide
-        ol.carousel-indicators
-          li.active(data-target='#main-slider', data-slide-to='0')
-          |                 
-          li(data-target='#main-slider', data-slide-to='1')
-          |                 
-          li(data-target='#main-slider', data-slide-to='2')
-        |             
+    .carousel.slide           
         .carousel-inner
-          .item.active(style='background-image: url(/images/bg1.jpg)')
+          .item(style='background-image: url(/images/bg1.jpg)')
             .container
               .row.slide-margin
                 .col-sm-6
@@ -26,7 +19,7 @@ block content
                 .col-sm-6.hidden-xs.animation.animated-item-4
                   .slider-img
                     img.img-responsive(src='/images/img1.png')
-          .item(style='background-image: url(/images/bg2.jpg)')
+          .item.active(style='background-image: url(/images/bg2.jpg)')
             .container
               .row.slide-margin
                 .col-sm-6
@@ -55,30 +48,13 @@ block content
                 .col-sm-6.hidden-xs.animation.animated-item-4
                   .slider-img
                     img.img-responsive(src='/images/img3.png')
-        a.prev.hidden-xs(href='#main-slider', data-slide='prev')
+        a.prev.hidden-xs(onclick="prev()")
           i.fa.fa-chevron-left
         |         
-        a.next.hidden-xs(href='#main-slider', data-slide='next')
+        a.next.hidden-xs(onclick="next()")
           i.fa.fa-chevron-right
 
   script(src='/javascripts/main.js').
   script(src='/javascripts/jquery.isotope.min.js').
   script(src='/javascripts/jquery.prettyPhoto.js').
   script(type="text/javascript").
-    jQuery(document).ready(function () {
-        var offset = 300;
-        var duration = 500;
-        jQuery(window).scroll(function () {
-            if (jQuery(this).scrollTop() > offset) {
-                jQuery('.back-to-top').fadeIn(duration);
-            } else {
-                jQuery('.back-to-top').fadeOut(duration);
-            }
-        });
-
-        jQuery('.back-to-top').click(function (event) {
-            event.preventDefault();
-            jQuery('html, body').animate({ scrollTop: 0 }, duration);
-            return false;
-        })
-    });

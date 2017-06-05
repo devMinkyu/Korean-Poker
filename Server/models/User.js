@@ -4,9 +4,8 @@ var _ = require('underscore');
 require('mongoose-type-email');
 
 var schema = new Schema({
-  userName: {type: String, required: true, unique: true},
+  userName: {type: String, required: true},
   userEmail: {type: mongoose.SchemaTypes.Email, required: true, unique: true, trim: true},
-  contents : {type: String},
   facebook: {id: String, token: String},
   kakao: {id: String, token: String},
   photoURL : {type: String},
