@@ -2,7 +2,6 @@
 
 ![Alt text](https://github.com/yutae/Korean-Poker/blob/develop/Server/public/images/menual/8.png?raw=true)
 
-## URL : http://dev-minkyu.me/
 ## 주요 기술 및 설명
 
 ##### Web
